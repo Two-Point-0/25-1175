@@ -96,6 +96,8 @@ Your browser does not support video.
 <!-- KIT GALLERY -->
 <div class="kit-gallery">
 <h2>Full Kits (Shirt → Shorts → Boots)</h2>
+
+<!-- SHIRT SCROLL -->
 <div class="scroll-wrapper">
 <button class="scroll-btn" onclick="scrollLeft('shirt')">◀</button>
 <div class="kit-container" id="shirt">
@@ -107,6 +109,7 @@ Your browser does not support video.
 <button class="scroll-btn" onclick="scrollRight('shirt')">▶</button>
 </div>
 
+<!-- SHORTS SCROLL -->
 <div class="scroll-wrapper">
 <button class="scroll-btn" onclick="scrollLeft('short')">◀</button>
 <div class="kit-container" id="short">
@@ -118,6 +121,7 @@ Your browser does not support video.
 <button class="scroll-btn" onclick="scrollRight('short')">▶</button>
 </div>
 
+<!-- BOOTS SCROLL (NEW HUMAN-LIKE VERSION) -->
 <div class="scroll-wrapper">
 <button class="scroll-btn" onclick="scrollLeft('boot')">◀</button>
 <div class="kit-container" id="boot">
@@ -125,9 +129,16 @@ Your browser does not support video.
     <div class="kit-item"><img src="boot2.jpg" alt="Boot 2"></div>
     <div class="kit-item"><img src="boot3.jpg" alt="Boot 3"></div>
     <div class="kit-item"><img src="boot4.jpg" alt="Boot 4"></div>
+    <div class="kit-item"><img src="boot5.jpg" alt="Boot 5"></div>
+    <div class="kit-item"><img src="boot6.jpg" alt="Boot 6"></div>
+    <div class="kit-item"><img src="boot7.jpg" alt="Boot 7"></div>
+    <div class="kit-item"><img src="boot8.jpg" alt="Boot 8"></div>
+    <div class="kit-item"><img src="boot9.jpg" alt="Boot 9"></div>
+    <div class="kit-item"><img src="boot10.jpg" alt="Boot 10"></div>
 </div>
 <button class="scroll-btn" onclick="scrollRight('boot')">▶</button>
 </div>
+
 </div>
 
 <!-- TABLE -->
@@ -148,4 +159,35 @@ Your browser does not support video.
 
 <tr><td rowspan="4">Serie A</td><td>Juventus</td><td>Italy</td><td>1897</td><td>Allianz</td><td>Allegri</td><td>36</td><td>Active</td></tr>
 <tr><td>AC Milan</td><td>Italy</td><td>1899</td><td>San Siro</td><td>Pioli</td><td>18</td><td>Active</td></tr>
-<tr><td>Inter Milan</td><td>Italy<
+<tr><td>Inter Milan</td><td>Italy</td><td>1908</td><td>San Siro</td><td>Inzaghi</td><td>19</td><td>Active</td></tr>
+<tr><td>Napoli</td><td>Italy</td><td>1926</td><td>Diego Armando Maradona</td><td>Spalletti</td><td>3</td><td>Active</td></tr>
+
+<tr><td rowspan="4">Bundesliga</td><td>Bayern Munich</td><td>Germany</td><td>1900</td><td>Allianz Arena</td><td>Nagelsmann</td><td>32</td><td>Active</td></tr>
+<tr><td>Dortmund</td><td>Germany</td><td>1909</td><td>Signal Iduna Park</td><td>Terzic</td><td>8</td><td>Active</td></tr>
+<tr><td>Leipzig</td><td>Germany</td><td>2009</td><td>Red Bull Arena</td><td>Tedesco</td><td>0</td><td>Active</td></tr>
+<tr><td>Schalke</td><td>Germany</td><td>1904</td><td>Veltins Arena</td><td>Frank Kramer</td><td>7</td><td>Active</td></tr>
+
+<tr><td rowspan="4">Ligue 1</td><td>PSG</td><td>France</td><td>1970</td><td>Parc des Princes</td><td>Galtier</td><td>11</td><td>Active</td></tr>
+<tr><td>Lyon</td><td>France</td><td>1950</td><td>Groupama</td><td>Paquetá</td><td>7</td><td>Active</td></tr>
+<tr><td>Marseille</td><td>France</td><td>1899</td><td>Vélodrome</td><td>Sampaoli</td><td>9</td><td>Active</td></tr>
+<tr><td>Monaco</td><td>France</td><td>1924</td><td>Stade Louis II</td><td>Marsiglia</td><td>8</td><td>Active</td></tr>
+</table>
+</div>
+
+<footer>
+&copy; 2026 The Locker-Room | All Rights Reserved
+</footer>
+
+<script>
+function scrollLeft(id){
+    const container = document.getElementById(id);
+    container.scrollLeft -= 220;
+}
+function scrollRight(id){
+    const container = document.getElementById(id);
+    container.scrollLeft += 220;
+}
+</script>
+
+</body>
+</html>
