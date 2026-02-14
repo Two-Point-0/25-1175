@@ -21,7 +21,7 @@ h1, h2, h3, h4 {
     margin: 10px 0;
 }
 
-/* Kit Scroller */
+/* KIT SCROLLER */
 .kit-gallery {
     width: 95%;
     margin: 30px auto;
@@ -35,14 +35,19 @@ h1, h2, h3, h4 {
 }
 .kit-container {
     display: flex;
-    overflow: hidden;
-    width: 800px;
+    overflow-x: scroll;
     scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; /* mobile smooth scroll */
+    width: 90%;
+    padding: 10px 0;
+    scroll-snap-type: x mandatory;
 }
 .kit-item {
-    min-width: 160px;
+    flex: 0 0 auto;
+    width: 160px;
     margin: 0 5px;
     text-align: center;
+    scroll-snap-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 .kit-item img {
@@ -54,7 +59,7 @@ h1, h2, h3, h4 {
     box-shadow: 0 5px 15px rgba(255,255,255,0.7);
 }
 
-/* Scroll Buttons */
+/* SCROLL BUTTON */
 .scroll-btn {
     background: #222;
     color: white;
@@ -66,7 +71,7 @@ h1, h2, h3, h4 {
     height: 180px;
 }
 
-/* Table */
+/* TABLE */
 table {
     width: 95%;
     border-collapse: collapse;
@@ -93,6 +98,16 @@ pre { background: #222; padding: 15px; white-space: pre-wrap; text-align: left; 
 ul, ol { margin-left: 40px; text-align: left; }
 section { margin: 30px 0; text-align: center; }
 video { margin: 20px auto; display: block; border-radius: 10px; }
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .kit-container { width: 100%; }
+    .kit-item { width: 120px; }
+}
+@media (max-width: 600px) {
+    .kit-item { width: 100px; }
+    .scroll-btn { height: 120px; font-size: 18px; }
+}
 </style>
 </head>
 <body>
@@ -193,12 +208,10 @@ Your browser does not support video.
 
 <div class="kit-gallery">
 <h2>Full Kits (Shirts → Shorts → Boots)</h2>
-
-<!-- SCROLLABLE KITS -->
 <div class="scroll-wrapper">
 <button class="scroll-btn" onclick="scrollKit('prev')">◀</button>
 <div class="kit-container" id="kits">
-<!-- 20 shirts -->
+<!-- 20 kits -->
 <div class="kit-item"><img src="shirt1.jpg" alt="Shirt 1"><br><img src="short1.jpg" alt="Short 1"><br><img src="boot1.jpg" alt="Boot 1"></div>
 <div class="kit-item"><img src="shirt2.jpg" alt="Shirt 2"><br><img src="short2.jpg" alt="Short 2"><br><img src="boot2.jpg" alt="Boot 2"></div>
 <div class="kit-item"><img src="shirt3.jpg" alt="Shirt 3"><br><img src="short3.jpg" alt="Short 3"><br><img src="boot3.jpg" alt="Boot 3"></div>
@@ -214,7 +227,7 @@ Your browser does not support video.
 </div>
 </div>
 
-<!-- TABLE -->
+<!-- Table -->
 <table border="2">
 <caption>Top 4 Teams in Each European League</caption>
 <tr><th>League</th><th>Team</th><th>Country</th><th>Founded</th><th>Stadium</th><th>Coach</th><th>Titles</th><th>Status</th></tr>
@@ -233,28 +246,41 @@ Your browser does not support video.
 </footer>
 
 <script>
-// SYNCHRONIZED KIT SCROLLER
 let currentIndex = 0;
 const kitContainer = document.getElementById('kits');
 const kitItems = kitContainer.querySelectorAll('.kit-item');
 
-function scrollKit(direction) {
-    if (direction === 'next') currentIndex = Math.min(currentIndex + 1, kitItems.length - 1);
-    if (direction === 'prev') currentIndex = Math.max(currentIndex - 1, 0);
-    let itemWidth = kitItems[0].offsetWidth + 10; 
-    kitContainer.scrollTo({ left: currentIndex * itemWidth, behavior: 'smooth' });
+function scrollKit(direction){
+    if(direction==='next') currentIndex=Math.min(currentIndex+1,kitItems.length-1);
+    if(direction==='prev') currentIndex=Math.max(currentIndex-1,0);
+    let itemWidth=kitItems[0].offsetWidth+10;
+    kitContainer.scrollTo({left:currentIndex*itemWidth,behavior:'smooth'});
     highlightCurrent();
 }
 
-function highlightCurrent() {
-    kitItems.forEach((item, idx) => {
-        item.classList.toggle('active', idx === currentIndex);
-    });
+function highlightCurrent(){
+    kitItems.forEach((item,idx)=>item.classList.toggle('active',idx===currentIndex));
 }
 
-// Initialize first highlight
+// TOUCH SUPPORT
+let startX, scrollLeftStart;
+kitContainer.addEventListener('touchstart', e=>{
+    startX=e.touches[0].pageX;
+    scrollLeftStart=kitContainer.scrollLeft;
+});
+kitContainer.addEventListener('touchmove', e=>{
+    let dx=startX-e.touches[0].pageX;
+    kitContainer.scrollLeft=scrollLeftStart+dx;
+});
+kitContainer.addEventListener('touchend', ()=>{
+    // snap to nearest
+    let itemWidth=kitItems[0].offsetWidth+10;
+    currentIndex=Math.round(kitContainer.scrollLeft/itemWidth);
+    scrollKit('snap');
+});
+
+// Initialize
 highlightCurrent();
 </script>
-
 </body>
 </html>
