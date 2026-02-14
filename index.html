@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Locker-Room | Full Kits & HTML Demo</title>
+<title>The Locker-Room | Top European Jerseys</title>
 
 <style>
 body{
@@ -218,12 +218,45 @@ Authentic Football Culture
     <ul>
         <li>Manchester City</li>
         <li>Arsenal</li>
+        <li>Liverpool</li>
+        <li>Chelsea</li>
+        <li>Manchester United</li>
     </ul>
 </li>
 <li>La Liga
     <ul>
         <li>Barcelona</li>
         <li>Real Madrid</li>
+        <li>Atletico Madrid</li>
+        <li>Sevilla</li>
+        <li>Valencia</li>
+    </ul>
+</li>
+<li>Serie A
+    <ul>
+        <li>Juventus</li>
+        <li>AC Milan</li>
+        <li>Inter</li>
+        <li>Napoli</li>
+        <li>Roma</li>
+    </ul>
+</li>
+<li>Bundesliga
+    <ul>
+        <li>Bayern Munich</li>
+        <li>Dortmund</li>
+        <li>Leipzig</li>
+        <li>Schalke</li>
+        <li>Bayer Leverkusen</li>
+    </ul>
+</li>
+<li>Ligue 1
+    <ul>
+        <li>PSG</li>
+        <li>Lyon</li>
+        <li>Marseille</li>
+        <li>Monaco</li>
+        <li>Lille</li>
     </ul>
 </li>
 </ul>
@@ -231,7 +264,7 @@ Authentic Football Culture
 
 <!-- FULL KIT SCROLLABLE -->
 <div class="kit-section">
-<h2>Full Kit Display</h2>
+<h2>Full Kit Display (Shirt → Shorts → Boots)</h2>
 <div class="kit-section">
 <button class="scroll-btn" onclick="prevKit()">◀</button>
 
@@ -269,19 +302,21 @@ Authentic Football Culture
 <!-- TABLE -->
 <div class="kit-section">
 <table>
-<caption>Top 5 European League Teams – Kits & Boots</caption>
+<caption>Top 5 Teams in Each Top European League</caption>
 <tr>
-<th rowspan="2">League</th><th>Team</th><th>Country</th><th>Titles</th><th>Founded</th><th>Stadium</th><th>Coach</th><th>Status</th>
+<th>League</th><th>Team</th><th>Country</th><th>Titles</th><th>Founded</th><th>Stadium</th><th>Coach</th><th>Status</th>
 </tr>
-<tr><td>Barcelona</td><td>Spain</td><td>27</td><td>1899</td><td>Camp Nou</td><td>Xavi</td><td>Active</td></tr>
-<tr><td rowspan="3">Premier League</td><td>Manchester City</td><td>England</td><td>9</td><td>1880</td><td>Etihad</td><td>Pep</td><td>Active</td></tr>
+<tr><td rowspan="5">Premier League</td><td>Manchester City</td><td>England</td><td>9</td><td>1880</td><td>Etihad</td><td>Pep</td><td>Active</td></tr>
 <tr><td>Arsenal</td><td>England</td><td>13</td><td>1886</td><td>Emirates</td><td>Arteta</td><td>Active</td></tr>
 <tr><td>Liverpool</td><td>England</td><td>19</td><td>1892</td><td>Anfield</td><td>Klopp</td><td>Active</td></tr>
-<tr><td>Bundesliga</td><td>Bayern Munich</td><td>Germany</td><td>32</td><td>1900</td><td>Allianz</td><td>Tuchel</td><td>Active</td></tr>
-<tr><td>Ligue 1</td><td>PSG</td><td>France</td><td>11</td><td>1970</td><td>Parc</td><td>Enrique</td><td>Active</td></tr>
-<tr><td>Serie A</td><td>Juventus</td><td>Italy</td><td>36</td><td>1897</td><td>Allianz</td><td>Allegri</td><td>Active</td></tr>
-<tr><td>La Liga</td><td>Real Madrid</td><td>Spain</td><td>35</td><td>1902</td><td>Bernabeu</td><td>Ancelotti</td><td>Active</td></tr>
-<tr><td>Serie A</td><td>AC Milan</td><td>Italy</td><td>18</td><td>1899</td><td>San Siro</td><td>Pioli</td><td>Active</td></tr>
+<tr><td>Chelsea</td><td>England</td><td>6</td><td>1905</td><td>Stamford Bridge</td><td>Tuchel</td><td>Active</td></tr>
+<tr><td>Manchester United</td><td>England</td><td>20</td><td>1878</td><td>Old Trafford</td><td>Ten Hag</td><td>Active</td></tr>
+
+<tr><td rowspan="5">La Liga</td><td>Barcelona</td><td>Spain</td><td>27</td><td>1899</td><td>Camp Nou</td><td>Xavi</td><td>Active</td></tr>
+<tr><td>Real Madrid</td><td>Spain</td><td>35</td><td>1902</td><td>Bernabeu</td><td>Ancelotti</td><td>Active</td></tr>
+<tr><td>Atletico Madrid</td><td>Spain</td><td>11</td><td>1903</td><td>Wanda</td><td>Diego Simeone</td><td>Active</td></tr>
+<tr><td>Sevilla</td><td>Spain</td><td>5</td><td>1890</td><td>Ramon Sanchez</td><td>Lopetegui</td><td>Active</td></tr>
+<tr><td>Valencia</td><td>Spain</td><td>6</td><td>1919</td><td>Mestalla</td><td>Gennaro Gattuso</td><td>Active</td></tr>
 </table>
 </div>
 
@@ -291,23 +326,20 @@ Authentic Football Culture
 
 <script>
 let index = 1;
-function nextKit(){
-    index++; if(index>5) index=1;
-    document.getElementById("shirt").src="shirt"+index+".jpg";
-    document.getElementById("short").src="short"+index+".jpg";
-    document.getElementById("boot").src="boot"+index+".jpg";
-}
-function prevKit(){
-    index--; if(index<1) index=5;
-    document.getElementById("shirt").src="shirt"+index+".jpg";
-    document.getElementById("short").src="short"+index+".jpg";
-    document.getElementById("boot").src="boot"+index+".jpg";
-}
+function nextKit(){ index++; if(index>5) index=1;
+document.getElementById("shirt").src="shirt"+index+".jpg";
+document.getElementById("short").src="short"+index+".jpg";
+document.getElementById("boot").src="boot"+index+".jpg";}
+function prevKit(){ index--; if(index<1) index=5;
+document.getElementById("shirt").src="shirt"+index+".jpg";
+document.getElementById("short").src="short"+index+".jpg";
+document.getElementById("boot").src="boot"+index+".jpg";}
 function scrollBoots(direction){
-    const container=document.getElementById("bootsContainer");
-    container.scrollLeft += direction*220;
+const container=document.getElementById("bootsContainer");
+container.scrollLeft += direction*220;
 }
 </script>
 
 </body>
 </html>
+
