@@ -1,380 +1,604 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>The Locker-Room — Football Jersey Shop</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Locker-Room | Premium Football Kit Store</title>
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+    background: #0a0a0a;
+    color: white;
+    text-align: center;
+}
+header {
+    background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+    padding: 40px 10px;
+    text-align: center;
+    border-bottom: 3px solid #ffd700;
+}
+h1 {
+    font-size: 3em;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(255,215,0,0.3);
+}
+h2 { color: #ffd700; }
+h3 { color: #cccccc; }
+h4 { color: #999999; }
 
-  <style>
-    :root{
-      --bg-1: #071028;
-      --bg-2: #0f1724;
-      --card-bg: rgba(255,255,255,0.03);
-      --muted: #9fb0c6;
-      --accent: #ffd166;
-      --glass: rgba(255,255,255,0.04);
-      --radius: 14px;
-      --gap: 18px;
-      --card-w: 340px;
-      --text: #eaf6ff;
-      --shadow: 0 10px 30px rgba(2,6,23,0.6);
-      font-size: 16px;
-    }
+/* SCROLLABLE KIT SECTIONS */
+.kit-gallery {
+    width: 95%;
+    margin: 50px auto;
+    text-align: center;
+    background: linear-gradient(to right, #0a0a0a, #1a1a1a, #0a0a0a);
+    padding: 30px 0;
+    border-radius: 20px;
+}
+.scroll-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+.kit-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    width: 85%;
+    padding: 30px 10px;
+    gap: 20px;
+    scrollbar-width: thin;
+    scrollbar-color: #ffd700 #333;
+    -webkit-overflow-scrolling: touch;
+}
+.kit-container::-webkit-scrollbar {
+    height: 8px;
+}
+.kit-container::-webkit-scrollbar-track {
+    background: #333;
+    border-radius: 10px;
+}
+.kit-container::-webkit-scrollbar-thumb {
+    background: #ffd700;
+    border-radius: 10px;
+}
+.kit-item {
+    flex: 0 0 auto;
+    width: 220px;
+    text-align: center;
+    opacity: 0.3;
+    transform: scale(0.85);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: blur(1px);
+    cursor: pointer;
+    position: relative;
+}
+.kit-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    transition: all 0.4s ease;
+}
+.kit-item .kit-label {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #999;
+    transition: color 0.4s ease;
+}
+.kit-item.active {
+    opacity: 1;
+    transform: scale(1.1);
+    filter: blur(0);
+    z-index: 10;
+}
+.kit-item.active img {
+    box-shadow: 0 0 30px rgba(255,215,0,0.5);
+    border: 2px solid #ffd700;
+}
+.kit-item.active .kit-label {
+    color: #ffd700;
+    font-weight: bold;
+}
+.kit-item:hover {
+    opacity: 0.8;
+    transform: scale(0.95);
+}
+.scroll-btn {
+    background: #333;
+    color: #ffd700;
+    border: none;
+    padding: 15px 20px;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+.scroll-btn:hover {
+    background: #ffd700;
+    color: #333;
+    transform: scale(1.1);
+}
 
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;color:var(--text);background:linear-gradient(180deg,var(--bg-1),var(--bg-2));-webkit-font-smoothing:antialiased}
-    a{color:inherit}
+/* TABLE */
+.table-container {
+    overflow-x: auto;
+    margin: 50px auto;
+    padding: 20px;
+    background: #1a1a1a;
+    border-radius: 20px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    text-align: center;
+    background: #222;
+    border-radius: 15px;
+    overflow: hidden;
+}
+table, th, td {
+    border: 1px solid #444;
+    padding: 15px;
+    text-align: center;
+}
+th {
+    background: #ffd700;
+    color: #000;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+tr:nth-child(even) {
+    background: #2a2a2a;
+}
+tr:hover {
+    background: #333;
+}
+caption {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #ffd700;
+    font-weight: bold;
+}
 
-    header{
-      display:flex;align-items:center;gap:16px;padding:20px 28px;border-bottom:1px solid rgba(255,255,255,0.03);
-      background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
-      position:sticky;top:0;backdrop-filter: blur(6px);z-index:40;
-    }
-    .brand{
-      display:flex;align-items:center;gap:12px;
-    }
-    .logo{
-      width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,#ffd166,#ffb37f);display:flex;align-items:center;justify-content:center;font-weight:800;color:#071028;font-size:18px;box-shadow:0 6px 18px rgba(255,185,77,0.12)
-    }
-    header h1{font-size:20px;margin:0;font-weight:700;letter-spacing:0.2px}
-    header p{margin:0;color:var(--muted);font-size:13px}
+/* FOOTER */
+footer {
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+    text-align: center;
+    padding: 30px;
+    margin-top: 50px;
+    border-top: 3px solid #ffd700;
+}
 
-    .controls{margin-left:auto;display:flex;gap:10px;align-items:center}
-    .btn{
-      display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);
-      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));color:var(--text);cursor:pointer;font-weight:600;
-      transition:transform .12s ease, box-shadow .12s ease;
-    }
-    .btn:active{transform:translateY(1px)}
-    .btn.primary{background:linear-gradient(180deg,var(--accent),#ffb84d);color:#071028;border:none;box-shadow:0 6px 18px rgba(255,185,77,0.12)}
-    .btn.ghost{background:transparent;border:1px dashed rgba(255,255,255,0.03);font-weight:500}
+/* TEXT STYLING */
+.bold-text { 
+    font-weight: bold; 
+    font-size: 1.2em;
+    background: rgba(255,215,0,0.1);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 30px auto;
+}
+.underline-text { 
+    text-decoration: underline;
+    text-decoration-color: #ffd700;
+    text-underline-offset: 5px;
+}
+mark { 
+    background: #ffd700; 
+    color: black; 
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+blockquote {
+    border-left: 5px solid #ffd700;
+    padding-left: 20px;
+    margin: 30px auto;
+    max-width: 700px;
+    font-style: italic;
+    color: #ccc;
+    background: rgba(255,215,0,0.05);
+    padding: 20px;
+    border-radius: 10px;
+}
+pre {
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    white-space: pre-wrap;
+    text-align: left;
+    margin: 30px auto;
+    max-width: 500px;
+    border: 1px solid #ffd700;
+    font-family: 'Courier New', monospace;
+}
+ul, ol { 
+    margin: 20px auto; 
+    text-align: left; 
+    display: inline-block;
+    background: #1a1a1a;
+    padding: 30px 50px;
+    border-radius: 10px;
+    border: 1px solid #333;
+}
+li { margin: 10px 0; }
+.nested-list { 
+    background: #222; 
+    padding: 15px 30px; 
+    border-radius: 8px;
+    margin: 10px 0;
+}
 
-    main.wrap{padding:26px;max-width:1200px;margin:0 auto}
-    .hero{
-      margin:18px 0 26px;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border:1px solid rgba(255,255,255,0.03);display:flex;flex-direction:column;gap:10px;
-    }
-    .hero p{margin:0;color:var(--muted);font-size:15px;line-height:1.4}
-    .hero strong{display:block;color:#071028;background:linear-gradient(90deg,var(--accent),#ffb37f);padding:10px;border-radius:10px;font-weight:800}
+/* VIDEO */
+video { 
+    margin: 30px auto; 
+    display: block; 
+    border-radius: 15px; 
+    max-width: 90%;
+    box-shadow: 0 0 30px rgba(255,215,0,0.3);
+    border: 2px solid #ffd700;
+}
 
-    .toolbar{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
-    .hint{color:var(--muted);font-size:13px}
+/* PRODUCT GRID */
+.product-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.product-card {
+    background: #1a1a1a;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #333;
+    transition: transform 0.3s;
+}
+.product-card:hover {
+    transform: translateY(-5px);
+    border-color: #ffd700;
+}
 
-    .scroll-area{
-      display:flex;gap:var(--gap);overflow-x:auto;padding:20px;border-radius:var(--radius);
-      background:linear-gradient(90deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
-      border:1px solid rgba(255,255,255,0.03);
-      scroll-snap-type:x mandatory;
-      -webkit-overflow-scrolling:touch;
-    }
-
-    .kit-card{
-      min-width:var(--card-w);width:var(--card-w);background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius:12px;padding:14px;border:2px solid transparent;display:flex;flex-direction:column;gap:12px;scroll-snap-align:center;
-      transition:transform .22s cubic-bezier(.2,.9,.3,1), box-shadow .22s ease, border-color .18s ease;
-    }
-    .kit-card:hover{transform:translateY(-6px)}
-    .kit-card.active{transform:translateY(-10px) scale(1.02);box-shadow:var(--shadow);border-color:var(--accent)}
-
-    .team-title{display:flex;justify-content:space-between;align-items:center;gap:8px}
-    .team-title h3{margin:0;font-size:16px}
-    .team-meta{font-size:12px;color:var(--muted)}
-
-    .kit-part{
-      display:flex;gap:12px;align-items:center;padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
-      border:1px solid rgba(255,255,255,0.03);
-    }
-
-    .kit-visual{
-      width:92px;height:92px;border-radius:10px;flex:0 0 92px;display:flex;align-items:center;justify-content:center;font-weight:800;color:#071028;
-      background:linear-gradient(180deg,#fff,#ddd);box-shadow:inset 0 -6px 12px rgba(0,0,0,0.06);
-      font-size:14px;text-align:center;padding:8px;
-    }
-
-    .kit-info{flex:1;min-width:0}
-    .kit-info .label{font-weight:700}
-    .kit-info p{margin:6px 0 0;color:var(--muted);font-size:13px;line-height:1.25}
-    .price{margin-top:8px;font-weight:800}
-    .actions{display:flex;gap:8px;margin-top:10px}
-    .actions .small{padding:8px 10px;font-size:13px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text);cursor:pointer}
-
-    .boots-section{margin-top:26px;padding:18px;border-radius:var(--radius);background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));border:1px solid rgba(255,255,255,0.03)}
-    .boots-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:12px}
-    .boot-card{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);display:flex;flex-direction:column;gap:8px;align-items:center;justify-content:center}
-    .boot-visual{width:100%;height:92px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;color:#071028}
-
-    .legend{font-size:13px;color:var(--muted)}
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-
-    @media (max-width:980px){
-      :root{--card-w:300px}
-      .kit-visual{width:80px;height:80px}
-    }
-    @media (max-width:640px){
-      header{padding:14px}
-      main.wrap{padding:16px}
-      :root{--card-w:260px}
-      .kit-visual{width:72px;height:72px}
-      .boots-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
-    }
-  </style>
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .kit-item { width: 180px; }
+    .scroll-btn { height: 50px; width: 50px; font-size: 20px; }
+}
+@media (max-width: 600px) {
+    h1 { font-size: 2em; }
+    .kit-item { width: 150px; }
+    .scroll-btn { height: 40px; width: 40px; font-size: 16px; }
+}
+</style>
 </head>
 <body>
-  <header>
-    <div class="brand" aria-hidden="false">
-      <div class="logo" aria-hidden="true">LR</div>
-      <div>
-        <h1>The Locker-Room</h1>
-        <p>Top 4 teams from each of the top 5 leagues — 20 kits ready to view</p>
-      </div>
-    </div>
 
-    <div class="controls" role="toolbar" aria-label="Shop controls">
-      <div class="legend">Order: <strong>Shirt → Short → Boot</strong></div>
-      <button id="loadBtn" class="btn primary" aria-pressed="false">Load Kits</button>
-      <button id="prevBtn" class="btn ghost" title="Previous kit">◀ Prev</button>
-      <button id="nextBtn" class="btn ghost" title="Next kit">Next ▶</button>
-    </div>
-  </header>
+<header>
+<h1>⚽ THE LOCKER-ROOM ⚽</h1> <!-- Heading 1 -->
+<h2>Premium European Football Kits - 2026 Collection</h2> <!-- Heading 2 -->
+<h3>Authentic Shirts, Shorts, and Boots from Top Clubs</h3> <!-- Heading 3 -->
+<h4>Interactive 3D Kit Viewer - Click & Explore</h4> <!-- Heading 4 -->
+</header>
 
-  <main class="wrap" id="main">
-    <div class="hero" role="region" aria-label="Hero statement">
-      <p style="color:var(--muted)">Welcome to The Locker-Room — a place built for real fans and players. We showcase shirts, shorts, and boots from the biggest clubs and trusted brands.</p>
-      <strong>
-        Discover authentic match-day jerseys, shorts, and boots—from Nike Mercurial and Adidas Predator to Manchester United and Real Madrid shirts—crafted for fans who live football, train hard, and celebrate every goal.
-      </strong>
-    </div>
+<!-- COMPANY VIDEO - Real Product Showcase -->
+<section>
+<video width="700" controls poster="https://via.placeholder.com/700x400/1a1a1a/ffd700?text=THE+LOCKER-ROOM+PREMIUM+KITS">
+<source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4" type="video/mp4">
+Your browser does not support video.
+</video>
+<p style="color: #ffd700; margin-top: 10px;">🎬 Watch: 2026 Kit Launch Event - Featuring Mbappé, Haaland & Bellingham</p>
+</section>
 
-    <div class="toolbar">
-      <div class="hint">Scroll horizontally to browse kits. The most visible kit is highlighted automatically.</div>
-    </div>
+<!-- REAL PRODUCTS SHOWCASE -->
+<section class="product-showcase">
+<div class="product-card">
+    <h3 style="color: #ffd700;">Nike Mercurial Superfly 10</h3>
+    <p>Cristiano Ronaldo Edition - €299</p>
+    <small>Limited Stock: 47 left</small>
+</div>
+<div class="product-card">
+    <h3 style="color: #ffd700;">Adidas Predator 30</h3>
+    <p>Jude Bellingham Signature - €279</p>
+    <small>Pre-order: Ships March 2026</small>
+</div>
+<div class="product-card">
+    <h3 style="color: #ffd700;">Puma Future 8</h3>
+    <p>Neymar Jr. Rainbow Edition - €259</p>
+    <small>Exclusive: 100 units worldwide</small>
+</div>
+</section>
 
-    <section id="kitsContainer" class="scroll-area" tabindex="0" aria-label="Kits scroll area">
-      <!-- Cards will be injected here by JavaScript -->
-    </section>
+<!-- REAL-LIFE CONTENT WITH PRODUCTS -->
+<section style="max-width: 900px; margin: 0 auto; padding: 20px;">
+<p class="bold-text">
+🏆 Get your AUTHENTIC 2026 football kits today! Featuring the new Barcelona "Centenary" edition (€119), Real Madrid "Galácticos" away kit (€129), and Liverpool "Legends" collection. All shirts include official UEFA patches and premium heat-pressed names.
+</p>
 
-    <section class="boots-section" aria-labelledby="bootsTitle">
-      <h2 id="bootsTitle" style="margin:0;font-size:16px">Boots Collection</h2>
-      <p style="margin:8px 0 0;color:var(--muted);font-size:13px">Boots appear in the same order as the kits above.</p>
-      <div class="boots-grid" id="bootsGrid" aria-live="polite">
-        <!-- Boot cards injected here -->
-      </div>
-    </section>
-  </main>
+<p class="underline-text">
+🇪🇸 LA LIGA: Shop the new Barcelona 125th anniversary kit (worn by Pedri, Gavi, Lamine Yamal), Real Madrid's all-white champions collection (Vini Jr., Bellingham), and Atletico Madrid's special edition. All include La Liga patches. 🇮🇹 SERIE A: Juventus 'Made in Turin' collection, AC Milan 'Rossoneri' legacy kits, and Inter's 'Milano' edition with authentic Scudetto badges.
+</p>
+<p class="underline-text">
+🇫🇷 LIGUE 1: PSG's 2026 "Parisian Nights" collection features the new Jordan collaboration hoodie (€189) and Mbappé's limited edition boots. 🇩🇪 BUNDESLIGA: Bayern Munich's Oktoberfest special kits (€149) with authentic beer stein pattern, Dortmund's yellow wall collection, and Leverkusen's champions edition.
+</p>
 
-  <script>
-    // 1. // Feature: Teams data array (20 teams - top 4 from 5 leagues)
-    const teams = [
-      {league:'Premier League', name:'Manchester City', color:'#7fc7ff'},
-      {league:'Premier League', name:'Arsenal', color:'#ffb3b3'},
-      {league:'Premier League', name:'Manchester United', color:'#ffb37f'},
-      {league:'Premier League', name:'Newcastle United', color:'#d6d6d6'},
-      {league:'La Liga', name:'Real Madrid', color:'#ffffff'},
-      {league:'La Liga', name:'Barcelona', color:'#7f9bff'},
-      {league:'La Liga', name:'Atletico Madrid', color:'#ff7f7f'},
-      {league:'La Liga', name:'Sevilla', color:'#ffd27a'},
-      {league:'Serie A', name:'Inter Milan', color:'#7fe0ff'},
-      {league:'Serie A', name:'AC Milan', color:'#ff7fb3'},
-      {league:'Serie A', name:'Juventus', color:'#e6e6e6'},
-      {league:'Serie A', name:'Napoli', color:'#7fffb3'},
-      {league:'Bundesliga', name:'Bayern Munich', color:'#ff7f7f'},
-      {league:'Bundesliga', name:'Borussia Dortmund', color:'#ffd27a'},
-      {league:'Bundesliga', name:'RB Leipzig', color:'#b3d1ff'},
-      {league:'Bundesliga', name:'Bayer Leverkusen', color:'#ffb37f'},
-      {league:'Ligue 1', name:'Paris Saint-Germain', color:'#b3b3ff'},
-      {league:'Ligue 1', name:'Marseille', color:'#b3fff0'},
-      {league:'Ligue 1', name:'Monaco', color:'#ffd2b3'},
-      {league:'Ligue 1', name:'Lyon', color:'#d6b3ff'}
-    ];
+<p>⚡ Boot Technologies: Nike Mercurial Superfly 10<sup>2026</sup> (€299), Adidas Predator Accuracy.3<sup>2026</sup> (€249), Puma Ultra 5<sup>2026</sup> (€219), New Balance Furon v7<sup>2026</sup> (€199)</p>
+<p>📏 Size Guide: EU 42<sub>Regular</sub>, UK 8<sub>Standard</sub>, US 9<sub>Fits true</sub>, CM 27<sub>Length</sub></p>
 
-    // 2. // Feature: DOM references for kits and boots containers
-    const kitsContainer = document.getElementById('kitsContainer');
-    const bootsGrid = document.getElementById('bootsGrid');
+<p><del>Old Barcelona 2023 Home Kit (€89 - Now €59)</del> <mark>SOLD OUT</mark><br>
+<del>Outdated Liverpool 2024 Retro (€79 - Now €49)</del> <mark>LAST CHANCE</mark><br>
+<del>Previous AC Milan 2023 Kit (€84 - Now €54)</del> <mark>FINAL SALE</mark><br>
+<del>Last Season PSG Jordan (€99 - Now €69)</del> <mark>LIMITED STOCK</mark></p>
 
-    // 3. // Feature: Control buttons (Load Kits, Prev, Next)
-    const loadBtn = document.getElementById('loadBtn');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
+<p><mark>⚡ NEW: PSG x Air Jordan 2026 Limited Edition - Only 500 pieces worldwide! €299</mark><br>
+<mark>🔥 EXCLUSIVE: Manchester United 125th Anniversary Kit with gold badges - €179</mark><br>
+<mark>⭐ TOP SELLER: Real Madrid 15th UCL Champions special patch - €159</mark><br>
+<mark>🌟 PREMIUM: Barcelona "Culer" premium box set with scarf - €199</mark></p>
 
-    // 4. // Feature: Abbreviation helper for compact visuals (used in kit visuals)
-    function abbrev(name){
-      const parts = name.split(' ');
-      return parts.length <= 2 ? parts.join(' ') : parts.slice(0,2).join(' ');
-    }
+<p>"The new Mercurial Superfly 10s are the lightest boots I've ever worn!" - Kylian Mbappé</p>
+<p>"Our anniversary kit represents 125 years of Barcelona history" - Joan Laporta</p>
+<p>The Anfield crowd goes wild for every Liverpool legends release!" - Virgil van Dijk</p>
+<p>"Wearing the Azzurri blue feels like representing 25 million Italians" - Gianluigi Donnarumma</p>
 
-    // 5. // Feature: createKitCard - builds a kit card with Shirt → Short → Boot order
-    function createKitCard(team, index){
-      const card = document.createElement('article');
-      card.className = 'kit-card';
-      card.dataset.index = index;
-      card.setAttribute('role','group');
-      card.setAttribute('aria-label', `${team.name} kit`);
+<blockquote>
+⚽ 2026 Kit Technology: Heat-resistant fabrics for summer tournaments<br>
+🏆 Champions League final special edition patches now available<br>
+🌟 Player match-day fit: Same as worn by your favorite stars<br>
+🎯 Precision printing: Names and numbers never crack or fade
+</blockquote>
 
-      // 6. // Feature: Team title (name + league)
-      const title = document.createElement('div');
-      title.className = 'team-title';
-      title.innerHTML = `<h3>${team.name}</h3><div class="team-meta">${team.league}</div>`;
-      card.appendChild(title);
+<p>🏪 Visit our London flagship store:<br>
+📍 221B Baker Street, London - Open 7 days a week<br>
+🕒 Monday-Saturday: 10am-8pm | Sunday: 12pm-6pm<br>
+📞 Call us: +44 (0)20 7946 0123 for personal shopping</p>
 
-      // 7. // Feature: Shirt part (top of the card)
-      const shirt = document.createElement('div');
-      shirt.className = 'kit-part';
-      shirt.innerHTML = `
-        <div class="kit-visual" style="background:${team.color};">${abbrev(team.name)}</div>
-        <div class="kit-info">
-          <div class="label">Home Shirt</div>
-          <p>Premium breathable fabric • Sizes S–XXL</p>
-          <div class="price">$69.99</div>
-          <div class="actions">
-            <button class="small" aria-label="Add shirt for ${team.name}">Add Shirt</button>
-            <button class="small" aria-label="View shirt for ${team.name}">View</button>
-          </div>
-        </div>`;
-      card.appendChild(shirt);
+<hr style="border-color: #ffd700;">
+⭐ FREE SHIPPING on orders over €150!<br>
+🎁 Gift wrapping available for all kit purchases<br>
+💳 Pay in 3 installments with Klarna or PayPal
+<hr style="border-color: #ffd700;">
 
-      // 8. // Feature: Short part (middle of the card)
-      const short = document.createElement('div');
-      short.className = 'kit-part';
-      short.innerHTML = `
-        <div class="kit-visual" style="background:linear-gradient(180deg, ${team.color}, #ffffff);opacity:0.95">Short</div>
-        <div class="kit-info">
-          <div class="label">Home Short</div>
-          <p>Matching design • Elastic waist • Sizes S–XXL</p>
-          <div class="price">$29.99</div>
-          <div class="actions">
-            <button class="small" aria-label="Add short for ${team.name}">Add Short</button>
-            <button class="small" aria-label="View short for ${team.name}">View</button>
-          </div>
-        </div>`;
-      card.appendChild(short);
+<pre>
+🏆 2026 BEST-SELLING KITS:
+1. FC Barcelona 125th Anniversary Kit
+   - Sales: 250,000+ units
+   - Price: €119 (Home), €129 (Away)
 
-      // 9. // Feature: Boot part (bottom of the card)
-      const boot = document.createElement('div');
-      boot.className = 'kit-part';
-      boot.innerHTML = `
-        <div class="kit-visual" style="background:linear-gradient(90deg,#ffd27a,#ff8a00);">Boot</div>
-        <div class="kit-info">
-          <div class="label">Signature Boots</div>
-          <p>Firm ground studs • Sizes 6–12</p>
-          <div class="price">$119.99</div>
-          <div class="actions">
-            <button class="small" aria-label="Add boots for ${team.name}">Add Boot</button>
-            <button class="small" aria-label="View boots for ${team.name}">View</button>
-          </div>
-        </div>`;
-      card.appendChild(boot);
+2. Real Madrid Galácticos Collection
+   - Sales: 200,000+ units
+   - Price: €129 (Home), €139 (Third)
 
-      // 10. // Feature: Click-to-center behavior for each card (UX)
-      card.addEventListener('click', (e) => {
-        if (e.target.tagName.toLowerCase() === 'button') return;
-        card.scrollIntoView({behavior:'smooth', inline:'center'});
-      });
+3. Liverpool Legends Retro 2026
+   - Sales: 180,000+ units
+   - Price: €109 (Special Edition)
+</pre>
 
-      return card;
-    }
+<ul>
+<li>⚪ HOME KITS 2026: Barcelona, Real Madrid, Liverpool, Man City, Bayern, PSG, Juventus</li>
+<li>⚫ AWAY KITS 2026: All clubs + special third kits and European editions</li>
+<li>🔴 THIRD KITS 2026: Limited run of 1000 pieces per club - collect them all!</li>
+</ul>
 
-    // 11. // Feature: createBootCard - builds the boots grid item (ordered)
-    function createBootCard(team, index){
-      const b = document.createElement('div');
-      b.className = 'boot-card';
-      b.dataset.index = index;
-      b.innerHTML = `
-        <div style="font-size:13px;color:var(--muted)">${team.league}</div>
-        <div class="boot-visual" style="background:linear-gradient(90deg, ${team.color}, #ffb37f)">${abbrev(team.name)} Boot</div>
-        <div style="font-weight:700">${team.name}</div>
-        <div style="color:var(--muted);font-size:13px">$119.99</div>
-      `;
-      return b;
-    }
+<ol>
+<li>📋 Step 1: Select your club and kit type (Home/Away/Third)</li>
+<li>📏 Step 2: Choose size (XXS-5XL) and printing options</li>
+<li>💳 Step 3: Secure checkout with PayPal, Apple Pay, or credit card</li>
+</ol>
 
-    // 12. // Feature: loadKits - injects all 20 kits and boots into the DOM
-    function loadKits(){
-      kitsContainer.innerHTML = '';
-      bootsGrid.innerHTML = '';
-      teams.forEach((t,i) => {
-        kitsContainer.appendChild(createKitCard(t,i));
-        bootsGrid.appendChild(createBootCard(t,i));
-      });
-      setupObserver(); // 13. // Feature: set up IntersectionObserver after injection
-      kitsContainer.focus(); // 14. // Feature: focus for keyboard navigation
-      loadBtn.setAttribute('aria-pressed','true'); // 15. // Feature: toggle state for Load button (simple UI state)
-    }
+<ul>
+<li>⚽ FOOTBALL KITS BY LEAGUE
+    <ul class="nested-list">
+        <li>🏴󠁧󠁢󠁥󠁮󠁧󠁿 PREMIER LEAGUE: Man City (Puma), Arsenal (Adidas), Liverpool (Nike), Chelsea (Nike), Spurs (Nike), Man Utd (Adidas)</li>
+        <li>🇪🇸 LA LIGA: Barcelona (Nike), Real Madrid (Adidas), Atletico (Nike), Sevilla (Castore), Real Sociedad (Macron)</li>
+        <li>🇮🇹 SERIE A: Juventus (Adidas), AC Milan (Puma), Inter (Nike), Napoli (EA7), Roma (Adidas)</li>
+        <li>🇩🇪 BUNDESLIGA: Bayern (Adidas), Dortmund (Puma), Leipzig (Nike), Leverkusen (Castore)</li>
+        <li>🇫🇷 LIGUE 1: PSG (Nike/Jordan), Marseille (Puma), Lyon (Adidas), Monaco (Kappa)</li>
+        <li>🌍 OTHER LEAGUES: Ajax (Adidas), Porto (New Balance), Benfica (Adidas), Celtic (Adidas)</li>
+    </ul>
+</li>
+</ul>
+</section>
 
-    // 16. // Feature: IntersectionObserver instance and configuration
-    let observer;
-    function setupObserver(){
-      if(observer) observer.disconnect();
-      const options = { root: kitsContainer, rootMargin: '0px', threshold: buildThresholdList() };
-      observer = new IntersectionObserver(handleIntersections, options);
-      document.querySelectorAll('.kit-card').forEach(c => observer.observe(c));
-    }
+<!-- SHIRTS & SHORTS SCROLLER - IMPROVED INTERACTIVE -->
+<section class="kit-gallery">
+<h2 style="color: #ffd700;">👕 SHIRTS & SHORTS COLLECTION 2026</h2>
+<p style="color: #ccc;">⬅️ Scroll through our premium kits → Click any to highlight | Active kit glows gold</p>
+<div class="scroll-wrapper">
+<button class="scroll-btn" onclick="scrollKit('prev','kit1')">←</button>
+<div class="kit-container" id="kit1">
+<!-- 20 REAL KITS WITH ACTUAL PRODUCT NAMES -->
+<div class="kit-item"><img src="https://via.placeholder.com/220x300/004D98/FFFFFF?text=BARCA+HOME" alt="Barcelona 2026 Home"><div class="kit-label">🇪🇸 Barcelona Home 2026</div></div>
+<div class="kit-item"><img src="https://via.placeholder.com/220x300/F5EBDD/000000?text=RM+AWAY" alt="Real Madrid Away"><div class="kit-label">🇪🇸 Real Madrid Away 2026</div></div>
+<div class="kit-item"><img src="https://via.placeholder.com/220x300/C8102E/FFFFFF?text=LIV+HOME" alt="Liverpool Home"><div class="kit-label">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Liverpool Home 2026</div></div>
+<div class="kit-item"><img src="https://via.placeholder.com/220x300/6CABDD/FFFFFF?text=MCITY+H" alt="Man City Home"><div class="kit-label">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Man City Home 2026</div></div>
+<div class="kit-item"><img src="https://via.placeholder.com/220x300/041E42/FFFFFF?text=PSG+HOME" alt="PSG Home"><div class="kit-label">🇫🇷 PSG Home 2026</div></div>
+<div class="kit-item"><img src="https://via.placeholder.com/220x300/000000/FFFFFF?text=JUVE+H" alt="Juventus Home"><div class="kit-label">🇮🇹 Juventus Home 2026</div></div>
+<div class="kit-item"><img src="https://via.placeholder.com/220x300/ED1C24/FFFFFF?text=BAYERN" alt="Bayern Home"><div class="kit-label">🇩🇪 Bayern Munich Home 2026</div></div>
+<div class="kit-item"><img src="https://via.placeholder.com/220x300/DA291C/FFCD00?text=ARSENAL" alt="Arsenal Home"><div class="kit-label">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Arsenal Home 2026</div></div>
+<div class="kit-item"><img src="https://via.placeholder.com/220x300/034694/FFFFFF?text=CHELSEA" alt="Chelsea Home"><div class="kit-label">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Chelsea Home 2026</div></div>
+<div class="kit-item"><img src="https://via.placeholder.com/220x300/FFC20E/000000?text=DORTMUND" alt="Dortmund Home"><div class="kit-label">🇩🇪 Dortmund Home 2026</div></div>
+<div class="kit-item"><img src="https://via.placeholder.com/220x300/003366/FFFFFF?text=INTER" alt="Inter Home"><div class="kit-label">🇮🇹 Inter Milan Home 2026</div></div>
+<div class="kit-item"><img src="https://via.placeholder.com/220x300/FB4F14/000000?text=ACMILAN" alt="AC Milan Home"><div class="kit-label">🇮🇹 AC Milan Home 2026</div></div>
+<div class="kit-item"><img src="https://via.placeholder.com/220x300/CF1322/FFFFFF?text=AJAX" alt="Ajax Home"><div class="kit-label">🇳🇱 Ajax Home 2026</div></div>
+<div class="kit-item"><img src="https://via.placeholder.com/220x300/132432/FFCD00?text=LEVERK" alt="Leverkusen Home"><div class="kit-label">🇩🇪 Leverkusen Home 2026</div></div>
+<div class="kit-item"><img src="https://via.placeholder.com/220x300/EF3B24/FFFFFF?text=ATLETI" alt="Atletico Home"><div class="kit-label">🇪🇸 Atletico Madrid Home 2026</div></div>
+<div class="kit-item"><img src="https://via.placeholder.com/220x300/00A651/FFFFFF?text=NAPOLI" alt="Napoli Home"><div class="kit-label">🇮🇹 Napoli Home 2026</div></div>
+<div class="kit-item"><img src="https://via.placeholder.com/220x300/231F20/FDBB30?text=LEICESTER" alt="Leicester Home"><div class="kit-label">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Leicester Home 2026</div></div>
+<div class="kit-item"><img src="https://via.placeholder.com/220x300/091453/FFCD00?text=VILLA" alt="Aston Villa Home"><div class="kit-label">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Aston Villa Home 2026</div></div>
+<div class="kit-item"><img src="https://via.placeholder.com/220x300/EF3B24/FFD100?text=MARSEILLE" alt="Marseille Home"><div class="kit-label">🇫🇷 Marseille Home 2026</div></div>
+<div class="kit-item"><img src="https://via.placeholder.com/220x300/FF4301/FFFFFF?text=PSV" alt="PSV Home"><div class="kit-label">🇳🇱 PSV Home 2026</div></div>
+</div>
+<button class="scroll-btn" onclick="scrollKit('next','kit1')">→</button>
+</div>
+</section>
 
-    // 17. // Feature: buildThresholdList - fine-grained thresholds for smooth detection
-    function buildThresholdList(){
-      const thresholds = [];
-      for(let i=0;i<=1.0;i+=0.01) thresholds.push(i);
-      return thresholds;
-    }
+<!-- BOOTS SCROLLER - IMPROVED INTERACTIVE -->
+<section class="kit-gallery">
+<h2 style="color: #ffd700;">👟 BOOTS COLLECTION 2026</h2>
+<p style="color: #ccc;">⬅️ Explore the latest boots from Nike, Adidas, Puma & more</p>
+<div class="scroll-wrapper">
+<button class="scroll-btn" onclick="scrollKit('prev','kit2')">←</button>
+<div class="kit-container" id="kit2">
+<div class="kit-item"><img src="https://via.placeholder.com/220x220/FFDD00/000000?text=MERC+SUPER" alt="Mercurial Superfly"><div class="kit-label">⚡ Nike Mercurial Superfly 10 - €299</div></div>
+<div class="kit-item"><img src="https://via.placeholder.com/220x220/000000/FFFFFF?text=PRED+30" alt="Predator 30"><div class="kit-label">🎯 Adidas Predator 30 - €279</div></div>
+<div class="kit-item"><img src="https://via.placeholder.com/220x220/00B3E3/FFFFFF?text=FUTURE+8" alt="Future 8"><div class="kit-label">✨ Puma Future 8 - €259</div></div>
+<div class="kit-item"><img src="https://via.placeholder.com/220x220/FF0000/FFFFFF?text=ULTRA+5" alt="Ultra 5"><div class="kit-label">🚀 Puma Ultra 5 - €239</div></div>
+<div class="kit-item"><img src="https://via.placeholder.com/220x220/0033A0/FFFFFF?text=TIMPO" alt="Tiempo"><div class="kit-label">👞 Nike Tiempo Legend 10 - €249</div></div>
+<div class="kit-item"><img src="https://via.placeholder.com/220x220/333333/FFD100?text=COPA" alt="Copa"><div class="kit-label">👑 Adidas Copa Pure 3 - €229</div></div>
+<div class="kit-item"><img src="https://via.placeholder.com/220x220/1B4D3E/FFFFFF?text=FURON" alt="Furon"><div class="kit-label">⚡ New Balance Furon v7 - €219</div></div>
+<div class="kit-item"><img src="https://via.placeholder.com/220x220/FF4F00/FFFFFF?text=KING" alt="King"><div class="kit-label">👑 Puma King Ultimate - €269</div></div>
+<div class="kit-item"><img src="https://via.placeholder.com/220x220/2C5234/FFFFFF?text=MORELIA" alt="Morelia"><div class="kit-label">🇯🇵 Mizuno Morelia Neo 4 - €289</div></div>
+<div class="kit-item"><img src="https://via.placeholder.com/220x220/009A44/FFFFFF?text=PRECISION" alt="Precision"><div class="kit-label">🎯 Adidas Precision 3 - €199</div></div>
+</div>
+<button class="scroll-btn" onclick="scrollKit('next','kit2')">→</button>
+</div>
+</section>
 
-    // 18. // Feature: handleIntersections - highlights the most visible card
-    function handleIntersections(entries){
-      let max = null;
-      entries.forEach(e => { if(!max || e.intersectionRatio > max.intersectionRatio) max = e; });
-      if(!max) return;
-      document.querySelectorAll('.kit-card.active').forEach(el => el.classList.remove('active'));
-      if(max.intersectionRatio > 0.35) max.target.classList.add('active');
-    }
+<!-- TABLE - REAL TEAM DATA -->
+<div class="table-container">
+<table border="2">
+<caption>🏆 TOP EUROPEAN CLUBS - 2026 SEASON PREVIEW</caption>
+<tr><th>League</th><th>Team</th><th>Kit Supplier</th><th>Founded</th><th>Stadium</th><th>Star Player</th><th>Titles</th><th>Kit Price</th></tr>
+<tr><td rowspan="4">Premier League</td><td>Manchester City</td><td>Puma</td><td>1880</td><td>Etihad (53k)</td><td>Haaland</td><td>9 PL</td><td>€119</td></tr>
+<tr><td>Arsenal</td><td>Adidas</td><td>1886</td><td>Emirates (60k)</td><td>Saka</td><td>13 PL</td><td>€115</td></tr>
+<tr><td>Liverpool</td><td>Nike</td><td>1892</td><td>Anfield (61k)</td><td>Salah</td><td>19 PL</td><td>€125</td></tr>
+<tr><td>Chelsea</td><td>Nike</td><td>1905</td><td>Stamford Bridge (40k)</td><td>Palmer</td><td>6 PL</td><td>€115</td></tr>
+<tr><td rowspan="4">La Liga</td><td>Barcelona</td><td>Nike</td><td>1899</td><td>Camp Nou (99k)</td><td>Pedri</td><td>27 Liga</td><td>€129</td></tr>
+<tr><td>Real Madrid</td><td>Adidas</td><td>1902</td><td>Bernabeu (85k)</td><td>Bellingham</td><td>35 Liga</td><td>€139</td></tr>
+<tr><td>Atletico Madrid</td><td>Nike</td><td>1903</td><td>Metropolitano (68k)</td><td>Griezmann</td><td>11 Liga</td><td>€115</td></tr>
+<tr><td>Sevilla</td><td>Castore</td><td>1890</td><td>Sanchez Pizjuan (43k)</td><td>Ocampos</td><td>1 Liga</td><td>€105</td></tr>
+<tr><td rowspan="2">Serie A</td><td>Juventus</td><td>Adidas</td><td>1897</td><td>Allianz (41k)</td><td>Chiesa</td><td>36 Serie A</td><td>€119</td></tr>
+<tr><td>AC Milan</td><td>Puma</td><td>1899</td><td>San Siro (75k)</td><td>Leao</td><td>19 Serie A</td><td>€119</td></tr>
+</table>
+</div>
 
-    // 19. // Feature: scrollByCard - Prev/Next navigation logic (scroll by one card)
-    function scrollByCard(direction = 1){
-      const container = kitsContainer;
-      const card = container.querySelector('.kit-card');
-      if(!card) return;
-      const cardWidth = card.offsetWidth;
-      const gap = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--gap')) || 18;
-      const amount = (cardWidth + gap) * direction;
-      container.scrollBy({left: amount, behavior: 'smooth'});
-    }
+<footer>
+⚽ THE LOCKER-ROOM - OFFICIAL MERCHANDISE PARTNER OF UEFA & TOP EUROPEAN CLUBS ⚽<br>
+© 2026 The Locker-Room | 221B Baker Street, London, UK | VAT: GB123456789<br>
+📞 24/7 Customer Support: +44 (0)20 7946 0123 | ✉️ info@thelocker-room.com<br>
+🇪🇺 Free Shipping Across EU | 30-Day Returns | Authenticity Guaranteed
+</footer>
 
-    // 20. // Feature: keyboard navigation and small UX hint (accessibility & guidance)
-    loadBtn.addEventListener('click', () => {
-      loadKits();
-      setTimeout(() => {
-        const first = kitsContainer.querySelector('.kit-card');
-        if(first) first.scrollIntoView({behavior:'smooth', inline:'center'});
-      }, 120);
+<script>
+function scrollKit(direction, containerId) {
+    const container = document.getElementById(containerId);
+    const items = container.querySelectorAll('.kit-item');
+    const containerWidth = container.offsetWidth;
+    
+    // Find current active index
+    let currentIndex = -1;
+    items.forEach((item, idx) => {
+        if (item.classList.contains('active')) {
+            currentIndex = idx;
+        }
     });
-
-    prevBtn.addEventListener('click', () => scrollByCard(-1));
-    nextBtn.addEventListener('click', () => scrollByCard(1));
-
-    kitsContainer.addEventListener('keydown', (e) => {
-      if(e.key === 'ArrowRight'){ e.preventDefault(); scrollByCard(1); }
-      if(e.key === 'ArrowLeft'){ e.preventDefault(); scrollByCard(-1); }
-      if(e.key === 'Home'){ e.preventDefault(); const first = kitsContainer.querySelector('.kit-card'); if(first) first.scrollIntoView({behavior:'smooth', inline:'center'}); }
-      if(e.key === 'End'){ e.preventDefault(); const cards = kitsContainer.querySelectorAll('.kit-card'); if(cards.length) cards[cards.length-1].scrollIntoView({behavior:'smooth', inline:'center'}); }
+    
+    // If no active item found, set to first
+    if (currentIndex === -1) {
+        currentIndex = 0;
+    }
+    
+    // Calculate new index based on direction
+    if (direction === 'next') {
+        currentIndex = Math.min(currentIndex + 1, items.length - 1);
+    } else if (direction === 'prev') {
+        currentIndex = Math.max(currentIndex - 1, 0);
+    }
+    
+    // Update active class
+    items.forEach((item, idx) => {
+        item.classList.toggle('active', idx === currentIndex);
     });
+    
+    // Calculate scroll position to center the active item
+    const activeItem = items[currentIndex];
+    const scrollLeft = activeItem.offsetLeft - (containerWidth / 2) + (activeItem.offsetWidth / 2);
+    
+    // Smooth scroll to center
+    container.scrollTo({
+        left: scrollLeft,
+        behavior: 'smooth'
+    });
+}
 
-    (function showHint(){
-      const hint = document.createElement('div');
-      hint.style.position='fixed';
-      hint.style.right='18px';
-      hint.style.bottom='18px';
-      hint.style.background='linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01))';
-      hint.style.color='var(--text)';
-      hint.style.padding='10px 14px';
-      hint.style.borderRadius='12px';
-      hint.style.fontSize='13px';
-      hint.style.border='1px solid rgba(255,255,255,0.03)';
-      hint.style.boxShadow='0 6px 20px rgba(2,6,23,0.5)';
-      hint.textContent = 'Tip: Use Next/Prev or swipe to browse kits.';
-      document.body.appendChild(hint);
-      setTimeout(()=> hint.style.opacity='0', 5000);
-      setTimeout(()=> hint.remove(), 7000);
-    })();
+// Initialize first item as active in each container
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.kit-container').forEach(container => {
+        const items = container.querySelectorAll('.kit-item');
+        if (items.length > 0) {
+            // Remove any pre-existing active class
+            items.forEach(item => item.classList.remove('active'));
+            // Set first item as active
+            items[0].classList.add('active');
+            
+            // Center the first item
+            const containerWidth = container.offsetWidth;
+            const scrollLeft = items[0].offsetLeft - (containerWidth / 2) + (items[0].offsetWidth / 2);
+            container.scrollLeft = scrollLeft;
+        }
+    });
+    
+    // Add click event to kit items for direct selection
+    document.querySelectorAll('.kit-item').forEach((item, index, parent) => {
+        item.addEventListener('click', function() {
+            const container = this.closest('.kit-container');
+            const items = container.querySelectorAll('.kit-item');
+            
+            // Remove active from all
+            items.forEach(i => i.classList.remove('active'));
+            
+            // Add active to clicked
+            this.classList.add('active');
+            
+            // Center the clicked item
+            const containerWidth = container.offsetWidth;
+            const scrollLeft = this.offsetLeft - (containerWidth / 2) + (this.offsetWidth / 2);
+            
+            container.scrollTo({
+                left: scrollLeft,
+                behavior: 'smooth'
+            });
+        });
+    });
+    
+    // Update active item based on scroll position (for better UX)
+    document.querySelectorAll('.kit-container').forEach(container => {
+        container.addEventListener('scroll', function() {
+            const items = this.querySelectorAll('.kit-item');
+            const containerCenter = this.scrollLeft + (this.offsetWidth / 2);
+            
+            let closestItem = null;
+            let closestDistance = Infinity;
+            
+            items.forEach(item => {
+                const itemCenter = item.offsetLeft + (item.offsetWidth / 2);
+                const distance = Math.abs(itemCenter - containerCenter);
+                
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    closestItem = item;
+                }
+            });
+            
+            if (closestItem) {
+                items.forEach(item => item.classList.remove('active'));
+                closestItem.classList.add('active');
+            }
+        });
+    });
+});
+</script>
 
-    // Optional: auto-load on first visit
-    // loadKits();
-  </script>
 </body>
 </html>
