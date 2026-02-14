@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Locker-Room | European Kits</title>
-
 <style>
 body{
     margin:0;
@@ -19,52 +18,43 @@ header{
 }
 h1,h2,h3,h4{ text-align:center; margin:10px 0; }
 
-/* FULL KIT DISPLAY */
-.kit-section{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    gap:15px;
+/* KIT SCROLL SECTION */
+.kit-gallery{
+    width:95%;
     margin:20px auto;
-    position:relative;
 }
-.kit-display img{
-    width:200px;
-    margin:5px 0;
-    border-radius:10px;
-}
-.scroll-btn{
-    background:#222;
-    color:white;
-    border:none;
-    padding:10px 15px;
-    cursor:pointer;
-    font-size:20px;
-    border-radius:5px;
-}
-
-/* BOOTS SCROLL */
-.boots-wrapper{
+.scroll-wrapper{
     display:flex;
     align-items:center;
     justify-content:center;
     gap:10px;
-    margin:20px auto;
+    position:relative;
 }
-.boots-container{
+.kit-container{
     display:flex;
     overflow:hidden;
     width:1100px;
+    scroll-behavior:smooth;
 }
-.boot-item{
+.kit-item{
     min-width:200px;
     margin:5px;
     text-align:center;
 }
-.boot-item img{
+.kit-item img{
     width:180px;
     border-radius:10px;
+}
+
+/* SCROLL BUTTON */
+.scroll-btn{
+    background:#222;
+    color:white;
+    border:none;
+    padding:10px;
+    cursor:pointer;
+    font-size:20px;
+    border-radius:5px;
 }
 
 /* TABLE */
@@ -78,10 +68,6 @@ table, th, td{
     padding:8px;
     text-align:center;
 }
-
-/* HR, PRE */
-hr{border:1px solid #fff; margin:10px 0;}
-pre{background:#222; padding:10px; white-space:pre-wrap;}
 
 /* FOOTER */
 footer{
@@ -100,270 +86,66 @@ footer{
 </header>
 
 <!-- COMPANY VIDEO -->
-<div class="kit-section">
+<div style="text-align:center; margin:20px;">
 <video width="600" controls>
 <source src="promo.mp4" type="video/mp4">
 Your browser does not support video.
 </video>
 </div>
 
-<!-- HEADINGS -->
-<div class="kit-section">
-<h1>Premier League Collection</h1>
-<h2>La Liga Collection</h2>
-<h3>Serie A Collection</h3>
-<h4>Bundesliga & Ligue 1 Collection</h4>
+<!-- KIT GALLERY -->
+<div class="kit-gallery">
+<h2>Full Kits (Shirt → Shorts → Boots)</h2>
+<div class="scroll-wrapper">
+<button class="scroll-btn" onclick="scrollLeft('shirt')">◀</button>
+<div class="kit-container" id="shirt">
+    <div class="kit-item"><img src="shirt1.jpg" alt="Team 1 Shirt"></div>
+    <div class="kit-item"><img src="shirt2.jpg" alt="Team 2 Shirt"></div>
+    <div class="kit-item"><img src="shirt3.jpg" alt="Team 3 Shirt"></div>
+    <div class="kit-item"><img src="shirt4.jpg" alt="Team 4 Shirt"></div>
+</div>
+<button class="scroll-btn" onclick="scrollRight('shirt')">▶</button>
 </div>
 
-<!-- BOLD AND UNDERLINE -->
-<div class="kit-section">
-<b>The Locker-Room proudly delivers authentic football kits for Europe’s top leagues ensuring style, comfort, and official quality standards for passionate fans worldwide today and always.</b>
-<br><br>
-<u>We provide official kits for top teams in each league guaranteeing premium quality and perfect fit for every fan celebrating matchday traditions.</u><br>
-<u>Our secure online store ensures fast delivery and exceptional customer service making kit shopping simple, safe, and enjoyable for every football enthusiast.</u>
+<div class="scroll-wrapper">
+<button class="scroll-btn" onclick="scrollLeft('short')">◀</button>
+<div class="kit-container" id="short">
+    <div class="kit-item"><img src="short1.jpg" alt="Team 1 Shorts"></div>
+    <div class="kit-item"><img src="short2.jpg" alt="Team 2 Shorts"></div>
+    <div class="kit-item"><img src="short3.jpg" alt="Team 3 Shorts"></div>
+    <div class="kit-item"><img src="short4.jpg" alt="Team 4 Shorts"></div>
+</div>
+<button class="scroll-btn" onclick="scrollRight('short')">▶</button>
 </div>
 
-<!-- SUPERSCRIPT -->
-<div class="kit-section">
-<p>10<sup>th</sup> Anniversary Sale</p>
-<p>5<sup>th</sup> League Launch</p>
-<p>1<sup>st</sup> Official Store</p>
-<p>3<sup>rd</sup> Generation Kits</p>
+<div class="scroll-wrapper">
+<button class="scroll-btn" onclick="scrollLeft('boot')">◀</button>
+<div class="kit-container" id="boot">
+    <div class="kit-item"><img src="boot1.jpg" alt="Boot 1"></div>
+    <div class="kit-item"><img src="boot2.jpg" alt="Boot 2"></div>
+    <div class="kit-item"><img src="boot3.jpg" alt="Boot 3"></div>
+    <div class="kit-item"><img src="boot4.jpg" alt="Boot 4"></div>
 </div>
-
-<!-- SUBSCRIPT -->
-<div class="kit-section">
-<p>H<sub>2</sub>O Cooling Fabric</p>
-<p>CO<sub>2</sub> Neutral Production</p>
-<p>O<sub>2</sub> Breathable Material</p>
-<p>X<sub>2</sub> Performance Technology</p>
-</div>
-
-<!-- DEL -->
-<div class="kit-section">
-<p><del>$120</del> Now $85</p>
-<p><del>$110</del> Now $80</p>
-<p><del>$95</del> Now $70</p>
-<p><del>$130</del> Now $90</p>
-</div>
-
-<!-- MARK -->
-<div class="kit-section">
-<p><mark>Limited Edition Kit</mark></p>
-<p><mark>Top Seller</mark></p>
-<p><mark>New Arrival</mark></p>
-<p><mark>Exclusive Drop</mark></p>
-</div>
-
-<!-- SPEECH MARKS -->
-<div class="kit-section">
-<p>"This is the best jersey store ever."</p>
-<p>"Delivery was fast and reliable."</p>
-<p>"Quality exceeded my expectations."</p>
-<p>"I will definitely shop again."</p>
-</div>
-
-<!-- BLOCKQUOTE -->
-<div class="kit-section">
-<blockquote>
-Football is passion.<br>
-Football is culture.<br>
-Football is unity.<br>
-Football is life.
-</blockquote>
-</div>
-
-<!-- LINE BREAKS -->
-<div class="kit-section">
-We sell premium authentic football jerseys worldwide today.<br>
-Our customers trust quality performance and durability standards.<br>
-Every kit reflects pride passion heritage and tradition.<br>
-Shop confidently and represent your team proudly always.
-</div>
-
-<!-- HR -->
-<div class="kit-section">
-<p>We separate collections using horizontal rules below.</p>
-<hr>
-<p>This line clearly divides content sections.</p>
-<hr>
-<p>Visual separation improves readability and structure.</p>
-</div>
-
-<!-- PRE -->
-<div class="kit-section">
-<pre>
-The Locker-Room
-Premium European Kits
-Authentic Football Culture
-</pre>
-</div>
-
-<!-- LISTS -->
-<div class="kit-section">
-<ul>
-<li>Premier League</li>
-<li>La Liga</li>
-<li>Serie A</li>
-<li>Bundesliga</li>
-<li>Ligue 1</li>
-</ul>
-
-<ol>
-<li>Choose Kit</li>
-<li>Add To Cart</li>
-<li>Checkout Securely</li>
-</ol>
-
-<ul>
-<li>Premier League
-    <ul>
-        <li>Manchester City</li>
-        <li>Arsenal</li>
-        <li>Liverpool</li>
-        <li>Chelsea</li>
-        <li>Manchester United</li>
-    </ul>
-</li>
-<li>La Liga
-    <ul>
-        <li>Barcelona</li>
-        <li>Real Madrid</li>
-        <li>Atletico Madrid</li>
-        <li>Sevilla</li>
-        <li>Valencia</li>
-    </ul>
-</li>
-<li>Serie A
-    <ul>
-        <li>Juventus</li>
-        <li>AC Milan</li>
-        <li>Inter</li>
-        <li>Napoli</li>
-        <li>Roma</li>
-    </ul>
-</li>
-<li>Bundesliga
-    <ul>
-        <li>Bayern Munich</li>
-        <li>Dortmund</li>
-        <li>Leipzig</li>
-        <li>Schalke</li>
-        <li>Bayer Leverkusen</li>
-    </ul>
-</li>
-<li>Ligue 1
-    <ul>
-        <li>PSG</li>
-        <li>Lyon</li>
-        <li>Marseille</li>
-        <li>Monaco</li>
-        <li>Lille</li>
-    </ul>
-</li>
-</ul>
-</div>
-
-<!-- FULL KIT SCROLLABLE -->
-<div class="kit-section">
-<h2>Full Kit Display (Shirt → Shorts → Boots)</h2>
-<div class="kit-section">
-<button class="scroll-btn" onclick="prevKit()">◀</button>
-
-<div class="kit-display">
-<img id="shirt" src="shirt1.jpg" alt="Shirt">
-<img id="short" src="short1.jpg" alt="Shorts">
-<img id="boot" src="boot1.jpg" alt="Boots">
-</div>
-
-<button class="scroll-btn" onclick="nextKit()">▶</button>
-</div>
-</div>
-
-<!-- BOOTS SCROLL -->
-<div class="kit-section">
-<h2>Top Boot Brands</h2>
-<div class="boots-wrapper">
-<button class="scroll-btn" onclick="scrollBoots(-1)">◀</button>
-<div class="boots-container" id="bootsContainer">
-<div class="boot-item"><img src="nike.jpg"><p>Nike</p></div>
-<div class="boot-item"><img src="adidas.jpg"><p>Adidas</p></div>
-<div class="boot-item"><img src="puma.jpg"><p>Puma</p></div>
-<div class="boot-item"><img src="nb.jpg"><p>New Balance</p></div>
-<div class="boot-item"><img src="mizuno.jpg"><p>Mizuno</p></div>
-<div class="boot-item"><img src="umbro.jpg"><p>Umbro</p></div>
-<div class="boot-item"><img src="reebok.jpg"><p>Reebok</p></div>
-<div class="boot-item"><img src="diadora.jpg"><p>Diadora</p></div>
-<div class="boot-item"><img src="lotto.jpg"><p>Lotto</p></div>
-<div class="boot-item"><img src="underarmour.jpg"><p>Under Armour</p></div>
-</div>
-<button class="scroll-btn" onclick="scrollBoots(1)">▶</button>
+<button class="scroll-btn" onclick="scrollRight('boot')">▶</button>
 </div>
 </div>
 
 <!-- TABLE -->
-<div class="kit-section">
+<div>
 <table>
-<caption>Top 5 Teams in Each Top European League</caption>
-<tr>
-<th>League</th><th>Team</th><th>Country</th><th>Titles</th><th>Founded</th><th>Stadium</th><th>Coach</th><th>Status</th>
-</tr>
+<caption>Top 4 Teams in Each European League</caption>
+<tr><th>League</th><th>Team</th><th>Country</th><th>Founded</th><th>Stadium</th><th>Coach</th><th>Titles</th><th>Status</th></tr>
 
-<tr><td rowspan="5">Premier League</td><td>Manchester City</td><td>England</td><td>9</td><td>1880</td><td>Etihad</td><td>Pep Guardiola</td><td>Active</td></tr>
-<tr><td>Arsenal</td><td>England</td><td>13</td><td>1886</td><td>Emirates</td><td>Arteta</td><td>Active</td></tr>
-<tr><td>Liverpool</td><td>England</td><td>19</td><td>1892</td><td>Anfield</td><td>Klopp</td><td>Active</td></tr>
-<tr><td>Chelsea</td><td>England</td><td>6</td><td>1905</td><td>Stamford Bridge</td><td>Tuchel</td><td>Active</td></tr>
-<tr><td>Manchester United</td><td>England</td><td>20</td><td>1878</td><td>Old Trafford</td><td>Ten Hag</td><td>Active</td></tr>
+<tr><td rowspan="4">Premier League</td><td>Manchester City</td><td>England</td><td>1880</td><td>Etihad</td><td>Pep Guardiola</td><td>9</td><td>Active</td></tr>
+<tr><td>Arsenal</td><td>England</td><td>1886</td><td>Emirates</td><td>Arteta</td><td>13</td><td>Active</td></tr>
+<tr><td>Liverpool</td><td>England</td><td>1892</td><td>Anfield</td><td>Klopp</td><td>19</td><td>Active</td></tr>
+<tr><td>Chelsea</td><td>England</td><td>1905</td><td>Stamford Bridge</td><td>Tuchel</td><td>6</td><td>Active</td></tr>
 
-<tr><td rowspan="5">La Liga</td><td>Barcelona</td><td>Spain</td><td>27</td><td>1899</td><td>Camp Nou</td><td>Xavi</td><td>Active</td></tr>
-<tr><td>Real Madrid</td><td>Spain</td><td>35</td><td>1902</td><td>Bernabeu</td><td>Ancelotti</td><td>Active</td></tr>
-<tr><td>Atletico Madrid</td><td>Spain</td><td>11</td><td>1903</td><td>Wanda Metropolitano</td><td>Simeone</td><td>Active</td></tr>
-<tr><td>Sevilla</td><td>Spain</td><td>5</td><td>1890</td><td>Ramon Sanchez</td><td>Lopetegui</td><td>Active</td></tr>
-<tr><td>Valencia</td><td>Spain</td><td>6</td><td>1919</td><td>Mestalla</td><td>Gattuso</td><td>Active</td></tr>
+<tr><td rowspan="4">La Liga</td><td>Barcelona</td><td>Spain</td><td>1899</td><td>Camp Nou</td><td>Xavi</td><td>27</td><td>Active</td></tr>
+<tr><td>Real Madrid</td><td>Spain</td><td>1902</td><td>Bernabeu</td><td>Ancelotti</td><td>35</td><td>Active</td></tr>
+<tr><td>Atletico Madrid</td><td>Spain</td><td>1903</td><td>Wanda Metropolitano</td><td>Simeone</td><td>11</td><td>Active</td></tr>
+<tr><td>Sevilla</td><td>Spain</td><td>1890</td><td>Ramon Sanchez</td><td>Lopetegui</td><td>5</td><td>Active</td></tr>
 
-<tr><td rowspan="5">Serie A</td><td>Juventus</td><td>Italy</td><td>36</td><td>1897</td><td>Allianz</td><td>Allegri</td><td>Active</td></tr>
-<tr><td>AC Milan</td><td>Italy</td><td>18</td><td>1899</td><td>San Siro</td><td>Pioli</td><td>Active</td></tr>
-<tr><td>Inter Milan</td><td>Italy</td><td>19</td><td>1908</td><td>San Siro</td><td>Inzaghi</td><td>Active</td></tr>
-<tr><td>Napoli</td><td>Italy</td><td>3</td><td>1926</td><td>Diego Armando Maradona</td><td>Spalletti</td><td>Active</td></tr>
-<tr><td>Roma</td><td>Italy</td><td>3</td><td>1927</td><td>Olimpico</td><td>Mourinho</td><td>Active</td></tr>
-
-<tr><td rowspan="5">Bundesliga</td><td>Bayern Munich</td><td>Germany</td><td>32</td><td>1900</td><td>Allianz Arena</td><td>Nagelsmann</td><td>Active</td></tr>
-<tr><td>Dortmund</td><td>Germany</td><td>8</td><td>1909</td><td>Signal Iduna Park</td><td>Terzic</td><td>Active</td></tr>
-<tr><td>Leipzig</td><td>Germany</td><td>0</td><td>2009</td><td>Red Bull Arena</td><td>Tedesco</td><td>Active</td></tr>
-<tr><td>Schalke</td><td>Germany</td><td>7</td><td>1904</td><td>Veltins Arena</td><td>Frank Kramer</td><td>Active</td></tr>
-<tr><td>Bayer Leverkusen</td><td>Germany</td><td>1</td><td>1904</td><td>Bayer Arena</td><td>Gerardo Seoane</td><td>Active</td></tr>
-
-<tr><td rowspan="5">Ligue 1</td><td>PSG</td><td>France</td><td>11</td><td>1970</td><td>Parc des Princes</td><td>Galtier</td><td>Active</td></tr>
-<tr><td>Lyon</td><td>France</td><td>7</td><td>1950</td><td>Groupama Stadium</td><td>Paquetá</td><td>Active</td></tr>
-<tr><td>Marseille</td><td>France</td><td>9</td><td>1899</td><td>Vélodrome</td><td>Sampaoli</td><td>Active</td></tr>
-<tr><td>Monaco</td><td>France</td><td>8</td><td>1924</td><td>Stade Louis II</td><td>Marsiglia</td><td>Active</td></tr>
-<tr><td>Lille</td><td>France</td><td>4</td><td>1944</td><td>Stade Pierre-Mauroy</td><td>Galtier</td><td>Active</td></tr>
-</table>
-</div>
-
-<footer>
-&copy; 2026 The Locker-Room | All Rights Reserved
-</footer>
-
-<script>
-let index = 1;
-function nextKit(){ 
-    index++; if(index>25) index=1;
-    document.getElementById("shirt").src="shirt"+index+".jpg";
-    document.getElementById("short").src="short"+index+".jpg";
-    document.getElementById("boot").src="boot"+index+".jpg";
-}
-function prevKit(){ 
-    index--; if(index<1) index=25;
-    document.getElementById("shirt").src="shirt"+index+".jpg";
-    document.getElementById("short").src="short"+index+".jpg";
-    document.getElementById("boot").src="boot"+index+".jpg";
-}
-function scrollBoots(direction){
-    const container=document.getElementById("bootsContainer");
-    container.scrollLeft += direction*220;
-}
-</script>
-
-</body>
-</html>
+<tr><td rowspan="4">Serie A</td><td>Juventus</td><td>Italy</td><td>1897</td><td>Allianz</td><td>Allegri</td><td>36</td><td>Active</td></tr>
+<tr><td>AC Milan</td><td>Italy</td><td>1899</td><td>San Siro</td><td>Pioli</td><td>18</td><td>Active</td></tr>
+<tr><td>Inter Milan</td><td>Italy<
