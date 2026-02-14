@@ -25,18 +25,17 @@ header h1 {
   letter-spacing: 2px;
 }
 
-/* KIT WRAPPER */
-.kit-wrapper {
+/* ================= SECTION WRAPPERS ================= */
+.kit-section {
   position: relative;
-  width: 95%;
-  margin: 40px auto;
+  width: 90%;
+  margin: 30px auto;
   overflow: hidden;
 }
 
-/* SCROLL AREA */
 .kit-scroll {
   display: flex;
-  gap: 0;
+  gap: 5px;
   overflow-x: auto;
   scroll-behavior: smooth;
   scrollbar-width: none;
@@ -46,38 +45,25 @@ header h1 {
   display: none;
 }
 
-/* INDIVIDUAL KIT */
-.kit {
+.kit-item {
   min-width: 200px;
   flex: 0 0 auto;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  opacity: 0.4;
-  position: relative;
+  transition: transform 0.3s, opacity 0.3s;
+  opacity: 0.5;
 }
 
-.kit img {
+.kit-item.active {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+.kit-item img {
   width: 100%;
   display: block;
+  border-radius: 6px;
 }
 
-/* Remove spacing between shirt/shorts/shoes */
-.kit img + img {
-  margin-top: -5px;
-}
-
-/* ACTIVE CENTER KIT */
-.kit.active {
-  transform: scale(1.08);
-  opacity: 1;
-  z-index: 2;
-}
-
-.kit.active img {
-  filter: brightness(1.2);
-  box-shadow: 0 0 20px rgba(255,255,255,0.5);
-}
-
-/* SCROLL BUTTONS INSIDE */
+/* BUTTONS */
 .scroll-btn {
   position: absolute;
   top: 50%;
@@ -85,129 +71,109 @@ header h1 {
   background: rgba(0,0,0,0.6);
   border: none;
   color: white;
-  font-size: 26px;
+  font-size: 28px;
   padding: 8px 12px;
   cursor: pointer;
   z-index: 5;
-  transition: 0.3s;
   border-radius: 6px;
+  transition: 0.3s;
 }
 
 .scroll-btn:hover {
   background: rgba(255,255,255,0.2);
 }
 
-/* Positioned closer to kits */
-.scroll-left {
-  left: 5%;
-}
-
-.scroll-right {
-  right: 5%;
-}
+.scroll-left { left: 0; }
+.scroll-right { right: 0; }
 </style>
 </head>
-
 <body>
 
 <header>
-  <h1>The Locker Room – Complete Kit Collection</h1>
+  <h1>The Locker Room – Full Kit Carousel</h1>
 </header>
 
-<div class="kit-wrapper">
-
-  <button class="scroll-btn scroll-left" onclick="scrollLeft()">❮</button>
-
-  <div class="kit-scroll" id="kitScroll">
-
-    <!-- TEAM 1 -->
-    <div class="kit">
-      <img src="barca-shirt.jpg">
-      <img src="barca-shorts.jpg">
-      <img src="barca-shoes.jpg">
-    </div>
-
-    <!-- TEAM 2 -->
-    <div class="kit">
-      <img src="madrid-shirt.jpg">
-      <img src="madrid-shorts.jpg">
-      <img src="madrid-shoes.jpg">
-    </div>
-
-    <!-- TEAM 3 -->
-    <div class="kit">
-      <img src="manutd-shirt.jpg">
-      <img src="manutd-shorts.jpg">
-      <img src="manutd-shoes.jpg">
-    </div>
-
-    <!-- TEAM 4 -->
-    <div class="kit">
-      <img src="arsenal-shirt.jpg">
-      <img src="arsenal-shorts.jpg">
-      <img src="arsenal-shoes.jpg">
-    </div>
-
-    <!-- TEAM 5 -->
-    <div class="kit">
-      <img src="psg-shirt.jpg">
-      <img src="psg-shorts.jpg">
-      <img src="psg-shoes.jpg">
-    </div>
-
-    <!-- Hidden until scrolled -->
-    <div class="kit">
-      <img src="chelsea-shirt.jpg">
-      <img src="chelsea-shorts.jpg">
-      <img src="chelsea-shoes.jpg">
-    </div>
-
-    <div class="kit">
-      <img src="juventus-shirt.jpg">
-      <img src="juventus-shorts.jpg">
-      <img src="juventus-shoes.jpg">
-    </div>
-
+<!-- ================= SHIRT SECTION ================= -->
+<h2>Shirts</h2>
+<div class="kit-section">
+  <button class="scroll-btn scroll-left" onclick="scrollLeft('shirtScroll')">❮</button>
+  <div class="kit-scroll" id="shirtScroll">
+    <div class="kit-item"><img src="barca-shirt.jpg" alt="Barcelona Shirt"></div>
+    <div class="kit-item"><img src="madrid-shirt.jpg" alt="Real Madrid Shirt"></div>
+    <div class="kit-item"><img src="manutd-shirt.jpg" alt="Manchester United Shirt"></div>
+    <div class="kit-item"><img src="arsenal-shirt.jpg" alt="Arsenal Shirt"></div>
+    <div class="kit-item"><img src="psg-shirt.jpg" alt="PSG Shirt"></div>
+    <div class="kit-item"><img src="chelsea-shirt.jpg" alt="Chelsea Shirt"></div>
+    <div class="kit-item"><img src="juventus-shirt.jpg" alt="Juventus Shirt"></div>
   </div>
+  <button class="scroll-btn scroll-right" onclick="scrollRight('shirtScroll')">❯</button>
+</div>
 
-  <button class="scroll-btn scroll-right" onclick="scrollRight()">❯</button>
+<!-- ================= SHORTS SECTION ================= -->
+<h2>Shorts</h2>
+<div class="kit-section">
+  <button class="scroll-btn scroll-left" onclick="scrollLeft('shortScroll')">❮</button>
+  <div class="kit-scroll" id="shortScroll">
+    <div class="kit-item"><img src="barca-shorts.jpg" alt="Barcelona Shorts"></div>
+    <div class="kit-item"><img src="madrid-shorts.jpg" alt="Real Madrid Shorts"></div>
+    <div class="kit-item"><img src="manutd-shorts.jpg" alt="Manchester United Shorts"></div>
+    <div class="kit-item"><img src="arsenal-shorts.jpg" alt="Arsenal Shorts"></div>
+    <div class="kit-item"><img src="psg-shorts.jpg" alt="PSG Shorts"></div>
+    <div class="kit-item"><img src="chelsea-shorts.jpg" alt="Chelsea Shorts"></div>
+    <div class="kit-item"><img src="juventus-shorts.jpg" alt="Juventus Shorts"></div>
+  </div>
+  <button class="scroll-btn scroll-right" onclick="scrollRight('shortScroll')">❯</button>
+</div>
 
+<!-- ================= SHOES SECTION ================= -->
+<h2>Shoes</h2>
+<div class="kit-section">
+  <button class="scroll-btn scroll-left" onclick="scrollLeft('shoeScroll')">❮</button>
+  <div class="kit-scroll" id="shoeScroll">
+    <div class="kit-item"><img src="barca-shoes.jpg" alt="Barcelona Shoes"></div>
+    <div class="kit-item"><img src="madrid-shoes.jpg" alt="Real Madrid Shoes"></div>
+    <div class="kit-item"><img src="manutd-shoes.jpg" alt="Manchester United Shoes"></div>
+    <div class="kit-item"><img src="arsenal-shoes.jpg" alt="Arsenal Shoes"></div>
+    <div class="kit-item"><img src="psg-shoes.jpg" alt="PSG Shoes"></div>
+    <div class="kit-item"><img src="chelsea-shoes.jpg" alt="Chelsea Shoes"></div>
+    <div class="kit-item"><img src="juventus-shoes.jpg" alt="Juventus Shoes"></div>
+  </div>
+  <button class="scroll-btn scroll-right" onclick="scrollRight('shoeScroll')">❯</button>
 </div>
 
 <script>
-const scrollContainer = document.getElementById("kitScroll");
-const kits = document.querySelectorAll(".kit");
-
-function updateCenter() {
-  let containerCenter = scrollContainer.scrollLeft + scrollContainer.offsetWidth / 2;
-
-  kits.forEach(kit => {
-    let kitCenter = kit.offsetLeft + kit.offsetWidth / 2;
-
-    if (Math.abs(containerCenter - kitCenter) < kit.offsetWidth / 2) {
-      kit.classList.add("active");
+function updateActive(scrollId) {
+  const container = document.getElementById(scrollId);
+  const items = container.querySelectorAll('.kit-item');
+  let containerCenter = container.scrollLeft + container.offsetWidth / 2;
+  items.forEach(item => {
+    let itemCenter = item.offsetLeft + item.offsetWidth / 2;
+    if (Math.abs(containerCenter - itemCenter) < item.offsetWidth / 2) {
+      item.classList.add('active');
     } else {
-      kit.classList.remove("active");
+      item.classList.remove('active');
     }
   });
 }
 
-function scrollLeft() {
-  scrollContainer.scrollBy({
-    left: -200,
-    behavior: "smooth"
-  });
+function scrollLeft(scrollId) {
+  const container = document.getElementById(scrollId);
+  const itemWidth = container.querySelector('.kit-item').offsetWidth + 5;
+  container.scrollBy({ left: -itemWidth, behavior: 'smooth' });
 }
 
-function scrollRight() {
-  scrollContainer.scrollBy({
-    left: 200,
-    behavior: "smooth"
-  });
+function scrollRight(scrollId) {
+  const container = document.getElementById(scrollId);
+  const itemWidth = container.querySelector('.kit-item').offsetWidth + 5;
+  container.scrollBy({ left: itemWidth, behavior: 'smooth' });
 }
 
-scrollContainer.addEventListener("scroll", updateCenter);
-window.onload = updateCenter;
+// Update active items on scroll
+['shirtScroll','shortScroll','shoeScroll'].forEach(id => {
+  const container = document.getElementById(id);
+  container.addEventListener('scroll', () => updateActive(id));
+  window.addEventListener('load', () => updateActive(id));
+});
 </script>
 
 </body>
