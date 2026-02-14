@@ -10,13 +10,13 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     background:#111;
     color:white;
+    text-align:center; /* Center all text */
 }
 header{
     background:#000;
-    text-align:center;
     padding:25px 10px;
 }
-h1,h2,h3,h4{ text-align:center; margin:10px 0; }
+h1,h2,h3,h4{ margin:10px 0; }
 
 /* KIT SCROLL SECTION */
 .kit-gallery{
@@ -34,12 +34,12 @@ h1,h2,h3,h4{ text-align:center; margin:10px 0; }
 .kit-container{
     display:flex;
     overflow:hidden;
-    width:1100px;
+    width:1000px;
     scroll-behavior:smooth;
     padding:10px 0;
 }
 .kit-item{
-    min-width:200px;
+    min-width:180px;
     margin:0 5px;
     text-align:center;
     transition: transform 0.3s, box-shadow 0.3s;
@@ -62,6 +62,7 @@ h1,h2,h3,h4{ text-align:center; margin:10px 0; }
     cursor:pointer;
     font-size:22px;
     border-radius:5px;
+    height:200px;
 }
 
 /* TABLE */
@@ -86,9 +87,9 @@ footer{
 .bold-text{font-weight:bold;}
 .underline-text{text-decoration:underline;}
 mark{background:orange; color:black;}
-blockquote{border-left:5px solid #555; padding-left:15px; margin:25px;}
+blockquote{border-left:5px solid #555; padding-left:15px; margin:25px auto; max-width:900px;}
 pre{background:#222; padding:15px; white-space:pre-wrap;}
-ul,ol{margin-left:40px;}
+ul,ol{margin-left:40px; text-align:left;}
 section{margin:30px 0;}
 </style>
 </head>
@@ -101,25 +102,25 @@ section{margin:30px 0;}
 <h4>Experience the top European leagues like never before</h4>
 </header>
 
-<section style="text-align:center;">
+<section>
 <p class="bold-text">This is a bold sentence that highlights the essence of football kits for every fan who loves the game and wants to experience the top European leagues first-hand online.</p>
 <p class="underline-text">Explore the finest shirts, shorts, and boots from top clubs across Spain, England, Italy, Germany, and France to complete your kit.</p>
 <p class="underline-text">Every item is authentic, numbered, and delivered in premium packaging to ensure fans feel like part of the team instantly.</p>
 </section>
 
-<section style="text-align:center;">
+<section>
 <p>Top player goals in 2025 season: Messi<sup>1</sup>, Ronaldo<sup>2</sup>, Lewandowski<sup>3</sup>, Haaland<sup>4</sup></p>
 <p>Chemical formulae fun: H<sub>2</sub>O, CO<sub>2</sub>, Na<sub>3</sub>PO<sub>4</sub>, C<sub>6</sub>H<sub>12</sub>O<sub>6</sub></p>
 </section>
 
-<section style="text-align:center;">
+<section>
 <p>Old price: <del>$120</del> New price: $95 <mark>Limited Offer!</mark></p>
 <p><del>Previous kit design</del> <mark>New 2026 edition!</mark></p>
 <p><del>Last season boots</del> <mark>Latest boots collection!</mark></p>
 <p><del>Outdated fan gear</del> <mark>Fresh merchandise available!</mark></p>
 </section>
 
-<section style="margin:30px;">
+<section>
 <p>"Football is not just a game, it’s a lifestyle!"</p>
 <p>"Wearing your club’s kit shows true loyalty," said a fan.</p>
 <p>"Every match day deserves the full kit," announced the coach.</p>
@@ -133,7 +134,7 @@ section{margin:30px 0;}
 </blockquote>
 </section>
 
-<section style="text-align:center;">
+<section>
 <p>Football thrills the hearts of everyone who loves it.<br>
 Every match day brings unmatched excitement and joy.<br>
 Fans cheer for their clubs across stadiums worldwide.<br>
@@ -151,7 +152,7 @@ Best selling kits 2026:
 3. Juventus Retro
 </pre>
 
-<section style="text-align:center;">
+<section>
 <ul>
 <li>Shirts Collection</li>
 <li>Shorts Collection</li>
@@ -166,18 +167,24 @@ Best selling kits 2026:
 
 <ul>
 <li>Premier League
-    <ul><li>Manchester City</li><li>Arsenal</li></ul>
+    <ul><li>Manchester City</li><li>Arsenal</li><li>Liverpool</li><li>Chelsea</li></ul>
 </li>
 <li>La Liga
-    <ul><li>Barcelona</li><li>Real Madrid</li></ul>
+    <ul><li>Barcelona</li><li>Real Madrid</li><li>Atletico Madrid</li><li>Sevilla</li></ul>
 </li>
 <li>Serie A
-    <ul><li>Juventus</li><li>AC Milan</li></ul>
+    <ul><li>Juventus</li><li>AC Milan</li><li>Inter Milan</li><li>Napoli</li></ul>
+</li>
+<li>Bundesliga
+    <ul><li>Bayern Munich</li><li>Dortmund</li><li>Leipzig</li><li>Gladbach</li></ul>
+</li>
+<li>Ligue 1
+    <ul><li>PSG</li><li>Lyon</li><li>Marseille</li><li>Monaco</li></ul>
 </li>
 </ul>
 </section>
 
-<div style="text-align:center; margin:30px;">
+<div>
 <video width="600" controls>
 <source src="promo.mp4" type="video/mp4">
 Your browser does not support video.
@@ -185,7 +192,7 @@ Your browser does not support video.
 </div>
 
 <div class="kit-gallery">
-<h2 style="text-align:center;">Full Kits (Shirt → Shorts → Boots)</h2>
+<h2>Full Kits (Shirts → Shorts → Boots)</h2>
 
 <!-- SHIRTS -->
 <div class="scroll-wrapper">
@@ -287,13 +294,13 @@ Your browser does not support video.
 // SCROLL FUNCTION
 function scrollLeft(id){
     const container=document.getElementById(id);
-    container.scrollLeft -= 220;
-    highlightCenter(id);
+    container.scrollBy({left:-220, behavior:'smooth'});
+    setTimeout(()=>highlightCenter(id),300);
 }
 function scrollRight(id){
     const container=document.getElementById(id);
-    container.scrollLeft += 220;
-    highlightCenter(id);
+    container.scrollBy({left:220, behavior:'smooth'});
+    setTimeout(()=>highlightCenter(id),300);
 }
 
 // HIGHLIGHT CENTER ITEM
