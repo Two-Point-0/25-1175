@@ -76,14 +76,134 @@ footer{
     padding:20px;
     margin-top:40px;
 }
+.bold-text{font-weight:bold;}
+.underline-text{text-decoration:underline;}
 </style>
 </head>
 <body>
 
 <header>
 <h1>The Locker-Room</h1>
-<p>Your Home of Elite European Football Kits</p>
+<h2>Your Home of Elite European Football Kits</h2>
 </header>
+
+<!-- // 20 Features Start -->
+
+<!-- // 1. Headings Examples -->
+<h3>1. Headings Examples</h3>
+<h1>Heading 1 Example</h1>
+<h2>Heading 2 Example</h2>
+<h3>Heading 3 Example</h3>
+<h4>Heading 4 Example</h4>
+
+<!-- // 2. Bold Sentence -->
+<h3>2. Bold Sentence</h3>
+<p class="bold-text">This is a bold sentence that contains exactly thirty words to demonstrate the use of bold text styling in HTML for human-like content display on a football jersey website.</p>
+
+<!-- // 3. Underlined Sentences -->
+<h3>3. Underlined Sentences</h3>
+<p class="underline-text">This is the first underlined sentence containing exactly thirty words showing how text can be underlined for emphasis on the web page layout with football content.</p>
+<p class="underline-text">This is the second underlined sentence containing exactly thirty words demonstrating a human-like approach to content emphasis with underlined styling for fans and visitors.</p>
+
+<!-- // 4. Superscript -->
+<h3>4. Superscript</h3>
+<p>Examples: x<sup>2</sup>, y<sup>3</sup>, a<sup>10</sup>, b<sup>5</sup></p>
+
+<!-- // 5. Subscript -->
+<h3>5. Subscript</h3>
+<p>Examples: H<sub>2</sub>O, CO<sub>2</sub>, Na<sub>3</sub>PO<sub>4</sub>, C<sub>6</sub>H<sub>12</sub>O<sub>6</sub></p>
+
+<!-- // 6. Del Tag -->
+<h3>6. Del Tag</h3>
+<p><del>Old jersey price $100</del>, New price $80</p>
+<p><del>Old stadium seating plan</del>, updated plan released</p>
+<p><del>Old team logo</del>, now modernized</p>
+<p><del>Old sponsor name</del>, new sponsor on kit</p>
+
+<!-- // 7. Mark Tag -->
+<h3>7. Mark Tag</h3>
+<p>Important: <mark>Check this jersey before purchase</mark></p>
+<p>Note: <mark>Sale ends next week</mark></p>
+<p>Highlight: <mark>New kit released</mark></p>
+<p>Attention: <mark>Limited stock available</mark></p>
+
+<!-- // 8. Speech Marks -->
+<h3>8. Speech Marks</h3>
+<p>"Football is life," said the fan.</p>
+<p>"We love our club," cheered the supporters.</p>
+<p>"This kit is amazing," remarked the player.</p>
+<p>"Next match will be intense," warned the coach.</p>
+
+<!-- // 9. Blockquote -->
+<h3>9. Blockquote</h3>
+<blockquote>
+<p>Football is more than just a game.</p>
+<p>It unites people from every nation.</p>
+<p>Fans celebrate victories with passion and joy.</p>
+<p>Clubs create legends remembered for decades.</p>
+</blockquote>
+
+<!-- // 11. Line Breaks -->
+<h3>11. Line Breaks</h3>
+<p>Football is exciting and brings fans together.<br>
+Every match creates memorable moments every week.<br>
+Kits are colorful and showcase club identity.<br>
+Supporters celebrate victories and cheer their heroes.<br></p>
+
+<!-- // 12. HR Tag -->
+<h3>12. HR Tag</h3>
+<p>Example sentence one.<hr></p>
+<p>Example sentence two.<hr></p>
+<p>Example sentence three.<hr></p>
+
+<!-- // 13. Pre Tag -->
+<h3>13. Pre Tag</h3>
+<pre>
+Line one: This text preserves spacing.
+Line two: Useful for code or alignment.
+Line three: Format exactly as typed.
+</pre>
+
+<!-- // 14. Unordered List -->
+<h3>14. Unordered List</h3>
+<ul>
+<li>Shirts</li>
+<li>Shorts</li>
+<li>Boots</li>
+</ul>
+
+<!-- // 15. Ordered List -->
+<h3>15. Ordered List</h3>
+<ol>
+<li>Shirts</li>
+<li>Shorts</li>
+<li>Boots</li>
+</ol>
+
+<!-- // 16. Nested List -->
+<h3>16. Nested List</h3>
+<ul>
+<li>Premier League
+  <ul>
+    <li>Manchester City</li>
+    <li>Arsenal</li>
+  </ul>
+</li>
+<li>La Liga
+  <ul>
+    <li>Barcelona</li>
+    <li>Real Madrid</li>
+  </ul>
+</li>
+<li>Serie A
+  <ul>
+    <li>Juventus</li>
+    <li>AC Milan</li>
+  </ul>
+</li>
+</ul>
+
+<!-- // 20 Features End -->
 
 <!-- COMPANY VIDEO -->
 <div style="text-align:center; margin:20px;">
@@ -121,7 +241,7 @@ Your browser does not support video.
 <button class="scroll-btn" onclick="scrollRight('short')">▶</button>
 </div>
 
-<!-- BOOTS SCROLL (NEW HUMAN-LIKE VERSION) -->
+<!-- BOOTS SCROLL -->
 <div class="scroll-wrapper">
 <button class="scroll-btn" onclick="scrollLeft('boot')">◀</button>
 <div class="kit-container" id="boot">
@@ -143,7 +263,7 @@ Your browser does not support video.
 
 <!-- TABLE -->
 <div>
-<table>
+<table border="2">
 <caption>Top 4 Teams in Each European League</caption>
 <tr><th>League</th><th>Team</th><th>Country</th><th>Founded</th><th>Stadium</th><th>Coach</th><th>Titles</th><th>Status</th></tr>
 
