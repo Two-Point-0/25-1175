@@ -133,7 +133,7 @@ video { margin: 20px auto; display: block; border-radius: 10px; }
 <h4>Interactive Kit Viewer</h4> <!-- Heading 4 -->
 </header>
 
-<!-- VIDEO -->
+<!-- COMPANY VIDEO -->
 <section>
 <video width="600" controls>
 <source src="promo.mp4" type="video/mp4">
@@ -141,72 +141,80 @@ Your browser does not support video.
 </video>
 </section>
 
-<!-- 20 HTML FEATURES IMPLEMENTED -->
+<!-- 20 HTML FEATURES IMPLEMENTED WITH REAL-LIFE CONTENT -->
 <section>
-<p class="bold-text">This bold sentence demonstrates important styling that stands out on the web page for users.</p>
-<p class="underline-text">This underlined sentence is emphasized and easy to notice for all visitors viewing the website.</p>
-<p class="underline-text">Second underlined sentence highlights key details that enhance clarity and visual interest on page.</p>
+<p class="bold-text">
+Get your authentic football kit today to proudly support your favorite team with the newest designs, limited editions, premium fabrics, player fit, and unmatched comfort worldwide.
+</p>
 
-<p>Superscript example: Messi<sup>1</sup>, Ronaldo<sup>2</sup>, Lewandowski<sup>3</sup>, Haaland<sup>4</sup></p>
-<p>Subscript example: H<sub>2</sub>O, CO<sub>2</sub>, Na<sub>3</sub>PO<sub>4</sub>, C<sub>6</sub>H<sub>12</sub>O<sub>6</sub></p>
+<p class="underline-text">
+Shop Barcelona, Real Madrid, Liverpool, Chelsea, PSG, Juventus, AC Milan, and more with secure checkout, global delivery, and guaranteed authenticity for all items.
+</p>
+<p class="underline-text">
+Enjoy exclusive promotions, seasonal discounts, and collector edition kits available only through official locker-room stores, limited stock applies for true fans seeking official merchandise.
+</p>
 
-<p>Deleted text example: <del>Old Price $120</del>, <del>Outdated Kit</del>, <del>Previous Design</del>, <del>Last Season Boot</del></p>
+<p>Superscript examples (Boot versions): Messi F50<sup>2026</sup>, Ronaldo Mercurial<sup>2025</sup>, Neymar Vapor<sup>2026</sup>, Haaland Phantom<sup>2024</sup></p>
+<p>Subscript examples (Promotional & footnote info): SKU: F50<sub>EU</sub>, CODE: MERC<sub>UK</sub>, Size: 42<sub>INT</sub>, Offer<sub>*T&Cs</sub></p>
 
-<p>Marked text example: <mark>Limited Offer!</mark>, <mark>New Release!</mark>, <mark>Top Seller!</mark>, <mark>Exclusive Edition!</mark></p>
+<p><del>Old Barcelona 2019 Jersey</del>, <del>Outdated Liverpool Retro</del>, <del>Last Season Boot</del>, <del>Previous AC Milan Kit</del></p>
 
-<p>Speech marks example: "Football is life!", "Support your team!", "Wear the kit with pride!", "Every fan matters!"</p>
+<p><mark>Limited Edition PSG Jersey</mark>, <mark>New Manchester United Release</mark>, <mark>Top Seller Chelsea Kit</mark>, <mark>Exclusive Arsenal Retro</mark></p>
+
+<p>"Football brings communities together worldwide!"</p>
+<p>"Authentic kits elevate fan pride and experience."</p>
+<p>"Supporters wear history, tradition, and colors with pride."</p>
+<p>"Every matchday feels alive with genuine merchandise."</p>
 
 <blockquote>
-Football unites fans worldwide.<br>
-Kits symbolize passion and identity.<br>
-Fans feel part of the team.<br>
-Authentic merchandise enhances experience.
+Kits unite players and fans across continents.<br>
+Every jersey tells a story of history.<br>
+Fans celebrate achievements with every purchase.<br>
+Exclusive merchandise keeps memories alive.
 </blockquote>
 
 <p>Line breaks example:<br>
-Every match excites fans globally.<br>
-Top clubs deliver iconic kits.<br>
-Fans enjoy shorts and boots.<br>
-Merchandise completes full kit experience.</p>
+Every fan dreams of attending stadium matches.<br>
+Official kits reflect dedication and loyalty.<br>
+Shorts and boots complete the true kit.<br>
+Shop merchandise to support your team daily.</p>
 
 <hr>
-Check our kit updates.<br>
-Latest designs available.<br>
-Shop top clubs today.
+Check out the latest arrivals.<br>
+Limited kits available for loyal fans.<br>
+Act fast before stock runs out.
 <hr>
 
 <pre>
-Best selling kits 2026:
-1. Manchester City Home
-2. Barcelona Away
-3. Juventus Retro
+Featured Kits & Boots 2026:
+1. Barcelona Home 2026
+2. PSG Away 2026
+3. Liverpool Retro 2025
 </pre>
 
 <ul>
-<li>Shirts Collection</li>
-<li>Shorts Collection</li>
-<li>Boots Collection</li>
+<li>Shirts Collection – Home, Away, Third, Retro</li>
+<li>Shorts Collection – Home, Away, Third, Retro</li>
+<li>Boots Collection – Nike, Adidas, Puma, NB</li>
 </ul>
 
 <ol>
-<li>Browse Kits</li>
-<li>Select Size</li>
-<li>Purchase Securely</li>
+<li>Browse top European clubs</li>
+<li>Select your perfect fit</li>
+<li>Purchase securely and enjoy</li>
 </ol>
 
 <ul>
-<li>Leagues
+<li>Leagues & Teams
     <ul>
-        <li>Premier League: Manchester City, Arsenal</li>
-        <li>La Liga: Barcelona, Real Madrid</li>
-        <li>Serie A: Juventus, AC Milan</li>
-        <li>Bundesliga: Bayern Munich, Dortmund</li>
-        <li>Ligue 1: PSG, Lyon</li>
-        <li>Other: Celtic, Benfica</li>
+        <li>Premier League: Manchester City, Arsenal, Liverpool, Chelsea</li>
+        <li>La Liga: Barcelona, Real Madrid, Atletico Madrid, Sevilla</li>
+        <li>Serie A: Juventus, AC Milan, Inter, Napoli</li>
+        <li>Bundesliga: Bayern Munich, Dortmund, RB Leipzig, Leverkusen</li>
+        <li>Ligue 1: PSG, Lyon, Monaco, Marseille</li>
     </ul>
 </li>
 </ul>
-
 </section>
 
 <!-- SHIRTS & SHORTS SCROLLER -->
@@ -288,7 +296,6 @@ function scrollKit(direction, containerId){
     items.forEach((item,idx)=>{if(item.classList.contains('active')) currentIndex=idx;});
     if(direction==='next') currentIndex=Math.min(currentIndex+1,items.length-1);
     if(direction==='prev') currentIndex=Math.max(currentIndex-1,0);
-    if(direction==='snap') currentIndex=currentIndex;
     items.forEach((item,idx)=>item.classList.toggle('active',idx===currentIndex));
     let scrollAmount=(items[currentIndex].offsetLeft + items[currentIndex].offsetWidth/2) - container.offsetWidth/2;
     container.scrollTo({left: scrollAmount, behavior:'smooth'});
