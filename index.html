@@ -12,19 +12,20 @@ body {
     color: white;
     text-align: center;
 }
+
+/* HEADER */
 header {
     background: #000;
     padding: 30px 10px;
     text-align: center;
 }
-h1, h2, h3, h4 {
-    margin: 10px 0;
-}
+h1,h2,h3,h4 { margin: 10px 0; }
 
-/* KIT SCROLLER */
+/* SCROLLABLE KIT SECTIONS */
 .kit-gallery {
     width: 95%;
-    margin: 30px auto;
+    margin: 40px auto;
+    text-align: center;
 }
 .scroll-wrapper {
     display: flex;
@@ -37,7 +38,7 @@ h1, h2, h3, h4 {
     display: flex;
     overflow-x: scroll;
     scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch; /* mobile smooth scroll */
+    -webkit-overflow-scrolling: touch;
     width: 90%;
     padding: 10px 0;
     scroll-snap-type: x mandatory;
@@ -50,16 +51,9 @@ h1, h2, h3, h4 {
     scroll-snap-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
 }
-.kit-item img {
-    width: 160px;
-    border-radius: 10px;
-}
-.kit-item.active {
-    transform: scale(1.1);
-    box-shadow: 0 5px 15px rgba(255,255,255,0.7);
-}
+.kit-item img { width: 160px; border-radius: 10px; }
+.kit-item.active { transform: scale(1.1); box-shadow: 0 5px 15px rgba(255,255,255,0.7); }
 
-/* SCROLL BUTTON */
 .scroll-btn {
     background: #222;
     color: white;
@@ -77,19 +71,17 @@ table {
     border-collapse: collapse;
     margin: 50px auto;
 }
-table, th, td {
-    border: 2px solid white;
-    padding: 10px;
-    text-align: center;
-}
+table, th, td { border: 2px solid white; padding: 10px; text-align: center; }
 
-/* Footer */
+/* FOOTER */
 footer {
     background: #000;
     text-align: center;
     padding: 25px;
     margin-top: 50px;
 }
+
+/* TEXT STYLING */
 .bold-text { font-weight: bold; }
 .underline-text { text-decoration: underline; }
 mark { background: orange; color: black; }
@@ -99,14 +91,14 @@ ul, ol { margin-left: 40px; text-align: left; }
 section { margin: 30px 0; text-align: center; }
 video { margin: 20px auto; display: block; border-radius: 10px; }
 
-/* Responsive adjustments */
+/* RESPONSIVE */
 @media (max-width: 900px) {
-    .kit-container { width: 100%; }
     .kit-item { width: 120px; }
+    .scroll-btn { height: 140px; font-size: 18px; }
 }
 @media (max-width: 600px) {
     .kit-item { width: 100px; }
-    .scroll-btn { height: 120px; font-size: 18px; }
+    .scroll-btn { height: 100px; font-size: 16px; }
 }
 </style>
 </head>
@@ -114,120 +106,73 @@ video { margin: 20px auto; display: block; border-radius: 10px; }
 
 <header>
 <h1>The Locker-Room</h1>
-<h2>Your Home of Elite European Football Kits</h2>
-<h3>Shop Shirts, Shorts, Boots, and Full Kits</h3>
-<h4>Experience the top European leagues like never before</h4>
+<h2>Top European Football Kits</h2>
+<h3>Shirts, Shorts, and Boots</h3>
+<h4>Interactive Kit Viewer</h4>
 </header>
 
+<!-- VIDEO -->
 <section>
-<p class="bold-text">This bold sentence highlights football kits for fans across Europe, letting you explore, choose, and enjoy your favorite team’s shirt, shorts, and boots for every matchday.</p>
-<p class="underline-text">Discover the latest football gear including shirts, shorts, and boots for top teams, fully authentic and numbered, shipped directly to your home, ensuring fans feel part of the team instantly.</p>
-<p class="underline-text">Every item celebrates the club’s heritage with authentic designs, color schemes, and logos, while matching kits allow fans to wear player versions during matchdays or casual fan events with pride.</p>
-</section>
-
-<section>
-<p>Top player goals in 2025 season: Messi<sup>1</sup>, Ronaldo<sup>2</sup>, Lewandowski<sup>3</sup>, Haaland<sup>4</sup></p>
-<p>Chemical formula fun: H<sub>2</sub>O, CO<sub>2</sub>, Na<sub>3</sub>PO<sub>4</sub>, C<sub>6</sub>H<sub>12</sub>O<sub>6</sub></p>
-</section>
-
-<section>
-<p>Old price: <del>$120</del> New price: $95 <mark>Limited Offer!</mark></p>
-<p><del>Previous kit design</del> <mark>New 2026 edition!</mark></p>
-<p><del>Last season boots</del> <mark>Latest boots collection!</mark></p>
-<p><del>Outdated fan gear</del> <mark>Fresh merchandise available!</mark></p>
-</section>
-
-<section>
-<p>"Football is not just a game, it’s a lifestyle!"</p>
-<p>"Wearing your club’s kit shows true loyalty," said a fan.</p>
-<p>"Every match day deserves the full kit," announced the coach.</p>
-<p>"Top players inspire fans worldwide," stated the commentator.</p>
-
-<blockquote>
-<p>Football unites fans globally.</p>
-<p>It creates memories that last forever.</p>
-<p>Kits symbolize identity and passion.</p>
-<p>Authentic gear enhances the fan experience.</p>
-</blockquote>
-</section>
-
-<section>
-<p>Football thrills hearts across stadiums.<br>
-Every match day brings unmatched excitement.<br>
-Fans cheer for their clubs worldwide.<br>
-Merchandise helps display loyalty and support.<br></p>
-
-<p>Experience live matches.<hr>Shop authentic kits.<hr>Wear team colors proudly.<hr></p>
-</section>
-
-<pre>
-Best selling kits 2026:
-1. Manchester City Home
-2. Barcelona Away
-3. Juventus Retro
-</pre>
-
-<section>
-<ul>
-<li>Shirts Collection</li>
-<li>Shorts Collection</li>
-<li>Boots Collection</li>
-</ul>
-
-<ol>
-<li>Browse Kits</li>
-<li>Select Size</li>
-<li>Purchase Securely</li>
-</ol>
-
-<ul>
-<li>Premier League
-    <ul><li>Manchester City</li><li>Arsenal</li><li>Liverpool</li><li>Chelsea</li></ul>
-</li>
-<li>La Liga
-    <ul><li>Barcelona</li><li>Real Madrid</li><li>Atletico Madrid</li><li>Sevilla</li></ul>
-</li>
-<li>Serie A
-    <ul><li>Juventus</li><li>AC Milan</li><li>Inter Milan</li><li>Napoli</li></ul>
-</li>
-<li>Bundesliga
-    <ul><li>Bayern Munich</li><li>Dortmund</li><li>Leipzig</li><li>Gladbach</li></ul>
-</li>
-<li>Ligue 1
-    <ul><li>PSG</li><li>Lyon</li><li>Marseille</li><li>Monaco</li></ul>
-</li>
-</ul>
-</section>
-
-<div>
 <video width="600" controls>
 <source src="promo.mp4" type="video/mp4">
 Your browser does not support video.
 </video>
-</div>
+</section>
 
-<div class="kit-gallery">
-<h2>Full Kits (Shirts → Shorts → Boots)</h2>
+<!-- SHIRTS & SHORTS SCROLLER -->
+<section class="kit-gallery">
+<h2>Shirts & Shorts (20 Kits)</h2>
 <div class="scroll-wrapper">
-<button class="scroll-btn" onclick="scrollKit('prev')">◀</button>
-<div class="kit-container" id="kits">
+<button class="scroll-btn" onclick="scrollKit('prev','kit1')">◀</button>
+<div class="kit-container" id="kit1">
 <!-- 20 kits -->
-<div class="kit-item"><img src="shirt1.jpg" alt="Shirt 1"><br><img src="short1.jpg" alt="Short 1"><br><img src="boot1.jpg" alt="Boot 1"></div>
-<div class="kit-item"><img src="shirt2.jpg" alt="Shirt 2"><br><img src="short2.jpg" alt="Short 2"><br><img src="boot2.jpg" alt="Boot 2"></div>
-<div class="kit-item"><img src="shirt3.jpg" alt="Shirt 3"><br><img src="short3.jpg" alt="Short 3"><br><img src="boot3.jpg" alt="Boot 3"></div>
-<div class="kit-item"><img src="shirt4.jpg" alt="Shirt 4"><br><img src="short4.jpg" alt="Short 4"><br><img src="boot4.jpg" alt="Boot 4"></div>
-<div class="kit-item"><img src="shirt5.jpg" alt="Shirt 5"><br><img src="short5.jpg" alt="Short 5"><br><img src="boot5.jpg" alt="Boot 5"></div>
-<div class="kit-item"><img src="shirt6.jpg" alt="Shirt 6"><br><img src="short6.jpg" alt="Short 6"><br><img src="boot6.jpg" alt="Boot 6"></div>
-<div class="kit-item"><img src="shirt7.jpg" alt="Shirt 7"><br><img src="short7.jpg" alt="Short 7"><br><img src="boot7.jpg" alt="Boot 7"></div>
-<div class="kit-item"><img src="shirt8.jpg" alt="Shirt 8"><br><img src="short8.jpg" alt="Short 8"><br><img src="boot8.jpg" alt="Boot 8"></div>
-<div class="kit-item"><img src="shirt9.jpg" alt="Shirt 9"><br><img src="short9.jpg" alt="Short 9"><br><img src="boot9.jpg" alt="Boot 9"></div>
-<div class="kit-item"><img src="shirt10.jpg" alt="Shirt 10"><br><img src="short10.jpg" alt="Short 10"><br><img src="boot10.jpg" alt="Boot 10"></div>
+<div class="kit-item"><img src="shirt1.jpg" alt="Shirt 1"><br><img src="short1.jpg" alt="Short 1"></div>
+<div class="kit-item"><img src="shirt2.jpg" alt="Shirt 2"><br><img src="short2.jpg" alt="Short 2"></div>
+<div class="kit-item"><img src="shirt3.jpg" alt="Shirt 3"><br><img src="short3.jpg" alt="Short 3"></div>
+<div class="kit-item"><img src="shirt4.jpg" alt="Shirt 4"><br><img src="short4.jpg" alt="Short 4"></div>
+<div class="kit-item"><img src="shirt5.jpg" alt="Shirt 5"><br><img src="short5.jpg" alt="Short 5"></div>
+<div class="kit-item"><img src="shirt6.jpg" alt="Shirt 6"><br><img src="short6.jpg" alt="Short 6"></div>
+<div class="kit-item"><img src="shirt7.jpg" alt="Shirt 7"><br><img src="short7.jpg" alt="Short 7"></div>
+<div class="kit-item"><img src="shirt8.jpg" alt="Shirt 8"><br><img src="short8.jpg" alt="Short 8"></div>
+<div class="kit-item"><img src="shirt9.jpg" alt="Shirt 9"><br><img src="short9.jpg" alt="Short 9"></div>
+<div class="kit-item"><img src="shirt10.jpg" alt="Shirt 10"><br><img src="short10.jpg" alt="Short 10"></div>
+<div class="kit-item"><img src="shirt11.jpg" alt="Shirt 11"><br><img src="short11.jpg" alt="Short 11"></div>
+<div class="kit-item"><img src="shirt12.jpg" alt="Shirt 12"><br><img src="short12.jpg" alt="Short 12"></div>
+<div class="kit-item"><img src="shirt13.jpg" alt="Shirt 13"><br><img src="short13.jpg" alt="Short 13"></div>
+<div class="kit-item"><img src="shirt14.jpg" alt="Shirt 14"><br><img src="short14.jpg" alt="Short 14"></div>
+<div class="kit-item"><img src="shirt15.jpg" alt="Shirt 15"><br><img src="short15.jpg" alt="Short 15"></div>
+<div class="kit-item"><img src="shirt16.jpg" alt="Shirt 16"><br><img src="short16.jpg" alt="Short 16"></div>
+<div class="kit-item"><img src="shirt17.jpg" alt="Shirt 17"><br><img src="short17.jpg" alt="Short 17"></div>
+<div class="kit-item"><img src="shirt18.jpg" alt="Shirt 18"><br><img src="short18.jpg" alt="Short 18"></div>
+<div class="kit-item"><img src="shirt19.jpg" alt="Shirt 19"><br><img src="short19.jpg" alt="Short 19"></div>
+<div class="kit-item"><img src="shirt20.jpg" alt="Shirt 20"><br><img src="short20.jpg" alt="Short 20"></div>
 </div>
-<button class="scroll-btn" onclick="scrollKit('next')">▶</button>
+<button class="scroll-btn" onclick="scrollKit('next','kit1')">▶</button>
 </div>
-</div>
+</section>
 
-<!-- Table -->
+<!-- BOOTS SCROLLER -->
+<section class="kit-gallery">
+<h2>Boots Collection (10 Boots)</h2>
+<div class="scroll-wrapper">
+<button class="scroll-btn" onclick="scrollKit('prev','kit2')">◀</button>
+<div class="kit-container" id="kit2">
+<div class="kit-item"><img src="boot1.jpg" alt="Boot 1"></div>
+<div class="kit-item"><img src="boot2.jpg" alt="Boot 2"></div>
+<div class="kit-item"><img src="boot3.jpg" alt="Boot 3"></div>
+<div class="kit-item"><img src="boot4.jpg" alt="Boot 4"></div>
+<div class="kit-item"><img src="boot5.jpg" alt="Boot 5"></div>
+<div class="kit-item"><img src="boot6.jpg" alt="Boot 6"></div>
+<div class="kit-item"><img src="boot7.jpg" alt="Boot 7"></div>
+<div class="kit-item"><img src="boot8.jpg" alt="Boot 8"></div>
+<div class="kit-item"><img src="boot9.jpg" alt="Boot 9"></div>
+<div class="kit-item"><img src="boot10.jpg" alt="Boot 10"></div>
+</div>
+<button class="scroll-btn" onclick="scrollKit('next','kit2')">▶</button>
+</div>
+</section>
+
+<!-- TABLE -->
 <table border="2">
 <caption>Top 4 Teams in Each European League</caption>
 <tr><th>League</th><th>Team</th><th>Country</th><th>Founded</th><th>Stadium</th><th>Coach</th><th>Titles</th><th>Status</th></tr>
@@ -246,41 +191,40 @@ Your browser does not support video.
 </footer>
 
 <script>
-let currentIndex = 0;
-const kitContainer = document.getElementById('kits');
-const kitItems = kitContainer.querySelectorAll('.kit-item');
-
-function scrollKit(direction){
-    if(direction==='next') currentIndex=Math.min(currentIndex+1,kitItems.length-1);
+function scrollKit(direction, containerId){
+    const container=document.getElementById(containerId);
+    const items=container.querySelectorAll('.kit-item');
+    let currentIndex;
+    items.forEach((item,idx)=>{if(item.classList.contains('active')) currentIndex=idx;});
+    if(direction==='next') currentIndex=Math.min(currentIndex+1,items.length-1);
     if(direction==='prev') currentIndex=Math.max(currentIndex-1,0);
-    let itemWidth=kitItems[0].offsetWidth+10;
-    kitContainer.scrollTo({left:currentIndex*itemWidth,behavior:'smooth'});
-    highlightCurrent();
+    if(direction==='snap') currentIndex=currentIndex; // used for snapping touch end
+    let itemWidth=items[0].offsetWidth+10;
+    container.scrollTo({left:currentIndex*itemWidth,behavior:'smooth'});
+    items.forEach((item,idx)=>item.classList.toggle('active',idx===currentIndex));
 }
 
-function highlightCurrent(){
-    kitItems.forEach((item,idx)=>item.classList.toggle('active',idx===currentIndex));
-}
+// Initialize all scrollers
+document.querySelectorAll('.kit-container').forEach(container=>{
+    const items=container.querySelectorAll('.kit-item');
+    items[0].classList.add('active');
 
-// TOUCH SUPPORT
-let startX, scrollLeftStart;
-kitContainer.addEventListener('touchstart', e=>{
-    startX=e.touches[0].pageX;
-    scrollLeftStart=kitContainer.scrollLeft;
+    // Touch support
+    let startX,scrollLeftStart;
+    container.addEventListener('touchstart', e=>{
+        startX=e.touches[0].pageX;
+        scrollLeftStart=container.scrollLeft;
+    });
+    container.addEventListener('touchmove', e=>{
+        let dx=startX-e.touches[0].pageX;
+        container.scrollLeft=scrollLeftStart+dx;
+    });
+    container.addEventListener('touchend', ()=>{
+        let itemWidth=items[0].offsetWidth+10;
+        let currentIndex=Math.round(container.scrollLeft/itemWidth);
+        scrollKit('snap',container.id);
+    });
 });
-kitContainer.addEventListener('touchmove', e=>{
-    let dx=startX-e.touches[0].pageX;
-    kitContainer.scrollLeft=scrollLeftStart+dx;
-});
-kitContainer.addEventListener('touchend', ()=>{
-    // snap to nearest
-    let itemWidth=kitItems[0].offsetWidth+10;
-    currentIndex=Math.round(kitContainer.scrollLeft/itemWidth);
-    scrollKit('snap');
-});
-
-// Initialize
-highlightCurrent();
 </script>
 </body>
 </html>
