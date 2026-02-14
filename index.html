@@ -1,179 +1,325 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
+<title>The Locker Room – European Football Kits</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Locker Room – Full Kit Display</title>
 
 <style>
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: linear-gradient(#2b2b2b, #111);
-  color: #fff;
-  text-align: center;
+body{
+font-family: Arial, Helvetica, sans-serif;
+background:#111;
+color:white;
+text-align:center;
+margin:0;
 }
 
-/* HEADER */
-header {
-  padding: 30px 20px;
+/* HEADINGS */
+h1,h2,h3,h4{margin:10px;}
+
+/* SCROLL SECTION */
+.section{
+position:relative;
+width:90%;
+margin:30px auto;
+overflow:hidden;
 }
 
-header h1 {
-  margin: 0;
-  font-size: 32px;
-  letter-spacing: 2px;
+.scroll{
+display:flex;
+overflow-x:auto;
+scroll-behavior:smooth;
+gap:5px;
+scrollbar-width:none;
+}
+.scroll::-webkit-scrollbar{display:none;}
+
+.item{
+min-width:200px;
+flex:0 0 auto;
+opacity:0.6;
+transition:0.3s;
+}
+.item img{
+width:100%;
+display:block;
 }
 
-/* ================= SECTION WRAPPERS ================= */
-.kit-section {
-  position: relative;
-  width: 90%;
-  margin: 30px auto;
-  overflow: hidden;
+.item.active{
+opacity:1;
+transform:scale(1.05);
+box-shadow:0 0 15px gold;
 }
 
-.kit-scroll {
-  display: flex;
-  gap: 5px;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
+button{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+background:black;
+color:white;
+border:none;
+font-size:25px;
+padding:5px 10px;
+cursor:pointer;
 }
 
-.kit-scroll::-webkit-scrollbar {
-  display: none;
+.left{left:0;}
+.right{right:0;}
+
+table{
+width:95%;
+margin:20px auto;
+border-collapse:collapse;
+background:#222;
+}
+th,td{
+border:2px solid white;
+padding:8px;
+}
+caption{
+font-weight:bold;
+margin-bottom:10px;
 }
 
-.kit-item {
-  min-width: 200px;
-  flex: 0 0 auto;
-  transition: transform 0.3s, opacity 0.3s;
-  opacity: 0.5;
+footer{
+background:black;
+padding:20px;
+margin-top:30px;
 }
-
-.kit-item.active {
-  transform: scale(1.05);
-  opacity: 1;
-}
-
-.kit-item img {
-  width: 100%;
-  display: block;
-  border-radius: 6px;
-}
-
-/* BUTTONS */
-.scroll-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.6);
-  border: none;
-  color: white;
-  font-size: 28px;
-  padding: 8px 12px;
-  cursor: pointer;
-  z-index: 5;
-  border-radius: 6px;
-  transition: 0.3s;
-}
-
-.scroll-btn:hover {
-  background: rgba(255,255,255,0.2);
-}
-
-.scroll-left { left: 0; }
-.scroll-right { right: 0; }
 </style>
 </head>
+
 <body>
 
-<header>
-  <h1>The Locker Room – Full Kit Carousel</h1>
-</header>
+<h1>The Locker Room</h1>
+<h2>Top 5 European Leagues</h2>
+<h3>Premium Jerseys and Full Kits</h3>
+<h4>Shirts – Shorts – Boots</h4>
 
-<!-- ================= SHIRT SECTION ================= -->
-<h2>Shirts</h2>
-<div class="kit-section">
-  <button class="scroll-btn scroll-left" onclick="scrollLeft('shirtScroll')">❮</button>
-  <div class="kit-scroll" id="shirtScroll">
-    <div class="kit-item"><img src="barca-shirt.jpg" alt="Barcelona Shirt"></div>
-    <div class="kit-item"><img src="madrid-shirt.jpg" alt="Real Madrid Shirt"></div>
-    <div class="kit-item"><img src="manutd-shirt.jpg" alt="Manchester United Shirt"></div>
-    <div class="kit-item"><img src="arsenal-shirt.jpg" alt="Arsenal Shirt"></div>
-    <div class="kit-item"><img src="psg-shirt.jpg" alt="PSG Shirt"></div>
-    <div class="kit-item"><img src="chelsea-shirt.jpg" alt="Chelsea Shirt"></div>
-    <div class="kit-item"><img src="juventus-shirt.jpg" alt="Juventus Shirt"></div>
-  </div>
-  <button class="scroll-btn scroll-right" onclick="scrollRight('shirtScroll')">❯</button>
+<b>
+The Locker Room proudly supplies authentic football jerseys representing the top five European leagues, delivering premium quality fabric, official branding, and complete matchday kits for passionate supporters worldwide.
+</b>
+
+<br><br>
+
+<u>
+Our store features Barcelona, Real Madrid, Manchester City, Bayern Munich, and Paris Saint Germain jerseys carefully selected to represent the strongest teams across Europe with pride and authenticity.
+</u>
+<br><br>
+<u>
+Each full kit includes the official shirt, matching shorts, and professional boots designed for comfort, durability, and performance during competitive matches and supporter celebrations worldwide.
+</u>
+
+<br><br>
+
+<p>10<sup>th</sup> Anniversary</p>
+<p>5<sup>th</sup> League Title</p>
+<p>2<sup>nd</sup> Division Promotion</p>
+<p>1<sup>st</sup> Champions League Trophy</p>
+
+<p>H<sub>2</sub>O Cooling Fabric</p>
+<p>CO<sub>2</sub> Neutral Production</p>
+<p>Size M<sub>1</sub></p>
+<p>Model X<sub>2026</sub></p>
+
+<p><del>Old Season Jersey</del></p>
+<p><del>Limited Stock Item</del></p>
+<p><del>Outdated Boot Model</del></p>
+<p><del>Previous Discount Offer</del></p>
+
+<p><mark>New Arrival</mark></p>
+<p><mark>Best Seller</mark></p>
+<p><mark>Hot Deal</mark></p>
+<p><mark>Limited Edition</mark></p>
+
+<p>"Football unites fans across the world."</p>
+<p>"Wear your club colors with pride."</p>
+<p>"Every match tells a new story."</p>
+<p>"Victory begins with preparation."</p>
+
+<blockquote>
+Football is passion beyond boundaries.<br>
+Football is loyalty stitched in fabric.<br>
+Football is history written in colors.<br>
+Football is pride worn every matchday.
+</blockquote>
+
+<hr>
+<p>This line separates promotional content from product information.</p>
+<hr>
+<p>This line divides sections clearly for visual structure.</p>
+<hr>
+<p>This line emphasizes organization within the webpage layout.</p>
+
+<pre>
+This store values authenticity and premium materials.
+Every jersey represents dedication and club heritage.
+Supporters deserve quality products at fair prices.
+</pre>
+
+<p>
+Football inspires loyalty and lifelong passionate global support.<br>
+Every supporter deserves authentic quality matchday performance gear.<br>
+Premium fabrics ensure comfort during intense competitive matches.<br>
+Victory celebrations begin with wearing official club colors.
+</p>
+
+<ul>
+<li>La Liga Jerseys</li>
+<li>Premier League Jerseys</li>
+<li>Bundesliga Jerseys</li>
+</ul>
+
+<ol>
+<li>Select Your Team</li>
+<li>Choose Your Size</li>
+<li>Complete Secure Payment</li>
+</ol>
+
+<ul>
+<li>La Liga
+  <ul>
+    <li>Barcelona</li>
+    <li>Real Madrid</li>
+  </ul>
+</li>
+<li>Premier League
+  <ul>
+    <li>Manchester City</li>
+    <li>Arsenal</li>
+  </ul>
+</li>
+</ul>
+
+<!-- FULL KIT DISPLAY -->
+<h2>Full Kit Display</h2>
+
+<div class="section">
+<button class="left" onclick="scrollLeft('kit')">❮</button>
+<div class="scroll" id="kit">
+
+<div class="item">
+<img src="barca-shirt.jpg">
+<img src="barca-shorts.jpg">
+<img src="nike-boots.jpg">
 </div>
 
-<!-- ================= SHORTS SECTION ================= -->
-<h2>Shorts</h2>
-<div class="kit-section">
-  <button class="scroll-btn scroll-left" onclick="scrollLeft('shortScroll')">❮</button>
-  <div class="kit-scroll" id="shortScroll">
-    <div class="kit-item"><img src="barca-shorts.jpg" alt="Barcelona Shorts"></div>
-    <div class="kit-item"><img src="madrid-shorts.jpg" alt="Real Madrid Shorts"></div>
-    <div class="kit-item"><img src="manutd-shorts.jpg" alt="Manchester United Shorts"></div>
-    <div class="kit-item"><img src="arsenal-shorts.jpg" alt="Arsenal Shorts"></div>
-    <div class="kit-item"><img src="psg-shorts.jpg" alt="PSG Shorts"></div>
-    <div class="kit-item"><img src="chelsea-shorts.jpg" alt="Chelsea Shorts"></div>
-    <div class="kit-item"><img src="juventus-shorts.jpg" alt="Juventus Shorts"></div>
-  </div>
-  <button class="scroll-btn scroll-right" onclick="scrollRight('shortScroll')">❯</button>
+<div class="item">
+<img src="madrid-shirt.jpg">
+<img src="madrid-shorts.jpg">
+<img src="adidas-boots.jpg">
 </div>
 
-<!-- ================= SHOES SECTION ================= -->
-<h2>Shoes</h2>
-<div class="kit-section">
-  <button class="scroll-btn scroll-left" onclick="scrollLeft('shoeScroll')">❮</button>
-  <div class="kit-scroll" id="shoeScroll">
-    <div class="kit-item"><img src="barca-shoes.jpg" alt="Barcelona Shoes"></div>
-    <div class="kit-item"><img src="madrid-shoes.jpg" alt="Real Madrid Shoes"></div>
-    <div class="kit-item"><img src="manutd-shoes.jpg" alt="Manchester United Shoes"></div>
-    <div class="kit-item"><img src="arsenal-shoes.jpg" alt="Arsenal Shoes"></div>
-    <div class="kit-item"><img src="psg-shoes.jpg" alt="PSG Shoes"></div>
-    <div class="kit-item"><img src="chelsea-shoes.jpg" alt="Chelsea Shoes"></div>
-    <div class="kit-item"><img src="juventus-shoes.jpg" alt="Juventus Shoes"></div>
-  </div>
-  <button class="scroll-btn scroll-right" onclick="scrollRight('shoeScroll')">❯</button>
+<div class="item">
+<img src="city-shirt.jpg">
+<img src="city-shorts.jpg">
+<img src="puma-boots.jpg">
 </div>
+
+<div class="item">
+<img src="bayern-shirt.jpg">
+<img src="bayern-shorts.jpg">
+<img src="nike-boots2.jpg">
+</div>
+
+<div class="item">
+<img src="psg-shirt.jpg">
+<img src="psg-shorts.jpg">
+<img src="adidas-boots2.jpg">
+</div>
+
+</div>
+<button class="right" onclick="scrollRight('kit')">❯</button>
+</div>
+
+<h2>Top Boot Brands</h2>
+
+<div class="section">
+<button class="left" onclick="scrollLeft('boots')">❮</button>
+<div class="scroll" id="boots">
+
+<img src="nike1.jpg" class="item">
+<img src="nike2.jpg" class="item">
+<img src="adidas1.jpg" class="item">
+<img src="adidas2.jpg" class="item">
+<img src="puma1.jpg" class="item">
+<img src="puma2.jpg" class="item">
+<img src="nike3.jpg" class="item">
+<img src="adidas3.jpg" class="item">
+<img src="puma3.jpg" class="item">
+<img src="nike4.jpg" class="item">
+
+</div>
+<button class="right" onclick="scrollRight('boots')">❯</button>
+</div>
+
+<table border="2">
+<caption>Top 5 European League Jersey Stock</caption>
+<tr>
+<th rowspan="2">League</th>
+<th>Team</th>
+<th>Home</th>
+<th>Away</th>
+<th>Third</th>
+<th>Fan</th>
+<th>Player</th>
+<th>Boot Brand</th>
+</tr>
+
+<tr>
+<td>Barcelona</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Available</td><td>Available</td><td>Nike</td>
+</tr>
+
+<tr>
+<td rowspan="3">Premier League</td>
+<td>Manchester City</td><td>Yes</td><td>Yes</td><td>No</td><td>Available</td><td>Available</td><td>Puma</td>
+</tr>
+
+<tr>
+<td>Arsenal</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Available</td><td>Limited</td><td>Adidas</td>
+</tr>
+
+<tr>
+<td>Liverpool</td><td>Yes</td><td>No</td><td>No</td><td>Available</td><td>Available</td><td>Nike</td>
+</tr>
+
+<tr>
+<td>Bundesliga</td>
+<td>Bayern Munich</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Available</td><td>Available</td><td>Adidas</td>
+</tr>
+
+<tr>
+<td>Ligue 1</td>
+<td>PSG</td><td>Yes</td><td>Yes</td><td>No</td><td>Available</td><td>Limited</td><td>Nike</td>
+</tr>
+
+<tr>
+<td>Serie A</td>
+<td>Juventus</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Available</td><td>Available</td><td>Adidas</td>
+</tr>
+
+<tr>
+<td>La Liga</td>
+<td>Real Madrid</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Available</td><td>Available</td><td>Adidas</td>
+</tr>
+
+<tr>
+<td>Serie A</td>
+<td>AC Milan</td><td>Yes</td><td>Yes</td><td>No</td><td>Available</td><td>Available</td><td>Puma</td>
+</tr>
+
+</table>
+
+<footer>
+© 2026 The Locker Room – Authentic European Football Jerseys
+</footer>
 
 <script>
-function updateActive(scrollId) {
-  const container = document.getElementById(scrollId);
-  const items = container.querySelectorAll('.kit-item');
-  let containerCenter = container.scrollLeft + container.offsetWidth / 2;
-  items.forEach(item => {
-    let itemCenter = item.offsetLeft + item.offsetWidth / 2;
-    if (Math.abs(containerCenter - itemCenter) < item.offsetWidth / 2) {
-      item.classList.add('active');
-    } else {
-      item.classList.remove('active');
-    }
-  });
+function scrollLeft(id){
+document.getElementById(id).scrollBy({left:-220,behavior:'smooth'});
 }
-
-function scrollLeft(scrollId) {
-  const container = document.getElementById(scrollId);
-  const itemWidth = container.querySelector('.kit-item').offsetWidth + 5;
-  container.scrollBy({ left: -itemWidth, behavior: 'smooth' });
+function scrollRight(id){
+document.getElementById(id).scrollBy({left:220,behavior:'smooth'});
 }
-
-function scrollRight(scrollId) {
-  const container = document.getElementById(scrollId);
-  const itemWidth = container.querySelector('.kit-item').offsetWidth + 5;
-  container.scrollBy({ left: itemWidth, behavior: 'smooth' });
-}
-
-// Update active items on scroll
-['shirtScroll','shortScroll','shoeScroll'].forEach(id => {
-  const container = document.getElementById(id);
-  container.addEventListener('scroll', () => updateActive(id));
-  window.addEventListener('load', () => updateActive(id));
-});
 </script>
 
 </body>
