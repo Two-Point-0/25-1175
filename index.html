@@ -14,14 +14,14 @@ body{
 header{
     background:#000;
     text-align:center;
-    padding:20px;
+    padding:25px 10px;
 }
 h1,h2,h3,h4{ text-align:center; margin:10px 0; }
 
 /* KIT SCROLL SECTION */
 .kit-gallery{
     width:95%;
-    margin:20px auto;
+    margin:30px auto;
 }
 .scroll-wrapper{
     display:flex;
@@ -29,21 +29,28 @@ h1,h2,h3,h4{ text-align:center; margin:10px 0; }
     justify-content:center;
     gap:10px;
     position:relative;
+    margin-bottom:25px;
 }
 .kit-container{
     display:flex;
     overflow:hidden;
     width:1100px;
     scroll-behavior:smooth;
+    padding:10px 0;
 }
 .kit-item{
     min-width:200px;
-    margin:5px;
+    margin:0 5px;
     text-align:center;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 .kit-item img{
     width:180px;
     border-radius:10px;
+}
+.kit-item.active{
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(255,255,255,0.7);
 }
 
 /* SCROLL BUTTON */
@@ -51,9 +58,9 @@ h1,h2,h3,h4{ text-align:center; margin:10px 0; }
     background:#222;
     color:white;
     border:none;
-    padding:10px;
+    padding:12px;
     cursor:pointer;
-    font-size:20px;
+    font-size:22px;
     border-radius:5px;
 }
 
@@ -61,11 +68,11 @@ h1,h2,h3,h4{ text-align:center; margin:10px 0; }
 table{
     width:95%;
     border-collapse:collapse;
-    margin:40px auto;
+    margin:50px auto;
 }
 table, th, td{
     border:2px solid white;
-    padding:8px;
+    padding:10px;
     text-align:center;
 }
 
@@ -73,15 +80,16 @@ table, th, td{
 footer{
     background:#000;
     text-align:center;
-    padding:20px;
-    margin-top:40px;
+    padding:25px;
+    margin-top:50px;
 }
 .bold-text{font-weight:bold;}
 .underline-text{text-decoration:underline;}
 mark{background:orange; color:black;}
-blockquote{border-left:5px solid #555; padding-left:10px; margin:20px;}
-pre{background:#222; padding:10px; white-space:pre-wrap;}
-ul,ol{margin-left:30px;}
+blockquote{border-left:5px solid #555; padding-left:15px; margin:25px;}
+pre{background:#222; padding:15px; white-space:pre-wrap;}
+ul,ol{margin-left:40px;}
+section{margin:30px 0;}
 </style>
 </head>
 <body>
@@ -93,27 +101,24 @@ ul,ol{margin-left:30px;}
 <h4>Experience the top European leagues like never before</h4>
 </header>
 
-<section style="text-align:center; margin:20px;">
+<section style="text-align:center;">
 <p class="bold-text">This is a bold sentence that highlights the essence of football kits for every fan who loves the game and wants to experience the top European leagues first-hand online.</p>
 <p class="underline-text">Explore the finest shirts, shorts, and boots from top clubs across Spain, England, Italy, Germany, and France to complete your kit.</p>
 <p class="underline-text">Every item is authentic, numbered, and delivered in premium packaging to ensure fans feel like part of the team instantly.</p>
 </section>
 
-<!-- Superscript / Subscript -->
-<section style="text-align:center; margin:20px;">
+<section style="text-align:center;">
 <p>Top player goals in 2025 season: Messi<sup>1</sup>, Ronaldo<sup>2</sup>, Lewandowski<sup>3</sup>, Haaland<sup>4</sup></p>
 <p>Chemical formulae fun: H<sub>2</sub>O, CO<sub>2</sub>, Na<sub>3</sub>PO<sub>4</sub>, C<sub>6</sub>H<sub>12</sub>O<sub>6</sub></p>
 </section>
 
-<!-- Del / Mark -->
-<section style="text-align:center; margin:20px;">
+<section style="text-align:center;">
 <p>Old price: <del>$120</del> New price: $95 <mark>Limited Offer!</mark></p>
 <p><del>Previous kit design</del> <mark>New 2026 edition!</mark></p>
 <p><del>Last season boots</del> <mark>Latest boots collection!</mark></p>
 <p><del>Outdated fan gear</del> <mark>Fresh merchandise available!</mark></p>
 </section>
 
-<!-- Speech marks and blockquote -->
 <section style="margin:30px;">
 <p>"Football is not just a game, it’s a lifestyle!"</p>
 <p>"Wearing your club’s kit shows true loyalty," said a fan.</p>
@@ -128,8 +133,7 @@ ul,ol{margin-left:30px;}
 </blockquote>
 </section>
 
-<!-- Line breaks and HR -->
-<section style="text-align:center; margin:30px;">
+<section style="text-align:center;">
 <p>Football thrills the hearts of everyone who loves it.<br>
 Every match day brings unmatched excitement and joy.<br>
 Fans cheer for their clubs across stadiums worldwide.<br>
@@ -140,7 +144,6 @@ Merchandise helps display loyalty and personal support.<br></p>
 <p>Wear your team colors proudly and confidently.<hr></p>
 </section>
 
-<!-- PRE example -->
 <pre>
 Best selling kits 2026:
 1. Manchester City Home
@@ -148,8 +151,7 @@ Best selling kits 2026:
 3. Juventus Retro
 </pre>
 
-<!-- Unordered / Ordered / Nested Lists -->
-<section style="text-align:center; margin:20px;">
+<section style="text-align:center;">
 <ul>
 <li>Shirts Collection</li>
 <li>Shorts Collection</li>
@@ -175,91 +177,89 @@ Best selling kits 2026:
 </ul>
 </section>
 
-<!-- COMPANY VIDEO -->
-<div style="text-align:center; margin:20px;">
+<div style="text-align:center; margin:30px;">
 <video width="600" controls>
 <source src="promo.mp4" type="video/mp4">
 Your browser does not support video.
 </video>
 </div>
 
-<!-- KIT GALLERY -->
 <div class="kit-gallery">
-<h2>Full Kits (Shirt → Shorts → Boots)</h2>
+<h2 style="text-align:center;">Full Kits (Shirt → Shorts → Boots)</h2>
 
-<!-- SHIRT SCROLL -->
+<!-- SHIRTS -->
 <div class="scroll-wrapper">
 <button class="scroll-btn" onclick="scrollLeft('shirt')">◀</button>
 <div class="kit-container" id="shirt">
-    <!-- 20 shirts -->
-    <div class="kit-item"><img src="shirt1.jpg" alt="Shirt 1"></div>
-    <div class="kit-item"><img src="shirt2.jpg" alt="Shirt 2"></div>
-    <div class="kit-item"><img src="shirt3.jpg" alt="Shirt 3"></div>
-    <div class="kit-item"><img src="shirt4.jpg" alt="Shirt 4"></div>
-    <div class="kit-item"><img src="shirt5.jpg" alt="Shirt 5"></div>
-    <div class="kit-item"><img src="shirt6.jpg" alt="Shirt 6"></div>
-    <div class="kit-item"><img src="shirt7.jpg" alt="Shirt 7"></div>
-    <div class="kit-item"><img src="shirt8.jpg" alt="Shirt 8"></div>
-    <div class="kit-item"><img src="shirt9.jpg" alt="Shirt 9"></div>
-    <div class="kit-item"><img src="shirt10.jpg" alt="Shirt 10"></div>
-    <div class="kit-item"><img src="shirt11.jpg" alt="Shirt 11"></div>
-    <div class="kit-item"><img src="shirt12.jpg" alt="Shirt 12"></div>
-    <div class="kit-item"><img src="shirt13.jpg" alt="Shirt 13"></div>
-    <div class="kit-item"><img src="shirt14.jpg" alt="Shirt 14"></div>
-    <div class="kit-item"><img src="shirt15.jpg" alt="Shirt 15"></div>
-    <div class="kit-item"><img src="shirt16.jpg" alt="Shirt 16"></div>
-    <div class="kit-item"><img src="shirt17.jpg" alt="Shirt 17"></div>
-    <div class="kit-item"><img src="shirt18.jpg" alt="Shirt 18"></div>
-    <div class="kit-item"><img src="shirt19.jpg" alt="Shirt 19"></div>
-    <div class="kit-item"><img src="shirt20.jpg" alt="Shirt 20"></div>
+<!-- 20 shirts -->
+<div class="kit-item"><img src="shirt1.jpg" alt="Shirt 1"></div>
+<div class="kit-item"><img src="shirt2.jpg" alt="Shirt 2"></div>
+<div class="kit-item"><img src="shirt3.jpg" alt="Shirt 3"></div>
+<div class="kit-item"><img src="shirt4.jpg" alt="Shirt 4"></div>
+<div class="kit-item"><img src="shirt5.jpg" alt="Shirt 5"></div>
+<div class="kit-item"><img src="shirt6.jpg" alt="Shirt 6"></div>
+<div class="kit-item"><img src="shirt7.jpg" alt="Shirt 7"></div>
+<div class="kit-item"><img src="shirt8.jpg" alt="Shirt 8"></div>
+<div class="kit-item"><img src="shirt9.jpg" alt="Shirt 9"></div>
+<div class="kit-item"><img src="shirt10.jpg" alt="Shirt 10"></div>
+<div class="kit-item"><img src="shirt11.jpg" alt="Shirt 11"></div>
+<div class="kit-item"><img src="shirt12.jpg" alt="Shirt 12"></div>
+<div class="kit-item"><img src="shirt13.jpg" alt="Shirt 13"></div>
+<div class="kit-item"><img src="shirt14.jpg" alt="Shirt 14"></div>
+<div class="kit-item"><img src="shirt15.jpg" alt="Shirt 15"></div>
+<div class="kit-item"><img src="shirt16.jpg" alt="Shirt 16"></div>
+<div class="kit-item"><img src="shirt17.jpg" alt="Shirt 17"></div>
+<div class="kit-item"><img src="shirt18.jpg" alt="Shirt 18"></div>
+<div class="kit-item"><img src="shirt19.jpg" alt="Shirt 19"></div>
+<div class="kit-item"><img src="shirt20.jpg" alt="Shirt 20"></div>
 </div>
 <button class="scroll-btn" onclick="scrollRight('shirt')">▶</button>
 </div>
 
-<!-- SHORTS SCROLL -->
+<!-- SHORTS -->
 <div class="scroll-wrapper">
 <button class="scroll-btn" onclick="scrollLeft('short')">◀</button>
 <div class="kit-container" id="short">
-    <!-- 20 shorts -->
-    <div class="kit-item"><img src="short1.jpg" alt="Short 1"></div>
-    <div class="kit-item"><img src="short2.jpg" alt="Short 2"></div>
-    <div class="kit-item"><img src="short3.jpg" alt="Short 3"></div>
-    <div class="kit-item"><img src="short4.jpg" alt="Short 4"></div>
-    <div class="kit-item"><img src="short5.jpg" alt="Short 5"></div>
-    <div class="kit-item"><img src="short6.jpg" alt="Short 6"></div>
-    <div class="kit-item"><img src="short7.jpg" alt="Short 7"></div>
-    <div class="kit-item"><img src="short8.jpg" alt="Short 8"></div>
-    <div class="kit-item"><img src="short9.jpg" alt="Short 9"></div>
-    <div class="kit-item"><img src="short10.jpg" alt="Short 10"></div>
-    <div class="kit-item"><img src="short11.jpg" alt="Short 11"></div>
-    <div class="kit-item"><img src="short12.jpg" alt="Short 12"></div>
-    <div class="kit-item"><img src="short13.jpg" alt="Short 13"></div>
-    <div class="kit-item"><img src="short14.jpg" alt="Short 14"></div>
-    <div class="kit-item"><img src="short15.jpg" alt="Short 15"></div>
-    <div class="kit-item"><img src="short16.jpg" alt="Short 16"></div>
-    <div class="kit-item"><img src="short17.jpg" alt="Short 17"></div>
-    <div class="kit-item"><img src="short18.jpg" alt="Short 18"></div>
-    <div class="kit-item"><img src="short19.jpg" alt="Short 19"></div>
-    <div class="kit-item"><img src="short20.jpg" alt="Short 20"></div>
+<!-- 20 shorts -->
+<div class="kit-item"><img src="short1.jpg" alt="Short 1"></div>
+<div class="kit-item"><img src="short2.jpg" alt="Short 2"></div>
+<div class="kit-item"><img src="short3.jpg" alt="Short 3"></div>
+<div class="kit-item"><img src="short4.jpg" alt="Short 4"></div>
+<div class="kit-item"><img src="short5.jpg" alt="Short 5"></div>
+<div class="kit-item"><img src="short6.jpg" alt="Short 6"></div>
+<div class="kit-item"><img src="short7.jpg" alt="Short 7"></div>
+<div class="kit-item"><img src="short8.jpg" alt="Short 8"></div>
+<div class="kit-item"><img src="short9.jpg" alt="Short 9"></div>
+<div class="kit-item"><img src="short10.jpg" alt="Short 10"></div>
+<div class="kit-item"><img src="short11.jpg" alt="Short 11"></div>
+<div class="kit-item"><img src="short12.jpg" alt="Short 12"></div>
+<div class="kit-item"><img src="short13.jpg" alt="Short 13"></div>
+<div class="kit-item"><img src="short14.jpg" alt="Short 14"></div>
+<div class="kit-item"><img src="short15.jpg" alt="Short 15"></div>
+<div class="kit-item"><img src="short16.jpg" alt="Short 16"></div>
+<div class="kit-item"><img src="short17.jpg" alt="Short 17"></div>
+<div class="kit-item"><img src="short18.jpg" alt="Short 18"></div>
+<div class="kit-item"><img src="short19.jpg" alt="Short 19"></div>
+<div class="kit-item"><img src="short20.jpg" alt="Short 20"></div>
 </div>
 <button class="scroll-btn" onclick="scrollRight('short')">▶</button>
 </div>
 
-<!-- BOOTS SCROLL -->
+<!-- BOOTS -->
 <div class="scroll-wrapper">
 <button class="scroll-btn" onclick="scrollLeft('boot')">◀</button>
 <div class="kit-container" id="boot">
-    <!-- 10 boots -->
-    <div class="kit-item"><img src="boot1.jpg" alt="Boot 1"></div>
-    <div class="kit-item"><img src="boot2.jpg" alt="Boot 2"></div>
-    <div class="kit-item"><img src="boot3.jpg" alt="Boot 3"></div>
-    <div class="kit-item"><img src="boot4.jpg" alt="Boot 4"></div>
-    <div class="kit-item"><img src="boot5.jpg" alt="Boot 5"></div>
-    <div class="kit-item"><img src="boot6.jpg" alt="Boot 6"></div>
-    <div class="kit-item"><img src="boot7.jpg" alt="Boot 7"></div>
-    <div class="kit-item"><img src="boot8.jpg" alt="Boot 8"></div>
-    <div class="kit-item"><img src="boot9.jpg" alt="Boot 9"></div>
-    <div class="kit-item"><img src="boot10.jpg" alt="Boot 10"></div>
+<!-- 10 boots -->
+<div class="kit-item"><img src="boot1.jpg" alt="Boot 1"></div>
+<div class="kit-item"><img src="boot2.jpg" alt="Boot 2"></div>
+<div class="kit-item"><img src="boot3.jpg" alt="Boot 3"></div>
+<div class="kit-item"><img src="boot4.jpg" alt="Boot 4"></div>
+<div class="kit-item"><img src="boot5.jpg" alt="Boot 5"></div>
+<div class="kit-item"><img src="boot6.jpg" alt="Boot 6"></div>
+<div class="kit-item"><img src="boot7.jpg" alt="Boot 7"></div>
+<div class="kit-item"><img src="boot8.jpg" alt="Boot 8"></div>
+<div class="kit-item"><img src="boot9.jpg" alt="Boot 9"></div>
+<div class="kit-item"><img src="boot10.jpg" alt="Boot 10"></div>
 </div>
 <button class="scroll-btn" onclick="scrollRight('boot')">▶</button>
 </div>
@@ -284,15 +284,38 @@ Your browser does not support video.
 </footer>
 
 <script>
+// SCROLL FUNCTION
 function scrollLeft(id){
     const container=document.getElementById(id);
     container.scrollLeft -= 220;
+    highlightCenter(id);
 }
 function scrollRight(id){
     const container=document.getElementById(id);
     container.scrollLeft += 220;
+    highlightCenter(id);
 }
-</script>
 
+// HIGHLIGHT CENTER ITEM
+function highlightCenter(id){
+    const container=document.getElementById(id);
+    const items=container.querySelectorAll('.kit-item');
+    let containerCenter=container.offsetWidth/2;
+    items.forEach(item=>item.classList.remove('active'));
+    let closest=null;
+    let closestDist=Infinity;
+    items.forEach(item=>{
+        let itemCenter=item.offsetLeft - container.scrollLeft + item.offsetWidth/2;
+        let dist=Math.abs(containerCenter-itemCenter);
+        if(dist<closestDist){closestDist=dist; closest=item;}
+    });
+    if(closest) closest.classList.add('active');
+}
+
+// INIT CENTER HIGHLIGHT
+['shirt','short','boot'].forEach(id=>{
+    highlightCenter(id);
+});
+</script>
 </body>
 </html>
