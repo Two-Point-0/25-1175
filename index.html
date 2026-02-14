@@ -7,6 +7,8 @@
 
 <style>
 
+/* ================= GENERAL STYLING ================= */
+
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
@@ -40,22 +42,55 @@ header h2 {
   line-height: 1.6;
 }
 
-/* Locker grid */
+/* ================= JERSEY SCROLL SECTION ================= */
+
+/* // CSS Scroll Feature Added
+   // Makes jerseys scroll horizontally instead of showing all at once
+   // Improves layout and user experience
+*/
+
+.scroll-buttons {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.scroll-buttons button {
+  padding: 10px 20px;
+  font-size: 18px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  background: #444;
+  color: white;
+}
+
 .locker-room {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  display: flex;
+  overflow-x: auto;
   gap: 20px;
   padding: 30px;
   background: linear-gradient(#3a3a3a, #1e1e1e);
+  scroll-behavior: smooth;
+}
+
+.locker-room::-webkit-scrollbar {
+  height: 8px;
+}
+
+.locker-room::-webkit-scrollbar-thumb {
+  background: #666;
+  border-radius: 10px;
 }
 
 .locker {
+  min-width: 220px;
+  flex-shrink: 0;
   background: #4a4a4a;
   border: 3px solid #666;
   border-radius: 8px;
   padding: 10px;
   text-align: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.6);
 }
 
 .locker img,
@@ -68,10 +103,11 @@ header h2 {
 
 .locker h3 {
   margin-top: 10px;
-  font-size: 15px;
+  font-size: 14px;
 }
 
-/* Locker Setup */
+/* ================= LOCKER SETUP ================= */
+
 .locker-setup {
   padding: 40px;
   text-align: center;
@@ -84,7 +120,8 @@ header h2 {
   border-radius: 10px;
 }
 
-/* Table */
+/* ================= TABLE ================= */
+
 table {
   width: 100%;
   max-width: 1100px;
@@ -107,7 +144,7 @@ tr:nth-child(even) {
   background: #2a2a2a;
 }
 
-.html-demo {
+.brand-message {
   padding: 40px;
   background: #111;
 }
@@ -126,103 +163,91 @@ footer {
 
 <header>
 <h1>THE LOCKER ROOM</h1>
-<h2>Your Home of Authentic Football Jerseys</h2>
+<h2>Your Home of Authentic European Football Jerseys</h2>
 </header>
 
 <section class="intro">
 <p>
-Welcome to The Locker Room — the ultimate destination for authentic European football jerseys.
-Shop official fan, player and retro editions from top clubs across Spain, England, Italy,
-Germany and France in one immersive locker room experience.
+Welcome to The Locker Room — where football passion meets authentic design.
+We bring together the top four clubs from Europe’s biggest leagues in one immersive locker room experience.
 </p>
 </section>
 
-<!-- ================= LOCKER GALLERY ================= -->
+<!-- ================= SCROLL BUTTONS ================= -->
+
+<div class="scroll-buttons">
+<button onclick="scrollLeft()">◀ Scroll Left</button>
+<button onclick="scrollRight()">Scroll Right ▶</button>
+</div>
+
+<!-- ================= JERSEY SCROLL SECTION ================= -->
 
 <section class="locker-room">
 
-<!-- Spain -->
-<div class="locker"><img src="barcelona.jpg"><h3>Barcelona – Home Kit</h3></div>
-<div class="locker"><img src="realmadrid.jpg"><h3>Real Madrid – Home Kit</h3></div>
-<div class="locker"><img src="atletico.jpg"><h3>Atlético Madrid – Home Kit</h3></div>
-<div class="locker"><img src="sevilla.jpg"><h3>Sevilla – Home Kit</h3></div>
+<div class="locker"><img src="barcelona.jpg"><h3>Barcelona</h3></div>
+<div class="locker"><img src="realmadrid.jpg"><h3>Real Madrid</h3></div>
+<div class="locker"><img src="atletico.jpg"><h3>Atlético Madrid</h3></div>
+<div class="locker"><img src="sevilla.jpg"><h3>Sevilla</h3></div>
 
-<!-- England -->
-<div class="locker"><img src="arsenal.jpg"><h3>Arsenal – Home Kit</h3></div>
-<div class="locker"><img src="manutd.jpg"><h3>Manchester United – Home Kit</h3></div>
-<div class="locker"><img src="chelsea.jpg"><h3>Chelsea – Home Kit</h3></div>
-<div class="locker"><img src="liverpool.jpg"><h3>Liverpool – Home Kit</h3></div>
+<div class="locker"><img src="arsenal.jpg"><h3>Arsenal</h3></div>
+<div class="locker"><img src="manutd.jpg"><h3>Manchester United</h3></div>
+<div class="locker"><img src="chelsea.jpg"><h3>Chelsea</h3></div>
+<div class="locker"><img src="liverpool.jpg"><h3>Liverpool</h3></div>
 
-<!-- Italy -->
-<div class="locker"><img src="acmilan.jpg"><h3>AC Milan – Home Kit</h3></div>
-<div class="locker"><img src="inter.jpg"><h3>Inter Milan – Home Kit</h3></div>
-<div class="locker"><img src="juventus.jpg"><h3>Juventus – Home Kit</h3></div>
-<div class="locker"><img src="napoli.jpg"><h3>Napoli – Home Kit</h3></div>
+<div class="locker"><img src="acmilan.jpg"><h3>AC Milan</h3></div>
+<div class="locker"><img src="inter.jpg"><h3>Inter Milan</h3></div>
+<div class="locker"><img src="juventus.jpg"><h3>Juventus</h3></div>
+<div class="locker"><img src="napoli.jpg"><h3>Napoli</h3></div>
 
-<!-- Germany -->
-<div class="locker"><img src="bayern.jpg"><h3>Bayern Munich – Home Kit</h3></div>
-<div class="locker"><img src="dortmund.jpg"><h3>Borussia Dortmund – Home Kit</h3></div>
-<div class="locker"><img src="leipzig.jpg"><h3>RB Leipzig – Home Kit</h3></div>
-<div class="locker"><img src="leverkusen.jpg"><h3>Bayer Leverkusen – Home Kit</h3></div>
+<div class="locker"><img src="bayern.jpg"><h3>Bayern Munich</h3></div>
+<div class="locker"><img src="dortmund.jpg"><h3>Borussia Dortmund</h3></div>
+<div class="locker"><img src="leipzig.jpg"><h3>RB Leipzig</h3></div>
+<div class="locker"><img src="leverkusen.jpg"><h3>Bayer Leverkusen</h3></div>
 
-<!-- France -->
-<div class="locker"><img src="psg.jpg"><h3>PSG – Home Kit</h3></div>
-<div class="locker"><img src="marseille.jpg"><h3>Marseille – Home Kit</h3></div>
-<div class="locker"><img src="monaco.jpg"><h3>Monaco – Home Kit</h3></div>
-<div class="locker"><img src="lyon.jpg"><h3>Lyon – Home Kit</h3></div>
+<div class="locker"><img src="psg.jpg"><h3>Paris Saint-Germain</h3></div>
+<div class="locker"><img src="marseille.jpg"><h3>Marseille</h3></div>
+<div class="locker"><img src="monaco.jpg"><h3>Monaco</h3></div>
+<div class="locker"><img src="lyon.jpg"><h3>Lyon</h3></div>
 
 </section>
 
 <!-- ================= LOCKER SETUP ================= -->
 
 <section class="locker-setup">
-<h2>Full Matchday Locker Setup</h2>
+<h2>Complete Matchday Locker Setup</h2>
 
 <div class="locker">
 <img src="full-kit.jpg">
-<h3>Complete Kit: Jersey, Shorts, Boots, Shin Pads</h3>
+<h3>Jersey, Shorts, Boots & Shin Pads Ready for Kickoff</h3>
 </div>
 
 <video src="lockerroom-video.mp4" autoplay loop muted controls></video>
 </section>
 
-<!-- ================= HTML DEMONSTRATION SECTION ================= -->
+<!-- ================= BRAND MESSAGE SECTION ================= -->
 
-<section class="html-demo">
+<section class="brand-message">
 
-<h1>Main Heading</h1>
-<h2>League Collections</h2>
-<h3>Premium Jerseys</h3>
-<h4>Official Merchandise</h4>
+<h2>Why Supporters Choose The Locker Room</h2>
 
-<p><b>The Locker Room proudly delivers authentic jerseys sourced directly from official club manufacturers ensuring unmatched quality durability vibrant colors stitched badges and a true matchday experience worldwide.</b></p>
+<p><b>At The Locker Room we believe every football fan deserves authentic high quality jerseys that feel just like matchday while representing passion pride loyalty and club identity across Europe.</b></p>
 
-<p><u>Our jerseys are crafted with breathable fabric for maximum comfort and performance during matches and everyday casual football wear worldwide.</u></p>
-<p><u>Every purchase guarantees officially licensed merchandise from Europe's most successful football institutions trusted by global supporters.</u></p>
+<p><u>Our collections are carefully selected from Spain England Italy Germany and France to give supporters true variety and authenticity.</u></p>
 
-<p>Champions League Winners 14<sup>th</sup> 5<sup>th</sup> 3<sup>rd</sup> 2<sup>nd</sup></p>
-<p>Material: H<sub>2</sub>O resistant CO<sub>2</sub> neutral O<sub>2</sub> active N<sub>2</sub> tested</p>
+<p><u>Each jersey is designed with breathable premium fabric ensuring comfort durability and long lasting performance during intense football moments.</u></p>
 
-<p><del>$120</del> $95</p>
-<p><del>$110</del> $90</p>
-<p><del>$100</del> $85</p>
-<p><del>$95</del> $80</p>
+<p>Champions League History: 14<sup>th</sup> Title 5<sup>th</sup> Final 3<sup>rd</sup> Triumph 2<sup>nd</sup> Consecutive</p>
 
-<p><mark>Limited Edition</mark></p>
-<p><mark>New Arrival</mark></p>
-<p><mark>Best Seller</mark></p>
-<p><mark>Exclusive Drop</mark></p>
+<p>Fabric Technology: H<sub>2</sub>O resistant CO<sub>2</sub> neutral O<sub>2</sub> active N<sub>2</sub> tested</p>
 
-<p>"This jersey feels exactly like matchday."</p>
-<p>"Outstanding quality and fast delivery."</p>
-<p>"Authentic product with premium stitching."</p>
-<p>"Highly recommended for real football fans."</p>
+<p><del>$120</del> Now $95</p>
+<p><mark>Limited Season Drop</mark></p>
 
 <blockquote>
-Football is more than a game.<br>
-It represents identity and passion.<br>
-Every jersey tells a story.<br>
-Wear your colors proudly.
+Football is not just a sport.<br>
+It is emotion stitched into fabric.<br>
+It is history written in colors.<br>
+It is loyalty worn with pride.
 </blockquote>
 
 <p>
@@ -232,9 +257,8 @@ Matchday outfits inspire players and supporters alike.<br>
 The locker room celebrates football culture globally.
 </p>
 
-<p>New season collection now available.</p>
 <hr>
-<p>Limited stock on retro classics.</p>
+<p>New season collection now available.</p>
 <hr>
 <p>Shop early before sizes sell out.</p>
 
@@ -256,24 +280,9 @@ Locker 3  |  AC Milan Kit
 <li>Checkout Securely</li>
 </ol>
 
-<ul>
-<li>Spain
-  <ul>
-    <li>Barcelona</li>
-    <li>Real Madrid</li>
-  </ul>
-</li>
-<li>England
-  <ul>
-    <li>Arsenal</li>
-    <li>Liverpool</li>
-  </ul>
-</li>
-</ul>
-
 </section>
 
-<!-- ================= 10x8 TABLE ================= -->
+<!-- ================= TABLE WITH BORDER + CAPTION + ROWSPAN ================= -->
 
 <table border="2">
 <caption>Top European Club Jersey Stock Overview</caption>
@@ -306,26 +315,36 @@ Locker 3  |  AC Milan Kit
 <td>Chelsea</td><td>Yes</td><td>No</td><td>No</td><td>Available</td><td>Available</td><td>Limited</td>
 </tr>
 
-<tr>
-<td>Serie A</td>
-<td>AC Milan</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Available</td><td>Available</td><td>Available</td>
-</tr>
-
-<tr>
-<td>Bundesliga</td>
-<td>Bayern</td><td>Yes</td><td>Yes</td><td>No</td><td>Available</td><td>Available</td><td>Limited</td>
-</tr>
-
-<tr>
-<td>Ligue 1</td>
-<td>PSG</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Available</td><td>Available</td><td>Available</td>
-</tr>
-
 </table>
 
 <footer>
 &copy; 2026 The Locker Room — All Clubs. All Jerseys.
 </footer>
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+// JavaScript Scroll Controls
+// Moves jersey section left
+
+function scrollLeft() {
+  document.querySelector('.locker-room').scrollBy({
+    left: -400,
+    behavior: 'smooth'
+  });
+}
+
+// Moves jersey section right
+
+function scrollRight() {
+  document.querySelector('.locker-room').scrollBy({
+    left: 400,
+    behavior: 'smooth'
+  });
+}
+
+</script>
 
 </body>
 </html>
