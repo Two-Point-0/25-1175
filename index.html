@@ -238,12 +238,24 @@ video {
     width: 85%;
     padding: 30px 10px;
     gap: 30px;
-    scrollbar-width: none;
+    scrollbar-width: thin;
+    scrollbar-color: var(--locker-accent) var(--locker-metal);
     scroll-snap-type: x mandatory;
 }
 
 .kit-container::-webkit-scrollbar {
-    display: none;
+    height: 8px;
+    display: block;
+}
+
+.kit-container::-webkit-scrollbar-track {
+    background: var(--locker-metal);
+    border-radius: 10px;
+}
+
+.kit-container::-webkit-scrollbar-thumb {
+    background: var(--locker-accent);
+    border-radius: 10px;
 }
 
 .scroll-progress {
@@ -275,6 +287,18 @@ video {
     filter: grayscale(80%) blur(1px);
     cursor: pointer;
     scroll-snap-align: center;
+    position: relative;
+}
+
+.kit-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 20px;
+    pointer-events: none;
 }
 
 .kit-item img {
@@ -325,6 +349,7 @@ video {
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
+    z-index: 30;
 }
 
 .scroll-btn:hover {
@@ -333,7 +358,7 @@ video {
     transform: scale(1.1);
 }
 
-/* Table - Fixed Unicode Issues */
+/* Table */
 .table-container {
     overflow-x: auto;
     margin: 60px auto;
@@ -376,7 +401,8 @@ td {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    font-size: 12px;
+    font-weight: bold;
     margin: 0 auto;
     background: var(--locker-metal);
     color: var(--locker-accent);
@@ -471,7 +497,7 @@ Your browser does not support video.
 </div>
 </section>
 
-<!-- FEATURE SHOWCASE - ALL 20 FEATURES -->
+<!-- FEATURE SHOWCASE -->
 <section class="feature-showcase">
     <h2 style="color: var(--locker-accent); text-align: center; margin-bottom: 30px;">📋 FEATURE HIGHLIGHTS - REAL PRODUCT EXAMPLES</h2>
     
@@ -600,12 +626,12 @@ Your browser does not support video.
             <ul style="margin-left: 20px;">
                 <li>🇪🇺 TOP LEAGUES
                     <ul style="margin-left: 20px;">
-                        <li>🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier: Nike, Adidas, Puma</li>
-                        <li>🇪🇸 La Liga: Nike, Adidas, Castore</li>
-                        <li>🇮🇹 Serie A: Adidas, Puma, Nike</li>
-                        <li>🇩🇪 Bundesliga: Adidas, Puma, Nike</li>
-                        <li>🇫🇷 Ligue 1: Nike/Jordan, Puma</li>
-                        <li>🌍 Others: Ajax, Porto, Celtic</li>
+                        <li>PREMIER LEAGUE: Nike, Adidas, Puma</li>
+                        <li>LA LIGA: Nike, Adidas, Castore</li>
+                        <li>SERIE A: Adidas, Puma, Nike</li>
+                        <li>BUNDESLIGA: Adidas, Puma, Nike</li>
+                        <li>LIGUE 1: Nike/Jordan, Puma</li>
+                        <li>OTHERS: Ajax, Porto, Celtic</li>
                     </ul>
                 </li>
             </ul>
@@ -645,7 +671,7 @@ Your browser does not support video.
 </div>
 </section>
 
-<!-- BOOTS GALLERY -->
+<!-- BOOTS GALLERY - FIXED FOR LAST IMAGE SELECTION -->
 <section class="kit-gallery">
 <h2 style="color: var(--locker-accent); font-size: 2.5em;">👟 BOOTS COLLECTION 2026</h2>
 <p style="color: var(--team-silver); margin-bottom: 20px;">⚡ All adidas: F50 (Messi/Yamal) vs Predator (Pedri/Bellingham)</p>
@@ -657,13 +683,16 @@ Your browser does not support video.
 <div class="kit-item"><img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=300&h=300&fit=crop" alt="Adidas F50 Yamal"><div class="kit-label">⚡ F50 Chaos - Yamal</div></div>
 <div class="kit-item"><img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=300&h=300&fit=crop" alt="Adidas Predator Bellingham"><div class="kit-label">🎯 Predator - Bellingham</div></div>
 <div class="kit-item"><img src="https://images.unsplash.com/photo-1605348532760-5703dab5f6e5?w=300&h=300&fit=crop" alt="Adidas Copa"><div class="kit-label">👑 Copa Pure 3</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4ac?w=300&h=300&fit=crop" alt="Adidas X Speedflow"><div class="kit-label">⚡ X Speedflow - Mbappe</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4ad?w=300&h=300&fit=crop" alt="Nike Mercurial"><div class="kit-label">⚡ Mercurial - Haaland</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4ae?w=300&h=300&fit=crop" alt="Puma Ultra"><div class="kit-label">🚀 Ultra - Neymar</div></div>
 </div>
 <button class="scroll-btn" onclick="scrollKit('next','kit2')">→</button>
 <div class="scroll-progress" id="progress2"><div class="scroll-progress-bar" id="progressBar2"></div></div>
 </div>
 </section>
 
-<!-- MAIN TABLE - 20 TEAMS WITH BADGES (Features 17-20) -->
+<!-- MAIN TABLE - 20 TEAMS WITH BADGES -->
 <div class="table-container">
 <table>
 <caption>🏆 TOP 20 EUROPEAN CLUBS - 2026 SEASON PREVIEW</caption>
@@ -728,34 +757,57 @@ Your browser does not support video.
 function scrollKit(direction, containerId) {
     const container = document.getElementById(containerId);
     const items = container.querySelectorAll('.kit-item');
-    const containerWidth = container.offsetWidth;
     
+    // Find current active index
     let currentIndex = 0;
     items.forEach((item, idx) => {
-        if (item.classList.contains('active')) currentIndex = idx;
+        if (item.classList.contains('active')) {
+            currentIndex = idx;
+        }
     });
     
+    // Calculate new index
     if (direction === 'next') {
         currentIndex = Math.min(currentIndex + 1, items.length - 1);
     } else if (direction === 'prev') {
         currentIndex = Math.max(currentIndex - 1, 0);
     }
     
+    // Update active class
     items.forEach((item, idx) => {
         item.classList.toggle('active', idx === currentIndex);
     });
     
+    // Calculate scroll position to center the active item
     const activeItem = items[currentIndex];
-    const scrollLeft = activeItem.offsetLeft - (containerWidth / 2) + (activeItem.offsetWidth / 2);
+    const containerWidth = container.offsetWidth;
+    const itemWidth = activeItem.offsetWidth;
+    const itemOffset = activeItem.offsetLeft;
     
-    container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+    // Calculate the scroll position that centers the item
+    let scrollLeft = itemOffset - (containerWidth / 2) + (itemWidth / 2);
+    
+    // Ensure we don't scroll beyond boundaries
+    const maxScroll = container.scrollWidth - containerWidth;
+    scrollLeft = Math.max(0, Math.min(scrollLeft, maxScroll));
+    
+    // Smooth scroll to position
+    container.scrollTo({
+        left: scrollLeft,
+        behavior: 'smooth'
+    });
     
     // Update progress bar
+    updateProgressBar(container, containerId);
+}
+
+function updateProgressBar(container, containerId) {
     const progressId = 'progressBar' + containerId.slice(-1);
     const progressBar = document.getElementById(progressId);
     if (progressBar) {
+        const scrollLeft = container.scrollLeft;
         const maxScroll = container.scrollWidth - container.clientWidth;
-        const percent = maxScroll > 0 ? (container.scrollLeft / maxScroll) * 100 : 0;
+        const percent = maxScroll > 0 ? (scrollLeft / maxScroll) * 100 : 0;
         progressBar.style.width = percent + '%';
     }
 }
@@ -766,22 +818,26 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.kit-container').forEach((container, index) => {
         const items = container.querySelectorAll('.kit-item');
         if (items.length > 0) {
+            // Remove any existing active classes
             items.forEach(item => item.classList.remove('active'));
+            
+            // Set first item as active
             items[0].classList.add('active');
             
+            // Center the first item
             const containerWidth = container.offsetWidth;
-            const scrollLeft = items[0].offsetLeft - (containerWidth / 2) + (items[0].offsetWidth / 2);
+            const itemWidth = items[0].offsetWidth;
+            const itemOffset = items[0].offsetLeft;
+            
+            let scrollLeft = itemOffset - (containerWidth / 2) + (itemWidth / 2);
+            const maxScroll = container.scrollWidth - containerWidth;
+            scrollLeft = Math.max(0, Math.min(scrollLeft, maxScroll));
+            
             container.scrollLeft = scrollLeft;
             
             // Initialize progress bar
             setTimeout(() => {
-                const progressId = 'progressBar' + (index + 1);
-                const progressBar = document.getElementById(progressId);
-                if (progressBar) {
-                    const maxScroll = container.scrollWidth - container.clientWidth;
-                    const percent = maxScroll > 0 ? (container.scrollLeft / maxScroll) * 100 : 0;
-                    progressBar.style.width = percent + '%';
-                }
+                updateProgressBar(container, 'kit' + (index + 1));
             }, 100);
         }
     });
@@ -793,24 +849,35 @@ document.addEventListener('DOMContentLoaded', function() {
             const items = container.querySelectorAll('.kit-item');
             const containerId = container.id;
             
+            // Find index of clicked item
+            let clickedIndex = 0;
+            items.forEach((itm, idx) => {
+                if (itm === this) clickedIndex = idx;
+            });
+            
+            // Update active class
             items.forEach(i => i.classList.remove('active'));
             this.classList.add('active');
             
+            // Calculate scroll position to center clicked item
             const containerWidth = container.offsetWidth;
-            const scrollLeft = this.offsetLeft - (containerWidth / 2) + (this.offsetWidth / 2);
+            const itemWidth = this.offsetWidth;
+            const itemOffset = this.offsetLeft;
             
-            container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+            let scrollLeft = itemOffset - (containerWidth / 2) + (itemWidth / 2);
+            const maxScroll = container.scrollWidth - containerWidth;
+            scrollLeft = Math.max(0, Math.min(scrollLeft, maxScroll));
             
-            // Update progress bar
-            const progressId = 'progressBar' + containerId.slice(-1);
-            const progressBar = document.getElementById(progressId);
-            if (progressBar) {
-                const maxScroll = container.scrollWidth - container.clientWidth;
-                const percent = maxScroll > 0 ? (scrollLeft / maxScroll) * 100 : 0;
-                setTimeout(() => {
-                    progressBar.style.width = percent + '%';
-                }, 300);
-            }
+            // Smooth scroll to position
+            container.scrollTo({
+                left: scrollLeft,
+                behavior: 'smooth'
+            });
+            
+            // Update progress bar after scroll
+            setTimeout(() => {
+                updateProgressBar(container, containerId);
+            }, 300);
         });
     });
     
@@ -839,13 +906,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             // Update progress bar
-            const progressId = 'progressBar' + (index + 1);
-            const progressBar = document.getElementById(progressId);
-            if (progressBar) {
-                const maxScroll = this.scrollWidth - this.clientWidth;
-                const percent = maxScroll > 0 ? (this.scrollLeft / maxScroll) * 100 : 0;
-                progressBar.style.width = percent + '%';
-            }
+            updateProgressBar(this, 'kit' + (index + 1));
         });
     });
 });
