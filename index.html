@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Locker Room Jersey Store</title>
+<title>The Locker Room</title>
 
 <style>
 
@@ -35,89 +35,85 @@ header h2 {
 }
 
 .intro {
-  max-width: 1000px;
+  max-width: 900px;
   margin: auto;
   padding: 20px;
   text-align: center;
   line-height: 1.6;
 }
 
-/* ================= JERSEY SCROLL SECTION ================= */
+/* ================= FULL KIT SCROLL SYSTEM ================= */
 
-/* // CSS Scroll Feature Added
-   // Makes jerseys scroll horizontally instead of showing all at once
-   // Improves layout and user experience
-*/
-
-.scroll-buttons {
-  text-align: center;
-  margin-top: 10px;
+.kit-row {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
 }
 
-.scroll-buttons button {
-  padding: 10px 20px;
+.kit-row::-webkit-scrollbar {
+  display: none;
+}
+
+.kit-item {
+  min-width: 180px;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.kit-item img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #333;
+}
+
+.scroll-controls {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.scroll-controls button {
+  padding: 8px 18px;
   font-size: 18px;
   margin: 5px;
   cursor: pointer;
-  border-radius: 5px;
-  border: none;
   background: #444;
   color: white;
-}
-
-.locker-room {
-  display: flex;
-  overflow-x: auto;
-  gap: 20px;
-  padding: 30px;
-  background: linear-gradient(#3a3a3a, #1e1e1e);
-  scroll-behavior: smooth;
-}
-
-.locker-room::-webkit-scrollbar {
-  height: 8px;
-}
-
-.locker-room::-webkit-scrollbar-thumb {
-  background: #666;
-  border-radius: 10px;
-}
-
-.locker {
-  min-width: 220px;
-  flex-shrink: 0;
-  background: #4a4a4a;
-  border: 3px solid #666;
-  border-radius: 8px;
-  padding: 10px;
-  text-align: center;
-}
-
-.locker img,
-.locker video {
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
+  border: none;
   border-radius: 5px;
 }
 
-.locker h3 {
-  margin-top: 10px;
-  font-size: 14px;
-}
+/* ================= SUPPORTER SECTION ================= */
 
-/* ================= LOCKER SETUP ================= */
-
-.locker-setup {
-  padding: 40px;
+.brand-message {
+  padding: 60px 20px;
+  background: #111;
   text-align: center;
-  background: #1a1a1a;
 }
 
-.locker-setup video {
-  width: 70%;
-  margin-top: 20px;
-  border-radius: 10px;
+.brand-message h2 {
+  margin-bottom: 30px;
+  font-size: 28px;
+}
+
+.brand-message p,
+.brand-message blockquote,
+.brand-message ul,
+.brand-message ol,
+.brand-message pre {
+  max-width: 800px;
+  margin: 15px auto;
+  line-height: 1.7;
+}
+
+.brand-message blockquote {
+  font-style: italic;
+  border-left: 4px solid #555;
+  padding-left: 20px;
 }
 
 /* ================= TABLE ================= */
@@ -144,11 +140,6 @@ tr:nth-child(even) {
   background: #2a2a2a;
 }
 
-.brand-message {
-  padding: 40px;
-  background: #111;
-}
-
 footer {
   text-align: center;
   padding: 20px;
@@ -168,80 +159,83 @@ footer {
 
 <section class="intro">
 <p>
-Welcome to The Locker Room — where football passion meets authentic design.
-We bring together the top four clubs from Europe’s biggest leagues in one immersive locker room experience.
+Experience matchday passion with authentic shirts, shorts and boots from Europe’s biggest clubs.
+Scroll through complete kit combinations just like a real professional locker setup.
 </p>
 </section>
 
-<!-- ================= SCROLL BUTTONS ================= -->
+<!-- ================= SHIRTS ================= -->
 
-<div class="scroll-buttons">
-<button onclick="scrollLeft()">◀ Scroll Left</button>
-<button onclick="scrollRight()">Scroll Right ▶</button>
+<div class="scroll-controls">
+<button onclick="scrollRow('shirts', -1)">◀</button>
+<button onclick="scrollRow('shirts', 1)">▶</button>
 </div>
 
-<!-- ================= JERSEY SCROLL SECTION ================= -->
+<section class="kit-row" id="shirts">
 
-<section class="locker-room">
+<div class="kit-item"><img src="barcelona-shirt.jpg"><p>Barcelona Shirt</p></div>
+<div class="kit-item"><img src="realmadrid-shirt.jpg"><p>Real Madrid Shirt</p></div>
+<div class="kit-item"><img src="arsenal-shirt.jpg"><p>Arsenal Shirt</p></div>
+<div class="kit-item"><img src="chelsea-shirt.jpg"><p>Chelsea Shirt</p></div>
+<div class="kit-item"><img src="acmilan-shirt.jpg"><p>AC Milan Shirt</p></div>
 
-<div class="locker"><img src="barcelona.jpg"><h3>Barcelona</h3></div>
-<div class="locker"><img src="realmadrid.jpg"><h3>Real Madrid</h3></div>
-<div class="locker"><img src="atletico.jpg"><h3>Atlético Madrid</h3></div>
-<div class="locker"><img src="sevilla.jpg"><h3>Sevilla</h3></div>
-
-<div class="locker"><img src="arsenal.jpg"><h3>Arsenal</h3></div>
-<div class="locker"><img src="manutd.jpg"><h3>Manchester United</h3></div>
-<div class="locker"><img src="chelsea.jpg"><h3>Chelsea</h3></div>
-<div class="locker"><img src="liverpool.jpg"><h3>Liverpool</h3></div>
-
-<div class="locker"><img src="acmilan.jpg"><h3>AC Milan</h3></div>
-<div class="locker"><img src="inter.jpg"><h3>Inter Milan</h3></div>
-<div class="locker"><img src="juventus.jpg"><h3>Juventus</h3></div>
-<div class="locker"><img src="napoli.jpg"><h3>Napoli</h3></div>
-
-<div class="locker"><img src="bayern.jpg"><h3>Bayern Munich</h3></div>
-<div class="locker"><img src="dortmund.jpg"><h3>Borussia Dortmund</h3></div>
-<div class="locker"><img src="leipzig.jpg"><h3>RB Leipzig</h3></div>
-<div class="locker"><img src="leverkusen.jpg"><h3>Bayer Leverkusen</h3></div>
-
-<div class="locker"><img src="psg.jpg"><h3>Paris Saint-Germain</h3></div>
-<div class="locker"><img src="marseille.jpg"><h3>Marseille</h3></div>
-<div class="locker"><img src="monaco.jpg"><h3>Monaco</h3></div>
-<div class="locker"><img src="lyon.jpg"><h3>Lyon</h3></div>
+<!-- Hidden until scroll -->
+<div class="kit-item"><img src="bayern-shirt.jpg"><p>Bayern Shirt</p></div>
+<div class="kit-item"><img src="psg-shirt.jpg"><p>PSG Shirt</p></div>
 
 </section>
 
-<!-- ================= LOCKER SETUP ================= -->
+<!-- ================= SHORTS ================= -->
 
-<section class="locker-setup">
-<h2>Complete Matchday Locker Setup</h2>
-
-<div class="locker">
-<img src="full-kit.jpg">
-<h3>Jersey, Shorts, Boots & Shin Pads Ready for Kickoff</h3>
+<div class="scroll-controls">
+<button onclick="scrollRow('shorts', -1)">◀</button>
+<button onclick="scrollRow('shorts', 1)">▶</button>
 </div>
 
-<video src="lockerroom-video.mp4" autoplay loop muted controls></video>
+<section class="kit-row" id="shorts">
+
+<div class="kit-item"><img src="barcelona-shorts.jpg"><p>Barcelona Shorts</p></div>
+<div class="kit-item"><img src="realmadrid-shorts.jpg"><p>Real Madrid Shorts</p></div>
+<div class="kit-item"><img src="arsenal-shorts.jpg"><p>Arsenal Shorts</p></div>
+<div class="kit-item"><img src="chelsea-shorts.jpg"><p>Chelsea Shorts</p></div>
+<div class="kit-item"><img src="acmilan-shorts.jpg"><p>AC Milan Shorts</p></div>
+
+<div class="kit-item"><img src="bayern-shorts.jpg"><p>Bayern Shorts</p></div>
+<div class="kit-item"><img src="psg-shorts.jpg"><p>PSG Shorts</p></div>
+
 </section>
 
-<!-- ================= BRAND MESSAGE SECTION ================= -->
+<!-- ================= BOOTS ================= -->
+
+<div class="scroll-controls">
+<button onclick="scrollRow('boots', -1)">◀</button>
+<button onclick="scrollRow('boots', 1)">▶</button>
+</div>
+
+<section class="kit-row" id="boots">
+
+<div class="kit-item"><img src="barcelona-boots.jpg"><p>Barcelona Boots</p></div>
+<div class="kit-item"><img src="realmadrid-boots.jpg"><p>Real Madrid Boots</p></div>
+<div class="kit-item"><img src="arsenal-boots.jpg"><p>Arsenal Boots</p></div>
+<div class="kit-item"><img src="chelsea-boots.jpg"><p>Chelsea Boots</p></div>
+<div class="kit-item"><img src="acmilan-boots.jpg"><p>AC Milan Boots</p></div>
+
+<div class="kit-item"><img src="bayern-boots.jpg"><p>Bayern Boots</p></div>
+<div class="kit-item"><img src="psg-boots.jpg"><p>PSG Boots</p></div>
+
+</section>
+
+<!-- ================= SUPPORTER SECTION ================= -->
 
 <section class="brand-message">
 
 <h2>Why Supporters Choose The Locker Room</h2>
 
-<p><b>At The Locker Room we believe every football fan deserves authentic high quality jerseys that feel just like matchday while representing passion pride loyalty and club identity across Europe.</b></p>
+<p><b>At The Locker Room we believe every football fan deserves authentic high quality kits that feel exactly like matchday while representing pride loyalty identity and passion across Europe.</b></p>
 
-<p><u>Our collections are carefully selected from Spain England Italy Germany and France to give supporters true variety and authenticity.</u></p>
+<p><u>Our collections are carefully selected from Spain England Italy Germany and France to give supporters genuine variety and trusted authenticity.</u></p>
 
-<p><u>Each jersey is designed with breathable premium fabric ensuring comfort durability and long lasting performance during intense football moments.</u></p>
-
-<p>Champions League History: 14<sup>th</sup> Title 5<sup>th</sup> Final 3<sup>rd</sup> Triumph 2<sup>nd</sup> Consecutive</p>
-
-<p>Fabric Technology: H<sub>2</sub>O resistant CO<sub>2</sub> neutral O<sub>2</sub> active N<sub>2</sub> tested</p>
-
-<p><del>$120</del> Now $95</p>
-<p><mark>Limited Season Drop</mark></p>
+<p><u>Each item is built with premium breathable fabric designed for comfort durability and performance throughout every football season.</u></p>
 
 <blockquote>
 Football is not just a sport.<br>
@@ -250,39 +244,9 @@ It is history written in colors.<br>
 It is loyalty worn with pride.
 </blockquote>
 
-<p>
-Football connects millions across continents daily.<br>
-Authentic jerseys symbolize pride and loyalty everywhere.<br>
-Matchday outfits inspire players and supporters alike.<br>
-The locker room celebrates football culture globally.
-</p>
-
-<hr>
-<p>New season collection now available.</p>
-<hr>
-<p>Shop early before sizes sell out.</p>
-
-<pre>
-Locker 1  |  Barcelona Kit
-Locker 2  |  Arsenal Kit
-Locker 3  |  AC Milan Kit
-</pre>
-
-<ul>
-<li>Authentic Jerseys</li>
-<li>Player Versions</li>
-<li>Retro Classics</li>
-</ul>
-
-<ol>
-<li>Select Club</li>
-<li>Choose Version</li>
-<li>Checkout Securely</li>
-</ol>
-
 </section>
 
-<!-- ================= TABLE WITH BORDER + CAPTION + ROWSPAN ================= -->
+<!-- ================= TABLE ================= -->
 
 <table border="2">
 <caption>Top European Club Jersey Stock Overview</caption>
@@ -325,21 +289,16 @@ Locker 3  |  AC Milan Kit
 
 <script>
 
-// JavaScript Scroll Controls
-// Moves jersey section left
+/* Scroll System
+   direction = -1 (left)
+   direction = 1 (right)
+*/
 
-function scrollLeft() {
-  document.querySelector('.locker-room').scrollBy({
-    left: -400,
-    behavior: 'smooth'
-  });
-}
-
-// Moves jersey section right
-
-function scrollRight() {
-  document.querySelector('.locker-room').scrollBy({
-    left: 400,
+function scrollRow(id, direction) {
+  const container = document.getElementById(id);
+  const itemWidth = container.querySelector('.kit-item').offsetWidth + 20;
+  container.scrollBy({
+    left: direction * itemWidth * 5,
     behavior: 'smooth'
   });
 }
