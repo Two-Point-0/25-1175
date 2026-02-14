@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Locker-Room | Top European Jerseys</title>
+<title>The Locker-Room | European Kits</title>
 
 <style>
 body{
     margin:0;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     background:#111;
     color:white;
 }
@@ -24,7 +24,8 @@ h1,h2,h3,h4{ text-align:center; margin:10px 0; }
     display:flex;
     justify-content:center;
     align-items:center;
-    gap:20px;
+    flex-direction:column;
+    gap:15px;
     margin:20px auto;
     position:relative;
 }
@@ -91,7 +92,6 @@ footer{
 }
 </style>
 </head>
-
 <body>
 
 <header>
@@ -117,10 +117,10 @@ Your browser does not support video.
 
 <!-- BOLD AND UNDERLINE -->
 <div class="kit-section">
-<b>The Locker-Room proudly delivers authentic, premium football kits from Europe's top five leagues ensuring comfort, style, and elite performance standards for passionate fans worldwide.</b>
+<b>The Locker-Room proudly delivers authentic football kits for Europe’s top leagues ensuring style, comfort, and official quality standards for passionate fans worldwide today and always.</b>
 <br><br>
-<u>We stock official jerseys from the most competitive leagues in Europe ensuring fans access authentic, premium matchday apparel every season.</u><br>
-<u>Our platform guarantees secure payments, fast delivery services, and exceptional customer satisfaction across all regions and football communities worldwide.</u>
+<u>We provide official kits for top teams in each league guaranteeing premium quality and perfect fit for every fan celebrating matchday traditions.</u><br>
+<u>Our secure online store ensures fast delivery and exceptional customer service making kit shopping simple, safe, and enjoyable for every football enthusiast.</u>
 </div>
 
 <!-- SUPERSCRIPT -->
@@ -205,6 +205,8 @@ Authentic Football Culture
 <li>Premier League</li>
 <li>La Liga</li>
 <li>Serie A</li>
+<li>Bundesliga</li>
+<li>Ligue 1</li>
 </ul>
 
 <ol>
@@ -269,9 +271,9 @@ Authentic Football Culture
 <button class="scroll-btn" onclick="prevKit()">◀</button>
 
 <div class="kit-display">
-<img id="shirt" src="shirt1.jpg">
-<img id="short" src="short1.jpg">
-<img id="boot" src="boot1.jpg">
+<img id="shirt" src="shirt1.jpg" alt="Shirt">
+<img id="short" src="short1.jpg" alt="Shorts">
+<img id="boot" src="boot1.jpg" alt="Boots">
 </div>
 
 <button class="scroll-btn" onclick="nextKit()">▶</button>
@@ -306,7 +308,8 @@ Authentic Football Culture
 <tr>
 <th>League</th><th>Team</th><th>Country</th><th>Titles</th><th>Founded</th><th>Stadium</th><th>Coach</th><th>Status</th>
 </tr>
-<tr><td rowspan="5">Premier League</td><td>Manchester City</td><td>England</td><td>9</td><td>1880</td><td>Etihad</td><td>Pep</td><td>Active</td></tr>
+
+<tr><td rowspan="5">Premier League</td><td>Manchester City</td><td>England</td><td>9</td><td>1880</td><td>Etihad</td><td>Pep Guardiola</td><td>Active</td></tr>
 <tr><td>Arsenal</td><td>England</td><td>13</td><td>1886</td><td>Emirates</td><td>Arteta</td><td>Active</td></tr>
 <tr><td>Liverpool</td><td>England</td><td>19</td><td>1892</td><td>Anfield</td><td>Klopp</td><td>Active</td></tr>
 <tr><td>Chelsea</td><td>England</td><td>6</td><td>1905</td><td>Stamford Bridge</td><td>Tuchel</td><td>Active</td></tr>
@@ -314,9 +317,27 @@ Authentic Football Culture
 
 <tr><td rowspan="5">La Liga</td><td>Barcelona</td><td>Spain</td><td>27</td><td>1899</td><td>Camp Nou</td><td>Xavi</td><td>Active</td></tr>
 <tr><td>Real Madrid</td><td>Spain</td><td>35</td><td>1902</td><td>Bernabeu</td><td>Ancelotti</td><td>Active</td></tr>
-<tr><td>Atletico Madrid</td><td>Spain</td><td>11</td><td>1903</td><td>Wanda</td><td>Diego Simeone</td><td>Active</td></tr>
+<tr><td>Atletico Madrid</td><td>Spain</td><td>11</td><td>1903</td><td>Wanda Metropolitano</td><td>Simeone</td><td>Active</td></tr>
 <tr><td>Sevilla</td><td>Spain</td><td>5</td><td>1890</td><td>Ramon Sanchez</td><td>Lopetegui</td><td>Active</td></tr>
-<tr><td>Valencia</td><td>Spain</td><td>6</td><td>1919</td><td>Mestalla</td><td>Gennaro Gattuso</td><td>Active</td></tr>
+<tr><td>Valencia</td><td>Spain</td><td>6</td><td>1919</td><td>Mestalla</td><td>Gattuso</td><td>Active</td></tr>
+
+<tr><td rowspan="5">Serie A</td><td>Juventus</td><td>Italy</td><td>36</td><td>1897</td><td>Allianz</td><td>Allegri</td><td>Active</td></tr>
+<tr><td>AC Milan</td><td>Italy</td><td>18</td><td>1899</td><td>San Siro</td><td>Pioli</td><td>Active</td></tr>
+<tr><td>Inter Milan</td><td>Italy</td><td>19</td><td>1908</td><td>San Siro</td><td>Inzaghi</td><td>Active</td></tr>
+<tr><td>Napoli</td><td>Italy</td><td>3</td><td>1926</td><td>Diego Armando Maradona</td><td>Spalletti</td><td>Active</td></tr>
+<tr><td>Roma</td><td>Italy</td><td>3</td><td>1927</td><td>Olimpico</td><td>Mourinho</td><td>Active</td></tr>
+
+<tr><td rowspan="5">Bundesliga</td><td>Bayern Munich</td><td>Germany</td><td>32</td><td>1900</td><td>Allianz Arena</td><td>Nagelsmann</td><td>Active</td></tr>
+<tr><td>Dortmund</td><td>Germany</td><td>8</td><td>1909</td><td>Signal Iduna Park</td><td>Terzic</td><td>Active</td></tr>
+<tr><td>Leipzig</td><td>Germany</td><td>0</td><td>2009</td><td>Red Bull Arena</td><td>Tedesco</td><td>Active</td></tr>
+<tr><td>Schalke</td><td>Germany</td><td>7</td><td>1904</td><td>Veltins Arena</td><td>Frank Kramer</td><td>Active</td></tr>
+<tr><td>Bayer Leverkusen</td><td>Germany</td><td>1</td><td>1904</td><td>Bayer Arena</td><td>Gerardo Seoane</td><td>Active</td></tr>
+
+<tr><td rowspan="5">Ligue 1</td><td>PSG</td><td>France</td><td>11</td><td>1970</td><td>Parc des Princes</td><td>Galtier</td><td>Active</td></tr>
+<tr><td>Lyon</td><td>France</td><td>7</td><td>1950</td><td>Groupama Stadium</td><td>Paquetá</td><td>Active</td></tr>
+<tr><td>Marseille</td><td>France</td><td>9</td><td>1899</td><td>Vélodrome</td><td>Sampaoli</td><td>Active</td></tr>
+<tr><td>Monaco</td><td>France</td><td>8</td><td>1924</td><td>Stade Louis II</td><td>Marsiglia</td><td>Active</td></tr>
+<tr><td>Lille</td><td>France</td><td>4</td><td>1944</td><td>Stade Pierre-Mauroy</td><td>Galtier</td><td>Active</td></tr>
 </table>
 </div>
 
@@ -326,20 +347,23 @@ Authentic Football Culture
 
 <script>
 let index = 1;
-function nextKit(){ index++; if(index>5) index=1;
-document.getElementById("shirt").src="shirt"+index+".jpg";
-document.getElementById("short").src="short"+index+".jpg";
-document.getElementById("boot").src="boot"+index+".jpg";}
-function prevKit(){ index--; if(index<1) index=5;
-document.getElementById("shirt").src="shirt"+index+".jpg";
-document.getElementById("short").src="short"+index+".jpg";
-document.getElementById("boot").src="boot"+index+".jpg";}
+function nextKit(){ 
+    index++; if(index>25) index=1;
+    document.getElementById("shirt").src="shirt"+index+".jpg";
+    document.getElementById("short").src="short"+index+".jpg";
+    document.getElementById("boot").src="boot"+index+".jpg";
+}
+function prevKit(){ 
+    index--; if(index<1) index=25;
+    document.getElementById("shirt").src="shirt"+index+".jpg";
+    document.getElementById("short").src="short"+index+".jpg";
+    document.getElementById("boot").src="boot"+index+".jpg";
+}
 function scrollBoots(direction){
-const container=document.getElementById("bootsContainer");
-container.scrollLeft += direction*220;
+    const container=document.getElementById("bootsContainer");
+    container.scrollLeft += direction*220;
 }
 </script>
 
 </body>
 </html>
-
