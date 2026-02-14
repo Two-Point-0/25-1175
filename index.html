@@ -12,33 +12,105 @@ body {
     color: white;
     text-align: center;
 }
-header { background: #000; padding: 30px 10px; text-align: center; }
-h1,h2,h3,h4 { margin: 10px 0; text-align: center; }
+header {
+    background: #000;
+    padding: 30px 10px;
+    text-align: center;
+}
+h1,h2,h3,h4 {
+    margin: 10px 0;
+}
 
 /* SCROLLABLE KIT SECTIONS */
-.kit-gallery { width: 95%; margin: 40px auto; text-align: center; }
-.scroll-wrapper { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 25px; }
-.kit-container { display: flex; overflow-x: scroll; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; width: 90%; padding: 10px 0; scroll-snap-type: x mandatory; }
-.kit-item { flex: 0 0 auto; width: 160px; margin: 0 5px; text-align: center; scroll-snap-align: center; transition: transform 0.3s, box-shadow 0.3s; }
-.kit-item img { width: 160px; border-radius: 10px; }
-.kit-item.active { transform: scale(1.1); box-shadow: 0 5px 15px rgba(255,255,255,0.7); }
-.scroll-btn { background: #222; color: white; border: none; padding: 12px; cursor: pointer; font-size: 22px; border-radius: 5px; height: 180px; }
+.kit-gallery {
+    width: 95%;
+    margin: 40px auto;
+    text-align: center;
+}
+.scroll-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+.kit-container {
+    display: flex;
+    overflow: hidden;
+    width: 90%;
+    padding: 10px 0;
+    justify-content: center;
+}
+.kit-item {
+    flex: 0 0 auto;
+    width: 160px;
+    margin: 0 5px;
+    text-align: center;
+    opacity: 0.3;
+    transform: scale(0.9);
+    transition: transform 0.3s, opacity 0.3s, box-shadow 0.3s;
+}
+.kit-item img {
+    width: 160px;
+    border-radius: 10px;
+}
+.kit-item.active {
+    opacity: 1;
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(255,255,255,0.7);
+}
+.scroll-btn {
+    background: #222;
+    color: white;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    border-radius: 5px;
+    height: 180px;
+}
 
 /* TABLE */
-table { width: 95%; border-collapse: collapse; margin: 50px auto; text-align: center; }
-table, th, td { border: 2px solid white; padding: 10px; text-align: center; }
+table {
+    width: 95%;
+    border-collapse: collapse;
+    margin: 50px auto;
+    text-align: center;
+}
+table, th, td {
+    border: 2px solid white;
+    padding: 10px;
+    text-align: center;
+}
 
 /* FOOTER */
-footer { background: #000; text-align: center; padding: 25px; margin-top: 50px; }
+footer {
+    background: #000;
+    text-align: center;
+    padding: 25px;
+    margin-top: 50px;
+}
 
 /* TEXT STYLING */
 .bold-text { font-weight: bold; }
 .underline-text { text-decoration: underline; }
 mark { background: orange; color: black; }
-blockquote { border-left: 5px solid #555; padding-left: 15px; margin: 25px auto; max-width: 900px; }
-pre { background: #222; padding: 15px; white-space: pre-wrap; text-align: left; margin: auto; }
+blockquote {
+    border-left: 5px solid #555;
+    padding-left: 15px;
+    margin: 25px auto;
+    max-width: 900px;
+}
+pre {
+    background: #222;
+    padding: 15px;
+    white-space: pre-wrap;
+    text-align: left;
+    margin: auto;
+}
 ul, ol { margin-left: 40px; text-align: left; display: inline-block; }
-section { margin: 30px 0; text-align: center; }
+
+/* VIDEO */
 video { margin: 20px auto; display: block; border-radius: 10px; }
 
 /* RESPONSIVE */
@@ -55,10 +127,10 @@ video { margin: 20px auto; display: block; border-radius: 10px; }
 <body>
 
 <header>
-<h1>The Locker-Room</h1> <!-- //1. Heading 1 -->
-<h2>Top European Football Kits</h2> <!-- //1. Heading 2 -->
-<h3>Shirts, Shorts, and Boots</h3> <!-- //1. Heading 3 -->
-<h4>Interactive Kit Viewer</h4> <!-- //1. Heading 4 -->
+<h1>The Locker-Room</h1> <!-- Heading 1 -->
+<h2>Top European Football Kits</h2> <!-- Heading 2 -->
+<h3>Shirts, Shorts, and Boots</h3> <!-- Heading 3 -->
+<h4>Interactive Kit Viewer</h4> <!-- Heading 4 -->
 </header>
 
 <!-- VIDEO -->
@@ -71,39 +143,39 @@ Your browser does not support video.
 
 <!-- 20 HTML FEATURES IMPLEMENTED -->
 <section>
-<p class="bold-text">//2. Bold sentence: This sentence demonstrates bold styling on the web page.</p>
+<p class="bold-text">This bold sentence demonstrates important styling that stands out on the web page for users.</p>
+<p class="underline-text">This underlined sentence is emphasized and easy to notice for all visitors viewing the website.</p>
+<p class="underline-text">Second underlined sentence highlights key details that enhance clarity and visual interest on page.</p>
 
-<p class="underline-text">//3. Underlined sentence: Underlined sentences help emphasize important information for the user.</p>
-<p class="underline-text">//3. Second underlined sentence: Use underlines sparingly for clarity and readability on modern web pages.</p>
+<p>Superscript example: Messi<sup>1</sup>, Ronaldo<sup>2</sup>, Lewandowski<sup>3</sup>, Haaland<sup>4</sup></p>
+<p>Subscript example: H<sub>2</sub>O, CO<sub>2</sub>, Na<sub>3</sub>PO<sub>4</sub>, C<sub>6</sub>H<sub>12</sub>O<sub>6</sub></p>
 
-<p>//4. Superscripts example: Messi<sup>1</sup>, Ronaldo<sup>2</sup>, Lewandowski<sup>3</sup>, Haaland<sup>4</sup></p>
-<p>//5. Subscripts example: H<sub>2</sub>O, CO<sub>2</sub>, Na<sub>3</sub>PO<sub>4</sub>, C<sub>6</sub>H<sub>12</sub>O<sub>6</sub></p>
+<p>Deleted text example: <del>Old Price $120</del>, <del>Outdated Kit</del>, <del>Previous Design</del>, <del>Last Season Boot</del></p>
 
-<p>//6. Deleted text example: <del>Old Price $120</del>, <del>Last Season Boot</del>, <del>Outdated Kit</del>, <del>Previous Design</del></p>
+<p>Marked text example: <mark>Limited Offer!</mark>, <mark>New Release!</mark>, <mark>Top Seller!</mark>, <mark>Exclusive Edition!</mark></p>
 
-<p>//7. Marked text example: <mark>Limited Offer!</mark>, <mark>New Release!</mark>, <mark>Top Seller!</mark>, <mark>Exclusive Edition!</mark></p>
-
-<p>//8. Speech marks example: "Football is life!", "Support your team!", "Wear the kit with pride!", "Every fan matters!"</p>
+<p>Speech marks example: "Football is life!", "Support your team!", "Wear the kit with pride!", "Every fan matters!"</p>
 
 <blockquote>
-//9. Blockquote example lines:<br>
 Football unites fans worldwide.<br>
 Kits symbolize passion and identity.<br>
 Fans feel part of the team.<br>
 Authentic merchandise enhances experience.
 </blockquote>
 
-<p>//11. Line breaks example:<br>
+<p>Line breaks example:<br>
 Every match excites fans globally.<br>
 Top clubs deliver iconic kits.<br>
 Fans enjoy shorts and boots.<br>
 Merchandise completes full kit experience.</p>
 
 <hr>
-//12. HR demonstration: Check our kit updates.<br>Latest designs available.<br>Shop top clubs today.<hr>
+Check our kit updates.<br>
+Latest designs available.<br>
+Shop top clubs today.
+<hr>
 
 <pre>
-//13. PRE demonstration:
 Best selling kits 2026:
 1. Manchester City Home
 2. Barcelona Away
@@ -111,21 +183,18 @@ Best selling kits 2026:
 </pre>
 
 <ul>
-//14. Unordered list example:
 <li>Shirts Collection</li>
 <li>Shorts Collection</li>
 <li>Boots Collection</li>
 </ul>
 
 <ol>
-//15. Ordered list example:
 <li>Browse Kits</li>
 <li>Select Size</li>
 <li>Purchase Securely</li>
 </ol>
 
 <ul>
-//16. Nested list example:
 <li>Leagues
     <ul>
         <li>Premier League: Manchester City, Arsenal</li>
@@ -219,29 +288,18 @@ function scrollKit(direction, containerId){
     items.forEach((item,idx)=>{if(item.classList.contains('active')) currentIndex=idx;});
     if(direction==='next') currentIndex=Math.min(currentIndex+1,items.length-1);
     if(direction==='prev') currentIndex=Math.max(currentIndex-1,0);
-    if(direction==='snap') currentIndex=currentIndex; 
-    let itemWidth=items[0].offsetWidth+10;
-    container.scrollTo({left:currentIndex*itemWidth,behavior:'smooth'});
+    if(direction==='snap') currentIndex=currentIndex;
     items.forEach((item,idx)=>item.classList.toggle('active',idx===currentIndex));
+    let scrollAmount=(items[currentIndex].offsetLeft + items[currentIndex].offsetWidth/2) - container.offsetWidth/2;
+    container.scrollTo({left: scrollAmount, behavior:'smooth'});
 }
+
+// Initialize first item as active
 document.querySelectorAll('.kit-container').forEach(container=>{
     const items=container.querySelectorAll('.kit-item');
     items[0].classList.add('active');
-    let startX,scrollLeftStart;
-    container.addEventListener('touchstart', e=>{
-        startX=e.touches[0].pageX;
-        scrollLeftStart=container.scrollLeft;
-    });
-    container.addEventListener('touchmove', e=>{
-        let dx=startX-e.touches[0].pageX;
-        container.scrollLeft=scrollLeftStart+dx;
-    });
-    container.addEventListener('touchend', ()=>{
-        let itemWidth=items[0].offsetWidth+10;
-        let currentIndex=Math.round(container.scrollLeft/itemWidth);
-        scrollKit('snap',container.id);
-    });
 });
 </script>
+
 </body>
 </html>
