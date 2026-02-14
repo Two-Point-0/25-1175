@@ -115,10 +115,10 @@ h4 {
     margin: 20px 0;
 }
 
-.headings-demo h1 { font-size: 2em; margin: 5px 0; }
-.headings-demo h2 { font-size: 1.6em; margin: 5px 0; }
-.headings-demo h3 { font-size: 1.3em; margin: 5px 0; }
-.headings-demo h4 { font-size: 1.1em; margin: 5px 0; }
+.headings-demo h1 { font-size: 2em; margin: 5px 0; color: var(--locker-accent); }
+.headings-demo h2 { font-size: 1.6em; margin: 5px 0; color: var(--locker-light); }
+.headings-demo h3 { font-size: 1.3em; margin: 5px 0; color: var(--team-silver); }
+.headings-demo h4 { font-size: 1.1em; margin: 5px 0; color: var(--team-bronze); }
 
 /* Text Styling */
 .bold-feature {
@@ -210,7 +210,7 @@ video {
     margin-bottom: 10px;
 }
 
-/* Kit Gallery */
+/* Kit Gallery - 20 ITEMS */
 .kit-gallery {
     width: 100%;
     margin: 60px auto;
@@ -279,10 +279,12 @@ video {
 
 .kit-item img {
     width: 100%;
-    height: auto;
+    height: 300px;
+    object-fit: cover;
     border-radius: 20px;
     box-shadow: 0 15px 30px rgba(0,0,0,0.7);
     border: 2px solid transparent;
+    background: linear-gradient(145deg, #2a353f, #1a222a);
 }
 
 .kit-item .kit-label {
@@ -331,7 +333,7 @@ video {
     transform: scale(1.1);
 }
 
-/* Table - UPDATED FOR 20 TEAMS WITH IMAGES */
+/* Table - Fixed Unicode Issues */
 .table-container {
     overflow-x: auto;
     margin: 60px auto;
@@ -367,23 +369,23 @@ td {
     vertical-align: middle;
 }
 
-.team-cell {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    justify-content: flex-start;
-}
-
-.team-logo {
-    width: 30px;
-    height: 30px;
+.team-badge {
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    background: var(--locker-accent);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    font-size: 20px;
+    margin: 0 auto;
+    background: var(--locker-metal);
+    color: var(--locker-accent);
+    border: 2px solid var(--locker-accent);
+}
+
+.team-name {
+    font-weight: 600;
+    color: var(--locker-light);
 }
 
 caption {
@@ -419,13 +421,14 @@ footer::before {
 @media (max-width: 900px) {
     h1 { font-size: 2.5em; }
     .kit-item { width: 200px; }
+    .kit-item img { height: 250px; }
     .scroll-btn { height: 50px; width: 50px; font-size: 20px; }
 }
 
 @media (max-width: 600px) {
     h1 { font-size: 2em; }
     .kit-item { width: 160px; }
-    .team-cell { flex-direction: column; gap: 5px; }
+    .kit-item img { height: 200px; }
 }
 </style>
 </head>
@@ -468,7 +471,7 @@ Your browser does not support video.
 </div>
 </section>
 
-<!-- FEATURE SHOWCASE - ALL 20 FEATURES (TABLE FEATURE CARD REMOVED) -->
+<!-- FEATURE SHOWCASE - ALL 20 FEATURES -->
 <section class="feature-showcase">
     <h2 style="color: var(--locker-accent); text-align: center; margin-bottom: 30px;">📋 FEATURE HIGHLIGHTS - REAL PRODUCT EXAMPLES</h2>
     
@@ -478,7 +481,7 @@ Your browser does not support video.
             <div class="feature-title">1. HEADINGS (H1-H4)</div>
             <div class="headings-demo">
                 <h1 style="font-size: 1.8em;">Barcelona 125th Anniversary</h1>
-                <h2 style="font-size: 1.5em;">Real Madrid Galácticos 2026</h2>
+                <h2 style="font-size: 1.5em;">Real Madrid Galacticos 2026</h2>
                 <h3 style="font-size: 1.2em;">Liverpool Legends Collection</h3>
                 <h4 style="font-size: 1em;">PSG x Jordan Limited Edition</h4>
             </div>
@@ -493,7 +496,7 @@ Your browser does not support video.
         <!-- Underlined Sentences (3) -->
         <div class="feature-card">
             <div class="feature-title">3. UNDERLINED SENTENCES (2x 30+ words)</div>
-            <div class="underline-feature">🇪🇸 La Liga 2026: Real Madrid's all-white Galácticos collection includes Jude Bellingham's #5, Vini Jr.'s #7, and special UEFA Champions League 15th title patches - €139 with free printing.</div>
+            <div class="underline-feature">🇪🇸 La Liga 2026: Real Madrid's all-white Galacticos collection includes Jude Bellingham's #5, Vini Jr.'s #7, and special UEFA Champions League 15th title patches - €139 with free printing.</div>
             <div class="underline-feature" style="margin-top: 10px;">🇮🇹 Serie A: Juventus 'Made in Turin' collection features authentic Scudetto badges, while AC Milan's 'Rossoneri' legacy kits include retro 1980s inspired collar designs and special edition packaging.</div>
         </div>
 
@@ -529,7 +532,7 @@ Your browser does not support video.
             <div class="feature-title">8. PLAYER QUOTES</div>
             <div class="quote-feature">"The F50s give me the chaos to change any game" - Lionel Messi</div>
             <div class="quote-feature">"Complete control with every pass and shot" - Pedri</div>
-            <div class="quote-feature">"Football is about creating beautiful chaos" - Lamine Yamal </div>
+            <div class="quote-feature">"Football is about creating beautiful chaos" - Lamine Yamal</div>
             <div class="quote-feature">"Representing 25 million Italians in these boots" - Gianluigi Donnarumma</div>
         </div>
 
@@ -543,8 +546,6 @@ Your browser does not support video.
                 🎯 Precision printing: Names never crack or fade
             </blockquote>
         </div>
-
-        <!-- Footer (10) - Shown at bottom of page -->
 
         <!-- Line Breaks (11) -->
         <div class="feature-card">
@@ -568,7 +569,7 @@ Your browser does not support video.
             <pre style="background: #1a1e24; padding: 10px; border-radius: 5px; font-size: 0.9em;">
 2026 BEST-SELLERS:
 1. Barcelona 125th Anniv. - 250k units
-2. Real Madrid Galácticos - 200k units
+2. Real Madrid Galacticos - 200k units
 3. Liverpool Legends - 180k units
             </pre>
         </div>
@@ -612,18 +613,32 @@ Your browser does not support video.
     </div>
 </section>
 
-<!-- KIT GALLERY -->
+<!-- SHIRTS & SHORTS GALLERY - 20 IMAGES -->
 <section class="kit-gallery">
-<h2 style="color: var(--locker-accent); font-size: 2.5em;">👕 SHIRTS & SHORTS 2026</h2>
+<h2 style="color: var(--locker-accent); font-size: 2.5em;">👕 SHIRTS & SHORTS 2026 - 20 TOP CLUBS</h2>
 <div class="scroll-wrapper">
 <button class="scroll-btn" onclick="scrollKit('prev','kit1')">←</button>
 <div class="kit-container" id="kit1">
-<div class="kit-item"><img src="https://images.unsplash.com/photo-1575361204480-a03a5da4cef0?w=300&h=400&fit=crop" alt="Barcelona"><div class="kit-label">🇪🇸 Barcelona Home 2026</div></div>
-<div class="kit-item"><img src="https://images.unsplash.com/photo-1589487391730-58f20eb2c308?w=300&h=400&fit=crop" alt="Real Madrid"><div class="kit-label">🇪🇸 Real Madrid Away 2026</div></div>
-<div class="kit-item"><img src="https://images.unsplash.com/photo-1517466797938-89bf2e88f947?w=300&h=400&fit=crop" alt="Liverpool"><div class="kit-label">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Liverpool Home 2026</div></div>
-<div class="kit-item"><img src="https://images.unsplash.com/photo-1589308072279-1e6e6c6b9c0d?w=300&h=400&fit=crop" alt="Man City"><div class="kit-label">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Man City Home 2026</div></div>
-<div class="kit-item"><img src="https://images.unsplash.com/photo-1589307004173-3c952e08e0b3?w=300&h=400&fit=crop" alt="PSG"><div class="kit-label">🇫🇷 PSG Home 2026</div></div>
-<div class="kit-item"><img src="https://images.unsplash.com/photo-1589308465863-5f8e4d1c6d0b?w=300&h=400&fit=crop" alt="Juventus"><div class="kit-label">🇮🇹 Juventus Home 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05be?w=300&h=300&fit=crop" alt="Barcelona"><div class="kit-label">🇪🇸 Barcelona Home 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bf?w=300&h=300&fit=crop" alt="Real Madrid"><div class="kit-label">🇪🇸 Real Madrid Home 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bg?w=300&h=300&fit=crop" alt="Liverpool"><div class="kit-label">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Liverpool Home 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bh?w=300&h=300&fit=crop" alt="Man City"><div class="kit-label">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Man City Home 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bi?w=300&h=300&fit=crop" alt="Arsenal"><div class="kit-label">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Arsenal Home 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bj?w=300&h=300&fit=crop" alt="Chelsea"><div class="kit-label">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Chelsea Home 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bk?w=300&h=300&fit=crop" alt="PSG"><div class="kit-label">🇫🇷 PSG Home 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bl?w=300&h=300&fit=crop" alt="Juventus"><div class="kit-label">🇮🇹 Juventus Home 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bm?w=300&h=300&fit=crop" alt="AC Milan"><div class="kit-label">🇮🇹 AC Milan Home 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bn?w=300&h=300&fit=crop" alt="Inter Milan"><div class="kit-label">🇮🇹 Inter Milan Home 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bo?w=300&h=300&fit=crop" alt="Napoli"><div class="kit-label">🇮🇹 Napoli Home 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bp?w=300&h=300&fit=crop" alt="Bayern Munich"><div class="kit-label">🇩🇪 Bayern Munich Home 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bq?w=300&h=300&fit=crop" alt="Dortmund"><div class="kit-label">🇩🇪 Dortmund Home 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05br?w=300&h=300&fit=crop" alt="RB Leipzig"><div class="kit-label">🇩🇪 RB Leipzig Home 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bs?w=300&h=300&fit=crop" alt="Leverkusen"><div class="kit-label">🇩🇪 Leverkusen Home 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bt?w=300&h=300&fit=crop" alt="Atletico Madrid"><div class="kit-label">🇪🇸 Atletico Madrid Home 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bu?w=300&h=300&fit=crop" alt="Sevilla"><div class="kit-label">🇪🇸 Sevilla Home 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bv?w=300&h=300&fit=crop" alt="Marseille"><div class="kit-label">🇫🇷 Marseille Home 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bw?w=300&h=300&fit=crop" alt="Lyon"><div class="kit-label">🇫🇷 Lyon Home 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bx?w=300&h=300&fit=crop" alt="Monaco"><div class="kit-label">🇫🇷 Monaco Home 2026</div></div>
 </div>
 <button class="scroll-btn" onclick="scrollKit('next','kit1')">→</button>
 <div class="scroll-progress" id="progress1"><div class="scroll-progress-bar" id="progressBar1"></div></div>
@@ -633,13 +648,13 @@ Your browser does not support video.
 <!-- BOOTS GALLERY -->
 <section class="kit-gallery">
 <h2 style="color: var(--locker-accent); font-size: 2.5em;">👟 BOOTS COLLECTION 2026</h2>
-<p style="color: var(--team-silver); margin-bottom: 20px;">⚡ All adidas: F50 (Messi/Yamal) vs Predator (Pedri/Bellingham) </p>
+<p style="color: var(--team-silver); margin-bottom: 20px;">⚡ All adidas: F50 (Messi/Yamal) vs Predator (Pedri/Bellingham)</p>
 <div class="scroll-wrapper">
 <button class="scroll-btn" onclick="scrollKit('prev','kit2')">←</button>
 <div class="kit-container" id="kit2">
 <div class="kit-item"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&h=300&fit=crop" alt="Adidas F50 Messi"><div class="kit-label">👑 F50 Elite - Messi</div></div>
 <div class="kit-item"><img src="https://images.unsplash.com/photo-1511886929837-354d827890c8?w=300&h=300&fit=crop" alt="Adidas Predator Pedri"><div class="kit-label">🎯 Predator 30 - Pedri</div></div>
-<div class="kit-item"><img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=300&h=300&fit=crop" alt="Adidas F50 Yamal"><div class="kit-label">⚡ F50 "Chaos" - Yamal</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=300&h=300&fit=crop" alt="Adidas F50 Yamal"><div class="kit-label">⚡ F50 Chaos - Yamal</div></div>
 <div class="kit-item"><img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=300&h=300&fit=crop" alt="Adidas Predator Bellingham"><div class="kit-label">🎯 Predator - Bellingham</div></div>
 <div class="kit-item"><img src="https://images.unsplash.com/photo-1605348532760-5703dab5f6e5?w=300&h=300&fit=crop" alt="Adidas Copa"><div class="kit-label">👑 Copa Pure 3</div></div>
 </div>
@@ -648,13 +663,14 @@ Your browser does not support video.
 </div>
 </section>
 
-<!-- MAIN TABLE - 20 TEAMS WITH IMAGES (Features 17-20) -->
+<!-- MAIN TABLE - 20 TEAMS WITH BADGES (Features 17-20) -->
 <div class="table-container">
 <table>
 <caption>🏆 TOP 20 EUROPEAN CLUBS - 2026 SEASON PREVIEW</caption>
 <tr>
     <th>League</th>
-    <th colspan="2">Team</th>
+    <th>Badge</th>
+    <th>Team</th>
     <th>Kit Supplier</th>
     <th>Founded</th>
     <th>Stadium</th>
@@ -663,40 +679,40 @@ Your browser does not support video.
     <th>Kit Price</th>
 </tr>
 
-<!-- PREMIER LEAGUE - TOP 4 -->
-<tr><td rowspan="4">🏴󠁧󠁢󠁥󠁮󠁧󠁿 PREMIER LEAGUE</td>
-    <td class="team-logo">🔵</td><td>Manchester City</td><td>Puma</td><td>1880</td><td>Etihad (53k)</td><td>Haaland</td><td>Nike</td><td>€119</td></tr>
-<tr><td class="team-logo">🔴</td><td>Arsenal</td><td>Adidas</td><td>1886</td><td>Emirates (60k)</td><td>Saka</td><td>Adidas</td><td>€115</td></tr>
-<tr><td class="team-logo">🔴</td><td>Liverpool</td><td>Nike</td><td>1892</td><td>Anfield (61k)</td><td>Salah</td><td>Adidas</td><td>€125</td></tr>
-<tr><td class="team-logo">🔵</td><td>Chelsea</td><td>Nike</td><td>1905</td><td>Stamford Bridge (40k)</td><td>Palmer</td><td>Nike</td><td>€115</td></tr>
+<!-- PREMIER LEAGUE - 4 TEAMS -->
+<tr><td rowspan="4">PREMIER LEAGUE</td>
+    <td><div class="team-badge">MC</div></td><td class="team-name">Manchester City</td><td>Puma</td><td>1880</td><td>Etihad (53k)</td><td>Haaland</td><td>Nike</td><td>€119</td></tr>
+<tr><td><div class="team-badge">ARS</div></td><td class="team-name">Arsenal</td><td>Adidas</td><td>1886</td><td>Emirates (60k)</td><td>Saka</td><td>Adidas</td><td>€115</td></tr>
+<tr><td><div class="team-badge">LIV</div></td><td class="team-name">Liverpool</td><td>Nike</td><td>1892</td><td>Anfield (61k)</td><td>Salah</td><td>Adidas</td><td>€125</td></tr>
+<tr><td><div class="team-badge">CHE</div></td><td class="team-name">Chelsea</td><td>Nike</td><td>1905</td><td>Stamford Bridge (40k)</td><td>Palmer</td><td>Nike</td><td>€115</td></tr>
 
-<!-- LA LIGA - TOP 4 -->
-<tr><td rowspan="4">🇪🇸 LA LIGA</td>
-    <td class="team-logo">🔵🔴</td><td>Barcelona</td><td>Nike</td><td>1899</td><td>Camp Nou (99k)</td><td>Pedri</td><td>Adidas</td><td>€129</td></tr>
-<tr><td class="team-logo">⚪</td><td>Real Madrid</td><td>Adidas</td><td>1902</td><td>Bernabeu (85k)</td><td>Bellingham</td><td>Adidas</td><td>€139</td></tr>
-<tr><td class="team-logo">🔴⚪</td><td>Atletico Madrid</td><td>Nike</td><td>1903</td><td>Metropolitano (68k)</td><td>Griezmann</td><td>Puma</td><td>€115</td></tr>
-<tr><td class="team-logo">⚪🔴</td><td>Sevilla</td><td>Castore</td><td>1890</td><td>Sanchez Pizjuan (43k)</td><td>Ocampos</td><td>Nike</td><td>€105</td></tr>
+<!-- LA LIGA - 4 TEAMS -->
+<tr><td rowspan="4">LA LIGA</td>
+    <td><div class="team-badge">FCB</div></td><td class="team-name">Barcelona</td><td>Nike</td><td>1899</td><td>Camp Nou (99k)</td><td>Pedri</td><td>Adidas</td><td>€129</td></tr>
+<tr><td><div class="team-badge">RM</div></td><td class="team-name">Real Madrid</td><td>Adidas</td><td>1902</td><td>Bernabeu (85k)</td><td>Bellingham</td><td>Adidas</td><td>€139</td></tr>
+<tr><td><div class="team-badge">ATM</div></td><td class="team-name">Atletico Madrid</td><td>Nike</td><td>1903</td><td>Metropolitano (68k)</td><td>Griezmann</td><td>Puma</td><td>€115</td></tr>
+<tr><td><div class="team-badge">SEV</div></td><td class="team-name">Sevilla</td><td>Castore</td><td>1890</td><td>Sanchez Pizjuan (43k)</td><td>Ocampos</td><td>Nike</td><td>€105</td></tr>
 
-<!-- SERIE A - TOP 4 -->
-<tr><td rowspan="4">🇮🇹 SERIE A</td>
-    <td class="team-logo">⚫⚪</td><td>Juventus</td><td>Adidas</td><td>1897</td><td>Allianz (41k)</td><td>Chiesa</td><td>Nike</td><td>€119</td></tr>
-<tr><td class="team-logo">🔴⚫</td><td>AC Milan</td><td>Puma</td><td>1899</td><td>San Siro (75k)</td><td>Leao</td><td>Puma</td><td>€119</td></tr>
-<tr><td class="team-logo">🔵⚫</td><td>Inter Milan</td><td>Nike</td><td>1908</td><td>San Siro (75k)</td><td>Lautaro</td><td>Nike</td><td>€115</td></tr>
-<tr><td class="team-logo">🔵</td><td>Napoli</td><td>EA7</td><td>1926</td><td>Diego Maradona (54k)</td><td>Kvara</td><td>Adidas</td><td>€109</td></tr>
+<!-- SERIE A - 4 TEAMS -->
+<tr><td rowspan="4">SERIE A</td>
+    <td><div class="team-badge">JUV</div></td><td class="team-name">Juventus</td><td>Adidas</td><td>1897</td><td>Allianz (41k)</td><td>Chiesa</td><td>Nike</td><td>€119</td></tr>
+<tr><td><div class="team-badge">ACM</div></td><td class="team-name">AC Milan</td><td>Puma</td><td>1899</td><td>San Siro (75k)</td><td>Leao</td><td>Puma</td><td>€119</td></tr>
+<tr><td><div class="team-badge">INT</div></td><td class="team-name">Inter Milan</td><td>Nike</td><td>1908</td><td>San Siro (75k)</td><td>Lautaro</td><td>Nike</td><td>€115</td></tr>
+<tr><td><div class="team-badge">NAP</div></td><td class="team-name">Napoli</td><td>EA7</td><td>1926</td><td>Diego Maradona (54k)</td><td>Kvara</td><td>Adidas</td><td>€109</td></tr>
 
-<!-- BUNDESLIGA - TOP 4 -->
-<tr><td rowspan="4">🇩🇪 BUNDESLIGA</td>
-    <td class="team-logo">🔴</td><td>Bayern Munich</td><td>Adidas</td><td>1900</td><td>Allianz Arena (75k)</td><td>Kane</td><td>Adidas</td><td>€129</td></tr>
-<tr><td class="team-logo">🟡⚫</td><td>Borussia Dortmund</td><td>Puma</td><td>1909</td><td>Signal Iduna (81k)</td><td>Reus</td><td>Puma</td><td>€115</td></tr>
-<tr><td class="team-logo">🔴⚪</td><td>RB Leipzig</td><td>Nike</td><td>2009</td><td>Red Bull Arena (47k)</td><td>Openda</td><td>Nike</td><td>€109</td></tr>
-<tr><td class="team-logo">🔴⚫</td><td>Bayer Leverkusen</td><td>Castore</td><td>1904</td><td>BayArena (30k)</td><td>Wirtz</td><td>Adidas</td><td>€105</td></tr>
+<!-- BUNDESLIGA - 4 TEAMS -->
+<tr><td rowspan="4">BUNDESLIGA</td>
+    <td><div class="team-badge">FCB</div></td><td class="team-name">Bayern Munich</td><td>Adidas</td><td>1900</td><td>Allianz Arena (75k)</td><td>Kane</td><td>Adidas</td><td>€129</td></tr>
+<tr><td><div class="team-badge">BVB</div></td><td class="team-name">Borussia Dortmund</td><td>Puma</td><td>1909</td><td>Signal Iduna (81k)</td><td>Reus</td><td>Puma</td><td>€115</td></tr>
+<tr><td><div class="team-badge">RBL</div></td><td class="team-name">RB Leipzig</td><td>Nike</td><td>2009</td><td>Red Bull Arena (47k)</td><td>Openda</td><td>Nike</td><td>€109</td></tr>
+<tr><td><div class="team-badge">B04</div></td><td class="team-name">Bayer Leverkusen</td><td>Castore</td><td>1904</td><td>BayArena (30k)</td><td>Wirtz</td><td>Adidas</td><td>€105</td></tr>
 
-<!-- LIGUE 1 - TOP 4 -->
-<tr><td rowspan="4">🇫🇷 LIGUE 1</td>
-    <td class="team-logo">🔵🔴</td><td>Paris Saint-Germain</td><td>Nike/Jordan</td><td>1970</td><td>Parc des Princes (48k)</td><td>Mbappé</td><td>Nike</td><td>€139</td></tr>
-<tr><td class="team-logo">⚪🔵</td><td>Olympique Marseille</td><td>Puma</td><td>1899</td><td>Vélodrome (67k)</td><td>Aubameyang</td><td>Puma</td><td>€109</td></tr>
-<tr><td class="team-logo">🔵🔴</td><td>Olympique Lyon</td><td>Adidas</td><td>1950</td><td>Groupama (59k)</td><td>Lacazette</td><td>Adidas</td><td>€105</td></tr>
-<tr><td class="team-logo">🔴⚪</td><td>AS Monaco</td><td>Kappa</td><td>1924</td><td>Louis II (18k)</td><td>Ben Yedder</td><td>Nike</td><td>€99</td></tr>
+<!-- LIGUE 1 - 4 TEAMS -->
+<tr><td rowspan="4">LIGUE 1</td>
+    <td><div class="team-badge">PSG</div></td><td class="team-name">Paris Saint-Germain</td><td>Nike/Jordan</td><td>1970</td><td>Parc des Princes (48k)</td><td>Mbappe</td><td>Nike</td><td>€139</td></tr>
+<tr><td><div class="team-badge">OM</div></td><td class="team-name">Olympique Marseille</td><td>Puma</td><td>1899</td><td>Velodrome (67k)</td><td>Aubameyang</td><td>Puma</td><td>€109</td></tr>
+<tr><td><div class="team-badge">OL</div></td><td class="team-name">Olympique Lyon</td><td>Adidas</td><td>1950</td><td>Groupama (59k)</td><td>Lacazette</td><td>Adidas</td><td>€105</td></tr>
+<tr><td><div class="team-badge">ASM</div></td><td class="team-name">AS Monaco</td><td>Kappa</td><td>1924</td><td>Louis II (18k)</td><td>Ben Yedder</td><td>Nike</td><td>€99</td></tr>
 </table>
 </div>
 
@@ -739,28 +755,43 @@ function scrollKit(direction, containerId) {
     const progressBar = document.getElementById(progressId);
     if (progressBar) {
         const maxScroll = container.scrollWidth - container.clientWidth;
-        const percent = (container.scrollLeft / maxScroll) * 100;
+        const percent = maxScroll > 0 ? (container.scrollLeft / maxScroll) * 100 : 0;
         progressBar.style.width = percent + '%';
     }
 }
 
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize kit containers
     document.querySelectorAll('.kit-container').forEach((container, index) => {
         const items = container.querySelectorAll('.kit-item');
         if (items.length > 0) {
+            items.forEach(item => item.classList.remove('active'));
             items[0].classList.add('active');
+            
             const containerWidth = container.offsetWidth;
             const scrollLeft = items[0].offsetLeft - (containerWidth / 2) + (items[0].offsetWidth / 2);
             container.scrollLeft = scrollLeft;
+            
+            // Initialize progress bar
+            setTimeout(() => {
+                const progressId = 'progressBar' + (index + 1);
+                const progressBar = document.getElementById(progressId);
+                if (progressBar) {
+                    const maxScroll = container.scrollWidth - container.clientWidth;
+                    const percent = maxScroll > 0 ? (container.scrollLeft / maxScroll) * 100 : 0;
+                    progressBar.style.width = percent + '%';
+                }
+            }, 100);
         }
     });
     
-    // Click handlers
+    // Click handlers for kit items
     document.querySelectorAll('.kit-item').forEach(item => {
         item.addEventListener('click', function() {
             const container = this.closest('.kit-container');
             const items = container.querySelectorAll('.kit-item');
+            const containerId = container.id;
             
             items.forEach(i => i.classList.remove('active'));
             this.classList.add('active');
@@ -769,6 +800,52 @@ document.addEventListener('DOMContentLoaded', function() {
             const scrollLeft = this.offsetLeft - (containerWidth / 2) + (this.offsetWidth / 2);
             
             container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+            
+            // Update progress bar
+            const progressId = 'progressBar' + containerId.slice(-1);
+            const progressBar = document.getElementById(progressId);
+            if (progressBar) {
+                const maxScroll = container.scrollWidth - container.clientWidth;
+                const percent = maxScroll > 0 ? (scrollLeft / maxScroll) * 100 : 0;
+                setTimeout(() => {
+                    progressBar.style.width = percent + '%';
+                }, 300);
+            }
+        });
+    });
+    
+    // Update active item on scroll
+    document.querySelectorAll('.kit-container').forEach((container, index) => {
+        container.addEventListener('scroll', function() {
+            const items = this.querySelectorAll('.kit-item');
+            const containerCenter = this.scrollLeft + (this.offsetWidth / 2);
+            
+            let closestItem = null;
+            let closestDistance = Infinity;
+            
+            items.forEach(item => {
+                const itemCenter = item.offsetLeft + (item.offsetWidth / 2);
+                const distance = Math.abs(itemCenter - containerCenter);
+                
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    closestItem = item;
+                }
+            });
+            
+            if (closestItem) {
+                items.forEach(item => item.classList.remove('active'));
+                closestItem.classList.add('active');
+            }
+            
+            // Update progress bar
+            const progressId = 'progressBar' + (index + 1);
+            const progressBar = document.getElementById(progressId);
+            if (progressBar) {
+                const maxScroll = this.scrollWidth - this.clientWidth;
+                const percent = maxScroll > 0 ? (this.scrollLeft / maxScroll) * 100 : 0;
+                progressBar.style.width = percent + '%';
+            }
         });
     });
 });
