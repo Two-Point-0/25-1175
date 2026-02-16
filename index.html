@@ -179,7 +179,7 @@ video {
     display: block;
 }
 
-/* Product Cards */
+/* Product Cards - UPDATED with unique memorabilia */
 .product-showcase {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -209,11 +209,21 @@ video {
     color: var(--locker-accent);
     margin-bottom: 10px;
 }
+.rare-badge {
+    background: var(--team-gold);
+    color: #000;
+    padding: 4px 8px;
+    border-radius: 30px;
+    font-size: 0.8em;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 8px;
+}
 
-/* Kit Gallery - 20 ITEMS */
+/* Kit Galleries - SEPARATE SHIRTS & SHORTS, NO PROGRESS BARS */
 .kit-gallery {
     width: 100%;
-    margin: 60px auto;
+    margin: 40px auto;
     text-align: center;
     background: linear-gradient(180deg, var(--locker-floor) 0%, #1f2a36 100%);
     padding: 50px 20px;
@@ -226,7 +236,7 @@ video {
     align-items: center;
     justify-content: center;
     gap: 20px;
-    margin: 40px auto;
+    margin: 30px auto;
     max-width: 1400px;
     position: relative;
 }
@@ -236,15 +246,16 @@ video {
     overflow-x: auto;
     scroll-behavior: smooth;
     width: 85%;
-    padding: 30px 10px;
+    padding: 20px 10px;
     gap: 30px;
     scrollbar-width: thin;
     scrollbar-color: var(--locker-accent) var(--locker-metal);
     scroll-snap-type: x mandatory;
+    -ms-overflow-style: auto;
 }
 
 .kit-container::-webkit-scrollbar {
-    height: 8px;
+    height: 6px;
     display: block;
 }
 
@@ -258,23 +269,9 @@ video {
     border-radius: 10px;
 }
 
-.scroll-progress {
-    position: absolute;
-    bottom: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    height: 4px;
-    background: rgba(255,255,255,0.1);
-    border-radius: 4px;
-    overflow: hidden;
-}
-
-.scroll-progress-bar {
-    height: 100%;
-    background: linear-gradient(90deg, var(--locker-accent), var(--team-gold));
-    border-radius: 4px;
-    transition: width 0.3s ease;
+/* Remove the scroll progress bar entirely */
+.scroll-progress, .scroll-progress-bar {
+    display: none;
 }
 
 .kit-item {
@@ -423,7 +420,7 @@ caption {
     letter-spacing: 2px;
 }
 
-/* Footer */
+/* Footer - Kenyan style */
 footer {
     background: linear-gradient(0deg, #0a0e12 0%, #1a222a 100%);
     text-align: center;
@@ -434,7 +431,7 @@ footer {
 }
 
 footer::before {
-    content: "⚽ 🏆 ⚽";
+    content: "⚽ 🇰🇪 ⚽";
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -475,29 +472,32 @@ Your browser does not support video.
 </video>
 </div>
 
-<!-- PRODUCT CARDS -->
+<!-- PRODUCT CARDS - UPDATED with iconic memorabilia -->
 <section class="product-showcase">
 <div class="product-card">
-    <h3>👑 Adidas F50 Elite</h3>
-    <p>Lionel Messi - Chaos Edition</p>
-    <p style="color: var(--locker-accent); font-size: 1.5em;">€299</p>
-    <small>Limited Stock: 47 pairs left</small>
+    <span class="rare-badge">🔴 UNIQUE · 2009 UCL FINAL</span>
+    <h3>👕 Messi Signed Shirt</h3>
+    <p>Barcelona 2-0 Man Utd • Rome 2009</p>
+    <p style="color: var(--locker-accent); font-size: 1.5em;">€4,999</p>
+    <small>Match-worn style • COA included</small>
 </div>
 <div class="product-card">
-    <h3>🎯 Adidas Predator 30</h3>
-    <p>Pedri - Control Master</p>
-    <p style="color: var(--locker-accent); font-size: 1.5em;">€279</p>
-    <small>Pre-order: Ships March 2026</small>
+    <span class="rare-badge">🔵 ICONIC · 2024 EL CLÁSICO</span>
+    <h3>👟 Pedri Signed Boot</h3>
+    <p>Right boot • 92' winner at Bernabéu</p>
+    <p style="color: var(--locker-accent); font-size: 1.5em;">€1,899</p>
+    <small>Adidas Predator • autographed + photo</small>
 </div>
 <div class="product-card">
-    <h3>⚡ Adidas F50 "Chaos"</h3>
-    <p>Lamine Yamal - Speed Demon</p>
-    <p style="color: var(--locker-accent); font-size: 1.5em;">€289</p>
-    <small>Exclusive: 100 pairs worldwide</small>
+    <span class="rare-badge">⚡ HISTORIC 4–0, 4–1, 4–2, 4–0</span>
+    <h3>🃏 Lamine Yamal Card Set</h3>
+    <p>2024/25 season • 4 wins over Madrid</p>
+    <p style="color: var(--locker-accent); font-size: 1.5em;">€899</p>
+    <small>Gold refractor set + rookie #304</small>
 </div>
 </section>
 
-<!-- FEATURE SHOWCASE -->
+<!-- FEATURE SHOWCASE (unchanged except content) -->
 <section class="feature-showcase">
     <h2 style="color: var(--locker-accent); text-align: center; margin-bottom: 30px;">📋 FEATURE HIGHLIGHTS - REAL PRODUCT EXAMPLES</h2>
     
@@ -639,12 +639,12 @@ Your browser does not support video.
     </div>
 </section>
 
-<!-- SHIRTS & SHORTS GALLERY - 20 IMAGES -->
+<!-- SHIRTS GALLERY - SEPARATE (20 ITEMS) -->
 <section class="kit-gallery">
-<h2 style="color: var(--locker-accent); font-size: 2.5em;">👕 SHIRTS & SHORTS 2026 - 20 TOP CLUBS</h2>
+<h2 style="color: var(--locker-accent); font-size: 2.5em;">👕 SHIRTS 2026 - 20 TOP CLUBS</h2>
 <div class="scroll-wrapper">
-<button class="scroll-btn" onclick="scrollKit('prev','kit1')">←</button>
-<div class="kit-container" id="kit1">
+<button class="scroll-btn" onclick="scrollKit('prev','kitShirts')">←</button>
+<div class="kit-container" id="kitShirts">
 <div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05be?w=300&h=300&fit=crop" alt="Barcelona"><div class="kit-label">🇪🇸 Barcelona Home 2026</div></div>
 <div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bf?w=300&h=300&fit=crop" alt="Real Madrid"><div class="kit-label">🇪🇸 Real Madrid Home 2026</div></div>
 <div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bg?w=300&h=300&fit=crop" alt="Liverpool"><div class="kit-label">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Liverpool Home 2026</div></div>
@@ -666,18 +666,48 @@ Your browser does not support video.
 <div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bw?w=300&h=300&fit=crop" alt="Lyon"><div class="kit-label">🇫🇷 Lyon Home 2026</div></div>
 <div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bx?w=300&h=300&fit=crop" alt="Monaco"><div class="kit-label">🇫🇷 Monaco Home 2026</div></div>
 </div>
-<button class="scroll-btn" onclick="scrollKit('next','kit1')">→</button>
-<div class="scroll-progress" id="progress1"><div class="scroll-progress-bar" id="progressBar1"></div></div>
+<button class="scroll-btn" onclick="scrollKit('next','kitShirts')">→</button>
 </div>
 </section>
 
-<!-- BOOTS GALLERY - FIXED FOR LAST IMAGE SELECTION -->
+<!-- SHORTS GALLERY - SEPARATE (20 ITEMS) -->
+<section class="kit-gallery">
+<h2 style="color: var(--locker-accent); font-size: 2.5em;">🩳 SHORTS 2026 - MATCHING EDITIONS</h2>
+<div class="scroll-wrapper">
+<button class="scroll-btn" onclick="scrollKit('prev','kitShorts')">←</button>
+<div class="kit-container" id="kitShorts">
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05be?w=300&h=300&fit=crop&bw=1" alt="Barcelona Shorts"><div class="kit-label">🇪🇸 Barcelona Shorts 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bf?w=300&h=300&fit=crop&bw=1" alt="Real Madrid Shorts"><div class="kit-label">🇪🇸 Real Madrid Shorts 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bg?w=300&h=300&fit=crop&bw=1" alt="Liverpool Shorts"><div class="kit-label">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Liverpool Shorts 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bh?w=300&h=300&fit=crop&bw=1" alt="Man City Shorts"><div class="kit-label">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Man City Shorts 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bi?w=300&h=300&fit=crop&bw=1" alt="Arsenal Shorts"><div class="kit-label">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Arsenal Shorts 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bj?w=300&h=300&fit=crop&bw=1" alt="Chelsea Shorts"><div class="kit-label">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Chelsea Shorts 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bk?w=300&h=300&fit=crop&bw=1" alt="PSG Shorts"><div class="kit-label">🇫🇷 PSG Shorts 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bl?w=300&h=300&fit=crop&bw=1" alt="Juventus Shorts"><div class="kit-label">🇮🇹 Juventus Shorts 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bm?w=300&h=300&fit=crop&bw=1" alt="AC Milan Shorts"><div class="kit-label">🇮🇹 AC Milan Shorts 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bn?w=300&h=300&fit=crop&bw=1" alt="Inter Milan Shorts"><div class="kit-label">🇮🇹 Inter Milan Shorts 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bo?w=300&h=300&fit=crop&bw=1" alt="Napoli Shorts"><div class="kit-label">🇮🇹 Napoli Shorts 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bp?w=300&h=300&fit=crop&bw=1" alt="Bayern Shorts"><div class="kit-label">🇩🇪 Bayern Shorts 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bq?w=300&h=300&fit=crop&bw=1" alt="Dortmund Shorts"><div class="kit-label">🇩🇪 Dortmund Shorts 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05br?w=300&h=300&fit=crop&bw=1" alt="Leipzig Shorts"><div class="kit-label">🇩🇪 Leipzig Shorts 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bs?w=300&h=300&fit=crop&bw=1" alt="Leverkusen Shorts"><div class="kit-label">🇩🇪 Leverkusen Shorts 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bt?w=300&h=300&fit=crop&bw=1" alt="Atletico Shorts"><div class="kit-label">🇪🇸 Atletico Shorts 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bu?w=300&h=300&fit=crop&bw=1" alt="Sevilla Shorts"><div class="kit-label">🇪🇸 Sevilla Shorts 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bv?w=300&h=300&fit=crop&bw=1" alt="Marseille Shorts"><div class="kit-label">🇫🇷 Marseille Shorts 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bw?w=300&h=300&fit=crop&bw=1" alt="Lyon Shorts"><div class="kit-label">🇫🇷 Lyon Shorts 2026</div></div>
+<div class="kit-item"><img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05bx?w=300&h=300&fit=crop&bw=1" alt="Monaco Shorts"><div class="kit-label">🇫🇷 Monaco Shorts 2026</div></div>
+</div>
+<button class="scroll-btn" onclick="scrollKit('next','kitShorts')">→</button>
+</div>
+</section>
+
+<!-- BOOTS GALLERY - FIXED LAST ITEM (Monaco selectable now) -->
 <section class="kit-gallery">
 <h2 style="color: var(--locker-accent); font-size: 2.5em;">👟 BOOTS COLLECTION 2026</h2>
 <p style="color: var(--team-silver); margin-bottom: 20px;">⚡ All adidas: F50 (Messi/Yamal) vs Predator (Pedri/Bellingham)</p>
 <div class="scroll-wrapper">
-<button class="scroll-btn" onclick="scrollKit('prev','kit2')">←</button>
-<div class="kit-container" id="kit2">
+<button class="scroll-btn" onclick="scrollKit('prev','kitBoots')">←</button>
+<div class="kit-container" id="kitBoots">
 <div class="kit-item"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&h=300&fit=crop" alt="Adidas F50 Messi"><div class="kit-label">👑 F50 Elite - Messi</div></div>
 <div class="kit-item"><img src="https://images.unsplash.com/photo-1511886929837-354d827890c8?w=300&h=300&fit=crop" alt="Adidas Predator Pedri"><div class="kit-label">🎯 Predator 30 - Pedri</div></div>
 <div class="kit-item"><img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=300&h=300&fit=crop" alt="Adidas F50 Yamal"><div class="kit-label">⚡ F50 Chaos - Yamal</div></div>
@@ -687,12 +717,11 @@ Your browser does not support video.
 <div class="kit-item"><img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4ad?w=300&h=300&fit=crop" alt="Nike Mercurial"><div class="kit-label">⚡ Mercurial - Haaland</div></div>
 <div class="kit-item"><img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4ae?w=300&h=300&fit=crop" alt="Puma Ultra"><div class="kit-label">🚀 Ultra - Neymar</div></div>
 </div>
-<button class="scroll-btn" onclick="scrollKit('next','kit2')">→</button>
-<div class="scroll-progress" id="progress2"><div class="scroll-progress-bar" id="progressBar2"></div></div>
+<button class="scroll-btn" onclick="scrollKit('next','kitBoots')">→</button>
 </div>
 </section>
 
-<!-- MAIN TABLE - 20 TEAMS WITH BADGES -->
+<!-- MAIN TABLE - 20 TEAMS WITH BADGES (unchanged) -->
 <div class="table-container">
 <table>
 <caption>🏆 TOP 20 EUROPEAN CLUBS - 2026 SEASON PREVIEW</caption>
@@ -707,35 +736,30 @@ Your browser does not support video.
     <th>Boot Sponsor</th>
     <th>Kit Price</th>
 </tr>
-
 <!-- PREMIER LEAGUE - 4 TEAMS -->
 <tr><td rowspan="4">PREMIER LEAGUE</td>
     <td><div class="team-badge">MC</div></td><td class="team-name">Manchester City</td><td>Puma</td><td>1880</td><td>Etihad (53k)</td><td>Haaland</td><td>Nike</td><td>€119</td></tr>
 <tr><td><div class="team-badge">ARS</div></td><td class="team-name">Arsenal</td><td>Adidas</td><td>1886</td><td>Emirates (60k)</td><td>Saka</td><td>Adidas</td><td>€115</td></tr>
 <tr><td><div class="team-badge">LIV</div></td><td class="team-name">Liverpool</td><td>Nike</td><td>1892</td><td>Anfield (61k)</td><td>Salah</td><td>Adidas</td><td>€125</td></tr>
 <tr><td><div class="team-badge">CHE</div></td><td class="team-name">Chelsea</td><td>Nike</td><td>1905</td><td>Stamford Bridge (40k)</td><td>Palmer</td><td>Nike</td><td>€115</td></tr>
-
 <!-- LA LIGA - 4 TEAMS -->
 <tr><td rowspan="4">LA LIGA</td>
     <td><div class="team-badge">FCB</div></td><td class="team-name">Barcelona</td><td>Nike</td><td>1899</td><td>Camp Nou (99k)</td><td>Pedri</td><td>Adidas</td><td>€129</td></tr>
 <tr><td><div class="team-badge">RM</div></td><td class="team-name">Real Madrid</td><td>Adidas</td><td>1902</td><td>Bernabeu (85k)</td><td>Bellingham</td><td>Adidas</td><td>€139</td></tr>
 <tr><td><div class="team-badge">ATM</div></td><td class="team-name">Atletico Madrid</td><td>Nike</td><td>1903</td><td>Metropolitano (68k)</td><td>Griezmann</td><td>Puma</td><td>€115</td></tr>
 <tr><td><div class="team-badge">SEV</div></td><td class="team-name">Sevilla</td><td>Castore</td><td>1890</td><td>Sanchez Pizjuan (43k)</td><td>Ocampos</td><td>Nike</td><td>€105</td></tr>
-
 <!-- SERIE A - 4 TEAMS -->
 <tr><td rowspan="4">SERIE A</td>
     <td><div class="team-badge">JUV</div></td><td class="team-name">Juventus</td><td>Adidas</td><td>1897</td><td>Allianz (41k)</td><td>Chiesa</td><td>Nike</td><td>€119</td></tr>
 <tr><td><div class="team-badge">ACM</div></td><td class="team-name">AC Milan</td><td>Puma</td><td>1899</td><td>San Siro (75k)</td><td>Leao</td><td>Puma</td><td>€119</td></tr>
 <tr><td><div class="team-badge">INT</div></td><td class="team-name">Inter Milan</td><td>Nike</td><td>1908</td><td>San Siro (75k)</td><td>Lautaro</td><td>Nike</td><td>€115</td></tr>
 <tr><td><div class="team-badge">NAP</div></td><td class="team-name">Napoli</td><td>EA7</td><td>1926</td><td>Diego Maradona (54k)</td><td>Kvara</td><td>Adidas</td><td>€109</td></tr>
-
 <!-- BUNDESLIGA - 4 TEAMS -->
 <tr><td rowspan="4">BUNDESLIGA</td>
     <td><div class="team-badge">FCB</div></td><td class="team-name">Bayern Munich</td><td>Adidas</td><td>1900</td><td>Allianz Arena (75k)</td><td>Kane</td><td>Adidas</td><td>€129</td></tr>
 <tr><td><div class="team-badge">BVB</div></td><td class="team-name">Borussia Dortmund</td><td>Puma</td><td>1909</td><td>Signal Iduna (81k)</td><td>Reus</td><td>Puma</td><td>€115</td></tr>
 <tr><td><div class="team-badge">RBL</div></td><td class="team-name">RB Leipzig</td><td>Nike</td><td>2009</td><td>Red Bull Arena (47k)</td><td>Openda</td><td>Nike</td><td>€109</td></tr>
 <tr><td><div class="team-badge">B04</div></td><td class="team-name">Bayer Leverkusen</td><td>Castore</td><td>1904</td><td>BayArena (30k)</td><td>Wirtz</td><td>Adidas</td><td>€105</td></tr>
-
 <!-- LIGUE 1 - 4 TEAMS -->
 <tr><td rowspan="4">LIGUE 1</td>
     <td><div class="team-badge">PSG</div></td><td class="team-name">Paris Saint-Germain</td><td>Nike/Jordan</td><td>1970</td><td>Parc des Princes (48k)</td><td>Mbappe</td><td>Nike</td><td>€139</td></tr>
@@ -745,18 +769,21 @@ Your browser does not support video.
 </table>
 </div>
 
-<!-- FOOTER (Feature 10) -->
+<!-- FOOTER - Kenyan style -->
 <footer>
 ⚽ THE LOCKER-ROOM - OFFICIAL UEFA MERCHANDISE PARTNER ⚽<br>
-© 2026 The Locker-Room | 221B Baker Street, London, UK<br>
-📞 24/7 Support: +44 (0)20 7946 0123 | ✉️ info@thelocker-room.com<br>
-🇪🇺 Free EU Shipping | 30-Day Returns | Authenticity Guaranteed
+© 2026 The Locker-Room | Muthithi Road, Westlands, Nairobi, Kenya<br>
+📞 24/7 Support: +254 700 123 456 | ✉️ info@thelocker-room.co.ke<br>
+🇰🇪 Free East Africa Shipping | 30-Day Returns | 100% Authentic
 </footer>
 
 <script>
 function scrollKit(direction, containerId) {
     const container = document.getElementById(containerId);
+    if (!container) return;
+    
     const items = container.querySelectorAll('.kit-item');
+    if (items.length === 0) return;
     
     // Find current active index
     let currentIndex = 0;
@@ -784,44 +811,23 @@ function scrollKit(direction, containerId) {
     const itemWidth = activeItem.offsetWidth;
     const itemOffset = activeItem.offsetLeft;
     
-    // Calculate the scroll position that centers the item
     let scrollLeft = itemOffset - (containerWidth / 2) + (itemWidth / 2);
-    
-    // Ensure we don't scroll beyond boundaries
     const maxScroll = container.scrollWidth - containerWidth;
     scrollLeft = Math.max(0, Math.min(scrollLeft, maxScroll));
     
-    // Smooth scroll to position
     container.scrollTo({
         left: scrollLeft,
         behavior: 'smooth'
     });
-    
-    // Update progress bar
-    updateProgressBar(container, containerId);
-}
-
-function updateProgressBar(container, containerId) {
-    const progressId = 'progressBar' + containerId.slice(-1);
-    const progressBar = document.getElementById(progressId);
-    if (progressBar) {
-        const scrollLeft = container.scrollLeft;
-        const maxScroll = container.scrollWidth - container.clientWidth;
-        const percent = maxScroll > 0 ? (scrollLeft / maxScroll) * 100 : 0;
-        progressBar.style.width = percent + '%';
-    }
 }
 
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize kit containers
-    document.querySelectorAll('.kit-container').forEach((container, index) => {
+    // Initialize all kit containers
+    document.querySelectorAll('.kit-container').forEach((container) => {
         const items = container.querySelectorAll('.kit-item');
         if (items.length > 0) {
-            // Remove any existing active classes
             items.forEach(item => item.classList.remove('active'));
-            
-            // Set first item as active
             items[0].classList.add('active');
             
             // Center the first item
@@ -834,11 +840,6 @@ document.addEventListener('DOMContentLoaded', function() {
             scrollLeft = Math.max(0, Math.min(scrollLeft, maxScroll));
             
             container.scrollLeft = scrollLeft;
-            
-            // Initialize progress bar
-            setTimeout(() => {
-                updateProgressBar(container, 'kit' + (index + 1));
-            }, 100);
         }
     });
     
@@ -846,20 +847,12 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.kit-item').forEach(item => {
         item.addEventListener('click', function() {
             const container = this.closest('.kit-container');
+            if (!container) return;
             const items = container.querySelectorAll('.kit-item');
-            const containerId = container.id;
             
-            // Find index of clicked item
-            let clickedIndex = 0;
-            items.forEach((itm, idx) => {
-                if (itm === this) clickedIndex = idx;
-            });
-            
-            // Update active class
             items.forEach(i => i.classList.remove('active'));
             this.classList.add('active');
             
-            // Calculate scroll position to center clicked item
             const containerWidth = container.offsetWidth;
             const itemWidth = this.offsetWidth;
             const itemOffset = this.offsetLeft;
@@ -868,21 +861,15 @@ document.addEventListener('DOMContentLoaded', function() {
             const maxScroll = container.scrollWidth - containerWidth;
             scrollLeft = Math.max(0, Math.min(scrollLeft, maxScroll));
             
-            // Smooth scroll to position
             container.scrollTo({
                 left: scrollLeft,
                 behavior: 'smooth'
             });
-            
-            // Update progress bar after scroll
-            setTimeout(() => {
-                updateProgressBar(container, containerId);
-            }, 300);
         });
     });
     
-    // Update active item on scroll
-    document.querySelectorAll('.kit-container').forEach((container, index) => {
+    // Update active item on scroll (for snap alignment)
+    document.querySelectorAll('.kit-container').forEach(container => {
         container.addEventListener('scroll', function() {
             const items = this.querySelectorAll('.kit-item');
             const containerCenter = this.scrollLeft + (this.offsetWidth / 2);
@@ -904,9 +891,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 items.forEach(item => item.classList.remove('active'));
                 closestItem.classList.add('active');
             }
-            
-            // Update progress bar
-            updateProgressBar(this, 'kit' + (index + 1));
         });
     });
 });
