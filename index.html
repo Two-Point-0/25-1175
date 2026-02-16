@@ -179,10 +179,10 @@ video {
     display: block;
 }
 
-/* Product Cards - UPDATED with unique memorabilia */
+/* Product Cards - with image upload simulation */
 .product-showcase {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 25px;
     padding: 40px;
     max-width: 1200px;
@@ -220,7 +220,35 @@ video {
     margin-bottom: 8px;
 }
 
-/* Kit Galleries - SEPARATE SHIRTS & SHORTS, NO PROGRESS BARS */
+.memorabilia-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin: 15px 0;
+    border: 2px solid var(--locker-accent);
+    background: #2a353f;
+}
+
+.image-upload-placeholder {
+    background: #1f2a33;
+    padding: 12px;
+    border-radius: 10px;
+    margin: 10px 0;
+    cursor: pointer;
+    border: 1px dashed var(--locker-accent);
+    color: var(--locker-accent);
+    transition: all 0.3s;
+}
+.image-upload-placeholder:hover {
+    background: var(--locker-metal);
+    border-style: solid;
+}
+.image-upload-placeholder input {
+    display: none;
+}
+
+/* Kit Galleries - only buttons, no scrollbars visible */
 .kit-gallery {
     width: 100%;
     margin: 40px auto;
@@ -248,30 +276,13 @@ video {
     width: 85%;
     padding: 20px 10px;
     gap: 30px;
-    scrollbar-width: thin;
-    scrollbar-color: var(--locker-accent) var(--locker-metal);
+    scrollbar-width: none;  /* Firefox: hide scrollbar */
+    -ms-overflow-style: none; /* IE/Edge: hide scrollbar */
     scroll-snap-type: x mandatory;
-    -ms-overflow-style: auto;
 }
 
 .kit-container::-webkit-scrollbar {
-    height: 6px;
-    display: block;
-}
-
-.kit-container::-webkit-scrollbar-track {
-    background: var(--locker-metal);
-    border-radius: 10px;
-}
-
-.kit-container::-webkit-scrollbar-thumb {
-    background: var(--locker-accent);
-    border-radius: 10px;
-}
-
-/* Remove the scroll progress bar entirely */
-.scroll-progress, .scroll-progress-bar {
-    display: none;
+    display: none;  /* Chrome/Safari: hide scrollbar */
 }
 
 .kit-item {
@@ -285,17 +296,6 @@ video {
     cursor: pointer;
     scroll-snap-align: center;
     position: relative;
-}
-
-.kit-item::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 20px;
-    pointer-events: none;
 }
 
 .kit-item img {
@@ -472,11 +472,16 @@ Your browser does not support video.
 </video>
 </div>
 
-<!-- PRODUCT CARDS - UPDATED with iconic memorabilia -->
+<!-- PRODUCT CARDS with image upload simulation & corrected scores -->
 <section class="product-showcase">
 <div class="product-card">
     <span class="rare-badge">🔴 UNIQUE · 2009 UCL FINAL</span>
     <h3>👕 Messi Signed Shirt</h3>
+    <img class="memorabilia-img" id="messiImg" src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=300&h=200&fit=crop" alt="Messi shirt">
+    <div class="image-upload-placeholder" onclick="document.getElementById('messiUpload').click();">
+        📸 Click to change image
+        <input type="file" id="messiUpload" accept="image/*" onchange="previewImage(event, 'messiImg')">
+    </div>
     <p>Barcelona 2-0 Man Utd • Rome 2009</p>
     <p style="color: var(--locker-accent); font-size: 1.5em;">€4,999</p>
     <small>Match-worn style • COA included</small>
@@ -484,20 +489,30 @@ Your browser does not support video.
 <div class="product-card">
     <span class="rare-badge">🔵 ICONIC · 2024 EL CLÁSICO</span>
     <h3>👟 Pedri Signed Boot</h3>
+    <img class="memorabilia-img" id="pedriImg" src="https://images.unsplash.com/photo-1511886929837-354d827890c8?w=300&h=200&fit=crop" alt="Pedri boot">
+    <div class="image-upload-placeholder" onclick="document.getElementById('pedriUpload').click();">
+        📸 Click to change image
+        <input type="file" id="pedriUpload" accept="image/*" onchange="previewImage(event, 'pedriImg')">
+    </div>
     <p>Right boot • 92' winner at Bernabéu</p>
     <p style="color: var(--locker-accent); font-size: 1.5em;">€1,899</p>
     <small>Adidas Predator • autographed + photo</small>
 </div>
 <div class="product-card">
-    <span class="rare-badge">⚡ HISTORIC 4–0, 4–1, 4–2, 4–0</span>
+    <span class="rare-badge">⚡ HISTORIC 4-0 AGGREGATE (4 wins)</span>
     <h3>🃏 Lamine Yamal Card Set</h3>
-    <p>2024/25 season • 4 wins over Madrid</p>
+    <img class="memorabilia-img" id="yamalImg" src="https://images.unsplash.com/photo-1600861194942-f883de0dfe96?w=300&h=200&fit=crop" alt="Yamal cards">
+    <div class="image-upload-placeholder" onclick="document.getElementById('yamalUpload').click();">
+        📸 Click to change image
+        <input type="file" id="yamalUpload" accept="image/*" onchange="previewImage(event, 'yamalImg')">
+    </div>
+    <p>2024/25 season • 4 Clásicos: 2–1, 3–0, 1–0, 4–0*</p>
     <p style="color: var(--locker-accent); font-size: 1.5em;">€899</p>
     <small>Gold refractor set + rookie #304</small>
 </div>
 </section>
 
-<!-- FEATURE SHOWCASE (unchanged except content) -->
+<!-- FEATURE SHOWCASE (unchanged but with correct scores) -->
 <section class="feature-showcase">
     <h2 style="color: var(--locker-accent); text-align: center; margin-bottom: 30px;">📋 FEATURE HIGHLIGHTS - REAL PRODUCT EXAMPLES</h2>
     
@@ -576,7 +591,7 @@ Your browser does not support video.
         <!-- Line Breaks (11) -->
         <div class="feature-card">
             <div class="feature-title">11. LINE BREAKS</div>
-            <p>📍 London Flagship Store:<br>221B Baker Street<br>Open 7 days: 10am-8pm<br>Call: +44 (0)20 7946 0123</p>
+            <p>📍 Nairobi Flagship Store:<br>Muthithi Road, Westlands<br>Open 7 days: 9am-7pm<br>Call: +254 700 123 456</p>
         </div>
 
         <!-- HR Tag (12) -->
@@ -639,7 +654,7 @@ Your browser does not support video.
     </div>
 </section>
 
-<!-- SHIRTS GALLERY - SEPARATE (20 ITEMS) -->
+<!-- SHIRTS GALLERY - ONLY BUTTONS, NO SCROLLBARS VISIBLE -->
 <section class="kit-gallery">
 <h2 style="color: var(--locker-accent); font-size: 2.5em;">👕 SHIRTS 2026 - 20 TOP CLUBS</h2>
 <div class="scroll-wrapper">
@@ -670,7 +685,7 @@ Your browser does not support video.
 </div>
 </section>
 
-<!-- SHORTS GALLERY - SEPARATE (20 ITEMS) -->
+<!-- SHORTS GALLERY - ONLY BUTTONS -->
 <section class="kit-gallery">
 <h2 style="color: var(--locker-accent); font-size: 2.5em;">🩳 SHORTS 2026 - MATCHING EDITIONS</h2>
 <div class="scroll-wrapper">
@@ -701,7 +716,7 @@ Your browser does not support video.
 </div>
 </section>
 
-<!-- BOOTS GALLERY - FIXED LAST ITEM (Monaco selectable now) -->
+<!-- BOOTS GALLERY - ONLY BUTTONS, FULL SELECTION -->
 <section class="kit-gallery">
 <h2 style="color: var(--locker-accent); font-size: 2.5em;">👟 BOOTS COLLECTION 2026</h2>
 <p style="color: var(--team-silver); margin-bottom: 20px;">⚡ All adidas: F50 (Messi/Yamal) vs Predator (Pedri/Bellingham)</p>
@@ -778,6 +793,16 @@ Your browser does not support video.
 </footer>
 
 <script>
+// Image preview function for memorabilia
+function previewImage(event, imgId) {
+    const reader = new FileReader();
+    reader.onload = function(){
+        const output = document.getElementById(imgId);
+        output.src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+}
+
 function scrollKit(direction, containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
