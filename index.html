@@ -275,20 +275,31 @@ h4 {
     letter-spacing: 0.5px;
 }
 
-/* Images in product cards - now 9:16 portrait like TikTok */
+/* Images in product cards - 9:16 portrait with perfect border fit */
 .memorabilia-img {
     width: 100%;
     aspect-ratio: 9 / 16;
-    object-fit: cover;
+    object-fit: cover; /* This ensures image covers the area without distortion */
     border-radius: 18px;
     margin: 10px 0 15px;
     border: 2px solid var(--locker-accent);
     background: #2a353f;
+    display: block; /* Removes any extra spacing */
 }
 
-/* Special case for cards with two images - stack them */
+/* Special handling for cards with multiple images */
 .product-card .memorabilia-img:first-of-type {
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+}
+
+.product-card .memorabilia-img:last-of-type {
+    margin-top: 0;
+}
+
+/* Ensure images fill their container perfectly */
+.product-card img {
+    max-width: 100%;
+    height: auto;
 }
 
 .product-card p {
@@ -521,7 +532,7 @@ footer::before {
 <h4>Interactive 3D Kit Viewer - Click & Explore</h4>
 </header>
 
-<!-- PRODUCT CARDS - NOW TIKTOK STYLE 9:16 PORTRAIT -->
+<!-- PRODUCT CARDS - NOW TIKTOK STYLE 9:16 PORTRAIT WITH PERFECT BORDERS -->
 <section class="product-showcase">
 <div class="product-card">
     <span class="rare-badge">🔵 ICONIC · 2024 EL CLÁSICO</span>
@@ -742,7 +753,7 @@ footer::before {
 <button class="scroll-btn" onclick="scrollKit('prev','kitShirts')">←</button>
 <div class="kit-container" id="kitShirts">
     <!-- ALL ORIGINAL IMAGE NAMES PRESERVED -->
-    <div class="kit-item"><img src="barca.png" alt="FC Barcelona"><div class="kit-label">🇪🇸 FC Barcelona Home 2026</div></div>
+    <div class="kit-item"><img src="barcelona.png" alt="FC Barcelona"><div class="kit-label">🇪🇸 FC Barcelona Home 2026</div></div>
     <div class="kit-item"><img src="madrid.avif" alt="Real Madrid"><div class="kit-label">🇪🇸 Real Madrid Home 2026</div></div>
     <div class="kit-item"><img src="liverpool.avif" alt="Liverpool"><div class="kit-label">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Liverpool Home 2026</div></div>
     <div class="kit-item"><img src="city.avif" alt="Man City"><div class="kit-label">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Man City Home 2026</div></div>
