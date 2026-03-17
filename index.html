@@ -5,7 +5,123 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<!-- ================= NAVBAR ================= -->
+<nav style="background:#111; padding:15px; text-align:center; position:sticky; top:0; z-index:1000;">
+    <a href="#home" style="margin:15px; color:#c49a6c;">Home</a>
+    <a href="#shop" style="margin:15px; color:#c49a6c;">Shop</a>
+    <a href="#videos" style="margin:15px; color:#c49a6c;">Videos</a>
+    <a href="#sizes" style="margin:15px; color:#c49a6c;">Sizes</a>
+    <a href="#contact" style="margin:15px; color:#c49a6c;">Contact</a>
+</nav>
 
+<!-- ================= 2 COLUMN SECTION ================= -->
+<section style="display:grid; grid-template-columns:1fr 1fr; gap:20px; padding:40px;">
+    
+    <!-- LEFT COLUMN -->
+    <div style="background:#1f2a33; padding:20px; border-radius:15px;">
+        <h2>🏆 About Locker-Room</h2>
+
+        <!-- FORMATTED PARAGRAPHS -->
+        <p><b>The Locker-Room</b> is Africa’s fastest-growing football kit marketplace bringing authentic European kits directly to Nairobi fans.</p>
+        <p><i>We specialize in rare collectibles</i> including signed shirts, boots, and limited-edition kits worn by top players.</p>
+        <p><u>Every product is verified</u> with authenticity certification ensuring collectors get original merchandise.</p>
+        <p><mark style="background:#c49a6c;">Our mission</mark> is to connect African fans with global football culture.</p>
+        <p><small>Established 2026 • Nairobi, Kenya</small></p>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div style="background:#1f2a33; padding:20px; border-radius:15px;">
+        <h2>🎥 Featured Media</h2>
+        
+        <img src="barca.png" style="width:100%; border-radius:10px; margin-bottom:10px;">
+        
+        <video controls style="width:100%; border-radius:10px;">
+            <source src="club jersey.mp4" type="video/mp4">
+        </video>
+    </div>
+</section>
+
+<!-- ================= NESTED LIST ================= -->
+<section style="padding:40px;">
+    <h2>⚽ Product Categories</h2>
+    <ul>
+        <li>👕 Jerseys
+            <ul>
+                <li>Home Kits</li>
+                <li>Away Kits</li>
+                <li>Third Kits</li>
+                <li>Retro Kits</li>
+                <li>Limited Editions</li>
+            </ul>
+        </li>
+    </ul>
+</section>
+
+<!-- ================= TABLE 1 ================= -->
+<section id="sizes" class="table-container">
+<table>
+<caption>📏 KIT SIZE GUIDE</caption>
+<tr>
+    <th>Size</th>
+    <th>Chest (cm)</th>
+    <th>Height (cm)</th>
+    <th>Fit</th>
+</tr>
+<tr><td>S</td><td>88-96</td><td>165-170</td><td>Regular</td></tr>
+<tr><td>M</td><td>96-104</td><td>170-178</td><td>Regular</td></tr>
+<tr><td>L</td><td>104-112</td><td>178-185</td><td>Athletic</td></tr>
+<tr><td>XL</td><td>112-120</td><td>185-192</td><td>Loose</td></tr>
+</table>
+</section>
+
+<!-- ================= TABLE 2 ================= -->
+<section class="table-container">
+<table>
+<caption>🛒 RECENT ORDERS</caption>
+<tr>
+    <th>Order ID</th>
+    <th>Product</th>
+    <th>Customer</th>
+    <th>Status</th>
+</tr>
+<tr><td>#1021</td><td>Barcelona Kit</td><td>Dennis</td><td>Shipped</td></tr>
+<tr><td>#1022</td><td>Messi Shirt</td><td>James</td><td>Processing</td></tr>
+<tr><td>#1023</td><td>Predator Boots</td><td>Amina</td><td>Delivered</td></tr>
+<tr><td>#1024</td><td>Yamal Cards</td><td>Brian</td><td>Pending</td></tr>
+</table>
+</section>
+
+<!-- ================= CONTACT FORM ================= -->
+<section id="contact" style="padding:40px; max-width:600px; margin:auto;">
+    <h2>📩 Contact Us</h2>
+    <form style="display:flex; flex-direction:column; gap:10px;">
+        <input type="text" placeholder="Your Name" required style="padding:10px;">
+        <input type="email" placeholder="Email" required style="padding:10px;">
+        <textarea placeholder="Message" rows="5" style="padding:10px;"></textarea>
+        <button style="padding:12px; background:#c49a6c; border:none; cursor:pointer;">Send</button>
+    </form>
+</section>
+
+<!-- ================= EXTRA STYLING ================= -->
+<style>
+body {
+    background: linear-gradient(135deg, #1a1e24, #0f141a);
+}
+
+nav a:hover {
+    color: white;
+    border-bottom: 2px solid #c49a6c;
+}
+
+section {
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from {opacity:0; transform:translateY(20px);}
+    to {opacity:1; transform:translateY(0);}
+}
+</style>
 <nav>
 <a href="index.html">Home</a>
 <a href="shop.html">Shop</a>
