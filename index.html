@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Locker-Room | Premium Football Kit Store</title>
+    <title>The Locker-Room | premium football kits</title>
     <style>
-        /* ----- RESET & BASE (preserved original aesthetics) ----- */
+        /* ----- RESET & GLOBAL (refined locker-room aesthetic) ----- */
         * {
             margin: 0;
             padding: 0;
@@ -13,34 +13,36 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: #1a1e24;
-            color: #e8e9ea;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #151a20;  /* deep base */
+            color: #eceef0;
             line-height: 1.6;
         }
 
+        /* ---- LOCKER COLOR TOKENS (warm metals, wood, patina) ---- */
         :root {
-            --locker-metal: #2c3e50;
+            --locker-metal: #2f4052;
             --locker-wood: #8b5a2b;
             --locker-bench: #4a3c31;
             --locker-floor: #2d2a24;
-            --locker-accent: #c49a6c;
-            --locker-light: #f5e6d3;
-            --locker-shadow: #1a1a1a;
+            --locker-accent: #c49a6c;      /* antique brass */
+            --locker-light: #f0e2d0;
+            --locker-shadow: #1a1e24;
             --team-gold: #b8860b;
-            --team-silver: #a8a9ad;
-            --team-bronze: #9c7a3c;
+            --team-silver: #b0b7c3;
+            --panel-bg: rgba(28, 36, 45, 0.9);
+            --card-border: 2px solid var(--locker-accent);
         }
 
-        /* ----- menubar (5+ items) – like stadium tunnel signage ----- */
-        .menubar {
-            background: #0f1419;
-            border-bottom: 3px solid var(--locker-accent);
-            padding: 0 30px;
+        /* ========== MENU BAR – 5 distinct pages ========== */
+        .menu-bar {
+            background: #0f171f;
+            border-bottom: 4px solid var(--locker-accent);
+            padding: 0 2rem;
             position: sticky;
             top: 0;
             z-index: 999;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.7), inset 0 0 0 1px #3f4d5e;
         }
         .menu-container {
             max-width: 1400px;
@@ -50,509 +52,614 @@
             justify-content: space-between;
             flex-wrap: wrap;
         }
-        .logo-area {
-            font-size: 1.6rem;
+        .logo {
+            font-size: 2rem;
             font-weight: 800;
-            letter-spacing: 2px;
-            background: linear-gradient(135deg, #e8e9ea, var(--locker-accent));
+            letter-spacing: 4px;
+            background: linear-gradient(145deg, #f5e6d3, var(--locker-accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            padding: 15px 0;
+            padding: 0.8rem 0;
+            text-transform: uppercase;
         }
         .menu-links {
             display: flex;
-            gap: 28px;
+            gap: 2.2rem;
             flex-wrap: wrap;
         }
         .menu-links a {
             color: var(--locker-light);
             text-decoration: none;
             font-weight: 600;
+            font-size: 1.15rem;
+            padding: 0.5rem 0;
             text-transform: uppercase;
-            font-size: 1rem;
-            letter-spacing: 0.5px;
-            padding: 8px 0;
-            border-bottom: 2px solid transparent;
-            transition: 0.2s;
+            letter-spacing: 1px;
+            border-bottom: 3px solid transparent;
+            transition: 0.15s;
         }
         .menu-links a:hover {
             border-bottom-color: var(--locker-accent);
             color: var(--locker-accent);
+            transform: translateY(-2px);
         }
 
-        /* header (preserved but slight adapt) */
-        header {
-            background: linear-gradient(145deg, #23282e 0%, #151a20 100%);
-            padding: 40px 20px;
-            text-align: center;
-            border-bottom: 4px solid var(--locker-accent);
-        }
-        h1 { font-size: 4em; font-weight: 800; text-transform: uppercase; background: linear-gradient(135deg, #e8e9ea 0%, var(--locker-accent) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; }
-        h2 { color: var(--locker-accent); font-size: 2em; font-weight: 400; letter-spacing: 2px; }
-        h3 { color: var(--team-silver); font-size: 1.4em; }
-        h4 { color: var(--locker-light); font-size: 1.2em; }
-
-        /* --- page container: each "page" is a section with ID (5 pages minimum) --- */
+        /* ===== PAGE CONTAINER (each page loaded separately) ===== */
         .page {
             max-width: 1400px;
-            margin: 0 auto;
-            padding: 40px 30px;
-            border-bottom: 1px dashed var(--locker-accent);
-            background: rgba(26,30,36,0.95);
-            backdrop-filter: blur(2px);
+            margin: 2rem auto;
+            padding: 2rem 2rem 3rem;
+            background: var(--panel-bg);
+            backdrop-filter: blur(3px);
+            border-radius: 50px 50px 30px 30px;
+            border: 1px solid var(--locker-accent);
+            box-shadow: 0 25px 45px rgba(0,0,0,0.8), inset 0 0 30px rgba(196,154,108,0.1);
         }
+
         .page-header {
-            font-size: 2.2rem;
-            border-left: 8px solid var(--locker-accent);
-            padding-left: 25px;
-            margin-bottom: 35px;
+            font-size: 2.8rem;
+            font-weight: 700;
+            border-left: 10px solid var(--locker-accent);
+            padding-left: 1.8rem;
+            margin-bottom: 2.5rem;
             color: var(--locker-light);
             text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 0 #00000050;
         }
 
-        /* --- two columns layout (feature: 2 columns) --- */
-        .two-col {
+        /* ----- consistent container cards (unified aesthetic) ----- */
+        .card-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin: 30px 0;
-        }
-        .col-card {
-            background: rgba(44,62,80,0.3);
-            border-radius: 24px;
-            padding: 25px;
-            border: 1px solid var(--locker-accent);
-            box-shadow: 0 15px 25px rgba(0,0,0,0.5);
+            margin: 40px 0;
         }
 
-        /* image/video containers (preserve TikTok style & add variety) */
-        .media-container {
+        .product-card {
+            background: linear-gradient(150deg, #212b34, #182028);
+            border-radius: 35px;
+            padding: 25px 20px 25px;
+            border: var(--card-border);
+            box-shadow: 0 20px 30px -10px black;
+            transition: transform 0.2s, border-color 0.2s;
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
-        .media-item {
-            flex: 1 1 260px;
-            max-width: 320px;
-            background: #1f2a33;
-            border-radius: 25px;
-            border: 2px solid var(--locker-accent);
-            overflow: hidden;
+        .product-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--locker-light);
+            box-shadow: 0 30px 40px -5px #c49a6c60;
         }
-        .media-item video, .media-item img {
+
+        .product-card h3 {
+            color: var(--locker-accent);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* image / video containers – all 9:16 portrait, uniform */
+        .media-frame {
             width: 100%;
-            aspect-ratio: 9/16;
+            aspect-ratio: 9 / 16;
+            border-radius: 28px;
+            border: 3px solid var(--locker-accent);
+            overflow: hidden;
+            margin: 15px 0;
+            background: #0f1a22;
+            box-shadow: inset 0 0 15px #000000aa;
+        }
+        .media-frame img, .media-frame video {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             display: block;
-            border-bottom: 2px solid var(--locker-accent);
-        }
-        .media-caption {
-            padding: 12px;
-            text-align: center;
-            color: var(--locker-accent);
-            font-weight: 600;
         }
 
-        /* tables (2 full length) */
+        .rare-tag {
+            background: var(--team-gold);
+            color: #121212;
+            font-weight: 800;
+            padding: 5px 15px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 10px;
+            box-shadow: 0 0 12px #f0c674;
+        }
+
+        /* ===== scrollable galleries WITH BUTTONS (FIXED) ===== */
+        .gallery-section {
+            background: #1b2530;
+            border-radius: 55px;
+            padding: 40px 25px;
+            margin: 50px 0;
+            border: 1px solid var(--locker-accent);
+        }
+
+        .scroll-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .kit-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            gap: 30px;
+            padding: 15px 8px;
+            scrollbar-width: none;  /* hide scrollbar but keep function */
+            -ms-overflow-style: none;
+            scroll-snap-type: x mandatory;
+            flex: 1;
+        }
+        .kit-container::-webkit-scrollbar { display: none; }
+
+        .kit-item {
+            flex: 0 0 auto;
+            width: 240px;
+            text-align: center;
+            scroll-snap-align: center;
+            opacity: 0.65;
+            transform: scale(0.95);
+            transition: 0.3s;
+            filter: grayscale(0.4);
+        }
+        .kit-item.active {
+            opacity: 1;
+            transform: scale(1.08);
+            filter: grayscale(0);
+        }
+        .kit-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 35px;
+            border: 3px solid transparent;
+            box-shadow: 0 18px 30px #000;
+        }
+        .kit-item.active img {
+            border-color: var(--locker-accent);
+            box-shadow: 0 25px 40px #c49a6c80;
+        }
+        .kit-label {
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--team-silver);
+        }
+        .active .kit-label {
+            color: var(--locker-accent);
+            font-weight: 700;
+        }
+
+        .scroll-btn {
+            background: #2f4052;
+            color: var(--locker-accent);
+            border: 3px solid var(--locker-accent);
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 0 15px #000;
+            flex-shrink: 0;
+        }
+        .scroll-btn:hover {
+            background: var(--locker-accent);
+            color: #1e2a36;
+            transform: scale(1.07);
+        }
+
+        /* ----- nested list (5 items) + formatted paragraphs ----- */
+        .feature-block {
+            background: #1f2b33;
+            border-radius: 45px;
+            padding: 30px;
+            border: 1px solid var(--locker-accent);
+            margin-top: 30px;
+        }
+        .nested-list-5 {
+            padding-left: 30px;
+        }
+        .nested-list-5 li {
+            margin: 12px 0;
+            font-size: 1.1rem;
+        }
+        .story p {
+            background: rgba(0,0,0,0.35);
+            padding: 22px 30px;
+            border-radius: 80px 20px 80px 20px;
+            border-left: 8px solid var(--locker-accent);
+            margin: 30px 0;
+            font-size: 1.18rem;
+            box-shadow: inset 0 0 20px #00000060;
+        }
+
+        /* tables (full width, two tables overall) */
         .table-container {
             overflow-x: auto;
-            margin: 50px 0;
-            background: linear-gradient(145deg, #1f2a33, #151d24);
-            border-radius: 30px;
+            background: #1a262f;
+            border-radius: 40px;
             padding: 20px;
             border: 1px solid var(--locker-accent);
+            margin: 40px 0;
         }
         table {
             width: 100%;
-            border-collapse: separate;
-            border-spacing: 0 8px;
+            border-collapse: collapse;
         }
         th {
             background: var(--locker-metal);
             color: var(--locker-accent);
-            padding: 16px 8px;
+            padding: 16px 10px;
+            font-size: 1rem;
             border-bottom: 3px solid var(--locker-accent);
         }
         td {
             padding: 14px 8px;
-            background: rgba(44,62,80,0.3);
-            border: 1px solid rgba(196,154,108,0.2);
-            color: #e8e9ea;
+            background: #26323f;
+            border: 1px solid #3f5568;
+            color: #ddd;
         }
 
-        /* background styling (locker room walls + subtle pattern) */
-        .page:nth-child(odd) {
-            background: radial-gradient(circle at 10% 30%, #252e38, #13181e);
-        }
-        .page:nth-child(even) {
-            background: linear-gradient(120deg, #1c242c, #0e1319);
-        }
-
-        /* nested list (5 items) */
-        .nested-list-premium {
-            background: #1e2a33;
-            padding: 25px 35px;
-            border-radius: 30px;
-            border: 1px solid var(--locker-accent);
-        }
-        .nested-list-premium ul, .nested-list-premium ol {
-            margin-left: 25px;
-        }
-        .nested-list-premium li {
-            margin: 8px 0;
-        }
-
-        /* formatted paragraphs (at least 5) – class .story-text */
-        .story-text p {
-            margin: 20px 0;
-            font-size: 1.12rem;
-            background: rgba(0,0,0,0.25);
-            padding: 20px 25px;
-            border-radius: 40px 10px 40px 10px;
-            border-left: 6px solid var(--locker-accent);
-            box-shadow: 0 5px 10px rgba(0,0,0,0.3);
-        }
-
-        /* footer (original + extra creativity) */
+        /* footer (kenyan vibe) */
         footer {
-            background: linear-gradient(0deg, #0a0e12 0%, #1a222a 100%);
+            background: #0d151f;
+            border-top: 5px solid var(--locker-accent);
+            padding: 3rem 2rem;
+            margin-top: 4rem;
             text-align: center;
-            padding: 50px 20px;
-            border-top: 4px solid var(--locker-accent);
-            position: relative;
             font-size: 1.1rem;
+            position: relative;
         }
-        footer::before {
+        .footer-flag::before {
             content: "⚽ 🇰🇪 ⚽";
+            font-size: 2rem;
+            opacity: 0.25;
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 30px;
-            opacity: 0.2;
-            top: 10px;
+            top: 0px;
         }
         .footer-grid {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-around;
-            max-width: 1200px;
-            margin: 20px auto 0;
+            justify-content: center;
+            gap: 3rem;
+            max-width: 1100px;
+            margin: 1.5rem auto 0;
         }
 
-        /* added features / aesthetics : neon line, glowing badges */
-        .glow-badge {
-            display: inline-block;
-            background: var(--team-gold);
-            color: black;
-            font-weight: bold;
-            padding: 5px 15px;
+        /* two columns (used in home) */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+            margin: 45px 0;
+        }
+        .col-card {
+            background: #1a2833;
             border-radius: 40px;
-            box-shadow: 0 0 15px #ffd966;
-        }
-
-        /* container styling (extra) */
-        .premium-container {
-            background: rgba(20, 30, 38, 0.8);
-            backdrop-filter: blur(4px);
-            border: 2px solid var(--locker-accent);
-            border-radius: 50px;
             padding: 30px;
-            margin: 40px 0;
+            border: 2px solid var(--locker-accent);
         }
 
-        /* preserve original components (product cards, showcase) */
-        .product-showcase { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
-        .product-card { background: linear-gradient(145deg,#232b33,#151d24); border-radius:25px; padding:20px 15px; border:2px solid var(--locker-accent); }
-        .memorabilia-img { width:100%; aspect-ratio:9/16; object-fit:cover; border-radius:18px; border:2px solid var(--locker-accent); margin:10px 0;}
-        .rare-badge { background: var(--team-gold); color:#000; padding:5px 10px; border-radius:30px; display:inline-block; }
-
-        /* responsive */
-        @media (max-width:800px){ .two-col{ grid-template-columns:1fr; } .menu-container{ flex-direction:column; } }
+        /* small touches */
+        .price-big {
+            font-size: 2rem;
+            color: var(--locker-accent);
+            font-weight: 700;
+            margin: 8px 0;
+        }
     </style>
 </head>
 <body>
 
-<!-- ========== MENUBAR (at least 5 items) ========== -->
-<div class="menubar">
+<!-- ==================== MENU (5 pages) ==================== -->
+<div class="menu-bar">
     <div class="menu-container">
-        <div class="logo-area">⚽ LOCKER-ROOM</div>
+        <div class="logo">⚙ LOCKER-ROOM</div>
         <div class="menu-links">
             <a href="#home">HOME</a>
-            <a href="#kits">KITS 2026</a>
+            <a href="#shirts-shorts">SHIRTS & SHORTS</a>
             <a href="#boots">BOOTS</a>
             <a href="#memorabilia">MEMORABILIA</a>
-            <a href="#clubs">CLUBS</a>
-            <a href="#worldcup">WORLD CUP</a>
+            <a href="#clubs">ABOUT CLUBS</a>
         </div>
     </div>
 </div>
 
-<!-- ========== PAGE 1 : HOME (original header + featured cards) ========== -->
+<!-- ========== PAGE 1: HOME (introduction, 2 columns, aesthetics) ========== -->
 <section id="home" class="page">
-    <div class="page-header">⚡ HOME · THE LOCKER ROOM EXPERIENCE</div>
-    <!-- original header content (preserved) -->
-    <header style="background:transparent; border-bottom:none; padding:20px 0; box-shadow:none;">
-        <h1>⚽ THE LOCKER-ROOM ⚽</h1>
-        <h2>Premium European Football Kits - 2026 Collection</h2>
-        <h3>Authentic Shirts, Shorts, and Boots from Top Clubs</h3>
-        <h4>Interactive 3D Kit Viewer - Click & Explore</h4>
-    </header>
-
-    <!-- Two columns example (feature 2 columns) -->
+    <div class="page-header">⏚ HOME · THE LOCKER ROOM</div>
+    <!-- two columns layout (2 columns) with images & text -->
     <div class="two-col">
         <div class="col-card">
-            <h3 style="color:var(--locker-accent)">📦 NEW ARRIVALS</h3>
-            <div class="media-item" style="max-width:100%;">
-                <img src="barca.png" alt="barca kit" style="aspect-ratio:1/1; border-radius:20px;">
-                <div class="media-caption">Barcelona 125th anniversary</div>
+            <h2 style="color:var(--locker-accent);">2026 COLLECTION</h2>
+            <div class="media-frame">
+                <img src="barca.png" alt="barcelona kit" style="object-position: top;">
             </div>
+            <p style="margin-top:15px;">Barcelona 125th anniversary – authentic Nike Dri-FIT. Limited stock.</p>
         </div>
         <div class="col-card">
-            <h3 style="color:var(--locker-accent)">🔥 TOP RATED</h3>
-            <div class="media-item" style="max-width:100%;">
-                <img src="madrid.avif" alt="madrid" style="aspect-ratio:1/1;">
-                <div class="media-caption">Real Madrid Galacticos</div>
+            <h2 style="color:var(--locker-accent);">PLAYER EDITION</h2>
+            <div class="media-frame">
+                <video autoplay muted loop playsinline><source src="club jersey.mp4" type="video/mp4"></video>
             </div>
+            <p style="margin-top:15px;">Real Madrid, Liverpool, PSG – 2026 player versions in stock.</p>
         </div>
     </div>
-    <!-- formatted paragraphs (1/5) -->
-    <div class="story-text">
-        <p>🇪🇸 Step into the sacred space where champions prepare. The Locker-Room isn't just a store—it's a shrine to the beautiful game. Every kit tells a story of last-minute winners, clean sheets, and trophy lifts. From the cobblestones of Turin to the ramblas of Barcelona, we bring you the fabric of football.</p>
+
+    <!-- formatted paragraphs (at least 5 across pages: #1) -->
+    <div class="story">
+        <p>⚡ Since 1989, The Locker‑Room has supplied authentic kits to legends. Our Nairobi flagship carries the same grade as used in the Bernabéu, Camp Nou, and Anfield. We guarantee 100% official merchandise with club holograms.</p>
+        <p>🌍 2026 is a massive year: World Cup, expanded Champions League, and groundbreaking kit technology. Explore our five dedicated sections via the menu above.</p>
+    </div>
+
+    <!-- small gallery with scroll buttons (demonstrates working scroll) -->
+    <div class="gallery-section">
+        <h3 style="color:var(--locker-accent); margin-bottom:5px;">📋 QUICK SNEAK PEEK (shorts)</h3>
+        <div class="scroll-wrapper">
+            <button class="scroll-btn" onclick="scrollGallery('prev', 'homeShorts')">←</button>
+            <div class="kit-container" id="homeShorts">
+                <div class="kit-item active"><img src="barcelona shorts.avif" alt=""><div class="kit-label">Barça shorts</div></div>
+                <div class="kit-item"><img src="madrid shorts.webp" alt=""><div class="kit-label">Madrid shorts</div></div>
+                <div class="kit-item"><img src="liverpool shorts.avif" alt=""><div class="kit-label">Liverpool</div></div>
+                <div class="kit-item"><img src="city shorts.avif" alt=""><div class="kit-label">City</div></div>
+                <div class="kit-item"><img src="psg shorts.avif" alt=""><div class="kit-label">PSG</div></div>
+            </div>
+            <button class="scroll-btn" onclick="scrollGallery('next', 'homeShorts')">→</button>
+        </div>
     </div>
 </section>
 
-<!-- ========== PAGE 2 : KITS 2026 (shirts/shorts + second table + nested list) ========== -->
-<section id="kits" class="page">
-    <div class="page-header">👕 KITS 2026 · SHIRTS & SHORTS</div>
-    <!-- Original shirts gallery (preserved) but placed inside two-col for demo -->
-    <div class="kit-gallery" style="background:transparent; padding:0; border:none;">
-        <h2 style="color: var(--locker-accent);">SHIRTS 2026 - 20 TOP CLUBS</h2>
-        <!-- scroll wrapper simplified (keeping original structure but safe) -->
-        <div style="display:flex; align-items:center;">
-            <span style="color:var(--locker-accent); padding:10px;">← swipe →</span>
-        </div>
-        <!-- images inline (just representation) -->
-        <div style="display:flex; gap:15px; overflow:auto; padding:15px 0;">
-            <img src="barca.png" style="height:150px; border-radius:20px; border:2px solid var(--locker-accent);" alt="barca">
-            <img src="madrid.avif" style="height:150px; border-radius:20px; border:2px solid var(--locker-accent);" alt="madrid">
-            <img src="liverpool.avif" style="height:150px; border-radius:20px;" alt="liv">
-            <img src="city.avif" style="height:150px; border-radius:20px;" alt="city">
-            <img src="arsenal.avif" style="height:150px; border-radius:20px;" alt="ars">
+<!-- ========== PAGE 2: SHIRTS & SHORTS (with 2 galleries + table) ========== -->
+<section id="shirts-shorts" class="page">
+    <div class="page-header">👕 SHIRTS & SHORTS 2026</div>
+
+    <!-- shirts gallery (with scroll buttons) -->
+    <div class="gallery-section">
+        <h2 style="color:var(--locker-accent);">SHIRTS – TOP 20 CLUBS</h2>
+        <div class="scroll-wrapper">
+            <button class="scroll-btn" onclick="scrollGallery('prev', 'shirtGallery')">←</button>
+            <div class="kit-container" id="shirtGallery">
+                <div class="kit-item active"><img src="barca.png" alt=""><div class="kit-label">Barcelona</div></div>
+                <div class="kit-item"><img src="madrid.avif" alt=""><div class="kit-label">Real Madrid</div></div>
+                <div class="kit-item"><img src="liverpool.avif" alt=""><div class="kit-label">Liverpool</div></div>
+                <div class="kit-item"><img src="city.avif" alt=""><div class="kit-label">Man City</div></div>
+                <div class="kit-item"><img src="arsenal.avif" alt=""><div class="kit-label">Arsenal</div></div>
+                <div class="kit-item"><img src="chelsea.avif" alt=""><div class="kit-label">Chelsea</div></div>
+                <div class="kit-item"><img src="psg.avif" alt=""><div class="kit-label">PSG</div></div>
+                <div class="kit-item"><img src="juventus.avif" alt=""><div class="kit-label">Juventus</div></div>
+                <div class="kit-item"><img src="AC Milan.jpg" alt=""><div class="kit-label">AC Milan</div></div>
+                <div class="kit-item"><img src="inter.avif" alt=""><div class="kit-label">Inter</div></div>
+                <div class="kit-item"><img src="bayern.avif" alt=""><div class="kit-label">Bayern</div></div>
+            </div>
+            <button class="scroll-btn" onclick="scrollGallery('next', 'shirtGallery')">→</button>
         </div>
     </div>
 
-    <!-- Second table (full length) – Boots comparison -->
+    <!-- shorts gallery (separate) -->
+    <div class="gallery-section">
+        <h2 style="color:var(--locker-accent);">🩳 SHORTS 2026</h2>
+        <div class="scroll-wrapper">
+            <button class="scroll-btn" onclick="scrollGallery('prev', 'shortsGallery')">←</button>
+            <div class="kit-container" id="shortsGallery">
+                <div class="kit-item active"><img src="barcelona shorts.avif" alt=""><div class="kit-label">Barça</div></div>
+                <div class="kit-item"><img src="madrid shorts.webp" alt=""><div class="kit-label">Madrid</div></div>
+                <div class="kit-item"><img src="liverpool shorts.avif" alt=""><div class="kit-label">Liverpool</div></div>
+                <div class="kit-item"><img src="city shorts.avif" alt=""><div class="kit-label">City</div></div>
+                <div class="kit-item"><img src="arsenal shorts.webp" alt=""><div class="kit-label">Arsenal</div></div>
+                <div class="kit-item"><img src="chelsea shorts.avif" alt=""><div class="kit-label">Chelsea</div></div>
+                <div class="kit-item"><img src="psg shorts.avif" alt=""><div class="kit-label">PSG</div></div>
+                <div class="kit-item"><img src="juventus shorts.avif" alt=""><div class="kit-label">Juve</div></div>
+            </div>
+            <button class="scroll-btn" onclick="scrollGallery('next', 'shortsGallery')">→</button>
+        </div>
+    </div>
+
+    <!-- formatted paragraphs (2) -->
+    <div class="story">
+        <p>🏆 Every shirt includes official league patches (La Liga, Premier League, Serie A). Our shorts are precision-cut for movement – worn by pros. Sizes from XS to 4XL.</p>
+    </div>
+    <!-- table 1/2 (full length) : size chart -->
     <div class="table-container">
         <table>
-            <caption style="color:var(--locker-accent);">⚙️ 2026 BOOT TECH SPECS (ADIDAS F50 VS PREDATOR)</caption>
-            <tr><th>Model</th><th>Player</th><th>Weight</th><th>Stud type</th><th>Upper</th><th>Price</th></tr>
-            <tr><td>F50 Elite</td><td>Messi / Yamal</td><td>185g</td><td>Mixed</td><td>HybridTouch</td><td>€299</td></tr>
-            <tr><td>Predator 30</td><td>Pedri / Bellingham</td><td>210g</td><td>FG</td><td>HighGrip</td><td>€279</td></tr>
-            <tr><td>Copa Pure 3</td><td>Modric</td><td>230g</td><td>SG</td><td>K-leather</td><td>€249</td></tr>
-            <tr><td>X Speedflow</td><td>Mbappé</td><td>195g</td><td>AG</td><td>Primeknit</td><td>€269</td></tr>
+            <caption style="color:var(--locker-accent);">📐 KIT SIZE GUIDE (cm)</caption>
+            <tr><th>Size</th><th>Chest</th><th>Waist</th><th>Length</th><th>Club fit</th></tr>
+            <tr><td>S</td><td>88-94</td><td>74-78</td><td>70</td><td>slim</td></tr>
+            <tr><td>M</td><td>96-102</td><td>80-84</td><td>72</td><td>regular</td></tr>
+            <tr><td>L</td><td>104-110</td><td>86-92</td><td>74</td><td>loose</td></tr>
+            <tr><td>XL</td><td>112-118</td><td>94-100</td><td>76</td><td>loose+</td></tr>
         </table>
     </div>
+</section>
 
-    <!-- Nested list (5 items deep) -->
-    <div class="nested-list-premium">
-        <h4>🔽 KIT CATALOGUE (NESTED)</h4>
-        <ul>
-            <li>🇪🇺 TOP 5 LEAGUES
+<!-- ========== PAGE 3: BOOTS (media containers + table 2/2) ========== -->
+<section id="boots" class="page">
+    <div class="page-header">👟 BOOTS – 2026 ELITE</div>
+    <div class="card-grid">
+        <div class="product-card">
+            <span class="rare-tag">⚡ F50 CHAOS</span>
+            <h3>Messi / Yamal</h3>
+            <div class="media-frame"><img src="f50 elite.jpg" alt="f50"></div>
+            <div class="price-big">€299</div>
+        </div>
+        <div class="product-card">
+            <span class="rare-tag">🎯 PREDATOR 30</span>
+            <h3>Pedri / Bellingham</h3>
+            <div class="media-frame"><img src="pedri predator.jpg" alt="predator"></div>
+            <div class="price-big">€279</div>
+        </div>
+        <div class="product-card">
+            <span class="rare-tag">🚀 X SPEEDFLOW</span>
+            <h3>Mbappé</h3>
+            <div class="media-frame"><img src="x speedflow.jpg" alt="x"></div>
+            <div class="price-big">€269</div>
+        </div>
+    </div>
+
+    <!-- nested list (5 items minimum) -->
+    <div class="feature-block">
+        <h4 style="color:var(--locker-accent);">⚙ boot technologies (nested)</h4>
+        <ul class="nested-list-5">
+            <li>Adidas
                 <ul>
-                    <li>🏴 PREMIER LEAGUE
+                    <li>F50
                         <ul>
-                            <li>Manchester clubs
+                            <li>Chaos (Yamal)
                                 <ul>
-                                    <li>City (Puma)</li>
-                                    <li>United (Adidas)</li>
+                                    <li>asymmetric lacing</li>
                                 </ul>
                             </li>
-                            <li>London red & blue</li>
+                            <li>Messi 2026</li>
                         </ul>
                     </li>
-                    <li>🇪🇸 LA LIGA
+                    <li>Predator
                         <ul>
-                            <li>El Clásico duo
-                                <ul>
-                                    <li>Barça (Nike)</li>
-                                    <li>Madrid (Adidas)</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>🇮🇹 SERIE A
-                        <ul>
-                            <li>Milan giants</li>
-                        </ul>
-                    </li>
-                    <li>🇩🇪 BUNDESLIGA
-                        <ul>
-                            <li>Bayern & BVB</li>
-                        </ul>
-                    </li>
-                    <li>🇫🇷 LIGUE 1
-                        <ul>
-                            <li>PSG Jordan</li>
+                            <li>Pedri control</li>
+                            <li>Bellingham</li>
                         </ul>
                     </li>
                 </ul>
             </li>
+            <li>Nike
+                <ul>
+                    <li>Mercurial (Haaland)</li>
+                </ul>
+            </li>
         </ul>
     </div>
-    <!-- formatted paragraphs (2/5) -->
-    <div class="story-text"><p>🏆 The 2026 shirt technology features heat-pressed badges that never crack, sustainable recycled polyester, and authentic player fit. Each shirt is shipped with a holographic authenticity sticker.</p></div>
+
+    <!-- table 2/2 (full length) -->
+    <div class="table-container">
+        <table>
+            <caption>📊 BOOT COMPARISON 2026</caption>
+            <tr><th>Model</th><th>Weight</th><th>Studs</th><th>Player</th></tr>
+            <tr><td>F50 Chaos</td><td>185g</td><td>mixed</td><td>Yamal</td></tr>
+            <tr><td>Predator 30</td><td>210g</td><td>FG</td><td>Pedri</td></tr>
+            <tr><td>Mercurial</td><td>190g</td><td>AG</td><td>Haaland</td></tr>
+        </table>
+    </div>
+    <div class="story"><p>🔥 Limited release: each boot comes with a digital authenticity pass.</p></div>
 </section>
 
-<!-- ========== PAGE 3 : BOOTS & MEMORABILIA (videos + images container) ========== -->
-<section id="boots" class="page">
-    <div class="page-header">👟 BOOTS & LEGENDARY GEAR</div>
-    <!-- images and videos in container (multiple) -->
-    <div class="media-container">
-        <div class="media-item">
-            <video autoplay muted loop playsinline><source src="country jersey.mp4" type="video/mp4"></video>
-            <div class="media-caption">🇦🇷 ARGENTINA 2026</div>
-        </div>
-        <div class="media-item">
-            <img src="f50 elite.jpg" alt="F50">
-            <div class="media-caption">F50 Messi Chaos</div>
-        </div>
-        <div class="media-item">
-            <img src="pedri predator.jpg" alt="Predator">
-            <div class="media-caption">Predator Pedri</div>
-        </div>
-        <div class="media-item">
-            <video autoplay muted loop><source src="club jersey.mp4" type="video/mp4"></video>
-            <div class="media-caption">⚪ Club kits 2026</div>
-        </div>
+<!-- ========== PAGE 4: MEMORABILIA (cards, signed items) ========== -->
+<section id="memorabilia" class="page">
+    <div class="page-header">📦 MEMORABILIA · SIGNED & RARE</div>
+    <div class="card-grid">
+        <div class="product-card"><span class="rare-tag">🔵 ICONIC</span><h3>Pedri signed boot</h3><div class="media-frame"><img src="pedri signed.jpg" alt=""></div><p>El Clásico winner</p><div class="price-big">€1,899</div></div>
+        <div class="product-card"><span class="rare-tag">🔴 2009 UCL</span><h3>Messi signed shirt</h3><div class="media-frame"><img src="ms1.webp" alt=""></div><p>Rome final</p><div class="price-big">€4,999</div></div>
+        <div class="product-card"><span class="rare-tag">⭐ ROOKIE</span><h3>Yamal card set</h3><div class="media-frame"><img src="yamal card.jpg" alt=""></div><p>gold refractor</p><div class="price-big">€899</div></div>
     </div>
-
-    <!-- Product cards (original memorabilia) also inside container -->
-    <div class="product-showcase" style="margin-top:40px;">
-        <div class="product-card"><span class="rare-badge">🔵 ICONIC</span><h3>Pedri Signed Boot</h3><img class="memorabilia-img" src="pedri signed.jpg" alt=""><p>€1,899</p></div>
-        <div class="product-card"><span class="rare-badge">🔴 2009 UCL</span><h3>Messi Signed Shirt</h3><img class="memorabilia-img" src="ms1.webp" alt=""><p>€4,999</p></div>
-    </div>
-    <!-- formatted paragraphs (3/5) -->
-    <div class="story-text"><p>✨ Each boot is inspected by our experts. The F50 "Chaos" worn by Yamal features a asymmetric lacing system for pure strike surface. Only 500 pairs released globally.</p></div>
+    <!-- extra video container -->
+    <div class="media-frame" style="max-width:320px; margin:30px auto;"><video autoplay muted loop><source src="country jersey 2.mp4"></video></div>
+    <div class="story"><p>🇦🇷 All memorabilia includes certificate of authenticity and tamper‑evident hologram.</p></div>
 </section>
 
-<!-- ========== PAGE 4 : CLUBS & STATS (third table, more two-column, list) ========== -->
+<!-- ========== PAGE 5: ABOUT CLUBS (history, nested list 5, paragraphs) ========== -->
 <section id="clubs" class="page">
-    <div class="page-header">🏟️ CLUB HONOURS & KIT HISTORY</div>
-    <!-- two columns with table inside -->
+    <div class="page-header">🏟️ ABOUT THE CLUBS</div>
     <div class="two-col">
         <div class="col-card">
-            <h4>🏆 EUROPEAN TITLES (TABLE 3)</h4>
-            <table>
-                <tr><th>Club</th><th>UCL</th><th>League</th></tr>
-                <tr><td>Real Madrid</td><td>15</td><td>35</td></tr>
-                <tr><td>AC Milan</td><td>7</td><td>19</td></tr>
-                <tr><td>Liverpool</td><td>6</td><td>19</td></tr>
-                <tr><td>Bayern</td><td>6</td><td>32</td></tr>
-                <tr><td>Barcelona</td><td>5</td><td>27</td></tr>
-            </table>
+            <h3 style="color:var(--locker-accent);">FC BARCELONA</h3>
+            <p>Founded 1899 · 5 UCL · 27 Liga · home: Camp Nou (99k) · 2026 kit: Nike</p>
         </div>
         <div class="col-card">
-            <h4>🌍 KIT SUPPLIER RIVALRY</h4>
-            <ul>
-                <li>Nike: Barcelona, Chelsea, PSG</li>
-                <li>Adidas: Madrid, Arsenal, Juventus, Bayern</li>
-                <li>Puma: Man City, Milan, Dortmund</li>
-                <li>Castore: Sevilla, Leverkusen</li>
-                <li>Kappa: Monaco, Fiorentina</li>
-            </ul>
+            <h3 style="color:var(--locker-accent);">REAL MADRID</h3>
+            <p>1902 · 15 UCL · 35 Liga · stadium: Bernabéu (85k) · 2026 kit: Adidas</p>
         </div>
     </div>
-    <!-- formatted paragraph (4/5) -->
-    <div class="story-text"><p>⚽ The battle of suppliers is as fierce as on-pitch rivalries. Nike's Dri-FIT ADV vs Adidas HEAT.RDY – both used by your favourite stars. Our store stocks every variant, including long-sleeve and goalie cuts.</p></div>
-    <!-- additional nested list item (already 5 in page2, but can add more) -->
+    <!-- nested list 5 (second example) -->
+    <div class="feature-block">
+        <h4 style="color:var(--locker-accent);">🌍 club affiliations (5 deep)</h4>
+        <ul class="nested-list-5">
+            <li>Spain
+                <ul><li>La Liga
+                    <ul><li>Barcelona
+                        <ul><li>Nike supplier
+                            <ul><li>125th anniversary</li></ul>
+                        </li></ul>
+                    </li>
+                    <li>Real Madrid</li>
+                </ul></li>
+            </li>
+            <li>England</li><li>Italy</li><li>Germany</li><li>France</li>
+        </ul>
+    </div>
+    <div class="story"><p>⚽ The Locker-Room is an official partner of the European Club Association. We provide historical insight with every kit.</p></div>
 </section>
 
-<!-- ========== PAGE 5 : WORLD CUP 2026 & PRE-ORDER (5th page) ========== -->
-<section id="worldcup" class="page">
-    <div class="page-header">🌍 WORLD CUP 2026 · COMING SOON</div>
-    <!-- video/image container -->
-    <div class="media-container">
-        <div class="media-item">
-            <video autoplay muted loop><source src="country jersey 2.mp4" type="video/mp4"></video>
-            <div class="media-caption">🌍 leaked WC designs</div>
-        </div>
-        <div class="media-item">
-            <img src="yamal card.jpg" alt="yamal card" style="aspect-ratio:9/16;">
-            <div class="media-caption">Yamal rookie card</div>
-        </div>
-    </div>
-    <!-- additional formatted paragraph (5/5) -->
-    <div class="story-text">
-        <p>🇺🇸🇲🇽🇨🇦 The 2026 World Cup will feature 48 nations. We're taking pre-orders for all official jerseys – from powerhouses Brazil to debutants. First batch arrives March 2026. Secure your shirt with a €20 deposit.</p>
-        <p>🌟 Exclusive: every World Cup pre-order includes a limited edition scarf and sticker pack. Support your nation in style.</p>
-    </div>
-
-    <!-- added feature: container styling example (extra depth) -->
-    <div class="premium-container">
-        <h3 style="color:var(--locker-accent)">🏅 WORLD CUP TIER PACKAGES</h3>
-        <p>⚡ GOLD TIER: jersey + shorts + boots (€399) <br> SILVER TIER: jersey + scarf (€189)</p>
-    </div>
-</section>
-
-<!-- ========== ORIGINAL SHORTS & BOOTS GALLERIES (preserved) embedded after pages ========== -->
-<!-- To keep original context, we place them but they now appear after pages but still inside body -->
-<section style="max-width:1400px; margin:0 auto; padding:20px;">
-    <!-- Shorts gallery (original) -->
-    <div class="kit-gallery" style="background:#1f2a33; border-radius:40px;">
-        <h2 style="color: var(--locker-accent);">🩳 SHORTS 2026 (ORIGINAL GALLERY)</h2>
-        <div style="display:flex; gap:15px; overflow:auto; padding:20px;">
-            <img src="barcelona shorts.avif" style="height:150px; border-radius:20px;" alt=""><img src="madrid shorts.webp" style="height:150px;" alt=""><img src="liverpool shorts.avif" style="height:150px;" alt="">
-        </div>
-    </div>
-    <!-- Boots gallery original (few items) -->
-    <div class="kit-gallery" style="margin-top:20px;">
-        <h2 style="color: var(--locker-accent);">👟 BOOTS 2026</h2>
-        <div style="display:flex; gap:15px; overflow:auto;">
-            <img src="f50 elite.jpg" style="height:120px;" alt=""><img src="pedri predator.jpg" style="height:120px;" alt="">
-        </div>
-    </div>
-</section>
-
-<!-- ========== MAIN TABLE (original top20 clubs) – kept as second full table ========== -->
-<div class="table-container" style="max-width:1400px; margin:30px auto;">
-    <table>
-        <caption>🏆 TOP 20 EUROPEAN CLUBS - 2026 SEASON (ORIGINAL TABLE)</caption>
-        <tr><th>League</th><th>Badge</th><th>Team</th><th>Supplier</th><th>Founded</th><th>Stadium</th><th>Star</th></tr>
-        <tr><td>Premier</td><td><div class="team-badge">MC</div></td><td>Man City</td><td>Puma</td><td>1880</td><td>Etihad</td><td>Haaland</td></tr>
-        <tr><td>La Liga</td><td><div class="team-badge">FCB</div></td><td>Barcelona</td><td>Nike</td><td>1899</td><td>Camp Nou</td><td>Pedri</td></tr>
-        <!-- extra rows omitted for brevity but preserves original -->
-    </table>
-</div>
-
-<!-- ========== FOOTER (creative, multi-column, kenyan style) ========== -->
-<footer>
-    ⚽ THE LOCKER-ROOM - OFFICIAL UEFA MERCHANDISE PARTNER ⚽<br>
+<!-- ========== FOOTER (kenyan style, extra container) ========== -->
+<footer class="footer-flag">
+    ⚽ THE LOCKER-ROOM · OFFICIAL MERCHANDISE
     <div class="footer-grid">
-        <div>📍 Nairobi · Muthithi Rd, Westlands</div>
-        <div>📞 +254 700 123 456</div>
-        <div>✉️ info@thelocker-room.co.ke</div>
-        <div>🇰🇪 Free East Africa Shipping</div>
+        <span>📍 Muthithi Rd, Westlands, Nairobi</span>
+        <span>📞 +254 700 123 456</span>
+        <span>✉️ info@thelocker-room.co.ke</span>
+        <span>🇰🇪 Free EA shipping over €150</span>
     </div>
-    <div style="margin-top:25px; font-size:0.9rem; opacity:0.8;">
-        ⚡ 30-Day Returns · 100% Authentic · Player Edition stock<br>
-        © 2026 The Locker-Room | All club trademarks property of their owners
-    </div>
+    <div style="margin-top:2rem; opacity:0.8;">© 2026 The Locker-Room | 30-day returns | authentic since 1989</div>
 </footer>
 
-<!-- (the original script remains, but we omit duplicate functions for brevity, keeping the essential preview) -->
+<!-- ========== SCROLL BUTTON SCRIPT (fixes jersey scrolling) ========== -->
 <script>
-    // minimal scroll / init from original (to preserve any interactive behavior)
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('Locker-Room ready');
-    });
-    function scrollKit(direction, id) { /* placeholder from original - keep */ }
-</script>
-<!-- Original style for team-badge (since used in table) -->
-<style>
-    .team-badge { width:40px; height:40px; border-radius:50%; background: var(--locker-metal); color:var(--locker-accent); display:flex; align-items:center; justify-content:center; margin:0 auto; border:2px solid var(--locker-accent); }
-</style>
+    function scrollGallery(direction, containerId) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        const items = container.querySelectorAll('.kit-item');
+        if (!items.length) return;
 
-<!-- ensure all image references exist (placeholders) — they are just names, but design remains -->
+        // find current active index
+        let currentIdx = 0;
+        items.forEach((item, idx) => { if (item.classList.contains('active')) currentIdx = idx; });
+
+        if (direction === 'next') currentIdx = Math.min(currentIdx + 1, items.length - 1);
+        else currentIdx = Math.max(currentIdx - 1, 0);
+
+        items.forEach((item, idx) => item.classList.toggle('active', idx === currentIdx));
+
+        const activeItem = items[currentIdx];
+        const containerWidth = container.offsetWidth;
+        const itemOffset = activeItem.offsetLeft;
+        const itemWidth = activeItem.offsetWidth;
+        let scrollLeft = itemOffset - containerWidth/2 + itemWidth/2;
+        const maxScroll = container.scrollWidth - containerWidth;
+        scrollLeft = Math.max(0, Math.min(scrollLeft, maxScroll));
+
+        container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+    }
+
+    // Initialize first items active
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.kit-container').forEach(con => {
+            const items = con.querySelectorAll('.kit-item');
+            if (items.length) {
+                items.forEach(i => i.classList.remove('active'));
+                items[0].classList.add('active');
+                // center first
+                const containerWidth = con.offsetWidth;
+                const itemOffset = items[0].offsetLeft;
+                const itemWidth = items[0].offsetWidth;
+                let scrollLeft = itemOffset - containerWidth/2 + itemWidth/2;
+                const maxScroll = con.scrollWidth - containerWidth;
+                scrollLeft = Math.max(0, Math.min(scrollLeft, maxScroll));
+                con.scrollLeft = scrollLeft;
+            }
+        });
+    });
+</script>
+
+<!-- dummy image references (avoid missing icons) — all filenames as in original -->
 </body>
 </html>
