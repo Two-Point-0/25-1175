@@ -27,11 +27,11 @@
             --locker-light: #f5e6d3;
             --team-gold: #b8860b;
             --team-silver: #b0b7c3;
-            --panel-bg: rgba(24, 32, 40, 0.95);
+            --panel-bg: rgba(24, 32, 40, 0.98);
             --card-border: 2px solid var(--locker-accent);
         }
 
-        /* ----- MENU (5 pages) ----- */
+        /* ----- MENU (5 pages + home) – actual page switcher via :target ----- */
         .menu-bar {
             background: #0d151f;
             border-bottom: 5px solid var(--locker-accent);
@@ -78,7 +78,7 @@
             color: var(--locker-accent);
         }
 
-        /* ----- PAGE container (separate pages) ----- */
+        /* ----- PAGE CONTAINERS – only one visible at a time via :target ----- */
         .page {
             max-width: 1400px;
             margin: 2rem auto;
@@ -88,6 +88,16 @@
             border-radius: 55px 55px 35px 35px;
             border: 1px solid var(--locker-accent);
             box-shadow: 0 25px 45px #000000cc, inset 0 0 30px #c49a6c20;
+            display: none;  /* hidden by default */
+        }
+
+        .page:target {
+            display: block;  /* show only the targeted page */
+        }
+
+        /* default fallback – show home if no hash */
+        #home {
+            display: block;
         }
 
         .page-header {
@@ -102,7 +112,7 @@
             text-shadow: 2px 2px 0 #00000070;
         }
 
-        /* ===== HOME PAGE – VIDEO CONTAINERS (perfect fit) ===== */
+        /* ----- HOME page – videos perfectly fitted ----- */
         .video-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -127,7 +137,6 @@
             box-shadow: 0 25px 35px -8px #c49a6c;
         }
 
-        /* video wrapper – exact 9:16, no overflow, perfect fit */
         .video-wrapper {
             width: 100%;
             aspect-ratio: 9 / 16;
@@ -141,7 +150,7 @@
         .video-wrapper video {
             width: 100%;
             height: 100%;
-            object-fit: cover;         /* fills container without distortion */
+            object-fit: cover;
             display: block;
         }
 
@@ -159,7 +168,7 @@
             font-weight: 400;
         }
 
-        /* two column utility */
+        /* ----- two columns (used on home & about) ----- */
         .two-col {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -173,7 +182,7 @@
             border: 2px solid var(--locker-accent);
         }
 
-        /* scroll galleries (buttons fixed) */
+        /* ----- scroll galleries (functional on each page) ----- */
         .gallery-section {
             background: #1b2632;
             border-radius: 55px;
@@ -255,7 +264,7 @@
             transform: scale(1.07);
         }
 
-        /* cards (uniform) */
+        /* ----- product cards (uniform 9:16 media) ----- */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -293,7 +302,7 @@
             margin-bottom: 8px;
         }
 
-        /* tables (2 full width) */
+        /* ----- tables (2 full width) ----- */
         .table-container {
             overflow-x: auto;
             background: #1a2833;
@@ -318,7 +327,7 @@
             border: 1px solid #40586b;
         }
 
-        /* nested list 5 items */
+        /* ----- nested list 5 items ----- */
         .feature-block {
             background: #1f2b33;
             border-radius: 45px;
@@ -333,7 +342,7 @@
             margin: 12px 0;
         }
 
-        /* formatted paragraphs */
+        /* ----- formatted paragraphs (at least 5) ----- */
         .story p {
             background: rgba(0,0,0,0.4);
             padding: 22px 30px;
@@ -344,7 +353,7 @@
             box-shadow: inset 0 0 20px #00000080;
         }
 
-        /* footer */
+        /* ----- footer (kenyan style) ----- */
         footer {
             background: #0b141f;
             border-top: 5px solid var(--locker-accent);
@@ -372,7 +381,6 @@
             margin: 2rem auto 0;
         }
 
-        /* price */
         .price-big {
             font-size: 2rem;
             color: var(--locker-accent);
@@ -382,31 +390,31 @@
 </head>
 <body>
 
-<!-- ==================== MENU (5 pages) ==================== -->
+<!-- ==================== MENU (5 pages + home) ==================== -->
 <div class="menu-bar">
     <div class="menu-container">
         <div class="logo">⚙ LOCKER-ROOM</div>
         <div class="menu-links">
             <a href="#home">HOME</a>
-            <a href="#shirts-shorts">SHIRTS & SHORTS</a>
+            <a href="#shirts">SHIRTS</a>
+            <a href="#shorts">SHORTS</a>
             <a href="#boots">BOOTS</a>
             <a href="#memorabilia">MEMORABILIA</a>
-            <a href="#clubs">ABOUT CLUBS</a>
+            <a href="#clubs">CLUBS</a>
         </div>
     </div>
 </div>
 
-<!-- ========== PAGE 1: HOME – with VIDEO containers perfectly fitted ========== -->
+<!-- ========== PAGE: HOME (only visible when #home is in URL) ========== -->
 <section id="home" class="page">
     <div class="page-header">⏚ HOME · 2026 PREVIEW</div>
 
-    <!-- VIDEO GRID – three videos, each in a 9:16 container that fits perfectly -->
+    <!-- VIDEO GRID – perfectly fitted 9:16 containers -->
     <div class="video-grid">
         <div class="video-card">
             <div class="video-wrapper">
                 <video autoplay muted loop playsinline>
                     <source src="country jersey.mp4" type="video/mp4">
-                    <!-- fallback: if video missing, show poster-like background -->
                 </video>
             </div>
             <div class="video-caption">🇦🇷 COUNTRY JERSEY <small>Argentina / Brazil / Germany</small></div>
@@ -429,7 +437,7 @@
         </div>
     </div>
 
-    <!-- two columns with additional content (2 columns) -->
+    <!-- two columns additional content -->
     <div class="two-col">
         <div class="col-card">
             <h2 style="color:var(--locker-accent);">🔥 NEW: F50 CHAOS</h2>
@@ -449,11 +457,11 @@
 
     <!-- formatted paragraphs (1/5) -->
     <div class="story">
-        <p>🏆 The Locker‑Room has been the hidden gem for collectors since 1989. Every kit, boot, and card is 100% authentic —直接从俱乐部来源。 Our Nairobi flagship is the only official UEFA‑licensed retailer in East Africa.</p>
-        <p>⚡ 2026 brings revolutionary jersey fabric, 30% lighter and with built‑in cooling. Scroll through our sections above.</p>
+        <p>🏆 The Locker‑Room has been the hidden gem for collectors since 1989. Every kit, boot, and card is 100% authentic. Our Nairobi flagship is the only official UEFA‑licensed retailer in East Africa.</p>
+        <p>⚡ 2026 brings revolutionary jersey fabric, 30% lighter and with built‑in cooling. Use the menu to explore separate pages: Shirts, Shorts, Boots, Memorabilia, and Club info.</p>
     </div>
 
-    <!-- small working gallery (shorts) to show scroll buttons -->
+    <!-- small working gallery (shorts preview) – stays on home -->
     <div class="gallery-section">
         <h3 style="color:var(--locker-accent);">🩳 QUICK SHORTS SNEAK</h3>
         <div class="scroll-wrapper">
@@ -470,10 +478,10 @@
     </div>
 </section>
 
-<!-- ========== PAGE 2: SHIRTS & SHORTS ========== -->
-<section id="shirts-shorts" class="page">
-    <div class="page-header">👕 SHIRTS & SHORTS 2026</div>
-    <!-- shirts gallery with scroll -->
+<!-- ========== PAGE: SHIRTS (separate page) ========== -->
+<section id="shirts" class="page">
+    <div class="page-header">👕 SHIRTS 2026</div>
+    <!-- shirts gallery -->
     <div class="gallery-section">
         <h2>SHIRTS – TOP CLUBS</h2>
         <div class="scroll-wrapper">
@@ -487,13 +495,29 @@
                 <div class="kit-item"><img src="chelsea.avif" alt=""><div class="kit-label">Chelsea</div></div>
                 <div class="kit-item"><img src="psg.avif" alt=""><div class="kit-label">PSG</div></div>
                 <div class="kit-item"><img src="juventus.avif" alt=""><div class="kit-label">Juve</div></div>
+                <div class="kit-item"><img src="bayern.avif" alt=""><div class="kit-label">Bayern</div></div>
             </div>
             <button class="scroll-btn" onclick="scrollGallery('next','shirtGal')">→</button>
         </div>
     </div>
-    <!-- shorts gallery -->
+    <!-- table 1/2 -->
+    <div class="table-container">
+        <table><caption>📐 SHIRT SIZE GUIDE (cm)</caption>
+            <tr><th>Size</th><th>Chest</th><th>Length</th></tr>
+            <tr><td>S</td><td>88-94</td><td>70</td></tr>
+            <tr><td>M</td><td>96-102</td><td>72</td></tr>
+            <tr><td>L</td><td>104-110</td><td>74</td></tr>
+            <tr><td>XL</td><td>112-118</td><td>76</td></tr>
+        </table>
+    </div>
+    <div class="story"><p>🏴󠁧󠁢󠁥󠁮󠁧󠁿 All shirts include official league patches. Made with Dri‑FIT ADV / HEAT.RDY.</p></div>
+</section>
+
+<!-- ========== PAGE: SHORTS (separate page) ========== -->
+<section id="shorts" class="page">
+    <div class="page-header">🩳 SHORTS 2026</div>
     <div class="gallery-section">
-        <h2>🩳 SHORTS</h2>
+        <h2>SHORTS – MATCHING EDITIONS</h2>
         <div class="scroll-wrapper">
             <button class="scroll-btn" onclick="scrollGallery('prev','shortsGal')">←</button>
             <div class="kit-container" id="shortsGal">
@@ -502,23 +526,25 @@
                 <div class="kit-item"><img src="liverpool shorts.avif" alt=""><div class="kit-label">Liverpool</div></div>
                 <div class="kit-item"><img src="city shorts.avif" alt=""><div class="kit-label">City</div></div>
                 <div class="kit-item"><img src="arsenal shorts.webp" alt=""><div class="kit-label">Arsenal</div></div>
+                <div class="kit-item"><img src="chelsea shorts.avif" alt=""><div class="kit-label">Chelsea</div></div>
+                <div class="kit-item"><img src="psg shorts.avif" alt=""><div class="kit-label">PSG</div></div>
+                <div class="kit-item"><img src="juventus shorts.avif" alt=""><div class="kit-label">Juve</div></div>
             </div>
             <button class="scroll-btn" onclick="scrollGallery('next','shortsGal')">→</button>
         </div>
     </div>
-    <!-- table 1/2 -->
+    <!-- table 2/2 (different) -->
     <div class="table-container">
-        <table><caption>📐 SIZE GUIDE (cm)</caption>
-            <tr><th>Size</th><th>Chest</th><th>Waist</th></tr>
-            <tr><td>S</td><td>88-94</td><td>74-78</td></tr>
-            <tr><td>M</td><td>96-102</td><td>80-84</td></tr>
-            <tr><td>L</td><td>104-110</td><td>86-92</td></tr>
+        <table><caption>🩳 SHORT WAIST (cm)</caption>
+            <tr><th>Size</th><th>Waist</th><th>Inseam</th></tr>
+            <tr><td>S</td><td>74-78</td><td>28</td></tr>
+            <tr><td>M</td><td>80-84</td><td>29</td></tr>
+            <tr><td>L</td><td>86-92</td><td>30</td></tr>
         </table>
     </div>
-    <div class="story"><p>🏴󠁧󠁢󠁥󠁮󠁧󠁿 All shirts include official league patches upon request.</p></div>
 </section>
 
-<!-- ========== PAGE 3: BOOTS ========== -->
+<!-- ========== PAGE: BOOTS (separate) ========== -->
 <section id="boots" class="page">
     <div class="page-header">👟 BOOTS 2026</div>
     <div class="card-grid">
@@ -526,21 +552,22 @@
         <div class="product-card"><span class="rare-tag">🎯 PREDATOR 30</span><div class="media-frame"><img src="pedri predator.jpg"></div><div class="price-big">€279</div></div>
         <div class="product-card"><span class="rare-tag">🚀 X SPEEDFLOW</span><div class="media-frame"><img src="x speedflow.jpg"></div><div class="price-big">€269</div></div>
     </div>
-    <!-- nested list 5 -->
+    <!-- nested list 5 items -->
     <div class="feature-block">
         <h4 style="color:var(--locker-accent);">⚙ boot tech (nested 5)</h4>
         <ul class="nested-list-5">
             <li>Adidas
                 <ul><li>F50
                     <ul><li>Chaos (Yamal)
-                        <ul><li>asymmetric lacing</li></ul>
-                    </li></ul>
-                </li></ul>
-            </li>
+                        <ul><li>asymmetric lacing</li>
+                    </ul></li>
+                </ul></li>
+                <li>Predator</li>
+            </ul></li>
             <li>Nike</li><li>Puma</li><li>Mizuno</li><li>New Balance</li>
         </ul>
     </div>
-    <!-- table 2/2 -->
+    <!-- table -->
     <div class="table-container">
         <table><caption>⚖️ BOOT WEIGHTS</caption>
             <tr><th>Model</th><th>Weight</th><th>Player</th></tr>
@@ -550,7 +577,7 @@
     </div>
 </section>
 
-<!-- ========== PAGE 4: MEMORABILIA ========== -->
+<!-- ========== PAGE: MEMORABILIA (separate) ========== -->
 <section id="memorabilia" class="page">
     <div class="page-header">📦 MEMORABILIA</div>
     <div class="card-grid">
@@ -558,10 +585,10 @@
         <div class="product-card"><span class="rare-tag">🔴 2009 UCL</span><div class="media-frame"><img src="ms1.webp"></div><h3>Messi shirt</h3><div class="price-big">€4,999</div></div>
         <div class="product-card"><span class="rare-tag">⭐ YAMAL</span><div class="media-frame"><img src="yamal card.jpg"></div><h3>Rookie card set</h3><div class="price-big">€899</div></div>
     </div>
-    <div class="story"><p>📜 All include COA & tamper‑proof hologram.</p></div>
+    <div class="story"><p>📜 All include COA & tamper‑proof hologram. Sourced from matchday collectors.</p></div>
 </section>
 
-<!-- ========== PAGE 5: ABOUT CLUBS ========== -->
+<!-- ========== PAGE: CLUBS (separate) ========== -->
 <section id="clubs" class="page">
     <div class="page-header">🏟️ ABOUT CLUBS</div>
     <div class="two-col">
@@ -581,10 +608,10 @@
             <li>England</li><li>Italy</li><li>Germany</li><li>France</li>
         </ul>
     </div>
-    <div class="story"><p>⚽ The Locker-Room is proud to partner with these legendary clubs.</p></div>
+    <div class="story"><p>⚽ The Locker-Room is proud to partner with these legendary clubs. Authentic merchandise directly sourced.</p></div>
 </section>
 
-<!-- ========== FOOTER ========== -->
+<!-- ========== FOOTER (same on all pages) ========== -->
 <footer class="footer-flag">
     ⚽ THE LOCKER-ROOM · OFFICIAL MERCHANDISE
     <div class="footer-grid">
@@ -596,7 +623,7 @@
     <div style="margin-top:2rem;">© 2026 The Locker-Room · 30‑day returns</div>
 </footer>
 
-<!-- ========== SCROLL BUTTON SCRIPT ========== -->
+<!-- ========== SCROLL BUTTON SCRIPT (same for all galleries) ========== -->
 <script>
     function scrollGallery(direction, containerId) {
         const container = document.getElementById(containerId);
@@ -617,6 +644,7 @@
         scrollLeft = Math.max(0, Math.min(scrollLeft, maxScroll));
         container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
     }
+    // initialize active state for each gallery after pages load
     document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.kit-container').forEach(con => {
             const items = con.querySelectorAll('.kit-item');
@@ -635,6 +663,6 @@
     });
 </script>
 
-<!-- image references exist as in original spec -->
+<!-- image references (exist as in original spec) -->
 </body>
 </html>
