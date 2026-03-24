@@ -1,39 +1,234 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Videos</title>
-<link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>The Locker-Room | Videos - Kit Previews & Highlights</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --locker-metal: #2c3e50;
+    --locker-accent: #c49a6c;
+    --locker-light: #f5e6d3;
+    --team-silver: #a8a9ad;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: #0a0c10;
+    color: #e8e9ea;
+    line-height: 1.5;
+}
+
+.locker-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.65)), url('https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat fixed;
+    background-blend-mode: overlay;
+}
+
+.locker-bg::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: repeating-linear-gradient(45deg, rgba(139,90,43,0.1) 0px, rgba(139,90,43,0.1) 2px, transparent 2px, transparent 8px);
+    pointer-events: none;
+}
+
+.menu-bar {
+    background: rgba(20, 25, 32, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    border-bottom: 3px solid var(--locker-accent);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.menu-bar a {
+    color: var(--locker-light);
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.5rem 1.2rem;
+    border-radius: 40px;
+    transition: all 0.2s;
+}
+.menu-bar a:hover, .menu-bar a.active {
+    background: var(--locker-accent);
+    color: #1a1e24;
+}
+
+.page-content {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: rgba(26, 30, 36, 0.85);
+    backdrop-filter: blur(2px);
+    border-radius: 40px;
+    border: 1px solid var(--locker-accent);
+}
+
+.container-card {
+    background: rgba(35, 43, 51, 0.9);
+    border-radius: 28px;
+    padding: 1.8rem;
+    margin: 2rem 0;
+    border: 1px solid var(--locker-accent);
+}
+
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+.media-item {
+    background: #1f2a33;
+    border-radius: 24px;
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid var(--locker-accent);
+}
+.media-item video {
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+    border-radius: 20px;
+    background: #000;
+}
+.video-caption {
+    margin-top: 12px;
+    font-weight: 600;
+    color: var(--locker-accent);
+}
+
+.table-full {
+    width: 100%;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(0,0,0,0.5);
+    border-radius: 20px;
+    overflow: hidden;
+}
+th, td {
+    padding: 14px 10px;
+    border-bottom: 1px solid var(--locker-accent);
+    text-align: left;
+}
+th {
+    background: #2c3e50;
+    color: var(--locker-accent);
+}
+
+.footer-locker {
+    background: rgba(10, 14, 18, 0.95);
+    text-align: center;
+    padding: 3rem 1rem;
+    margin-top: 3rem;
+    border-top: 4px solid var(--locker-accent);
+}
+</style>
 </head>
+<body>
+<div class="locker-bg"></div>
 
-<body class="home-bg">
-
-<nav>
-<ul class="menu">
-<li><a href="index.html">Home</a></li>
-<li><a href="shop.html">Shop</a></li>
-<li><a href="size.html">Size</a></li>
-<li><a href="videos.html">Videos</a></li>
-<li><a href="contact.html">Contact</a></li>
-</ul>
-</nav>
-
-<div class="grid">
-
-<video controls autoplay muted loop>
-<source src="country jersey.mp4">
-</video>
-
-<video controls autoplay muted loop>
-<source src="country jersey 2.mp4">
-</video>
-
-<video controls autoplay muted loop>
-<source src="club jersey.mp4">
-</video>
-
+<div class="menu-bar">
+    <a href="index.html">🏠 HOME</a>
+    <a href="shop.html">🛍️ SHOP</a>
+    <a href="size.html">📏 SIZE GUIDE</a>
+    <a href="videos.html" class="active">🎬 VIDEOS</a>
+    <a href="contact.html">📞 CONTACT</a>
 </div>
 
-<footer>Videos</footer>
+<div class="page-content">
+    <h2 style="color:var(--locker-accent)">🎬 TIKTOK STYLE VERTICAL VIDEOS — KIT PREVIEWS</h2>
+    <p style="margin-bottom: 1.5rem;">Autoplay & muted • Full 9:16 vertical videos immersive experience</p>
+    
+    <div class="media-grid">
+        <div class="media-item">
+            <video controls autoplay muted loop playsinline>
+                <source src="country jersey.mp4" type="video/mp4">
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            </video>
+            <div class="video-caption">🇦🇷 Country Jersey 2026 • Argentina / Brazil / Germany</div>
+        </div>
+        <div class="media-item">
+            <video controls autoplay muted loop playsinline>
+                <source src="country jersey 2.mp4" type="video/mp4">
+                <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
+            </video>
+            <div class="video-caption">🌍 World Cup 2026 Coming Soon • Leaked designs</div>
+        </div>
+        <div class="media-item">
+            <video controls autoplay muted loop playsinline>
+                <source src="club jersey.mp4" type="video/mp4">
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            </video>
+            <div class="video-caption">⚽ Club Jersey 2026 • Premier League • La Liga • Serie A</div>
+        </div>
+    </div>
 
+    <!-- TABLE: Video Stats -->
+    <div class="table-full container-card">
+        <h3>📈 MOST VIEWED KIT REVEALS</h3>
+        <table>
+            <thead><tr><th>Video</th><th>Views (Millions)</th><th>Trend</th></tr></thead>
+            <tbody>
+                <tr><td>Barcelona 125th Anniversary Kit</td><td>12.4M</td><td>🔥 🔥 🔥</td></tr>
+                <tr><td>Messi F50 "Chaos" Boot Launch</td><td>9.8M</td><td>⚡ Trending</td></tr>
+                <tr><td>Yamal × Pedri Duel Campaign</td><td>7.2M</td><td>🚀 Viral</td></tr>
+                <tr><td>Real Madrid Galacticos 2026</td><td>8.1M</td><td>⭐ Star</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Second Table: Coming Soon -->
+    <div class="table-full container-card">
+        <h3>🎥 UPCOMING VIDEO RELEASES</h3>
+        <table>
+            <thead><tr><th>Release Date</th><th>Title</th><th>Duration</th></tr></thead>
+            <tbody>
+                <tr><td>April 15, 2026</td><td>Premier League Finale Kits</td><td>2:30 min</td></tr>
+                <tr><td>April 22, 2026</td><td>UCL Final Boot Special</td><td>3:15 min</td></tr>
+                <tr><td>May 1, 2026</td><td>Legends Collection Drop</td><td>4:00 min</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Images Container -->
+    <div class="container-card">
+        <h3>📸 Behind the Scenes - Locker Room Content</h3>
+        <div class="media-grid" style="grid-template-columns: repeat(2, 1fr);">
+            <img src="https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg?auto=compress&cs=tinysrgb&w=600" style="border-radius:20px; width:100%; aspect-ratio:1/1; object-fit:cover;" alt="behind scenes">
+            <img src="https://images.pexels.com/photos/1884574/pexels-photo-1884574.jpeg?auto=compress&cs=tinysrgb&w=600" style="border-radius:20px; width:100%; aspect-ratio:1/1; object-fit:cover;" alt="locker room">
+        </div>
+    </div>
+</div>
+
+<footer class="footer-locker">
+    ⚽ THE LOCKER-ROOM - OFFICIAL UEFA MERCHANDISE PARTNER ⚽<br>
+    © 2026 The Locker-Room | Muthithi Road, Westlands, Nairobi, Kenya<br>
+    📞 24/7 Support: +254 700 123 456 | ✉️ info@thelocker-room.co.ke<br>
+    🇰🇪 Free East Africa Shipping | 30-Day Returns | 100% Authentic
+</footer>
 </body>
 </html>
