@@ -6,55 +6,254 @@
 <title>The Locker-Room | Home - Premium Football Kits</title>
 <link rel="stylesheet" href="style.css">
 <style>
+/* Slideshow Background Styles */
+.slideshow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+/* Dark overlay for better text readability */
+.slideshow-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0,0,0,0.75), rgba(0,0,0,0.65));
+    z-index: -1;
+}
+
+/* Hero Section */
 .hero {
     text-align: center;
-    padding: 3rem 1rem;
-    background: linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.4));
-    border-radius: 30px;
+    padding: 4rem 2rem;
+    background: rgba(0,0,0,0.5);
+    border-radius: 40px;
     margin-bottom: 2rem;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(196,154,108,0.3);
 }
 
 .hero h1 {
-    font-size: 3.5rem;
+    font-size: 4rem;
     background: linear-gradient(135deg, #e8e9ea, var(--locker-accent));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+    animation: fadeInUp 0.8s ease;
 }
 
+.hero p {
+    font-size: 1.3rem;
+    color: var(--locker-light);
+    animation: fadeInUp 0.8s ease 0.2s backwards;
+}
+
+/* Feature Grid */
 .feature-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+    gap: 1.8rem;
     margin: 2rem 0;
 }
 
 .feature-box {
-    background: rgba(0,0,0,0.4);
-    padding: 1.5rem;
-    border-radius: 20px;
-    border-left: 3px solid var(--locker-accent);
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(8px);
+    padding: 1.8rem;
+    border-radius: 25px;
+    border-left: 4px solid var(--locker-accent);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.feature-box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    background: rgba(0,0,0,0.7);
+}
+
+.feature-box h3 {
+    color: var(--locker-accent);
+    margin-bottom: 0.8rem;
+    font-size: 1.4rem;
+}
+
+.feature-box p {
+    color: var(--team-silver);
+    line-height: 1.6;
+}
+
+/* Container Cards */
+.container-card {
+    background: rgba(35, 43, 51, 0.92);
+    backdrop-filter: blur(8px);
+    border-radius: 28px;
+    padding: 1.8rem;
+    margin: 1.8rem 0;
+    border: 1px solid var(--locker-accent);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease;
+}
+
+.container-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Formatted Paragraphs */
 .formatted-p {
-    background: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.5);
     padding: 1rem;
     border-left: 4px solid var(--locker-accent);
     margin: 1rem 0;
     border-radius: 0 12px 12px 0;
+    backdrop-filter: blur(4px);
 }
 
+/* Nested List */
 .nested-list {
-    background: #1f2a33;
+    background: rgba(31, 42, 51, 0.9);
     padding: 1.5rem;
     border-radius: 20px;
     margin: 1rem 0;
 }
 .nested-list ul { margin-left: 1.8rem; }
 .nested-list li { margin: 8px 0; }
+
+/* Tables */
+.size-chart {
+    width: 100%;
+    overflow-x: auto;
+}
+.size-chart table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(0,0,0,0.6);
+    border-radius: 20px;
+    overflow: hidden;
+}
+.size-chart th, .size-chart td {
+    padding: 14px 12px;
+    border-bottom: 1px solid var(--locker-accent);
+    text-align: left;
+}
+.size-chart th {
+    background: var(--locker-metal);
+    color: var(--locker-accent);
+    font-weight: 700;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Slideshow Indicators */
+.slideshow-indicators {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+    background: rgba(0,0,0,0.5);
+    padding: 8px 16px;
+    border-radius: 30px;
+    backdrop-filter: blur(5px);
+}
+
+.indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: var(--locker-accent);
+    width: 25px;
+    border-radius: 10px;
+}
+
+.indicator:hover {
+    background: var(--locker-accent);
+    transform: scale(1.2);
+}
+
+/* Page Content Enhancement */
+.page-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Button Style */
+.btn-feature {
+    background: var(--locker-accent);
+    color: #1e2a32;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 60px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+.btn-feature:hover {
+    background: #e6b17e;
+    transform: scale(1.02);
+}
 </style>
 </head>
 <body>
-<div class="locker-bg"></div>
+
+<!-- Slideshow Background -->
+<div class="slideshow-container" id="slideshowContainer">
+    <div class="slide" style="background-image: url('locker1.jpg');"></div>
+    <div class="slide" style="background-image: url('locker2.jpg');"></div>
+    <div class="slide" style="background-image: url('locker3.jpg');"></div>
+    <div class="slide" style="background-image: url('locker4.jpg');"></div>
+    <div class="slide" style="background-image: url('locker5.jpg');"></div>
+    <div class="slide" style="background-image: url('locker6.jpg');"></div>
+    <div class="slide" style="background-image: url('locker7.jpg');"></div>
+    <div class="slide" style="background-image: url('locker8.jpg');"></div>
+    <div class="slide" style="background-image: url('stadium1.jpg');"></div>
+</div>
+<div class="slideshow-overlay"></div>
+
+<!-- Slideshow Indicators -->
+<div class="slideshow-indicators" id="slideshowIndicators"></div>
 
 <div class="menu-bar">
     <a href="index.html" class="active">🏠 HOME</a>
@@ -67,7 +266,8 @@
 <div class="page-content">
     <div class="hero">
         <h1>⚡ THE LOCKER-ROOM ⚡</h1>
-        <p style="font-size: 1.2rem; margin-top: 1rem;">Where Champions Gear Up | Authentic Football Kits & Memorabilia</p>
+        <p>Where Champions Gear Up | Authentic Football Kits & Memorabilia</p>
+        <button class="btn-feature" onclick="window.location.href='shop.html'">🛒 Shop Now</button>
     </div>
 
     <div class="feature-grid">
@@ -90,7 +290,9 @@
         <h3>🏅 2026 PREMIER LEAGUE KIT PRICES</h3>
         <div class="size-chart">
             <table>
-                <thead><tr><th>Club</th><th>Home Kit</th><th>Away Kit</th><th>Third Kit</th><th>Status</th></tr></thead>
+                <thead>
+                    <tr><th>Club</th><th>Home Kit</th><th>Away Kit</th><th>Third Kit</th><th>Status</th></tr>
+                </thead>
                 <tbody>
                     <tr><td>Arsenal</td><td>€115</td><td>€105</td><td>€95</td><td>In Stock</td></tr>
                     <tr><td>Liverpool</td><td>€125</td><td>€110</td><td>€100</td><td>Limited</td></tr>
@@ -106,7 +308,9 @@
         <h3>👟 BOOT COLLECTION 2026</h3>
         <div class="size-chart">
             <table>
-                <thead><tr><th>Model</th><th>Player Edition</th><th>Price</th><th>Availability</th></tr></thead>
+                <thead>
+                    <tr><th>Model</th><th>Player Edition</th><th>Price</th><th>Availability</th></tr>
+                </thead>
                 <tbody>
                     <tr><td>Adidas F50 Elite</td><td>Messi "Chaos"</td><td>€299</td><td>500 pairs</td></tr>
                     <tr><td>Adidas Predator 30</td><td>Pedri "Control"</td><td>€279</td><td>Limited</td></tr>
@@ -140,15 +344,22 @@
                         <li>🏴 Premier League Big Six
                             <ul>
                                 <li>Arsenal Invincibles Collection</li>
+                                <li>Liverpool Legends Series</li>
                             </ul>
                         </li>
                     </ul>
                 </li>
                 <li>🇩🇪 Bundesliga Powerhouse
-                    <ul><li>Bayern & Dortmund Derby Packs</li></ul>
+                    <ul>
+                        <li>Bayern & Dortmund Derby Packs</li>
+                        <li>Bayer Leverkusen 2026 Edition</li>
+                    </ul>
                 </li>
                 <li>🇮🇹 Serie A Heritage
-                    <ul><li>Milan Derby Collectibles</li></ul>
+                    <ul>
+                        <li>Milan Derby Collectibles</li>
+                        <li>Juventus Scudetto Collection</li>
+                    </ul>
                 </li>
             </ul>
         </div>
@@ -163,6 +374,13 @@
         <div class="formatted-p"><strong>4. Sustainability Initiative:</strong> 2026 kits made from 80% recycled ocean plastic. Each purchase funds one tree planted in the Mau Forest restoration project.</div>
         <div class="formatted-p"><strong>5. Player Insights:</strong> "The energy inside The Locker-Room reminds me of Camp Nou's tunnel" — Pedri. Visit our Westlands hub for exclusive meet-and-greet events.</div>
     </div>
+
+    <!-- Countdown Feature -->
+    <div class="container-card" style="text-align: center;">
+        <h3>🔥 WORLD CUP 2026 COUNTDOWN</h3>
+        <div id="countdown" style="font-size: 2rem; font-weight: bold; color: var(--locker-accent); margin: 1rem 0;">Loading...</div>
+        <button class="btn-feature" onclick="alert('🏆 Pre-order WC2026 kits now! Limited early-bird discount.')">Pre-order Now</button>
+    </div>
 </div>
 
 <footer class="footer-locker">
@@ -171,5 +389,76 @@
     📞 24/7 Support: +254 700 123 456 | ✉️ info@thelocker-room.co.ke<br>
     🇰🇪 Free East Africa Shipping | 30-Day Returns | 100% Authentic
 </footer>
+
+<script>
+// Slideshow Functionality
+const slides = document.querySelectorAll('.slide');
+const indicatorsContainer = document.getElementById('slideshowIndicators');
+let currentSlide = 0;
+let slideInterval;
+
+// Create indicators
+slides.forEach((_, index) => {
+    const indicator = document.createElement('div');
+    indicator.classList.add('indicator');
+    if (index === 0) indicator.classList.add('active');
+    indicator.addEventListener('click', () => goToSlide(index));
+    indicatorsContainer.appendChild(indicator);
+});
+
+const indicators = document.querySelectorAll('.indicator');
+
+function goToSlide(index) {
+    // Remove active class from all slides and indicators
+    slides.forEach(slide => slide.classList.remove('active'));
+    indicators.forEach(ind => ind.classList.remove('active'));
+    
+    // Add active class to current slide and indicator
+    slides[index].classList.add('active');
+    indicators[index].classList.add('active');
+    currentSlide = index;
+}
+
+function nextSlide() {
+    let next = currentSlide + 1;
+    if (next >= slides.length) next = 0;
+    goToSlide(next);
+}
+
+// Start slideshow (change every 5 seconds)
+function startSlideshow() {
+    slideInterval = setInterval(nextSlide, 5000);
+}
+
+function stopSlideshow() {
+    clearInterval(slideInterval);
+}
+
+// Start slideshow automatically
+startSlideshow();
+
+// Pause slideshow on hover (optional)
+const slideshowContainer = document.getElementById('slideshowContainer');
+slideshowContainer.addEventListener('mouseenter', stopSlideshow);
+slideshowContainer.addEventListener('mouseleave', startSlideshow);
+
+// Countdown Timer
+const target = new Date("June 11, 2026 00:00:00").getTime();
+function updateCountdown() {
+    const now = new Date().getTime();
+    const diff = target - now;
+    if (diff <= 0) { 
+        document.getElementById('countdown').innerText = "⚽ WORLD CUP STARTED!"; 
+        return; 
+    }
+    const days = Math.floor(diff/(1000*60*60*24));
+    const hours = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+    const mins = Math.floor((diff%(1000*60*60))/(1000*60));
+    const secs = Math.floor((diff%(1000*60))/1000);
+    document.getElementById('countdown').innerText = `${days}d ${hours}h ${mins}m ${secs}s`;
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+</script>
 </body>
 </html>
