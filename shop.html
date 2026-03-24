@@ -2,165 +2,35 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>The Locker-Room | Shop - Premium Football Kits</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Locker-Room | Shop - Kits, Shorts & Boots</title>
+<link rel="stylesheet" href="style.css">
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.shop-section {
+    margin-bottom: 3rem;
 }
-
-:root {
-    --locker-metal: #2c3e50;
-    --locker-wood: #8b5a2b;
-    --locker-bench: #4a3c31;
-    --locker-floor: #2d2a24;
-    --locker-accent: #c49a6c;
-    --locker-light: #f5e6d3;
-    --team-gold: #b8860b;
-    --team-silver: #a8a9ad;
-}
-
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background: #0a0c10;
-    color: #e8e9ea;
-    line-height: 1.5;
-}
-
-.locker-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -2;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.65)), url('https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat fixed;
-    background-blend-mode: overlay;
-}
-
-.locker-bg::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: repeating-linear-gradient(45deg, rgba(139,90,43,0.1) 0px, rgba(139,90,43,0.1) 2px, transparent 2px, transparent 8px);
-    pointer-events: none;
-}
-
-.menu-bar {
-    background: rgba(20, 25, 32, 0.95);
-    backdrop-filter: blur(10px);
-    padding: 1rem 2rem;
+.section-header {
     display: flex;
-    justify-content: center;
-    gap: 2rem;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
     flex-wrap: wrap;
-    border-bottom: 3px solid var(--locker-accent);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
 }
-.menu-bar a {
-    color: var(--locker-light);
-    text-decoration: none;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 0.5rem 1.2rem;
-    border-radius: 40px;
-    transition: all 0.2s;
-    font-size: 1rem;
-}
-.menu-bar a:hover, .menu-bar a.active {
-    background: var(--locker-accent);
-    color: #1a1e24;
-    box-shadow: 0 0 12px rgba(196,154,108,0.6);
-}
-
-.page-content {
-    max-width: 1400px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background: rgba(26, 30, 36, 0.85);
-    backdrop-filter: blur(2px);
-    border-radius: 40px;
-    border: 1px solid var(--locker-accent);
-}
-
-.container-card {
-    background: rgba(35, 43, 51, 0.9);
-    border-radius: 28px;
-    padding: 1.8rem;
-    margin: 2rem 0;
-    border: 1px solid var(--locker-accent);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-}
-
-.two-col {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    margin: 2rem 0;
-}
-@media (max-width: 800px) {
-    .two-col { grid-template-columns: 1fr; }
-}
-
-.media-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-}
-.media-item {
-    background: #1f2a33;
-    border-radius: 24px;
-    padding: 1rem;
-    text-align: center;
-    border: 1px solid var(--locker-accent);
-}
-.media-item img, .media-item video {
-    width: 100%;
-    aspect-ratio: 9 / 16;
-    object-fit: cover;
-    border-radius: 20px;
-    background: #000;
-}
-
-.table-full {
-    width: 100%;
-    overflow-x: auto;
-    margin: 1.5rem 0;
-}
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: rgba(0,0,0,0.5);
-    border-radius: 20px;
-    overflow: hidden;
-}
-th, td {
-    padding: 14px 10px;
-    border-bottom: 1px solid var(--locker-accent);
-    text-align: left;
-}
-th {
-    background: var(--locker-metal);
+.section-title {
+    font-size: 1.8rem;
     color: var(--locker-accent);
-    font-weight: 700;
+    border-bottom: 2px solid var(--locker-accent);
+    padding-bottom: 5px;
 }
-
-.footer-locker {
-    background: rgba(10, 14, 18, 0.95);
-    text-align: center;
-    padding: 3rem 1rem;
-    margin-top: 3rem;
-    border-top: 4px solid var(--locker-accent);
-    font-size: 0.9rem;
+.product-badge {
+    background: var(--team-gold);
+    color: #000;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 8px;
 }
 </style>
 </head>
@@ -176,71 +46,109 @@ th {
 </div>
 
 <div class="page-content">
-    <h2 style="color:var(--locker-accent)">🛍️ OFFICIAL SHOP — KITS & MEMORABILIA</h2>
-    <p>Authentic shirts, shorts, boots & signed collectibles. 9:16 portrait TikTok style cards.</p>
-    
-    <!-- 2-COLUMN product showcase -->
-    <div class="two-col">
-        <div class="container-card">
-            <h3>👟 Pedri Signed Boot</h3>
-            <div class="media-grid" style="grid-template-columns:1fr 1fr; gap:0.8rem;">
-                <img src="pedri signed.jpg" style="aspect-ratio:9/16; object-fit:cover; border-radius:20px; width:100%;" onerror="this.src='https://images.pexels.com/photos/4667111/pexels-photo-4667111.jpeg?auto=compress&cs=tinysrgb&w=400'">
-                <img src="pedri 2.jpg" style="aspect-ratio:9/16; object-fit:cover; border-radius:20px; width:100%;" onerror="this.src='https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=400'">
+    <h2 style="text-align: center;">🛍️ OFFICIAL SHOP</h2>
+    <p style="text-align: center; margin-bottom: 2rem;">Authentic Kits • Shorts • Boots • Scroll to explore collections</p>
+
+    <!-- SHIRTS SECTION with Scroll -->
+    <div class="shop-section">
+        <div class="section-header">
+            <h3 class="section-title">👕 2026 SHIRTS COLLECTION</h3>
+            <span style="color: var(--team-silver);">← scroll →</span>
+        </div>
+        <div class="scroll-wrapper">
+            <button class="scroll-btn" onclick="scrollGallery('shirtsGallery', 'prev')">←</button>
+            <div class="scroll-container" id="shirtsGallery">
+                <div class="scroll-item"><span class="product-badge">BESTSELLER</span><img src="https://images.pexels.com/photos/6373924/pexels-photo-6373924.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Barcelona"><h4>Barcelona 125th Anniv.</h4><p>Nike Dri-FIT • Gold accents</p><p class="price">€129</p></div>
+                <div class="scroll-item"><span class="product-badge">NEW</span><img src="https://images.pexels.com/photos/3251072/pexels-photo-3251072.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Real Madrid"><h4>Real Madrid Galacticos</h4><p>Adidas • 15th UCL patch</p><p class="price">€139</p></div>
+                <div class="scroll-item"><span class="product-badge">LIMITED</span><img src="https://images.pexels.com/photos/4678521/pexels-photo-4678521.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Liverpool"><h4>Liverpool Legends</h4><p>Nike • 6x UCL edition</p><p class="price">€125</p></div>
+                <div class="scroll-item"><span class="product-badge">SALE</span><img src="https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Arsenal"><h4>Arsenal Invincibles</h4><p>Adidas • Retro style</p><p class="price">€115</p></div>
+                <div class="scroll-item"><img src="https://images.pexels.com/photos/4667111/pexels-photo-4667111.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Bayern"><h4>Bayern Munich</h4><p>Adidas • Champions</p><p class="price">€129</p></div>
+                <div class="scroll-item"><img src="https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg?auto=compress&cs=tinysrgb&w=400" alt="PSG"><h4>PSG x Jordan</h4><p>Nike/Jordan • Limited</p><p class="price">€139</p></div>
+                <div class="scroll-item"><img src="https://images.pexels.com/photos/1884574/pexels-photo-1884574.jpeg?auto=compress&cs=tinysrgb&w=400" alt="AC Milan"><h4>AC Milan Rossoneri</h4><p>Puma • Retro collar</p><p class="price">€119</p></div>
+                <div class="scroll-item"><img src="https://images.pexels.com/photos/274506/pexels-photo-274506.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Juventus"><h4>Juventus</h4><p>Adidas • Scudetto</p><p class="price">€119</p></div>
+                <div class="scroll-item"><img src="https://images.pexels.com/photos/260024/pexels-photo-260024.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Dortmund"><h4>Borussia Dortmund</h4><p>Puma • Yellow Wall</p><p class="price">€115</p></div>
+                <div class="scroll-item"><img src="https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Inter"><h4>Inter Milan</h4><p>Nike • Serie A champs</p><p class="price">€115</p></div>
             </div>
-            <p>Right boot • 92' winner at Bernabéu • Adidas Predator signed + photo</p>
-            <p style="font-size:1.6rem; color:gold;">€1,899</p>
+            <button class="scroll-btn" onclick="scrollGallery('shirtsGallery', 'next')">→</button>
         </div>
-        <div class="container-card">
-            <h3>👕 Messi 2009 UCL Final Shirt</h3>
-            <div class="media-grid" style="grid-template-columns:1fr 1fr; gap:0.8rem;">
-                <img src="ms1.webp" style="aspect-ratio:9/16; object-fit:cover; border-radius:20px; width:100%;" onerror="this.src='https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=400'">
-                <img src="ms2.jpg" style="aspect-ratio:9/16; object-fit:cover; border-radius:20px; width:100%;" onerror="this.src='https://images.pexels.com/photos/4678521/pexels-photo-4678521.jpeg?auto=compress&cs=tinysrgb&w=400'">
+    </div>
+
+    <!-- SHORTS SECTION with Scroll -->
+    <div class="shop-section">
+        <div class="section-header">
+            <h3 class="section-title">🩳 MATCH SHORTS 2026</h3>
+            <span style="color: var(--team-silver);">← scroll →</span>
+        </div>
+        <div class="scroll-wrapper">
+            <button class="scroll-btn" onclick="scrollGallery('shortsGallery', 'prev')">←</button>
+            <div class="scroll-container" id="shortsGallery">
+                <div class="scroll-item"><img src="https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Barcelona Shorts"><h4>Barcelona Shorts</h4><p>Nike • Match issue</p><p class="price">€59</p></div>
+                <div class="scroll-item"><img src="https://images.pexels.com/photos/3251072/pexels-photo-3251072.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Real Madrid Shorts"><h4>Real Madrid Shorts</h4><p>Adidas • Aeroready</p><p class="price">€65</p></div>
+                <div class="scroll-item"><img src="https://images.pexels.com/photos/6373924/pexels-photo-6373924.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Liverpool Shorts"><h4>Liverpool Shorts</h4><p>Nike • Dri-FIT</p><p class="price">€59</p></div>
+                <div class="scroll-item"><img src="https://images.pexels.com/photos/4678521/pexels-photo-4678521.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Man City Shorts"><h4>Man City Shorts</h4><p>Puma • Ultraweave</p><p class="price">€55</p></div>
+                <div class="scroll-item"><img src="https://images.pexels.com/photos/4667111/pexels-photo-4667111.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Arsenal Shorts"><h4>Arsenal Shorts</h4><p>Adidas • Authentic</p><p class="price">€59</p></div>
+                <div class="scroll-item"><img src="https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Bayern Shorts"><h4>Bayern Shorts</h4><p>Adidas • Champions</p><p class="price">€62</p></div>
+                <div class="scroll-item"><img src="https://images.pexels.com/photos/1884574/pexels-photo-1884574.jpeg?auto=compress&cs=tinysrgb&w=400" alt="PSG Shorts"><h4>PSG Shorts</h4><p>Nike/Jordan</p><p class="price">€69</p></div>
+                <div class="scroll-item"><img src="https://images.pexels.com/photos/274506/pexels-photo-274506.jpeg?auto=compress&cs=tinysrgb&w=400" alt="AC Milan Shorts"><h4>AC Milan Shorts</h4><p>Puma • Match</p><p class="price">€55</p></div>
             </div>
-            <p>Barcelona 2-0 Man Utd • Rome 2009 match-worn style • COA included</p>
-            <p style="font-size:1.6rem; color:gold;">€4,999</p>
+            <button class="scroll-btn" onclick="scrollGallery('shortsGallery', 'next')">→</button>
         </div>
     </div>
 
-    <!-- Additional Product -->
+    <!-- BOOTS SECTION with Scroll -->
+    <div class="shop-section">
+        <div class="section-header">
+            <h3 class="section-title">👟 PREMIUM BOOTS 2026</h3>
+            <span style="color: var(--team-silver);">← scroll →</span>
+        </div>
+        <div class="scroll-wrapper">
+            <button class="scroll-btn" onclick="scrollGallery('bootsGallery', 'prev')">←</button>
+            <div class="scroll-container" id="bootsGallery">
+                <div class="scroll-item"><span class="product-badge">LIMITED</span><img src="https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Messi Boots"><h4>F50 Elite - Messi</h4><p>"Chaos" Edition • 500 pairs</p><p class="price">€299</p></div>
+                <div class="scroll-item"><span class="product-badge">SIGNED</span><img src="https://images.pexels.com/photos/4667111/pexels-photo-4667111.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Pedri Boots"><h4>Predator 30 - Pedri</h4><p>"Control" • Signed</p><p class="price">€279</p></div>
+                <div class="scroll-item"><span class="product-badge">NEW</span><img src="https://images.pexels.com/photos/4678521/pexels-photo-4678521.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Yamal Boots"><h4>F50 Chaos - Yamal</h4><p>Speed Demon • Limited</p><p class="price">€289</p></div>
+                <div class="scroll-item"><img src="https://images.pexels.com/photos/6373924/pexels-photo-6373924.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Bellingham Boots"><h4>Predator - Bellingham</h4><p>Midnight Edition</p><p class="price">€269</p></div>
+                <div class="scroll-item"><img src="https://images.pexels.com/photos/3251072/pexels-photo-3251072.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Haaland Boots"><h4>Mercurial - Haaland</h4><p>Nike • Speed</p><p class="price">€289</p></div>
+                <div class="scroll-item"><img src="https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Mbappe Boots"><h4>X Speedflow - Mbappé</h4><p>Adidas • Lightning</p><p class="price">€275</p></div>
+                <div class="scroll-item"><img src="https://images.pexels.com/photos/1884574/pexels-photo-1884574.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Neymar Boots"><h4>Puma Ultra - Neymar</h4><p>Limited Edition</p><p class="price">€265</p></div>
+                <div class="scroll-item"><img src="https://images.pexels.com/photos/274506/pexels-photo-274506.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Copa Pure"><h4>Copa Pure 3</h4><p>Classic Heritage</p><p class="price">€245</p></div>
+            </div>
+            <button class="scroll-btn" onclick="scrollGallery('bootsGallery', 'next')">→</button>
+        </div>
+    </div>
+
+    <!-- MEMORABILIA SECTION -->
     <div class="container-card">
-        <h3>🃏 Lamine Yamal Card Set</h3>
-        <div class="media-grid" style="grid-template-columns:1fr 1fr; max-width:500px; margin:0 auto;">
-            <img src="yamal card.jpg" style="aspect-ratio:9/16; object-fit:cover; border-radius:20px;" onerror="this.src='https://images.pexels.com/photos/6373924/pexels-photo-6373924.jpeg?auto=compress&cs=tinysrgb&w=400'">
-            <img src="yamal card 2.jpg" style="aspect-ratio:9/16; object-fit:cover; border-radius:20px;" onerror="this.src='https://images.pexels.com/photos/3251072/pexels-photo-3251072.jpeg?auto=compress&cs=tinysrgb&w=400'">
+        <h3>✨ SIGNED MEMORABILIA</h3>
+        <div class="scroll-wrapper">
+            <button class="scroll-btn" onclick="scrollGallery('memGallery', 'prev')">←</button>
+            <div class="scroll-container" id="memGallery">
+                <div class="scroll-item"><span class="product-badge">AUTOGRAPHED</span><img src="https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Pedri Boots"><h4>Pedri Signed Boot</h4><p>Right boot • 92' winner</p><p class="price">€1,899</p></div>
+                <div class="scroll-item"><span class="product-badge">MATCH WORN</span><img src="https://images.pexels.com/photos/4678521/pexels-photo-4678521.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Messi Shirt"><h4>Messi 2009 UCL Shirt</h4><p>Rome final • COA</p><p class="price">€4,999</p></div>
+                <div class="scroll-item"><span class="product-badge">ROOKIE</span><img src="https://images.pexels.com/photos/6373924/pexels-photo-6373924.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Yamal Cards"><h4>Yamal Card Set</h4><p>Gold refractor + rookie</p><p class="price">€899</p></div>
+            </div>
+            <button class="scroll-btn" onclick="scrollGallery('memGallery', 'next')">→</button>
         </div>
-        <p>Gold refractor set + rookie #304 • Limited edition rookie cards</p>
-        <p style="font-size:1.6rem; color:gold; text-align:center;">€899</p>
-    </div>
-
-    <!-- IMAGES & VIDEOS CONTAINER -->
-    <div class="container-card">
-        <h3>📸 Premium Kits Spotlight</h3>
-        <div class="media-grid">
-            <div class="media-item"><img src="barca.png" alt="Barcelona kit" onerror="this.src='https://images.pexels.com/photos/6373924/pexels-photo-6373924.jpeg?auto=compress&cs=tinysrgb&w=400'"><span>Barcelona 125th</span></div>
-            <div class="media-item"><img src="madrid.avif" alt="Real Madrid" onerror="this.src='https://images.pexels.com/photos/3251072/pexels-photo-3251072.jpeg?auto=compress&cs=tinysrgb&w=400'"><span>Real Madrid Galacticos</span></div>
-            <div class="media-item"><video controls autoplay muted loop playsinline style="width:100%"><source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">Your browser does not support video.</video><span>Preview 2026 Kit reveal</span></div>
-        </div>
-    </div>
-
-    <!-- TABLE -->
-    <div class="table-full container-card">
-        <h3>⚡ LIMITED DROPS - PRICE TABLE</h3>
-        <table>
-            <thead><tr><th>Product</th><th>Edition</th><th>Price</th></tr></thead>
-            <tbody>
-                <tr><td>Yamal Rookie Card Set</td><td>Gold refractor</td><td>€899</td></tr>
-                <tr><td>Bellingham Predator Boots</td><td>Signed LE</td><td>€329</td></tr>
-                <tr><td>Haaland Mercurial</td><td>Match issue</td><td>€399</td></tr>
-            </tbody>
-        </table>
     </div>
 </div>
 
 <footer class="footer-locker">
     ⚽ THE LOCKER-ROOM - OFFICIAL UEFA MERCHANDISE PARTNER ⚽<br>
     © 2026 The Locker-Room | Muthithi Road, Westlands, Nairobi, Kenya<br>
-    📞 24/7 Support: +254 700 123 456 | ✉️ info@thelocker-room.co.ke<br>
-    🇰🇪 Free East Africa Shipping | 30-Day Returns | 100% Authentic
+    📞 24/7 Support: +254 700 123 456 | ✉️ info@thelocker-room.co.ke
 </footer>
+
+<script>
+function scrollGallery(galleryId, direction) {
+    const container = document.getElementById(galleryId);
+    if (!container) return;
+    const scrollAmount = 280;
+    if (direction === 'next') {
+        container.scrollLeft += scrollAmount;
+    } else {
+        container.scrollLeft -= scrollAmount;
+    }
+}
+</script>
 </body>
 </html>
