@@ -2,54 +2,272 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Size</title>
-<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>The Locker-Room | Size Guide - Find Your Fit</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --locker-metal: #2c3e50;
+    --locker-wood: #8b5a2b;
+    --locker-bench: #4a3c31;
+    --locker-floor: #2d2a24;
+    --locker-accent: #c49a6c;
+    --locker-light: #f5e6d3;
+    --team-gold: #b8860b;
+    --team-silver: #a8a9ad;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: #0a0c10;
+    color: #e8e9ea;
+    line-height: 1.5;
+}
+
+.locker-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.65)), url('https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat fixed;
+    background-blend-mode: overlay;
+}
+
+.locker-bg::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: repeating-linear-gradient(45deg, rgba(139,90,43,0.1) 0px, rgba(139,90,43,0.1) 2px, transparent 2px, transparent 8px);
+    pointer-events: none;
+}
+
+.menu-bar {
+    background: rgba(20, 25, 32, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    border-bottom: 3px solid var(--locker-accent);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.menu-bar a {
+    color: var(--locker-light);
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.5rem 1.2rem;
+    border-radius: 40px;
+    transition: all 0.2s;
+}
+.menu-bar a:hover, .menu-bar a.active {
+    background: var(--locker-accent);
+    color: #1a1e24;
+}
+
+.page-content {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: rgba(26, 30, 36, 0.85);
+    backdrop-filter: blur(2px);
+    border-radius: 40px;
+    border: 1px solid var(--locker-accent);
+}
+
+.container-card {
+    background: rgba(35, 43, 51, 0.9);
+    border-radius: 28px;
+    padding: 1.8rem;
+    margin: 2rem 0;
+    border: 1px solid var(--locker-accent);
+}
+
+.two-col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin: 2rem 0;
+}
+@media (max-width: 800px) {
+    .two-col { grid-template-columns: 1fr; }
+}
+
+.table-full {
+    width: 100%;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(0,0,0,0.5);
+    border-radius: 20px;
+    overflow: hidden;
+}
+th, td {
+    padding: 14px 10px;
+    border-bottom: 1px solid var(--locker-accent);
+    text-align: left;
+}
+th {
+    background: var(--locker-metal);
+    color: var(--locker-accent);
+}
+
+.nested-list-demo {
+    background: #1f2a33;
+    padding: 1.5rem;
+    border-radius: 20px;
+    margin: 1rem 0;
+}
+.nested-list-demo ul, .nested-list-demo ol {
+    margin-left: 1.8rem;
+}
+.nested-list-demo li {
+    margin: 8px 0;
+}
+
+.formatted-p {
+    background: rgba(0,0,0,0.4);
+    padding: 1.2rem;
+    border-left: 4px solid var(--locker-accent);
+    margin: 1.5rem 0;
+}
+
+.footer-locker {
+    background: rgba(10, 14, 18, 0.95);
+    text-align: center;
+    padding: 3rem 1rem;
+    margin-top: 3rem;
+    border-top: 4px solid var(--locker-accent);
+}
+</style>
 </head>
+<body>
+<div class="locker-bg"></div>
 
-<body class="home-bg">
-
-<nav>
-<ul class="menu">
-<li><a href="index.html">Home</a></li>
-<li><a href="shop.html">Shop</a></li>
-<li><a href="size.html">Size</a></li>
-<li><a href="videos.html">Videos</a></li>
-<li><a href="contact.html">Contact</a></li>
-</ul>
-</nav>
-
-<h2 style="text-align:center;">MEMORABILIA</h2>
-
-<div class="grid">
-<div class="card">
-<img src="pedri signed.jpg">
-<img src="pedri 2.jpg">
+<div class="menu-bar">
+    <a href="index.html">🏠 HOME</a>
+    <a href="shop.html">🛍️ SHOP</a>
+    <a href="size.html" class="active">📏 SIZE GUIDE</a>
+    <a href="videos.html">🎬 VIDEOS</a>
+    <a href="contact.html">📞 CONTACT</a>
 </div>
 
-<div class="card">
-<img src="ms1.webp">
-<img src="ms2.jpg">
+<div class="page-content">
+    <h2 style="color:var(--locker-accent)">📏 SIZE GUIDE - FIND YOUR PERFECT FIT</h2>
+    
+    <div class="two-col">
+        <div class="container-card">
+            <h3>👕 Kit Sizing (EU / UK)</h3>
+            <ul style="margin-left: 1.5rem;">
+                <li>XS (34-36 chest)</li>
+                <li>S (36-38 chest)</li>
+                <li>M (38-40 chest)</li>
+                <li>L (41-43 chest)</li>
+                <li>XL (44-46 chest)</li>
+                <li>XXL (47-49 chest)</li>
+            </ul>
+            <div class="formatted-p"><strong>Pro tip:</strong> Our kits are athlete-fit. For a relaxed feel, size up one.</div>
+        </div>
+        <div class="container-card">
+            <h3>👟 Boot Size Conversion</h3>
+            <ul style="margin-left: 1.5rem;">
+                <li>EU 38 = UK 5</li>
+                <li>EU 40 = UK 6.5</li>
+                <li>EU 42 = UK 8</li>
+                <li>EU 44 = UK 9.5</li>
+                <li>EU 46 = UK 11</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- TABLE 1: Size chart -->
+    <div class="table-full container-card">
+        <h3>📊 ADIDAS / NIKE KIT MEASUREMENTS (cm)</h3>
+        <table>
+            <thead><tr><th>Size</th><th>Chest (cm)</th><th>Waist (cm)</th><th>Hip (cm)</th></tr></thead>
+            <tbody>
+                <tr><td>S</td><td>88-92</td><td>74-78</td><td>90-94</td></tr>
+                <tr><td>M</td><td>92-96</td><td>78-82</td><td>94-98</td></tr>
+                <tr><td>L</td><td>96-100</td><td>82-86</td><td>98-102</td></tr>
+                <tr><td>XL</td><td>100-104</td><td>86-90</td><td>102-106</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- TABLE 2: Kids sizes -->
+    <div class="table-full container-card">
+        <h3>🧒 YOUTH / JUNIOR SIZES</h3>
+        <table>
+            <thead><tr><th>Age</th><th>Height (cm)</th><th>Chest (cm)</th></tr></thead>
+            <tbody>
+                <tr><td>7-8 years</td><td>122-128</td><td>64-66</td></tr>
+                <tr><td>9-10 years</td><td>134-140</td><td>68-72</td></tr>
+                <tr><td>11-12 years</td><td>146-152</td><td>74-78</td></tr>
+                <tr><td>13-14 years</td><td>154-160</td><td>78-82</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- NESTED LIST (5 items deep) -->
+    <div class="container-card">
+        <h3>🔍 How to Measure (Nested Tips)</h3>
+        <div class="nested-list-demo">
+            <ul>
+                <li>Step 1: Chest measurement
+                    <ul>
+                        <li>Wrap tape under arms
+                            <ul>
+                                <li>Keep relaxed, breathe normally
+                                    <ul>
+                                        <li>Note: allow one finger space
+                                            <ul>
+                                                <li>Pro tip: for muscular build, size up one</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>Step 2: Waist measurement
+                    <ul>
+                        <li>Measure at natural waistline
+                            <ul>
+                                <li>Keep tape snug but not tight</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="formatted-p"><strong>Expert note:</strong> All jerseys are authentic player issue; our Nairobi store offers free measurement consultation with our fitting experts.</div>
+    <div class="formatted-p"><strong>International sizing:</strong> If you're between sizes, we recommend choosing the larger size for a comfortable fit. Contact our support for personalized advice.</div>
 </div>
 
-<div class="card">
-<img src="yamal card.jpg">
-<img src="yamal card 2.jpg">
-</div>
-</div>
-
-<ul>
-<li>Sizes
-<ul>
-<li>S</li>
-<li>M</li>
-<li>L</li>
-<li>XL</li>
-<li>XXL</li>
-</ul>
-</li>
-</ul>
-
-<footer>Size</footer>
-
+<footer class="footer-locker">
+    ⚽ THE LOCKER-ROOM - OFFICIAL UEFA MERCHANDISE PARTNER ⚽<br>
+    © 2026 The Locker-Room | Muthithi Road, Westlands, Nairobi, Kenya<br>
+    📞 24/7 Support: +254 700 123 456 | ✉️ info@thelocker-room.co.ke<br>
+    🇰🇪 Free East Africa Shipping | 30-Day Returns | 100% Authentic
+</footer>
 </body>
 </html>
