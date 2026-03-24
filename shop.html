@@ -2,88 +2,245 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Shop</title>
-<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>The Locker-Room | Shop - Premium Football Kits</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --locker-metal: #2c3e50;
+    --locker-wood: #8b5a2b;
+    --locker-bench: #4a3c31;
+    --locker-floor: #2d2a24;
+    --locker-accent: #c49a6c;
+    --locker-light: #f5e6d3;
+    --team-gold: #b8860b;
+    --team-silver: #a8a9ad;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: #0a0c10;
+    color: #e8e9ea;
+    line-height: 1.5;
+}
+
+.locker-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.65)), url('https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat fixed;
+    background-blend-mode: overlay;
+}
+
+.locker-bg::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: repeating-linear-gradient(45deg, rgba(139,90,43,0.1) 0px, rgba(139,90,43,0.1) 2px, transparent 2px, transparent 8px);
+    pointer-events: none;
+}
+
+.menu-bar {
+    background: rgba(20, 25, 32, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    border-bottom: 3px solid var(--locker-accent);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+.menu-bar a {
+    color: var(--locker-light);
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.5rem 1.2rem;
+    border-radius: 40px;
+    transition: all 0.2s;
+    font-size: 1rem;
+}
+.menu-bar a:hover, .menu-bar a.active {
+    background: var(--locker-accent);
+    color: #1a1e24;
+    box-shadow: 0 0 12px rgba(196,154,108,0.6);
+}
+
+.page-content {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: rgba(26, 30, 36, 0.85);
+    backdrop-filter: blur(2px);
+    border-radius: 40px;
+    border: 1px solid var(--locker-accent);
+}
+
+.container-card {
+    background: rgba(35, 43, 51, 0.9);
+    border-radius: 28px;
+    padding: 1.8rem;
+    margin: 2rem 0;
+    border: 1px solid var(--locker-accent);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.two-col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin: 2rem 0;
+}
+@media (max-width: 800px) {
+    .two-col { grid-template-columns: 1fr; }
+}
+
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+.media-item {
+    background: #1f2a33;
+    border-radius: 24px;
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid var(--locker-accent);
+}
+.media-item img, .media-item video {
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+    border-radius: 20px;
+    background: #000;
+}
+
+.table-full {
+    width: 100%;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(0,0,0,0.5);
+    border-radius: 20px;
+    overflow: hidden;
+}
+th, td {
+    padding: 14px 10px;
+    border-bottom: 1px solid var(--locker-accent);
+    text-align: left;
+}
+th {
+    background: var(--locker-metal);
+    color: var(--locker-accent);
+    font-weight: 700;
+}
+
+.footer-locker {
+    background: rgba(10, 14, 18, 0.95);
+    text-align: center;
+    padding: 3rem 1rem;
+    margin-top: 3rem;
+    border-top: 4px solid var(--locker-accent);
+    font-size: 0.9rem;
+}
+</style>
 </head>
+<body>
+<div class="locker-bg"></div>
 
-<body class="home-bg">
-
-<nav>
-<ul class="menu">
-<li><a href="index.html">Home</a></li>
-<li><a href="shop.html">Shop</a></li>
-<li><a href="size.html">Size</a></li>
-<li><a href="videos.html">Videos</a></li>
-<li><a href="contact.html">Contact</a></li>
-</ul>
-</nav>
-
-<h2 style="text-align:center;">SHOP</h2>
-
-<!-- SHIRTS SCROLL -->
-<h3 style="text-align:center;">👕 SHIRTS</h3>
-<div class="scroll-container">
-<img src="barca.png">
-<img src="madrid.avif">
-<img src="liverpool.avif">
-<img src="city.avif">
-<img src="arsenal.avif">
-<img src="chelsea.avif">
-<img src="psg.avif">
-<img src="juventus.avif">
-<img src="AC Milan.jpg">
-<img src="inter.avif">
-<img src="napoli.webp">
-<img src="bayern.avif">
-<img src="borussia.avif">
-<img src="RB.avif">
-<img src="leverkusen.avif">
-<img src="athletico.jpg">
-<img src="sevila.jpg">
-<img src="olympique.avif">
-<img src="lyon.avif">
-<img src="monaco.avif">
+<div class="menu-bar">
+    <a href="index.html">🏠 HOME</a>
+    <a href="shop.html" class="active">🛍️ SHOP</a>
+    <a href="size.html">📏 SIZE GUIDE</a>
+    <a href="videos.html">🎬 VIDEOS</a>
+    <a href="contact.html">📞 CONTACT</a>
 </div>
 
-<table>
-<tr><th>Size</th><th>Chest</th></tr>
-<tr><td>S</td><td>90-95</td></tr>
-<tr><td>M</td><td>96-102</td></tr>
-<tr><td>L</td><td>103-110</td></tr>
-</table>
+<div class="page-content">
+    <h2 style="color:var(--locker-accent)">🛍️ OFFICIAL SHOP — KITS & MEMORABILIA</h2>
+    <p>Authentic shirts, shorts, boots & signed collectibles. 9:16 portrait TikTok style cards.</p>
+    
+    <!-- 2-COLUMN product showcase -->
+    <div class="two-col">
+        <div class="container-card">
+            <h3>👟 Pedri Signed Boot</h3>
+            <div class="media-grid" style="grid-template-columns:1fr 1fr; gap:0.8rem;">
+                <img src="pedri signed.jpg" style="aspect-ratio:9/16; object-fit:cover; border-radius:20px; width:100%;" onerror="this.src='https://images.pexels.com/photos/4667111/pexels-photo-4667111.jpeg?auto=compress&cs=tinysrgb&w=400'">
+                <img src="pedri 2.jpg" style="aspect-ratio:9/16; object-fit:cover; border-radius:20px; width:100%;" onerror="this.src='https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=400'">
+            </div>
+            <p>Right boot • 92' winner at Bernabéu • Adidas Predator signed + photo</p>
+            <p style="font-size:1.6rem; color:gold;">€1,899</p>
+        </div>
+        <div class="container-card">
+            <h3>👕 Messi 2009 UCL Final Shirt</h3>
+            <div class="media-grid" style="grid-template-columns:1fr 1fr; gap:0.8rem;">
+                <img src="ms1.webp" style="aspect-ratio:9/16; object-fit:cover; border-radius:20px; width:100%;" onerror="this.src='https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=400'">
+                <img src="ms2.jpg" style="aspect-ratio:9/16; object-fit:cover; border-radius:20px; width:100%;" onerror="this.src='https://images.pexels.com/photos/4678521/pexels-photo-4678521.jpeg?auto=compress&cs=tinysrgb&w=400'">
+            </div>
+            <p>Barcelona 2-0 Man Utd • Rome 2009 match-worn style • COA included</p>
+            <p style="font-size:1.6rem; color:gold;">€4,999</p>
+        </div>
+    </div>
 
-<!-- SHORTS -->
-<h3 style="text-align:center;">🩳 SHORTS</h3>
-<div class="grid">
-<img src="barcelona shorts.avif">
-<img src="madrid shorts.webp">
-<img src="liverpool shorts.avif">
-<img src="city shorts.avif">
+    <!-- Additional Product -->
+    <div class="container-card">
+        <h3>🃏 Lamine Yamal Card Set</h3>
+        <div class="media-grid" style="grid-template-columns:1fr 1fr; max-width:500px; margin:0 auto;">
+            <img src="yamal card.jpg" style="aspect-ratio:9/16; object-fit:cover; border-radius:20px;" onerror="this.src='https://images.pexels.com/photos/6373924/pexels-photo-6373924.jpeg?auto=compress&cs=tinysrgb&w=400'">
+            <img src="yamal card 2.jpg" style="aspect-ratio:9/16; object-fit:cover; border-radius:20px;" onerror="this.src='https://images.pexels.com/photos/3251072/pexels-photo-3251072.jpeg?auto=compress&cs=tinysrgb&w=400'">
+        </div>
+        <p>Gold refractor set + rookie #304 • Limited edition rookie cards</p>
+        <p style="font-size:1.6rem; color:gold; text-align:center;">€899</p>
+    </div>
+
+    <!-- IMAGES & VIDEOS CONTAINER -->
+    <div class="container-card">
+        <h3>📸 Premium Kits Spotlight</h3>
+        <div class="media-grid">
+            <div class="media-item"><img src="barca.png" alt="Barcelona kit" onerror="this.src='https://images.pexels.com/photos/6373924/pexels-photo-6373924.jpeg?auto=compress&cs=tinysrgb&w=400'"><span>Barcelona 125th</span></div>
+            <div class="media-item"><img src="madrid.avif" alt="Real Madrid" onerror="this.src='https://images.pexels.com/photos/3251072/pexels-photo-3251072.jpeg?auto=compress&cs=tinysrgb&w=400'"><span>Real Madrid Galacticos</span></div>
+            <div class="media-item"><video controls autoplay muted loop playsinline style="width:100%"><source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">Your browser does not support video.</video><span>Preview 2026 Kit reveal</span></div>
+        </div>
+    </div>
+
+    <!-- TABLE -->
+    <div class="table-full container-card">
+        <h3>⚡ LIMITED DROPS - PRICE TABLE</h3>
+        <table>
+            <thead><tr><th>Product</th><th>Edition</th><th>Price</th></tr></thead>
+            <tbody>
+                <tr><td>Yamal Rookie Card Set</td><td>Gold refractor</td><td>€899</td></tr>
+                <tr><td>Bellingham Predator Boots</td><td>Signed LE</td><td>€329</td></tr>
+                <tr><td>Haaland Mercurial</td><td>Match issue</td><td>€399</td></tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
-<table>
-<tr><th>Size</th><th>Waist</th></tr>
-<tr><td>S</td><td>70-75</td></tr>
-<tr><td>M</td><td>76-82</td></tr>
-<tr><td>L</td><td>83-90</td></tr>
-</table>
-
-<!-- BOOTS -->
-<h3 style="text-align:center;">👟 BOOTS</h3>
-<div class="grid">
-<img src="f50 elite.jpg">
-<img src="pedri predator.jpg">
-<img src="yamal f50.jpg">
-</div>
-
-<table>
-<tr><th>EU</th><th>UK</th></tr>
-<tr><td>40</td><td>6.5</td></tr>
-<tr><td>42</td><td>8</td></tr>
-<tr><td>44</td><td>9.5</td></tr>
-</table>
-
-<footer>Shop</footer>
-
+<footer class="footer-locker">
+    ⚽ THE LOCKER-ROOM - OFFICIAL UEFA MERCHANDISE PARTNER ⚽<br>
+    © 2026 The Locker-Room | Muthithi Road, Westlands, Nairobi, Kenya<br>
+    📞 24/7 Support: +254 700 123 456 | ✉️ info@thelocker-room.co.ke<br>
+    🇰🇪 Free East Africa Shipping | 30-Day Returns | 100% Authentic
+</footer>
 </body>
 </html>
