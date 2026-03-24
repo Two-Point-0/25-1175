@@ -2,158 +2,37 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>The Locker-Room | Size Guide - Find Your Fit</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Locker-Room | Size Guide - Find Your Perfect Fit</title>
+<link rel="stylesheet" href="style.css">
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:root {
-    --locker-metal: #2c3e50;
-    --locker-wood: #8b5a2b;
-    --locker-bench: #4a3c31;
-    --locker-floor: #2d2a24;
-    --locker-accent: #c49a6c;
-    --locker-light: #f5e6d3;
-    --team-gold: #b8860b;
-    --team-silver: #a8a9ad;
-}
-
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background: #0a0c10;
-    color: #e8e9ea;
-    line-height: 1.5;
-}
-
-.locker-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -2;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.65)), url('https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat fixed;
-    background-blend-mode: overlay;
-}
-
-.locker-bg::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: repeating-linear-gradient(45deg, rgba(139,90,43,0.1) 0px, rgba(139,90,43,0.1) 2px, transparent 2px, transparent 8px);
-    pointer-events: none;
-}
-
-.menu-bar {
-    background: rgba(20, 25, 32, 0.95);
-    backdrop-filter: blur(10px);
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    border-bottom: 3px solid var(--locker-accent);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-.menu-bar a {
-    color: var(--locker-light);
-    text-decoration: none;
-    font-weight: 700;
-    text-transform: uppercase;
-    padding: 0.5rem 1.2rem;
-    border-radius: 40px;
-    transition: all 0.2s;
-}
-.menu-bar a:hover, .menu-bar a.active {
-    background: var(--locker-accent);
-    color: #1a1e24;
-}
-
-.page-content {
-    max-width: 1400px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background: rgba(26, 30, 36, 0.85);
-    backdrop-filter: blur(2px);
-    border-radius: 40px;
-    border: 1px solid var(--locker-accent);
-}
-
-.container-card {
-    background: rgba(35, 43, 51, 0.9);
-    border-radius: 28px;
-    padding: 1.8rem;
-    margin: 2rem 0;
-    border: 1px solid var(--locker-accent);
-}
-
-.two-col {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    margin: 2rem 0;
-}
-@media (max-width: 800px) {
-    .two-col { grid-template-columns: 1fr; }
-}
-
-.table-full {
-    width: 100%;
-    overflow-x: auto;
-    margin: 1.5rem 0;
-}
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: rgba(0,0,0,0.5);
-    border-radius: 20px;
-    overflow: hidden;
-}
-th, td {
-    padding: 14px 10px;
-    border-bottom: 1px solid var(--locker-accent);
-    text-align: left;
-}
-th {
-    background: var(--locker-metal);
-    color: var(--locker-accent);
-}
-
-.nested-list-demo {
+.size-card {
     background: #1f2a33;
     padding: 1.5rem;
     border-radius: 20px;
     margin: 1rem 0;
-}
-.nested-list-demo ul, .nested-list-demo ol {
-    margin-left: 1.8rem;
-}
-.nested-list-demo li {
-    margin: 8px 0;
-}
-
-.formatted-p {
-    background: rgba(0,0,0,0.4);
-    padding: 1.2rem;
     border-left: 4px solid var(--locker-accent);
-    margin: 1.5rem 0;
 }
-
-.footer-locker {
-    background: rgba(10, 14, 18, 0.95);
+.measurement-tip {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+}
+.measurement-icon {
+    background: var(--locker-metal);
+    padding: 1rem;
+    border-radius: 15px;
     text-align: center;
-    padding: 3rem 1rem;
-    margin-top: 3rem;
-    border-top: 4px solid var(--locker-accent);
+    flex: 1;
+    min-width: 150px;
+}
+.fit-note {
+    background: rgba(196,154,108,0.2);
+    padding: 1rem;
+    border-radius: 15px;
+    margin-top: 1rem;
 }
 </style>
 </head>
@@ -169,105 +48,135 @@ th {
 </div>
 
 <div class="page-content">
-    <h2 style="color:var(--locker-accent)">📏 SIZE GUIDE - FIND YOUR PERFECT FIT</h2>
-    
-    <div class="two-col">
-        <div class="container-card">
-            <h3>👕 Kit Sizing (EU / UK)</h3>
-            <ul style="margin-left: 1.5rem;">
-                <li>XS (34-36 chest)</li>
-                <li>S (36-38 chest)</li>
-                <li>M (38-40 chest)</li>
-                <li>L (41-43 chest)</li>
-                <li>XL (44-46 chest)</li>
-                <li>XXL (47-49 chest)</li>
-            </ul>
-            <div class="formatted-p"><strong>Pro tip:</strong> Our kits are athlete-fit. For a relaxed feel, size up one.</div>
-        </div>
-        <div class="container-card">
-            <h3>👟 Boot Size Conversion</h3>
-            <ul style="margin-left: 1.5rem;">
-                <li>EU 38 = UK 5</li>
-                <li>EU 40 = UK 6.5</li>
-                <li>EU 42 = UK 8</li>
-                <li>EU 44 = UK 9.5</li>
-                <li>EU 46 = UK 11</li>
-            </ul>
-        </div>
-    </div>
+    <h2 style="text-align: center;">📏 SIZE GUIDE</h2>
+    <p style="text-align: center; margin-bottom: 2rem;">Find your perfect fit for shirts, shorts, and boots</p>
 
-    <!-- TABLE 1: Size chart -->
-    <div class="table-full container-card">
-        <h3>📊 ADIDAS / NIKE KIT MEASUREMENTS (cm)</h3>
-        <table>
-            <thead><tr><th>Size</th><th>Chest (cm)</th><th>Waist (cm)</th><th>Hip (cm)</th></tr></thead>
-            <tbody>
-                <tr><td>S</td><td>88-92</td><td>74-78</td><td>90-94</td></tr>
-                <tr><td>M</td><td>92-96</td><td>78-82</td><td>94-98</td></tr>
-                <tr><td>L</td><td>96-100</td><td>82-86</td><td>98-102</td></tr>
-                <tr><td>XL</td><td>100-104</td><td>86-90</td><td>102-106</td></tr>
-            </tbody>
-        </table>
-    </div>
-
-    <!-- TABLE 2: Kids sizes -->
-    <div class="table-full container-card">
-        <h3>🧒 YOUTH / JUNIOR SIZES</h3>
-        <table>
-            <thead><tr><th>Age</th><th>Height (cm)</th><th>Chest (cm)</th></tr></thead>
-            <tbody>
-                <tr><td>7-8 years</td><td>122-128</td><td>64-66</td></tr>
-                <tr><td>9-10 years</td><td>134-140</td><td>68-72</td></tr>
-                <tr><td>11-12 years</td><td>146-152</td><td>74-78</td></tr>
-                <tr><td>13-14 years</td><td>154-160</td><td>78-82</td></tr>
-            </tbody>
-        </table>
-    </div>
-
-    <!-- NESTED LIST (5 items deep) -->
+    <!-- Body Measurement Guide -->
     <div class="container-card">
-        <h3>🔍 How to Measure (Nested Tips)</h3>
-        <div class="nested-list-demo">
-            <ul>
-                <li>Step 1: Chest measurement
-                    <ul>
-                        <li>Wrap tape under arms
-                            <ul>
-                                <li>Keep relaxed, breathe normally
-                                    <ul>
-                                        <li>Note: allow one finger space
-                                            <ul>
-                                                <li>Pro tip: for muscular build, size up one</li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li>Step 2: Waist measurement
-                    <ul>
-                        <li>Measure at natural waistline
-                            <ul>
-                                <li>Keep tape snug but not tight</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+        <h3>📐 HOW TO MEASURE</h3>
+        <div class="measurement-tip">
+            <div class="measurement-icon">
+                <strong>📏 Chest</strong>
+                <p>Measure around fullest part</p>
+                <small>Under arms, across shoulder blades</small>
+            </div>
+            <div class="measurement-icon">
+                <strong>📏 Waist</strong>
+                <p>Measure around natural waistline</p>
+                <small>Above belly button</small>
+            </div>
+            <div class="measurement-icon">
+                <strong>📏 Hips</strong>
+                <p>Measure around widest part</p>
+                <small>For shorts fitting</small>
+            </div>
+        </div>
+        <img src="https://images.pexels.com/photos/3755705/pexels-photo-3755705.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Measurement Guide" style="width: 100%; max-width: 350px; display: block; margin: 1rem auto; border-radius: 15px;">
+    </div>
+
+    <!-- SHIRT SIZE CHART -->
+    <div class="container-card">
+        <h3>👕 SHIRT SIZE CHART (EU / UK)</h3>
+        <div class="size-chart">
+            <table>
+                <thead>
+                    <tr><th>Size</th><th>Chest (cm)</th><th>Chest (inches)</th><th>Waist (cm)</th><th>Height (cm)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>XS</td><td>84-88</td><td>33-34.5</td><td>70-74</td><td>160-168</td></tr>
+                    <tr><td>S</td><td>88-92</td><td>34.5-36</td><td>74-78</td><td>168-174</td></tr>
+                    <tr><td>M</td><td>92-96</td><td>36-38</td><td>78-82</td><td>174-180</td></tr>
+                    <tr><td>L</td><td>96-100</td><td>38-39.5</td><td>82-86</td><td>180-186</td></tr>
+                    <tr><td>XL</td><td>100-104</td><td>39.5-41</td><td>86-90</td><td>186-192</td></tr>
+                    <tr><td>XXL</td><td>104-108</td><td>41-42.5</td><td>90-94</td><td>192-198</td></tr>
+                    <tr><td>3XL</td><td>108-112</td><td>42.5-44</td><td>94-98</td><td>198+</td></tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
-    <div class="formatted-p"><strong>Expert note:</strong> All jerseys are authentic player issue; our Nairobi store offers free measurement consultation with our fitting experts.</div>
-    <div class="formatted-p"><strong>International sizing:</strong> If you're between sizes, we recommend choosing the larger size for a comfortable fit. Contact our support for personalized advice.</div>
+    <!-- SHORTS SIZE CHART -->
+    <div class="container-card">
+        <h3>🩳 SHORTS SIZE CHART</h3>
+        <div class="size-chart">
+            <table>
+                <thead>
+                    <tr><th>Size</th><th>Waist (cm)</th><th>Waist (inches)</th><th>Hip (cm)</th><th>Inseam (cm)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>S</td><td>74-78</td><td>29-30.5</td><td>90-94</td><td>20-21</td></tr>
+                    <tr><td>M</td><td>78-82</td><td>30.5-32</td><td>94-98</td><td>21-22</td></tr>
+                    <tr><td>L</td><td>82-86</td><td>32-34</td><td>98-102</td><td>22-23</td></tr>
+                    <tr><td>XL</td><td>86-90</td><td>34-35.5</td><td>102-106</td><td>23-24</td></tr>
+                    <tr><td>XXL</td><td>90-94</td><td>35.5-37</td><td>106-110</td><td>24-25</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- BOOT SIZE CONVERSION -->
+    <div class="container-card">
+        <h3>👟 BOOT SIZE CONVERSION (EU / UK / US)</h3>
+        <div class="size-chart">
+            <table>
+                <thead>
+                    <tr><th>EU Size</th><th>UK Size</th><th>US Men</th><th>US Women</th><th>Foot Length (cm)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>38</td><td>5</td><td>6</td><td>7</td><td>24.0</td></tr>
+                    <tr><td>39</td><td>5.5</td><td>6.5</td><td>7.5</td><td>24.5</td></tr>
+                    <tr><td>40</td><td>6.5</td><td>7.5</td><td>8.5</td><td>25.5</td></tr>
+                    <tr><td>41</td><td>7</td><td>8</td><td>9</td><td>26.0</td></tr>
+                    <tr><td>42</td><td>8</td><td>9</td><td>10</td><td>26.5</td></tr>
+                    <tr><td>43</td><td>8.5</td><td>9.5</td><td>10.5</td><td>27.0</td></tr>
+                    <tr><td>44</td><td>9.5</td><td>10.5</td><td>11.5</td><td>27.5</td></tr>
+                    <tr><td>45</td><td>10.5</td><td>11.5</td><td>12.5</td><td>28.5</td></tr>
+                    <tr><td>46</td><td>11.5</td><td>12.5</td><td>13.5</td><td>29.0</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- KIDS SIZES -->
+    <div class="container-card">
+        <h3>🧒 YOUTH / JUNIOR SIZES (Age 7-14)</h3>
+        <div class="size-chart">
+            <table>
+                <thead>
+                    <tr><th>Age</th><th>Height (cm)</th><th>Chest (cm)</th><th>Waist (cm)</th><th>EU Boot</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>7-8 years</td><td>122-128</td><td>64-66</td><td>58-60</td><td>32-33</td></tr>
+                    <tr><td>9-10 years</td><td>134-140</td><td>68-72</td><td>62-64</td><td>34-35</td></tr>
+                    <tr><td>11-12 years</td><td>146-152</td><td>74-78</td><td>66-68</td><td>36-37</td></tr>
+                    <tr><td>13-14 years</td><td>154-160</td><td>78-82</td><td>70-72</td><td>38-39</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Fit Advice -->
+    <div class="container-card">
+        <h3>💡 FIT GUIDE & RECOMMENDATIONS</h3>
+        <div class="fit-note">
+            <strong>⚡ Athlete Fit:</strong> Our jerseys are designed for a snug, performance fit. If you prefer a relaxed feel, we recommend sizing up one size.
+        </div>
+        <div class="fit-note">
+            <strong>🩳 Shorts Fit:</strong> Match shorts are designed with an elastic waistband. For a looser fit, go one size up.
+        </div>
+        <div class="fit-note">
+            <strong>👟 Boots Sizing Tip:</strong> Adidas and Nike boots run true to size. For wide feet, consider going half a size up.
+        </div>
+        <div class="fit-note">
+            <strong>📏 Need Help?</strong> Visit our Nairobi flagship for a free professional fitting session. Call +254 700 123 456 to book an appointment.
+        </div>
+    </div>
 </div>
 
 <footer class="footer-locker">
     ⚽ THE LOCKER-ROOM - OFFICIAL UEFA MERCHANDISE PARTNER ⚽<br>
     © 2026 The Locker-Room | Muthithi Road, Westlands, Nairobi, Kenya<br>
-    📞 24/7 Support: +254 700 123 456 | ✉️ info@thelocker-room.co.ke<br>
-    🇰🇪 Free East Africa Shipping | 30-Day Returns | 100% Authentic
+    📞 24/7 Support: +254 700 123 456 | ✉️ info@thelocker-room.co.ke
 </footer>
 </body>
 </html>
