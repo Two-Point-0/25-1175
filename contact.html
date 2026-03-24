@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Contact</title>
+<meta charset="UTF-8">
+<title>Contact / Purchase</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -17,16 +18,49 @@
 </ul>
 </nav>
 
-<h2 style="text-align:center;">Contact</h2>
+<h2 style="text-align:center;">Order / Contact Form</h2>
 
-<form style="text-align:center;">
-<input type="text" placeholder="Name"><br><br>
-<input type="email" placeholder="Email"><br><br>
-<textarea placeholder="Message"></textarea><br><br>
-<button>Send</button>
+<p style="text-align:center;">
+Use this form to inquire about or purchase items from our locker room collection.  
+Select the product type, size, and provide any special notes.
+</p>
+
+<form style="max-width:600px; margin: 20px auto; background: rgba(0,0,0,0.7); padding: 20px; border-radius: 15px; color: gold;">
+<label>Name:</label><br>
+<input type="text" name="name" placeholder="Full Name" required style="width:100%; padding:10px; margin:5px 0;"><br>
+
+<label>Email:</label><br>
+<input type="email" name="email" placeholder="Email Address" required style="width:100%; padding:10px; margin:5px 0;"><br>
+
+<label>Product Type:</label><br>
+<select name="product-type" required style="width:100%; padding:10px; margin:5px 0;">
+  <option value="">--Select--</option>
+  <option value="shirt">Shirt</option>
+  <option value="short">Short</option>
+  <option value="boots">Boots</option>
+  <option value="card">Special Memorabilia / Card</option>
+</select><br>
+
+<label>Size (if applicable):</label><br>
+<select name="size" style="width:100%; padding:10px; margin:5px 0;">
+  <option value="">--Select--</option>
+  <option value="S">S</option>
+  <option value="M">M</option>
+  <option value="L">L</option>
+  <option value="XL">XL</option>
+  <option value="XXL">XXL</option>
+</select><br>
+
+<label>Quantity:</label><br>
+<input type="number" name="quantity" placeholder="Number of items" min="1" style="width:100%; padding:10px; margin:5px 0;"><br>
+
+<label>Additional Notes / Message:</label><br>
+<textarea name="message" placeholder="Any special requests or notes..." rows="5" style="width:100%; padding:10px; margin:5px 0;"></textarea><br>
+
+<button type="submit" style="width:100%; padding:15px; background: gold; border:none; font-weight:bold; color:black; border-radius:10px; cursor:pointer;">Submit Order / Inquiry</button>
 </form>
 
-<footer>Contact</footer>
+<footer style="text-align:center; margin-top:30px;">© 2026 The Locker Room</footer>
 
 </body>
 </html>
