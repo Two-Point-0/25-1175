@@ -32,6 +32,87 @@
     display: inline-block;
     margin-bottom: 8px;
 }
+.scroll-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px auto;
+    position: relative;
+}
+.scroll-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    width: 85%;
+    padding: 20px 10px;
+    gap: 25px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-snap-type: x mandatory;
+}
+.scroll-container::-webkit-scrollbar {
+    display: none;
+}
+.scroll-item {
+    flex: 0 0 auto;
+    width: 260px;
+    background: linear-gradient(145deg, #232b33, #1a222a);
+    border-radius: 20px;
+    padding: 15px;
+    text-align: center;
+    border: 2px solid var(--locker-accent);
+    transition: all 0.3s ease;
+    scroll-snap-align: center;
+}
+.scroll-item:hover {
+    transform: translateY(-8px);
+    border-color: var(--locker-light);
+    box-shadow: 0 15px 30px rgba(196,154,108,0.3);
+}
+.scroll-item img {
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 12px;
+    background: #2a353f;
+}
+.scroll-item h4 {
+    color: var(--locker-accent);
+    margin: 8px 0;
+    font-size: 1.1rem;
+}
+.scroll-item p {
+    font-size: 0.85rem;
+    color: var(--team-silver);
+}
+.price {
+    color: var(--team-gold);
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 8px;
+}
+.scroll-btn {
+    background: var(--locker-metal);
+    color: var(--locker-accent);
+    border: 2px solid var(--locker-accent);
+    cursor: pointer;
+    font-size: 28px;
+    border-radius: 50%;
+    height: 55px;
+    width: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 30;
+}
+.scroll-btn:hover {
+    background: var(--locker-accent);
+    color: var(--locker-metal);
+    transform: scale(1.1);
+}
 </style>
 </head>
 <body>
@@ -49,7 +130,7 @@
     <h2 style="text-align: center;">🛍️ OFFICIAL SHOP</h2>
     <p style="text-align: center; margin-bottom: 2rem;">Authentic Kits • Shorts • Boots • Scroll to explore collections</p>
 
-    <!-- SHIRTS SECTION with Scroll -->
+    <!-- SHIRTS SECTION with Original Images -->
     <div class="shop-section">
         <div class="section-header">
             <h3 class="section-title">👕 2026 SHIRTS COLLECTION</h3>
@@ -58,22 +139,32 @@
         <div class="scroll-wrapper">
             <button class="scroll-btn" onclick="scrollGallery('shirtsGallery', 'prev')">←</button>
             <div class="scroll-container" id="shirtsGallery">
-                <div class="scroll-item"><span class="product-badge">BESTSELLER</span><img src="https://images.pexels.com/photos/6373924/pexels-photo-6373924.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Barcelona"><h4>Barcelona 125th Anniv.</h4><p>Nike Dri-FIT • Gold accents</p><p class="price">€129</p></div>
-                <div class="scroll-item"><span class="product-badge">NEW</span><img src="https://images.pexels.com/photos/3251072/pexels-photo-3251072.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Real Madrid"><h4>Real Madrid Galacticos</h4><p>Adidas • 15th UCL patch</p><p class="price">€139</p></div>
-                <div class="scroll-item"><span class="product-badge">LIMITED</span><img src="https://images.pexels.com/photos/4678521/pexels-photo-4678521.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Liverpool"><h4>Liverpool Legends</h4><p>Nike • 6x UCL edition</p><p class="price">€125</p></div>
-                <div class="scroll-item"><span class="product-badge">SALE</span><img src="https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Arsenal"><h4>Arsenal Invincibles</h4><p>Adidas • Retro style</p><p class="price">€115</p></div>
-                <div class="scroll-item"><img src="https://images.pexels.com/photos/4667111/pexels-photo-4667111.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Bayern"><h4>Bayern Munich</h4><p>Adidas • Champions</p><p class="price">€129</p></div>
-                <div class="scroll-item"><img src="https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg?auto=compress&cs=tinysrgb&w=400" alt="PSG"><h4>PSG x Jordan</h4><p>Nike/Jordan • Limited</p><p class="price">€139</p></div>
-                <div class="scroll-item"><img src="https://images.pexels.com/photos/1884574/pexels-photo-1884574.jpeg?auto=compress&cs=tinysrgb&w=400" alt="AC Milan"><h4>AC Milan Rossoneri</h4><p>Puma • Retro collar</p><p class="price">€119</p></div>
-                <div class="scroll-item"><img src="https://images.pexels.com/photos/274506/pexels-photo-274506.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Juventus"><h4>Juventus</h4><p>Adidas • Scudetto</p><p class="price">€119</p></div>
-                <div class="scroll-item"><img src="https://images.pexels.com/photos/260024/pexels-photo-260024.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Dortmund"><h4>Borussia Dortmund</h4><p>Puma • Yellow Wall</p><p class="price">€115</p></div>
-                <div class="scroll-item"><img src="https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Inter"><h4>Inter Milan</h4><p>Nike • Serie A champs</p><p class="price">€115</p></div>
+                <div class="scroll-item"><span class="product-badge">BESTSELLER</span><img src="barca.png" alt="FC Barcelona"><h4>FC Barcelona Home 2026</h4><p>125th Anniversary • Nike Dri-FIT</p><p class="price">€129</p></div>
+                <div class="scroll-item"><span class="product-badge">NEW</span><img src="madrid.avif" alt="Real Madrid"><h4>Real Madrid Home 2026</h4><p>Galacticos • Adidas</p><p class="price">€139</p></div>
+                <div class="scroll-item"><span class="product-badge">LIMITED</span><img src="liverpool.avif" alt="Liverpool"><h4>Liverpool Home 2026</h4><p>Nike • 6x UCL edition</p><p class="price">€125</p></div>
+                <div class="scroll-item"><img src="city.avif" alt="Man City"><h4>Man City Home 2026</h4><p>Puma • Treble winners</p><p class="price">€119</p></div>
+                <div class="scroll-item"><img src="arsenal.avif" alt="Arsenal"><h4>Arsenal Home 2026</h4><p>Adidas • Invincibles</p><p class="price">€115</p></div>
+                <div class="scroll-item"><img src="chelsea.avif" alt="Chelsea"><h4>Chelsea Home 2026</h4><p>Nike • London pride</p><p class="price">€115</p></div>
+                <div class="scroll-item"><img src="psg.avif" alt="PSG"><h4>PSG Home 2026</h4><p>Nike/Jordan • Limited</p><p class="price">€139</p></div>
+                <div class="scroll-item"><img src="juventus.avif" alt="Juventus"><h4>Juventus Home 2026</h4><p>Adidas • Scudetto</p><p class="price">€119</p></div>
+                <div class="scroll-item"><img src="AC Milan.jpg" alt="AC Milan"><h4>AC Milan Home 2026</h4><p>Puma • Rossoneri</p><p class="price">€119</p></div>
+                <div class="scroll-item"><img src="inter.avif" alt="Inter Milan"><h4>Inter Milan Home 2026</h4><p>Nike • Serie A champs</p><p class="price">€115</p></div>
+                <div class="scroll-item"><img src="napoli.webp" alt="Napoli"><h4>Napoli Home 2026</h4><p>EA7 • Maradona spirit</p><p class="price">€109</p></div>
+                <div class="scroll-item"><img src="bayern.avif" alt="Bayern Munich"><h4>Bayern Munich Home 2026</h4><p>Adidas • Bundesliga kings</p><p class="price">€129</p></div>
+                <div class="scroll-item"><img src="borussia.avif" alt="Dortmund"><h4>Borussia Dortmund 2026</h4><p>Puma • Yellow Wall</p><p class="price">€115</p></div>
+                <div class="scroll-item"><img src="RB.avif" alt="RB Leipzig"><h4>RB Leipzig Home 2026</h4><p>Nike • Rising stars</p><p class="price">€109</p></div>
+                <div class="scroll-item"><img src="leverkusen.avif" alt="Leverkusen"><h4>Bayer Leverkusen 2026</h4><p>Castore • Bundesliga</p><p class="price">€105</p></div>
+                <div class="scroll-item"><img src="athletico.jpg" alt="Atletico Madrid"><h4>Atletico Madrid 2026</h4><p>Nike • Colchoneros</p><p class="price">€115</p></div>
+                <div class="scroll-item"><img src="sevila.jpg" alt="Sevilla"><h4>Sevilla Home 2026</h4><p>Castore • Europa kings</p><p class="price">€105</p></div>
+                <div class="scroll-item"><img src="olympique.avif" alt="Marseille"><h4>Olympique Marseille 2026</h4><p>Puma • Velodrome</p><p class="price">€109</p></div>
+                <div class="scroll-item"><img src="lyon.avif" alt="Lyon"><h4>Olympique Lyon 2026</h4><p>Adidas • Les Gones</p><p class="price">€105</p></div>
+                <div class="scroll-item"><img src="monaco.avif" alt="Monaco"><h4>AS Monaco 2026</h4><p>Kappa • French Riviera</p><p class="price">€99</p></div>
             </div>
             <button class="scroll-btn" onclick="scrollGallery('shirtsGallery', 'next')">→</button>
         </div>
     </div>
 
-    <!-- SHORTS SECTION with Scroll -->
+    <!-- SHORTS SECTION with Original Images -->
     <div class="shop-section">
         <div class="section-header">
             <h3 class="section-title">🩳 MATCH SHORTS 2026</h3>
@@ -82,20 +173,32 @@
         <div class="scroll-wrapper">
             <button class="scroll-btn" onclick="scrollGallery('shortsGallery', 'prev')">←</button>
             <div class="scroll-container" id="shortsGallery">
-                <div class="scroll-item"><img src="https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Barcelona Shorts"><h4>Barcelona Shorts</h4><p>Nike • Match issue</p><p class="price">€59</p></div>
-                <div class="scroll-item"><img src="https://images.pexels.com/photos/3251072/pexels-photo-3251072.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Real Madrid Shorts"><h4>Real Madrid Shorts</h4><p>Adidas • Aeroready</p><p class="price">€65</p></div>
-                <div class="scroll-item"><img src="https://images.pexels.com/photos/6373924/pexels-photo-6373924.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Liverpool Shorts"><h4>Liverpool Shorts</h4><p>Nike • Dri-FIT</p><p class="price">€59</p></div>
-                <div class="scroll-item"><img src="https://images.pexels.com/photos/4678521/pexels-photo-4678521.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Man City Shorts"><h4>Man City Shorts</h4><p>Puma • Ultraweave</p><p class="price">€55</p></div>
-                <div class="scroll-item"><img src="https://images.pexels.com/photos/4667111/pexels-photo-4667111.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Arsenal Shorts"><h4>Arsenal Shorts</h4><p>Adidas • Authentic</p><p class="price">€59</p></div>
-                <div class="scroll-item"><img src="https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Bayern Shorts"><h4>Bayern Shorts</h4><p>Adidas • Champions</p><p class="price">€62</p></div>
-                <div class="scroll-item"><img src="https://images.pexels.com/photos/1884574/pexels-photo-1884574.jpeg?auto=compress&cs=tinysrgb&w=400" alt="PSG Shorts"><h4>PSG Shorts</h4><p>Nike/Jordan</p><p class="price">€69</p></div>
-                <div class="scroll-item"><img src="https://images.pexels.com/photos/274506/pexels-photo-274506.jpeg?auto=compress&cs=tinysrgb&w=400" alt="AC Milan Shorts"><h4>AC Milan Shorts</h4><p>Puma • Match</p><p class="price">€55</p></div>
+                <div class="scroll-item"><img src="barcelona shorts.avif" alt="Barcelona Shorts"><h4>Barcelona Shorts 2026</h4><p>Nike • Match issue</p><p class="price">€59</p></div>
+                <div class="scroll-item"><img src="madrid shorts.webp" alt="Real Madrid Shorts"><h4>Real Madrid Shorts 2026</h4><p>Adidas • Aeroready</p><p class="price">€65</p></div>
+                <div class="scroll-item"><img src="liverpool shorts.avif" alt="Liverpool Shorts"><h4>Liverpool Shorts 2026</h4><p>Nike • Dri-FIT</p><p class="price">€59</p></div>
+                <div class="scroll-item"><img src="city shorts.avif" alt="Man City Shorts"><h4>Man City Shorts 2026</h4><p>Puma • Ultraweave</p><p class="price">€55</p></div>
+                <div class="scroll-item"><img src="arsenal shorts.webp" alt="Arsenal Shorts"><h4>Arsenal Shorts 2026</h4><p>Adidas • Authentic</p><p class="price">€59</p></div>
+                <div class="scroll-item"><img src="chelsea shorts.avif" alt="Chelsea Shorts"><h4>Chelsea Shorts 2026</h4><p>Nike • London blue</p><p class="price">€55</p></div>
+                <div class="scroll-item"><img src="psg shorts.avif" alt="PSG Shorts"><h4>PSG Shorts 2026</h4><p>Nike/Jordan • Paris</p><p class="price">€69</p></div>
+                <div class="scroll-item"><img src="juventus shorts.avif" alt="Juventus Shorts"><h4>Juventus Shorts 2026</h4><p>Adidas • Bianconeri</p><p class="price">€59</p></div>
+                <div class="scroll-item"><img src="AcMilan shorts.avif" alt="AC Milan Shorts"><h4>AC Milan Shorts 2026</h4><p>Puma • Rossoneri</p><p class="price">€55</p></div>
+                <div class="scroll-item"><img src="inter shorts.avif" alt="Inter Milan Shorts"><h4>Inter Milan Shorts 2026</h4><p>Nike • Nerazzurri</p><p class="price">€55</p></div>
+                <div class="scroll-item"><img src="napoli shorts.webp" alt="Napoli Shorts"><h4>Napoli Shorts 2026</h4><p>EA7 • Azzurri</p><p class="price">€52</p></div>
+                <div class="scroll-item"><img src="bayern shorts.avif" alt="Bayern Shorts"><h4>Bayern Shorts 2026</h4><p>Adidas • Champions</p><p class="price">€62</p></div>
+                <div class="scroll-item"><img src="borussia shorts.avif" alt="Dortmund Shorts"><h4>Dortmund Shorts 2026</h4><p>Puma • BVB</p><p class="price">€55</p></div>
+                <div class="scroll-item"><img src="RB shorts.avif" alt="Leipzig Shorts"><h4>RB Leipzig Shorts 2026</h4><p>Nike • Energy</p><p class="price">€52</p></div>
+                <div class="scroll-item"><img src="leverkusen shorts.avif" alt="Leverkusen Shorts"><h4>Leverkusen Shorts 2026</h4><p>Castore • Werkself</p><p class="price">€49</p></div>
+                <div class="scroll-item"><img src="athletico shorts.webp" alt="Atletico Shorts"><h4>Atletico Madrid Shorts</h4><p>Nike • Rojiblancos</p><p class="price">€55</p></div>
+                <div class="scroll-item"><img src="sevila short.avif" alt="Sevilla Shorts"><h4>Sevilla Shorts 2026</h4><p>Castore • Hispalense</p><p class="price">€49</p></div>
+                <div class="scroll-item"><img src="olympique shorts.avif" alt="Marseille Shorts"><h4>Marseille Shorts 2026</h4><p>Puma • OM</p><p class="price">€52</p></div>
+                <div class="scroll-item"><img src="lyon shorts.avif" alt="Lyon Shorts"><h4>Lyon Shorts 2026</h4><p>Adidas • OL</p><p class="price">€49</p></div>
+                <div class="scroll-item"><img src="monaco shorts.avif" alt="Monaco Shorts"><h4>Monaco Shorts 2026</h4><p>Kappa • ASM</p><p class="price">€45</p></div>
             </div>
             <button class="scroll-btn" onclick="scrollGallery('shortsGallery', 'next')">→</button>
         </div>
     </div>
 
-    <!-- BOOTS SECTION with Scroll -->
+    <!-- BOOTS SECTION with Original Images -->
     <div class="shop-section">
         <div class="section-header">
             <h3 class="section-title">👟 PREMIUM BOOTS 2026</h3>
@@ -104,28 +207,28 @@
         <div class="scroll-wrapper">
             <button class="scroll-btn" onclick="scrollGallery('bootsGallery', 'prev')">←</button>
             <div class="scroll-container" id="bootsGallery">
-                <div class="scroll-item"><span class="product-badge">LIMITED</span><img src="https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Messi Boots"><h4>F50 Elite - Messi</h4><p>"Chaos" Edition • 500 pairs</p><p class="price">€299</p></div>
-                <div class="scroll-item"><span class="product-badge">SIGNED</span><img src="https://images.pexels.com/photos/4667111/pexels-photo-4667111.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Pedri Boots"><h4>Predator 30 - Pedri</h4><p>"Control" • Signed</p><p class="price">€279</p></div>
-                <div class="scroll-item"><span class="product-badge">NEW</span><img src="https://images.pexels.com/photos/4678521/pexels-photo-4678521.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Yamal Boots"><h4>F50 Chaos - Yamal</h4><p>Speed Demon • Limited</p><p class="price">€289</p></div>
-                <div class="scroll-item"><img src="https://images.pexels.com/photos/6373924/pexels-photo-6373924.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Bellingham Boots"><h4>Predator - Bellingham</h4><p>Midnight Edition</p><p class="price">€269</p></div>
-                <div class="scroll-item"><img src="https://images.pexels.com/photos/3251072/pexels-photo-3251072.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Haaland Boots"><h4>Mercurial - Haaland</h4><p>Nike • Speed</p><p class="price">€289</p></div>
-                <div class="scroll-item"><img src="https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Mbappe Boots"><h4>X Speedflow - Mbappé</h4><p>Adidas • Lightning</p><p class="price">€275</p></div>
-                <div class="scroll-item"><img src="https://images.pexels.com/photos/1884574/pexels-photo-1884574.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Neymar Boots"><h4>Puma Ultra - Neymar</h4><p>Limited Edition</p><p class="price">€265</p></div>
-                <div class="scroll-item"><img src="https://images.pexels.com/photos/274506/pexels-photo-274506.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Copa Pure"><h4>Copa Pure 3</h4><p>Classic Heritage</p><p class="price">€245</p></div>
+                <div class="scroll-item"><span class="product-badge">LIMITED</span><img src="f50 elite.jpg" alt="Adidas F50 Messi"><h4>F50 Elite - Messi</h4><p>"Chaos" Edition • 500 pairs</p><p class="price">€299</p></div>
+                <div class="scroll-item"><span class="product-badge">SIGNED</span><img src="pedri predator.jpg" alt="Adidas Predator Pedri"><h4>Predator 30 - Pedri</h4><p>"Control" • Signed edition</p><p class="price">€279</p></div>
+                <div class="scroll-item"><span class="product-badge">NEW</span><img src="yamal f50.jpg" alt="Adidas F50 Yamal"><h4>F50 Chaos - Yamal</h4><p>Speed Demon • Limited</p><p class="price">€289</p></div>
+                <div class="scroll-item"><img src="jude.jpg" alt="Adidas Predator Bellingham"><h4>Predator - Bellingham</h4><p>Midnight Edition</p><p class="price">€269</p></div>
+                <div class="scroll-item"><img src="copa pure 3.jpg" alt="Adidas Copa"><h4>Copa Pure 3</h4><p>Classic Heritage</p><p class="price">€245</p></div>
+                <div class="scroll-item"><img src="x speedflow.jpg" alt="Adidas X Speedflow"><h4>X Speedflow - Mbappé</h4><p>Adidas • Lightning</p><p class="price">€275</p></div>
+                <div class="scroll-item"><img src="mecurial.jpg" alt="Nike Mercurial"><h4>Mercurial - Haaland</h4><p>Nike • Speed</p><p class="price">€289</p></div>
+                <div class="scroll-item"><img src="neymar puma.jpg" alt="Puma Ultra"><h4>Puma Ultra - Neymar</h4><p>Limited Edition</p><p class="price">€265</p></div>
             </div>
             <button class="scroll-btn" onclick="scrollGallery('bootsGallery', 'next')">→</button>
         </div>
     </div>
 
-    <!-- MEMORABILIA SECTION -->
+    <!-- MEMORABILIA SECTION with Original Images -->
     <div class="container-card">
         <h3>✨ SIGNED MEMORABILIA</h3>
         <div class="scroll-wrapper">
             <button class="scroll-btn" onclick="scrollGallery('memGallery', 'prev')">←</button>
             <div class="scroll-container" id="memGallery">
-                <div class="scroll-item"><span class="product-badge">AUTOGRAPHED</span><img src="https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Pedri Boots"><h4>Pedri Signed Boot</h4><p>Right boot • 92' winner</p><p class="price">€1,899</p></div>
-                <div class="scroll-item"><span class="product-badge">MATCH WORN</span><img src="https://images.pexels.com/photos/4678521/pexels-photo-4678521.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Messi Shirt"><h4>Messi 2009 UCL Shirt</h4><p>Rome final • COA</p><p class="price">€4,999</p></div>
-                <div class="scroll-item"><span class="product-badge">ROOKIE</span><img src="https://images.pexels.com/photos/6373924/pexels-photo-6373924.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Yamal Cards"><h4>Yamal Card Set</h4><p>Gold refractor + rookie</p><p class="price">€899</p></div>
+                <div class="scroll-item"><span class="product-badge">AUTOGRAPHED</span><img src="pedri signed.jpg" alt="Pedri Signed Boot"><h4>Pedri Signed Boot</h4><p>Right boot • 92' winner at Bernabéu</p><p class="price">€1,899</p></div>
+                <div class="scroll-item"><span class="product-badge">MATCH WORN</span><img src="ms1.webp" alt="Messi Signed Shirt"><h4>Messi 2009 UCL Shirt</h4><p>Rome final • COA included</p><p class="price">€4,999</p></div>
+                <div class="scroll-item"><span class="product-badge">ROOKIE</span><img src="yamal card.jpg" alt="Yamal Cards"><h4>Lamine Yamal Card Set</h4><p>Gold refractor + rookie #304</p><p class="price">€899</p></div>
             </div>
             <button class="scroll-btn" onclick="scrollGallery('memGallery', 'next')">→</button>
         </div>
@@ -135,14 +238,15 @@
 <footer class="footer-locker">
     ⚽ THE LOCKER-ROOM - OFFICIAL UEFA MERCHANDISE PARTNER ⚽<br>
     © 2026 The Locker-Room | Muthithi Road, Westlands, Nairobi, Kenya<br>
-    📞 24/7 Support: +254 700 123 456 | ✉️ info@thelocker-room.co.ke
+    📞 24/7 Support: +254 700 123 456 | ✉️ info@thelocker-room.co.ke<br>
+    🇰🇪 Free East Africa Shipping | 30-Day Returns | 100% Authentic
 </footer>
 
 <script>
 function scrollGallery(galleryId, direction) {
     const container = document.getElementById(galleryId);
     if (!container) return;
-    const scrollAmount = 280;
+    const scrollAmount = 300;
     if (direction === 'next') {
         container.scrollLeft += scrollAmount;
     } else {
