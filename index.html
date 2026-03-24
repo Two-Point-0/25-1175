@@ -2,35 +2,357 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>The Locker Room</title>
-<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>The Locker-Room | Home - Premium Football Kit Store</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ========= GLOBAL & LOCKER ROOM ATMOSPHERE ========= */
+:root {
+    --locker-metal: #2c3e50;
+    --locker-wood: #8b5a2b;
+    --locker-bench: #4a3c31;
+    --locker-floor: #2d2a24;
+    --locker-accent: #c49a6c;
+    --locker-light: #f5e6d3;
+    --locker-shadow: #1a1a1a;
+    --team-gold: #b8860b;
+    --team-silver: #a8a9ad;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: #0a0c10;
+    color: #e8e9ea;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== BACKGROUND LOCKER ROOM (FULL SCREEN) ===== */
+.locker-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.65)), url('https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat fixed;
+    background-blend-mode: overlay;
+}
+
+.locker-bg::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: repeating-linear-gradient(45deg, rgba(139,90,43,0.1) 0px, rgba(139,90,43,0.1) 2px, transparent 2px, transparent 8px);
+    pointer-events: none;
+}
+
+/* ===== MENUBAR (5 ITEMS) ===== */
+.menu-bar {
+    background: rgba(20, 25, 32, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    border-bottom: 3px solid var(--locker-accent);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+.menu-bar a {
+    color: var(--locker-light);
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.5rem 1.2rem;
+    border-radius: 40px;
+    transition: all 0.2s;
+    font-size: 1rem;
+}
+.menu-bar a:hover, .menu-bar a.active {
+    background: var(--locker-accent);
+    color: #1a1e24;
+    box-shadow: 0 0 12px rgba(196,154,108,0.6);
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.page-content {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: rgba(26, 30, 36, 0.85);
+    backdrop-filter: blur(2px);
+    border-radius: 40px;
+    border: 1px solid var(--locker-accent);
+    transition: all 0.3s;
+}
+
+/* ===== CONTAINER STYLING ===== */
+.container-card {
+    background: rgba(35, 43, 51, 0.9);
+    border-radius: 28px;
+    padding: 1.8rem;
+    margin: 2rem 0;
+    border: 1px solid var(--locker-accent);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* 2-COLUMN LAYOUTS */
+.two-col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin: 2rem 0;
+}
+@media (max-width: 800px) {
+    .two-col { grid-template-columns: 1fr; }
+}
+
+/* IMAGES + VIDEOS CONTAINER */
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+.media-item {
+    background: #1f2a33;
+    border-radius: 24px;
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid var(--locker-accent);
+    transition: transform 0.2s;
+}
+.media-item img, .media-item video {
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+    border-radius: 20px;
+    background: #000;
+}
+.media-item video {
+    background: #111;
+}
+
+/* TABLES (full length) */
+.table-full {
+    width: 100%;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    border-radius: 24px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(0,0,0,0.5);
+    border-radius: 20px;
+    overflow: hidden;
+}
+th, td {
+    padding: 14px 10px;
+    border-bottom: 1px solid var(--locker-accent);
+    text-align: left;
+}
+th {
+    background: var(--locker-metal);
+    color: var(--locker-accent);
+    font-weight: 700;
+}
+
+.nested-list-demo {
+    background: #1f2a33;
+    padding: 1.5rem;
+    border-radius: 20px;
+    margin: 1rem 0;
+}
+.nested-list-demo ul, .nested-list-demo ol {
+    margin-left: 1.8rem;
+}
+.nested-list-demo li {
+    margin: 8px 0;
+}
+
+.formatted-p {
+    background: rgba(0,0,0,0.4);
+    padding: 1.2rem;
+    border-left: 4px solid var(--locker-accent);
+    margin: 1.5rem 0;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.btn-feature {
+    background: var(--locker-accent);
+    color: #1e2a32;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 60px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-feature:hover {
+    background: #e6b17e;
+    transform: scale(1.02);
+}
+
+.footer-locker {
+    background: rgba(10, 14, 18, 0.95);
+    text-align: center;
+    padding: 3rem 1rem;
+    margin-top: 3rem;
+    border-top: 4px solid var(--locker-accent);
+    font-size: 0.9rem;
+}
+</style>
 </head>
+<body>
+<div class="locker-bg"></div>
 
-<body class="home-bg">
+<!-- MENU BAR (5 items) -->
+<div class="menu-bar">
+    <a href="index.html" data-page="home" class="active">🏠 HOME</a>
+    <a href="shop.html" data-page="shop">🛍️ SHOP</a>
+    <a href="size.html" data-page="size">📏 SIZE GUIDE</a>
+    <a href="videos.html" data-page="videos">🎬 VIDEOS</a>
+    <a href="contact.html" data-page="contact">📞 CONTACT</a>
+</div>
 
-<nav>
-<ul class="menu">
-<li><a href="index.html">Home</a></li>
-<li><a href="shop.html">Shop</a></li>
-<li><a href="size.html">Size</a></li>
-<li><a href="videos.html">Videos</a></li>
-<li><a href="contact.html">Contact</a></li>
-</ul>
-</nav>
+<!-- MAIN CONTENT -->
+<div class="page-content">
+    <h1 style="color: var(--locker-accent); font-size: 3rem;">⚡ THE LOCKER ROOM</h1>
+    <p style="font-size:1.2rem;">Step into the sanctuary of champions — where authentic kits, boots, and memorabilia live. Experience football culture like never before.</p>
+    
+    <!-- 2 COLUMNS SECTION -->
+    <div class="two-col">
+        <div class="container-card">
+            <h3>🔐 Locker Legacy</h3>
+            <p>Since 2005, The Locker-Room has been the ultimate destination for collectors and players. Our Nairobi flagship replicates the intensity of a real locker room.</p>
+            <div class="formatted-p">
+                <strong>🏆 2026 Vision:</strong> We deliver 100% authentic match shirts, exclusive boots and rare signed collectibles. Every product is verified by our UEFA-certified team.
+            </div>
+        </div>
+        <div class="container-card">
+            <h3>📸 Atmosphere Gallery</h3>
+            <div class="media-grid" style="grid-template-columns:1fr 1fr;">
+                <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=400&h=400&fit=crop" style="border-radius:20px; aspect-ratio:1/1; object-fit:cover;" alt="locker">
+                <img src="https://images.pexels.com/photos/274506/pexels-photo-274506.jpeg?auto=compress&cs=tinysrgb&w=400" style="border-radius:20px; aspect-ratio:1/1; object-fit:cover;" alt="boots">
+            </div>
+        </div>
+    </div>
 
-<section class="hero">
-<h1>⚽ THE LOCKER ROOM ⚽</h1>
+    <!-- TABLE 1 -->
+    <div class="table-full container-card">
+        <h3>🏅 PREMIER LEAGUE 2026 - OFFICIAL KIT PRICES</h3>
+        <table>
+            <thead><tr><th>Club</th><th>Home Kit Price</th><th>Away Kit</th><th>Stock Status</th></tr></thead>
+            <tbody>
+                <tr><td>Arsenal</td><td>€115</td><td>€105</td><td>In Stock</td></tr>
+                <tr><td>Liverpool</td><td>€125</td><td>€110</td><td>Limited</td></tr>
+                <tr><td>Manchester City</td><td>€119</td><td>€109</td><td>In Stock</td></tr>
+                <tr><td>Chelsea</td><td>€115</td><td>€100</td><td>Pre-order</td></tr>
+            </tbody>
+        </table>
+    </div>
 
-<p>Welcome to the ultimate football locker room experience.</p>
-<p>Explore premium kits, boots, and exclusive memorabilia.</p>
-<p>Feel like a professional player preparing for match day.</p>
-<p>Each section represents a different locker in the room.</p>
-<p>Select a category and step into your gear zone.</p>
-</section>
+    <!-- TABLE 2 -->
+    <div class="table-full container-card">
+        <h3>👟 BOOT COLLECTION - adidas x Nike</h3>
+        <table>
+            <thead><tr><th>Model</th><th>Player Edition</th><th>Price</th><th>Rarity</th></tr></thead>
+            <tbody>
+                <tr><td>F50 Elite</td><td>Messi "Chaos"</td><td>€299</td><td>500 pairs</td></tr>
+                <tr><td>Predator 30</td><td>Pedri "Control"</td><td>€279</td><td>Limited</td></tr>
+                <tr><td>Mercurial</td><td>Haaland</td><td>€289</td><td>In Stock</td></tr>
+                <tr><td>X Speedflow+</td><td>Mbappé</td><td>€275</td><td>In Stock</td></tr>
+            </tbody>
+        </table>
+    </div>
 
-<footer>
-<p>© 2026 The Locker Room | Nairobi</p>
+    <!-- NESTED LIST (5 items deep) -->
+    <div class="container-card">
+        <h3>📋 CLUB TIERS & COLLECTIONS (Nested List)</h3>
+        <div class="nested-list-demo">
+            <ul>
+                <li>🇪🇺 ELITE CLUBS
+                    <ul>
+                        <li>🏆 Real Madrid / Barcelona
+                            <ul>
+                                <li>⚡ Galacticos & La Masia Legends
+                                    <ul>
+                                        <li>✨ 2026 Special Editions
+                                            <ul><li>🔹 Signed Messi & Yamal bundles</li></ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>🏴 Premier League Big Six
+                            <ul><li>Arsenal Invincibles Collection</li></ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>🇩🇪 Bundesliga Powerhouse
+                    <ul><li>Bayern & Dortmund derby packs</li></ul>
+                </li>
+                <li>🇮🇹 Serie A Heritage
+                    <ul><li>Milan Derby collectibles</li></ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 5 FORMATTED PARAGRAPHS -->
+    <div class="container-card">
+        <h3>📖 Locker Room Stories</h3>
+        <div class="formatted-p"><strong>1. The 2026 Centenary Kit:</strong> Barcelona unveils a stunning gold-accented jersey celebrating 125 years. Woven with Catalan senyera and breathable Dri-FIT ADV™ technology.</div>
+        <div class="formatted-p"><strong>2. Boot Wars: F50 vs Predator:</strong> adidas launches dual campaign: Lamine Yamal (F50 Chaos) vs Pedri (Predator 30). Limited 1000 match packs available globally.</div>
+        <div class="formatted-p"><strong>3. Kenyan Football Rising:</strong> The Locker-Room sponsors grassroots tournaments in Nairobi & Mombasa, providing authentic gear to young talents.</div>
+        <div class="formatted-p"><strong>4. Sustainability Move:</strong> 2026 kits made from 80% recycled ocean plastic. Each purchase funds 1 tree in the Mau Forest.</div>
+        <div class="formatted-p"><strong>5. Player Insights:</strong> "The energy inside The Locker-Room reminds me of Camp Nou's tunnel" — Pedri. Visit our Westlands hub for exclusive events.</div>
+    </div>
+
+    <!-- ADDED FEATURES -->
+    <div class="container-card" style="text-align:center;">
+        <h3>🔥 FEATURED ADD-ON: WORLD CUP 2026 COUNTDOWN</h3>
+        <div id="countdown" style="font-size:2rem; font-weight:bold; color:var(--locker-accent);">Loading...</div>
+        <button class="btn-feature" onclick="alert('🏆 Pre-order WC2026 kits now! Limited early-bird discount.')">Pre-order Now</button>
+    </div>
+</div>
+
+<footer class="footer-locker">
+    ⚽ THE LOCKER-ROOM - OFFICIAL UEFA MERCHANDISE PARTNER ⚽<br>
+    © 2026 The Locker-Room | Muthithi Road, Westlands, Nairobi, Kenya<br>
+    📞 24/7 Support: +254 700 123 456 | ✉️ info@thelocker-room.co.ke<br>
+    🇰🇪 Free East Africa Shipping | 30-Day Returns | 100% Authentic
 </footer>
 
+<script>
+    const target = new Date("June 11, 2026 00:00:00").getTime();
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const diff = target - now;
+        if (diff <= 0) { document.getElementById('countdown').innerText = "⚽ WORLD CUP STARTED!"; return; }
+        const days = Math.floor(diff/(1000*60*60*24));
+        const hours = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+        const mins = Math.floor((diff%(1000*60*60))/(1000*60));
+        const secs = Math.floor((diff%(1000*60))/1000);
+        document.getElementById('countdown').innerText = `${days}d ${hours}h ${mins}m ${secs}s`;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+</script>
 </body>
 </html>
