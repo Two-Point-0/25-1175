@@ -3,42 +3,66 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Locker-Room | Videos - Kit Previews</title>
+<title>The Locker-Room | Videos - Kit Previews & Highlights</title>
 <link rel="stylesheet" href="style.css">
 <style>
 .video-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2rem;
     margin: 2rem 0;
 }
 .video-card {
     background: #1f2a33;
-    border-radius: 24px;
+    border-radius: 28px;
     overflow: hidden;
-    border: 1px solid var(--locker-accent);
-    transition: transform 0.3s;
+    border: 2px solid var(--locker-accent);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .video-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
     border-color: var(--locker-light);
+    box-shadow: 0 20px 30px rgba(196,154,108,0.3);
 }
 .video-card video {
     width: 100%;
     aspect-ratio: 9 / 16;
     object-fit: cover;
-    background: #000;
+    background: #0a0e12;
+    display: block;
 }
 .video-info {
-    padding: 1rem;
+    padding: 1.2rem;
     text-align: center;
+    background: linear-gradient(145deg, #1a222a, #151d24);
 }
 .video-info h4 {
     color: var(--locker-accent);
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+    font-weight: 700;
 }
 .video-info p {
     font-size: 0.85rem;
+    color: var(--team-silver);
+    line-height: 1.4;
+}
+.video-badge {
+    display: inline-block;
+    background: var(--team-gold);
+    color: #000;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    margin-top: 8px;
+}
+.video-stats {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 10px;
+    font-size: 0.75rem;
     color: var(--team-silver);
 }
 </style>
@@ -55,58 +79,271 @@
 </div>
 
 <div class="page-content">
-    <h2 style="text-align: center;">🎬 2026 KIT PREVIEWS</h2>
-    <p style="text-align: center; margin-bottom: 2rem;">Vertical TikTok-style videos • Autoplay & Muted</p>
+    <h2 style="text-align: center; color: var(--locker-accent);">🎬 2026 KIT PREVIEWS</h2>
+    <p style="text-align: center; margin-bottom: 2rem; color: var(--team-silver);">📱 Vertical TikTok-style videos • Autoplay & Muted • Tap to unmute</p>
 
     <div class="video-grid">
+        <!-- Video 1: Country Jersey -->
         <div class="video-card">
-            <video controls autoplay muted loop playsinline>
-                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            <video controls autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1489944445-9b8e3d9b2b5a?w=600&h=1067&fit=crop">
+                <source src="country jersey.mp4" type="video/mp4">
+                Your browser does not support video.
             </video>
             <div class="video-info">
-                <h4>🇦🇷 Country Jerseys 2026</h4>
-                <p>Argentina • Brazil • Germany • Official replicas</p>
+                <h4>🇦🇷 COUNTRY JERSEY 2026</h4>
+                <p>Argentina / Brazil / Germany – Official replicas with authentic badges and premium fabric</p>
+                <div class="video-badge">🔥 2.3M Views</div>
+                <div class="video-stats">
+                    <span>❤️ 45K Likes</span>
+                    <span>💬 2.1K Comments</span>
+                </div>
             </div>
         </div>
+
+        <!-- Video 2: 2026 World Cup Coming Soon -->
         <div class="video-card">
-            <video controls autoplay muted loop playsinline>
-                <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
+            <video controls autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1518091043644-c1d4457512c6?w=600&h=1067&fit=crop">
+                <source src="country jersey 2.mp4" type="video/mp4">
+                Your browser does not support video.
             </video>
             <div class="video-info">
-                <h4>🌍 World Cup 2026 Coming Soon</h4>
-                <p>Leaked designs • Pre-order now</p>
+                <h4>🌍 WORLD CUP 2026 COMING SOON</h4>
+                <p>Leaked designs • All 48 nations • Pre-order now for exclusive early bird discounts</p>
+                <div class="video-badge">⚡ VIRAL</div>
+                <div class="video-stats">
+                    <span>❤️ 128K Likes</span>
+                    <span>💬 8.7K Comments</span>
+                </div>
             </div>
         </div>
+
+        <!-- Video 3: Club Jersey -->
         <div class="video-card">
-            <video controls autoplay muted loop playsinline>
-                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            <video controls autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=600&h=1067&fit=crop">
+                <source src="club jersey.mp4" type="video/mp4">
+                Your browser does not support video.
             </video>
             <div class="video-info">
-                <h4>⚽ Club Jerseys 2026</h4>
-                <p>Premier League • La Liga • Serie A • Bundesliga</p>
+                <h4>⚽ CLUB JERSEY 2026 COLLECTION</h4>
+                <p>Premier League • La Liga • Serie A • Bundesliga • All new kits revealed</p>
+                <div class="video-badge">⭐ TRENDING #1</div>
+                <div class="video-stats">
+                    <span>❤️ 67K Likes</span>
+                    <span>💬 4.2K Comments</span>
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- Additional Video Stats Table -->
     <div class="container-card">
         <h3>📈 MOST VIEWED KIT REVEALS</h3>
         <div class="size-chart">
             <table>
-                <thead><tr><th>Video</th><th>Views</th><th>Trend</th></tr></thead>
+                <thead>
+                    <tr>
+                        <th>Video Title</th>
+                        <th>Views (Millions)</th>
+                        <th>Release Date</th>
+                        <th>Trend</th>
+                    </tr>
+                </thead>
                 <tbody>
-                    <tr><td>Barcelona 125th Anniversary Kit</td><td>12.4M</td><td>🔥 Trending</td></tr>
-                    <tr><td>Messi F50 "Chaos" Boot Launch</td><td>9.8M</td><td>⚡ Viral</td></tr>
-                    <tr><td>Yamal × Pedri Duel Campaign</td><td>7.2M</td><td>🚀 Rising</td></tr>
-                    <tr><td>Real Madrid Galacticos 2026</td><td>8.1M</td><td>⭐ Star</td></tr>
+                    <tr>
+                        <td><strong>Barcelona 125th Anniversary Kit</strong></td>
+                        <td>12.4M</td>
+                        <td>Jan 2026</td>
+                        <td style="color: var(--team-gold);">🔥 🔥 🔥</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Messi F50 "Chaos" Boot Launch</strong></td>
+                        <td>9.8M</td>
+                        <td>Feb 2026</td>
+                        <td style="color: var(--locker-accent);">⚡ Viral</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Country Jerseys 2026 Collection</strong></td>
+                        <td>8.5M</td>
+                        <td>Mar 2026</td>
+                        <td style="color: var(--locker-accent);">🌍 Trending</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Yamal × Pedri Duel Campaign</strong></td>
+                        <td>7.2M</td>
+                        <td>Feb 2026</td>
+                        <td style="color: var(--locker-accent);">🚀 Rising</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Real Madrid Galacticos 2026</strong></td>
+                        <td>8.1M</td>
+                        <td>Jan 2026</td>
+                        <td style="color: var(--team-gold);">⭐ Star</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Club Jersey 2026 Full Reveal</strong></td>
+                        <td>6.5M</td>
+                        <td>Mar 2026</td>
+                        <td style="color: var(--locker-accent);">📈 +45%</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
+    </div>
+
+    <!-- Second Table: Upcoming Releases -->
+    <div class="container-card">
+        <h3>🎥 UPCOMING VIDEO RELEASES</h3>
+        <div class="size-chart">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Release Date</th>
+                        <th>Title</th>
+                        <th>Duration</th>
+                        <th>Format</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>April 15, 2026</strong></td>
+                        <td>Premier League Finale Kits • All 20 Clubs</td>
+                        <td>3:45 min</td>
+                        <td>9:16 Vertical</td>
+                    </tr>
+                    <tr>
+                        <td><strong>April 22, 2026</strong></td>
+                        <td>UCL Final Boot Special • Limited Edition</td>
+                        <td>4:20 min</td>
+                        <td>9:16 Vertical</td>
+                    </tr>
+                    <tr>
+                        <td><strong>May 1, 2026</strong></td>
+                        <td>Legends Collection Drop • Retro Kits</td>
+                        <td>5:00 min</td>
+                        <td>9:16 Vertical</td>
+                    </tr>
+                    <tr>
+                        <td><strong>May 10, 2026</strong></td>
+                        <td>World Cup 2026 Official Kit Launch</td>
+                        <td>6:15 min</td>
+                        <td>9:16 + 16:9</td>
+                    </tr>
+                    <tr>
+                        <td><strong>May 20, 2026</strong></td>
+                        <td>Behind the Scenes • Camp Nou Shoot</td>
+                        <td>8:30 min</td>
+                        <td>Documentary</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Images Container - Behind the Scenes -->
+    <div class="container-card">
+        <h3>📸 BEHIND THE SCENES - LOCKER ROOM CONTENT</h3>
+        <div class="media-grid" style="grid-template-columns: repeat(3, 1fr); gap: 1.5rem;">
+            <img src="https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg?auto=compress&cs=tinysrgb&w=600" style="border-radius:20px; width:100%; aspect-ratio:1/1; object-fit:cover;" alt="locker room">
+            <img src="https://images.pexels.com/photos/1884574/pexels-photo-1884574.jpeg?auto=compress&cs=tinysrgb&w=600" style="border-radius:20px; width:100%; aspect-ratio:1/1; object-fit:cover;" alt="boots shoot">
+            <img src="https://images.pexels.com/photos/274506/pexels-photo-274506.jpeg?auto=compress&cs=tinysrgb&w=600" style="border-radius:20px; width:100%; aspect-ratio:1/1; object-fit:cover;" alt="kit photoshoot">
+        </div>
+        <p style="text-align: center; margin-top: 1rem; color: var(--team-silver);">🎥 Exclusive content from our Nairobi flagship studio • New videos every week</p>
+    </div>
+
+    <!-- Player Quotes Section -->
+    <div class="container-card">
+        <h3>🗣️ PLAYER REACTIONS TO 2026 KITS</h3>
+        <div class="formatted-p">
+            <strong>⚡ Lamine Yamal:</strong> "The new F50 Chaos boots give me that extra burst of speed. Can't wait to wear them at Camp Nou."
+        </div>
+        <div class="formatted-p">
+            <strong>🎯 Pedri:</strong> "The Predator 30 Control edition is perfect for dictating the tempo. Every pass feels precise."
+        </div>
+        <div class="formatted-p">
+            <strong>👑 Jude Bellingham:</strong> "The new Real Madrid kit is pure elegance. Proud to represent this badge."
+        </div>
+        <div class="formatted-p">
+            <strong>🇦🇷 Lionel Messi:</strong> "The F50 Chaos is a special boot. It represents my style of unpredictable football."
+        </div>
+    </div>
+
+    <!-- Video Playlist Info -->
+    <div class="container-card" style="text-align: center;">
+        <h3>📱 FOLLOW US FOR MORE CONTENT</h3>
+        <p style="margin-bottom: 1rem;">Subscribe to our YouTube channel and follow @thelockerroom on TikTok for exclusive drops</p>
+        <button class="btn-feature" onclick="alert('🔔 Subscribe for exclusive kit reveals and giveaways!')">🔔 Subscribe Now</button>
+        <button class="btn-feature" style="margin-left: 1rem; background: #1da1f2;" onclick="alert('Follow @thelockerroom on TikTok & Instagram')">📱 Follow @thelockerroom</button>
     </div>
 </div>
 
 <footer class="footer-locker">
     ⚽ THE LOCKER-ROOM - OFFICIAL UEFA MERCHANDISE PARTNER ⚽<br>
-    © 2026 The Locker-Room | Muthithi Road, Westlands, Nairobi, Kenya
+    © 2026 The Locker-Room | Muthithi Road, Westlands, Nairobi, Kenya<br>
+    📞 24/7 Support: +254 700 123 456 | ✉️ info@thelocker-room.co.ke<br>
+    🇰🇪 Free East Africa Shipping | 30-Day Returns | 100% Authentic
 </footer>
+
+<style>
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+.btn-feature {
+    background: var(--locker-accent);
+    color: #1e2a32;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 60px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+}
+.btn-feature:hover {
+    background: #e6b17e;
+    transform: scale(1.02);
+}
+.size-chart {
+    width: 100%;
+    overflow-x: auto;
+}
+.size-chart table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(0,0,0,0.5);
+    border-radius: 20px;
+    overflow: hidden;
+}
+.size-chart th, .size-chart td {
+    padding: 14px 12px;
+    border-bottom: 1px solid var(--locker-accent);
+    text-align: left;
+}
+.size-chart th {
+    background: var(--locker-metal);
+    color: var(--locker-accent);
+    font-weight: 700;
+}
+.formatted-p {
+    background: rgba(0,0,0,0.4);
+    padding: 1rem;
+    border-left: 4px solid var(--locker-accent);
+    margin: 1rem 0;
+    border-radius: 0 12px 12px 0;
+}
+.container-card {
+    background: rgba(35, 43, 51, 0.92);
+    border-radius: 28px;
+    padding: 1.8rem;
+    margin: 1.8rem 0;
+    border: 1px solid var(--locker-accent);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+h3 {
+    color: var(--team-silver);
+    margin-bottom: 1rem;
+}
+</style>
 </body>
 </html>
