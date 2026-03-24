@@ -6,332 +6,7 @@
 <title>The Locker-Room | Shop - Complete Collection</title>
 <link rel="stylesheet" href="style.css">
 <style>
-/* Cart Styles */
-.cart-sidebar {
-    position: fixed;
-    top: 0;
-    right: -400px;
-    width: 380px;
-    height: 100vh;
-    background: linear-gradient(145deg, #1a222a, #0f151c);
-    border-left: 3px solid var(--locker-accent);
-    box-shadow: -5px 0 30px rgba(0,0,0,0.5);
-    z-index: 2000;
-    transition: right 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-.cart-sidebar.open {
-    right: 0;
-}
-
-.cart-header {
-    padding: 1.5rem;
-    background: var(--locker-metal);
-    border-bottom: 2px solid var(--locker-accent);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.cart-header h3 {
-    color: var(--locker-accent);
-    margin: 0;
-    font-size: 1.3rem;
-}
-
-.close-cart {
-    background: none;
-    border: none;
-    color: var(--locker-light);
-    font-size: 1.8rem;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.close-cart:hover {
-    transform: scale(1.1);
-    color: var(--locker-accent);
-}
-
-.cart-items {
-    flex: 1;
-    overflow-y: auto;
-    padding: 1rem;
-}
-
-.cart-item {
-    background: rgba(35, 43, 51, 0.6);
-    border-radius: 12px;
-    padding: 0.8rem;
-    margin-bottom: 0.8rem;
-    display: flex;
-    gap: 0.8rem;
-    border: 1px solid var(--locker-accent);
-}
-
-.cart-item-img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.cart-item-details {
-    flex: 1;
-}
-
-.cart-item-details h4 {
-    font-size: 0.9rem;
-    margin-bottom: 0.2rem;
-    color: var(--locker-light);
-}
-
-.cart-item-price {
-    color: var(--team-gold);
-    font-weight: bold;
-    font-size: 0.85rem;
-}
-
-.cart-item-quantity {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 0.3rem;
-}
-
-.qty-btn {
-    background: var(--locker-metal);
-    border: 1px solid var(--locker-accent);
-    color: var(--locker-accent);
-    width: 24px;
-    height: 24px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.qty-btn:hover {
-    background: var(--locker-accent);
-    color: var(--locker-metal);
-}
-
-.remove-item {
-    background: none;
-    border: none;
-    color: #ff6b6b;
-    cursor: pointer;
-    font-size: 0.8rem;
-    margin-top: 0.3rem;
-}
-
-.cart-footer {
-    padding: 1.5rem;
-    background: var(--locker-metal);
-    border-top: 2px solid var(--locker-accent);
-}
-
-.cart-total {
-    display: flex;
-    justify-content: space-between;
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    color: var(--locker-light);
-}
-
-.checkout-btn {
-    width: 100%;
-    background: var(--locker-accent);
-    color: #1a1e24;
-    border: none;
-    padding: 12px;
-    border-radius: 30px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.2s;
-    font-size: 1rem;
-}
-
-.checkout-btn:hover {
-    background: #e6b17e;
-    transform: scale(1.02);
-}
-
-.clear-cart {
-    width: 100%;
-    background: transparent;
-    border: 1px solid #ff6b6b;
-    color: #ff6b6b;
-    padding: 8px;
-    border-radius: 30px;
-    margin-top: 0.8rem;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.clear-cart:hover {
-    background: #ff6b6b;
-    color: #1a1e24;
-}
-
-/* Cart Button */
-.cart-icon {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: var(--locker-accent);
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 1500;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-    transition: transform 0.2s;
-}
-
-.cart-icon:hover {
-    transform: scale(1.1);
-}
-
-.cart-count {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    background: #ff6b6b;
-    color: white;
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.7rem;
-    font-weight: bold;
-}
-
-/* Add to Cart Button */
-.add-to-cart-btn {
-    background: var(--locker-accent);
-    color: #1a1e24;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 8px;
-    width: 100%;
-    transition: all 0.2s;
-    font-size: 0.85rem;
-}
-
-.add-to-cart-btn:hover {
-    background: #e6b17e;
-    transform: scale(1.02);
-}
-
-/* Toast Notification */
-.toast {
-    position: fixed;
-    bottom: 100px;
-    right: 100px;
-    background: var(--locker-accent);
-    color: #1a1e24;
-    padding: 12px 20px;
-    border-radius: 30px;
-    font-weight: bold;
-    z-index: 2001;
-    animation: slideIn 0.3s ease, fadeOut 0.3s ease 2s forwards;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-}
-
-@keyframes slideIn {
-    from { transform: translateX(100px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-}
-
-@keyframes fadeOut {
-    to { opacity: 0; visibility: hidden; }
-}
-
-/* Overlay */
-.cart-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    z-index: 1999;
-    display: none;
-}
-
-.cart-overlay.show {
-    display: block;
-}
-
-/* Checkout Modal */
-.checkout-modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    max-width: 500px;
-    background: linear-gradient(145deg, #232b33, #1a222a);
-    border: 2px solid var(--locker-accent);
-    border-radius: 25px;
-    padding: 2rem;
-    z-index: 2002;
-    display: none;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-}
-
-.checkout-modal.show {
-    display: block;
-}
-
-.checkout-modal h3 {
-    color: var(--locker-accent);
-    margin-bottom: 1rem;
-}
-
-.checkout-modal input {
-    width: 100%;
-    padding: 12px;
-    margin: 8px 0;
-    background: rgba(0,0,0,0.5);
-    border: 1px solid var(--locker-accent);
-    border-radius: 10px;
-    color: white;
-}
-
-.checkout-modal button {
-    background: var(--locker-accent);
-    color: #1a1e24;
-    border: none;
-    padding: 12px;
-    border-radius: 30px;
-    font-weight: bold;
-    cursor: pointer;
-    width: 100%;
-    margin-top: 1rem;
-}
-
-.close-modal {
-    background: none;
-    border: none;
-    color: var(--locker-light);
-    font-size: 1.5rem;
-    float: right;
-    cursor: pointer;
-}
-
+/* Shop page specific styles */
 .shop-section {
     margin-bottom: 3rem;
 }
@@ -439,17 +114,278 @@
     color: var(--locker-metal);
     transform: scale(1.1);
 }
-.container-card {
-    background: rgba(35, 43, 51, 0.92);
-    border-radius: 28px;
-    padding: 1.8rem;
-    margin: 1.8rem 0;
+.add-to-cart-btn {
+    background: var(--locker-accent);
+    color: #1a1e24;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 8px;
+    width: 100%;
+    transition: all 0.2s;
+    font-size: 0.85rem;
+}
+.add-to-cart-btn:hover {
+    background: #e6b17e;
+    transform: scale(1.02);
+}
+/* Cart Styles */
+.cart-icon {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--locker-accent);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1500;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+}
+.cart-icon:hover {
+    transform: scale(1.1);
+}
+.cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #ff6b6b;
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 380px;
+    height: 100vh;
+    background: linear-gradient(145deg, #1a222a, #0f151c);
+    border-left: 3px solid var(--locker-accent);
+    z-index: 2000;
+    transition: right 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.cart-sidebar.open {
+    right: 0;
+}
+.cart-header {
+    padding: 1.5rem;
+    background: var(--locker-metal);
+    border-bottom: 2px solid var(--locker-accent);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cart-header h3 {
+    color: var(--locker-accent);
+    margin: 0;
+}
+.close-cart {
+    background: none;
+    border: none;
+    color: var(--locker-light);
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+.cart-items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+}
+.cart-item {
+    background: rgba(35,43,51,0.6);
+    border-radius: 12px;
+    padding: 0.8rem;
+    margin-bottom: 0.8rem;
+    display: flex;
+    gap: 0.8rem;
     border: 1px solid var(--locker-accent);
+}
+.cart-item-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.cart-item-details {
+    flex: 1;
+}
+.cart-item-details h4 {
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+}
+.cart-item-price {
+    color: var(--team-gold);
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+.cart-item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.3rem;
+}
+.qty-btn {
+    background: var(--locker-metal);
+    border: 1px solid var(--locker-accent);
+    color: var(--locker-accent);
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.remove-item {
+    background: none;
+    border: none;
+    color: #ff6b6b;
+    cursor: pointer;
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+}
+.cart-footer {
+    padding: 1.5rem;
+    background: var(--locker-metal);
+    border-top: 2px solid var(--locker-accent);
+}
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: var(--locker-light);
+}
+.checkout-btn {
+    width: 100%;
+    background: var(--locker-accent);
+    color: #1a1e24;
+    border: none;
+    padding: 12px;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.clear-cart {
+    width: 100%;
+    background: transparent;
+    border: 1px solid #ff6b6b;
+    color: #ff6b6b;
+    padding: 8px;
+    border-radius: 30px;
+    margin-top: 0.8rem;
+    cursor: pointer;
+}
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1999;
+    display: none;
+}
+.cart-overlay.show {
+    display: block;
+}
+.checkout-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 500px;
+    background: linear-gradient(145deg, #232b33, #1a222a);
+    border: 2px solid var(--locker-accent);
+    border-radius: 25px;
+    padding: 2rem;
+    z-index: 2002;
+    display: none;
+}
+.checkout-modal.show {
+    display: block;
+}
+.checkout-modal input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    background: rgba(0,0,0,0.5);
+    border: 1px solid var(--locker-accent);
+    border-radius: 10px;
+    color: white;
+}
+.checkout-modal button {
+    background: var(--locker-accent);
+    color: #1a1e24;
+    border: none;
+    padding: 12px;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 1rem;
+}
+.close-modal {
+    background: none;
+    border: none;
+    color: var(--locker-light);
+    font-size: 1.5rem;
+    float: right;
+    cursor: pointer;
+}
+.toast {
+    position: fixed;
+    bottom: 100px;
+    right: 100px;
+    background: var(--locker-accent);
+    color: #1a1e24;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-weight: bold;
+    z-index: 2001;
+    animation: slideIn 0.3s ease, fadeOut 0.3s ease 2s forwards;
+}
+@keyframes slideIn {
+    from { transform: translateX(100px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+@keyframes fadeOut {
+    to { opacity: 0; visibility: hidden; }
 }
 </style>
 </head>
 <body>
-<div class="locker-bg"></div>
+
+<!-- Rotating Background with 9 images -->
+<div class="slideshow-container" id="slideshowContainer">
+    <div class="slide" style="background-image: url('locker1.jpg');"></div>
+    <div class="slide" style="background-image: url('locker2.jpg');"></div>
+    <div class="slide" style="background-image: url('locker3.jpg');"></div>
+    <div class="slide" style="background-image: url('locker4.jpg');"></div>
+    <div class="slide" style="background-image: url('locker5.jpg');"></div>
+    <div class="slide" style="background-image: url('locker6.jpg');"></div>
+    <div class="slide" style="background-image: url('locker7.jpg');"></div>
+    <div class="slide" style="background-image: url('locker8.jpg');"></div>
+    <div class="slide" style="background-image: url('stadium1.jpg');"></div>
+</div>
+<div class="slideshow-overlay"></div>
+<div class="slideshow-indicators" id="slideshowIndicators"></div>
 
 <div class="menu-bar">
     <a href="index.html">🏠 HOME</a>
@@ -461,9 +397,9 @@
 
 <div class="page-content">
     <h2 style="text-align: center;">🛍️ OFFICIAL SHOP</h2>
-    <p style="text-align: center; margin-bottom: 2rem;">Complete Collection • Shirts • Shorts • Boots • Memorabilia</p>
+    <p style="text-align: center; margin-bottom: 2rem;">Complete Collection • Shirts • Shorts • Boots • Memorabilia • Click Add to Cart</p>
 
-    <!-- SHIRTS SECTION - ALL 20 ORIGINAL IMAGES -->
+    <!-- ==================== SHIRTS SECTION - ALL 20 CLUBS ==================== -->
     <div class="shop-section">
         <div class="section-header">
             <h3 class="section-title">👕 2026 SHIRTS COLLECTION (20 Clubs)</h3>
@@ -472,32 +408,32 @@
         <div class="scroll-wrapper">
             <button class="scroll-btn" onclick="scrollGallery('shirtsGallery', 'prev')">←</button>
             <div class="scroll-container" id="shirtsGallery">
-                <div class="scroll-item" data-name="FC Barcelona Home 2026" data-price="129" data-img="barca.png"><span class="product-badge">BESTSELLER</span><img src="barca.png" alt="FC Barcelona"><h4>FC Barcelona Home 2026</h4><p>125th Anniversary • Nike Dri-FIT</p><p class="price">€129</p><button class="add-to-cart-btn" onclick="addToCart('FC Barcelona Home 2026', 129, 'barca.png')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Real Madrid Home 2026" data-price="139" data-img="madrid.avif"><span class="product-badge">NEW</span><img src="madrid.avif" alt="Real Madrid"><h4>Real Madrid Home 2026</h4><p>Galacticos • Adidas</p><p class="price">€139</p><button class="add-to-cart-btn" onclick="addToCart('Real Madrid Home 2026', 139, 'madrid.avif')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Liverpool Home 2026" data-price="125" data-img="liverpool.avif"><span class="product-badge">LIMITED</span><img src="liverpool.avif" alt="Liverpool"><h4>Liverpool Home 2026</h4><p>Nike • 6x UCL edition</p><p class="price">€125</p><button class="add-to-cart-btn" onclick="addToCart('Liverpool Home 2026', 125, 'liverpool.avif')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Man City Home 2026" data-price="119" data-img="city.avif"><img src="city.avif" alt="Man City"><h4>Man City Home 2026</h4><p>Puma • Treble winners</p><p class="price">€119</p><button class="add-to-cart-btn" onclick="addToCart('Man City Home 2026', 119, 'city.avif')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Arsenal Home 2026" data-price="115" data-img="arsenal.avif"><img src="arsenal.avif" alt="Arsenal"><h4>Arsenal Home 2026</h4><p>Adidas • Invincibles</p><p class="price">€115</p><button class="add-to-cart-btn" onclick="addToCart('Arsenal Home 2026', 115, 'arsenal.avif')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Chelsea Home 2026" data-price="115" data-img="chelsea.avif"><img src="chelsea.avif" alt="Chelsea"><h4>Chelsea Home 2026</h4><p>Nike • London pride</p><p class="price">€115</p><button class="add-to-cart-btn" onclick="addToCart('Chelsea Home 2026', 115, 'chelsea.avif')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="PSG Home 2026" data-price="139" data-img="psg.avif"><img src="psg.avif" alt="PSG"><h4>PSG Home 2026</h4><p>Nike/Jordan • Limited</p><p class="price">€139</p><button class="add-to-cart-btn" onclick="addToCart('PSG Home 2026', 139, 'psg.avif')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Juventus Home 2026" data-price="119" data-img="juventus.avif"><img src="juventus.avif" alt="Juventus"><h4>Juventus Home 2026</h4><p>Adidas • Scudetto</p><p class="price">€119</p><button class="add-to-cart-btn" onclick="addToCart('Juventus Home 2026', 119, 'juventus.avif')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="AC Milan Home 2026" data-price="119" data-img="AC Milan.jpg"><img src="AC Milan.jpg" alt="AC Milan"><h4>AC Milan Home 2026</h4><p>Puma • Rossoneri</p><p class="price">€119</p><button class="add-to-cart-btn" onclick="addToCart('AC Milan Home 2026', 119, 'AC Milan.jpg')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Inter Milan Home 2026" data-price="115" data-img="inter.avif"><img src="inter.avif" alt="Inter Milan"><h4>Inter Milan Home 2026</h4><p>Nike • Serie A champs</p><p class="price">€115</p><button class="add-to-cart-btn" onclick="addToCart('Inter Milan Home 2026', 115, 'inter.avif')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Napoli Home 2026" data-price="109" data-img="napoli.webp"><img src="napoli.webp" alt="Napoli"><h4>Napoli Home 2026</h4><p>EA7 • Maradona spirit</p><p class="price">€109</p><button class="add-to-cart-btn" onclick="addToCart('Napoli Home 2026', 109, 'napoli.webp')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Bayern Munich 2026" data-price="129" data-img="bayern.avif"><img src="bayern.avif" alt="Bayern"><h4>Bayern Munich 2026</h4><p>Adidas • Bundesliga kings</p><p class="price">€129</p><button class="add-to-cart-btn" onclick="addToCart('Bayern Munich 2026', 129, 'bayern.avif')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Borussia Dortmund 2026" data-price="115" data-img="borussia.avif"><img src="borussia.avif" alt="Dortmund"><h4>Borussia Dortmund 2026</h4><p>Puma • Yellow Wall</p><p class="price">€115</p><button class="add-to-cart-btn" onclick="addToCart('Borussia Dortmund 2026', 115, 'borussia.avif')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="RB Leipzig 2026" data-price="109" data-img="RB.avif"><img src="RB.avif" alt="RB Leipzig"><h4>RB Leipzig 2026</h4><p>Nike • Rising stars</p><p class="price">€109</p><button class="add-to-cart-btn" onclick="addToCart('RB Leipzig 2026', 109, 'RB.avif')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Bayer Leverkusen 2026" data-price="105" data-img="leverkusen.avif"><img src="leverkusen.avif" alt="Leverkusen"><h4>Bayer Leverkusen 2026</h4><p>Castore • Bundesliga</p><p class="price">€105</p><button class="add-to-cart-btn" onclick="addToCart('Bayer Leverkusen 2026', 105, 'leverkusen.avif')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Atletico Madrid 2026" data-price="115" data-img="athletico.jpg"><img src="athletico.jpg" alt="Atletico"><h4>Atletico Madrid 2026</h4><p>Nike • Colchoneros</p><p class="price">€115</p><button class="add-to-cart-btn" onclick="addToCart('Atletico Madrid 2026', 115, 'athletico.jpg')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Sevilla Home 2026" data-price="105" data-img="sevila.jpg"><img src="sevila.jpg" alt="Sevilla"><h4>Sevilla Home 2026</h4><p>Castore • Europa kings</p><p class="price">€105</p><button class="add-to-cart-btn" onclick="addToCart('Sevilla Home 2026', 105, 'sevila.jpg')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Olympique Marseille 2026" data-price="109" data-img="olympique.avif"><img src="olympique.avif" alt="Marseille"><h4>Olympique Marseille 2026</h4><p>Puma • Velodrome</p><p class="price">€109</p><button class="add-to-cart-btn" onclick="addToCart('Olympique Marseille 2026', 109, 'olympique.avif')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Olympique Lyon 2026" data-price="105" data-img="lyon.avif"><img src="lyon.avif" alt="Lyon"><h4>Olympique Lyon 2026</h4><p>Adidas • Les Gones</p><p class="price">€105</p><button class="add-to-cart-btn" onclick="addToCart('Olympique Lyon 2026', 105, 'lyon.avif')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="AS Monaco 2026" data-price="99" data-img="monaco.avif"><img src="monaco.avif" alt="Monaco"><h4>AS Monaco 2026</h4><p>Kappa • French Riviera</p><p class="price">€99</p><button class="add-to-cart-btn" onclick="addToCart('AS Monaco 2026', 99, 'monaco.avif')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><span class="product-badge">BESTSELLER</span><img src="barca.png" alt="Barcelona"><h4>FC Barcelona</h4><p>125th Anniversary • Nike</p><p class="price">€129</p><button class="add-to-cart-btn" onclick="addToCart('FC Barcelona Home 2026', 129, 'barca.png')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="madrid.avif" alt="Real Madrid"><h4>Real Madrid</h4><p>Galacticos • Adidas</p><p class="price">€139</p><button class="add-to-cart-btn" onclick="addToCart('Real Madrid Home 2026', 139, 'madrid.avif')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="liverpool.avif" alt="Liverpool"><h4>Liverpool</h4><p>6x UCL • Nike</p><p class="price">€125</p><button class="add-to-cart-btn" onclick="addToCart('Liverpool Home 2026', 125, 'liverpool.avif')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="city.avif" alt="Man City"><h4>Man City</h4><p>Treble winners • Puma</p><p class="price">€119</p><button class="add-to-cart-btn" onclick="addToCart('Man City Home 2026', 119, 'city.avif')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="arsenal.avif" alt="Arsenal"><h4>Arsenal</h4><p>Invincibles • Adidas</p><p class="price">€115</p><button class="add-to-cart-btn" onclick="addToCart('Arsenal Home 2026', 115, 'arsenal.avif')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="chelsea.avif" alt="Chelsea"><h4>Chelsea</h4><p>London pride • Nike</p><p class="price">€115</p><button class="add-to-cart-btn" onclick="addToCart('Chelsea Home 2026', 115, 'chelsea.avif')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="psg.avif" alt="PSG"><h4>PSG</h4><p>Nike/Jordan</p><p class="price">€139</p><button class="add-to-cart-btn" onclick="addToCart('PSG Home 2026', 139, 'psg.avif')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="juventus.avif" alt="Juventus"><h4>Juventus</h4><p>Scudetto • Adidas</p><p class="price">€119</p><button class="add-to-cart-btn" onclick="addToCart('Juventus Home 2026', 119, 'juventus.avif')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="AC Milan.jpg" alt="AC Milan"><h4>AC Milan</h4><p>Rossoneri • Puma</p><p class="price">€119</p><button class="add-to-cart-btn" onclick="addToCart('AC Milan Home 2026', 119, 'AC Milan.jpg')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="inter.avif" alt="Inter Milan"><h4>Inter Milan</h4><p>Serie A champs • Nike</p><p class="price">€115</p><button class="add-to-cart-btn" onclick="addToCart('Inter Milan Home 2026', 115, 'inter.avif')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="napoli.webp" alt="Napoli"><h4>Napoli</h4><p>Maradona spirit • EA7</p><p class="price">€109</p><button class="add-to-cart-btn" onclick="addToCart('Napoli Home 2026', 109, 'napoli.webp')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="bayern.avif" alt="Bayern"><h4>Bayern Munich</h4><p>Bundesliga kings • Adidas</p><p class="price">€129</p><button class="add-to-cart-btn" onclick="addToCart('Bayern Munich 2026', 129, 'bayern.avif')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="borussia.avif" alt="Dortmund"><h4>Borussia Dortmund</h4><p>Yellow Wall • Puma</p><p class="price">€115</p><button class="add-to-cart-btn" onclick="addToCart('Borussia Dortmund 2026', 115, 'borussia.avif')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="RB.avif" alt="RB Leipzig"><h4>RB Leipzig</h4><p>Rising stars • Nike</p><p class="price">€109</p><button class="add-to-cart-btn" onclick="addToCart('RB Leipzig 2026', 109, 'RB.avif')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="leverkusen.avif" alt="Leverkusen"><h4>Bayer Leverkusen</h4><p>Castore</p><p class="price">€105</p><button class="add-to-cart-btn" onclick="addToCart('Bayer Leverkusen 2026', 105, 'leverkusen.avif')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="athletico.jpg" alt="Atletico"><h4>Atletico Madrid</h4><p>Colchoneros • Nike</p><p class="price">€115</p><button class="add-to-cart-btn" onclick="addToCart('Atletico Madrid 2026', 115, 'athletico.jpg')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="sevila.jpg" alt="Sevilla"><h4>Sevilla</h4><p>Europa kings • Castore</p><p class="price">€105</p><button class="add-to-cart-btn" onclick="addToCart('Sevilla Home 2026', 105, 'sevila.jpg')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="olympique.avif" alt="Marseille"><h4>Olympique Marseille</h4><p>Velodrome • Puma</p><p class="price">€109</p><button class="add-to-cart-btn" onclick="addToCart('Olympique Marseille 2026', 109, 'olympique.avif')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="lyon.avif" alt="Lyon"><h4>Olympique Lyon</h4><p>Les Gones • Adidas</p><p class="price">€105</p><button class="add-to-cart-btn" onclick="addToCart('Olympique Lyon 2026', 105, 'lyon.avif')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="monaco.avif" alt="Monaco"><h4>AS Monaco</h4><p>Kappa</p><p class="price">€99</p><button class="add-to-cart-btn" onclick="addToCart('AS Monaco 2026', 99, 'monaco.avif')">🛒 Add to Cart</button></div>
             </div>
             <button class="scroll-btn" onclick="scrollGallery('shirtsGallery', 'next')">→</button>
         </div>
     </div>
 
-    <!-- SHORTS SECTION - ALL 20 ORIGINAL IMAGES -->
+    <!-- ==================== SHORTS SECTION - ALL 20 CLUBS ==================== -->
     <div class="shop-section">
         <div class="section-header">
             <h3 class="section-title">🩳 MATCH SHORTS 2026 (20 Clubs)</h3>
@@ -506,32 +442,32 @@
         <div class="scroll-wrapper">
             <button class="scroll-btn" onclick="scrollGallery('shortsGallery', 'prev')">←</button>
             <div class="scroll-container" id="shortsGallery">
-                <div class="scroll-item" data-name="Barcelona Shorts 2026" data-price="59" data-img="barcelona shorts.avif"><img src="barcelona shorts.avif" alt="Barcelona Shorts"><h4>Barcelona Shorts 2026</h4><p>Nike • Match issue</p><p class="price">€59</p><button class="add-to-cart-btn" onclick="addToCart('Barcelona Shorts 2026', 59, 'barcelona shorts.avif')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Real Madrid Shorts 2026" data-price="65" data-img="madrid shorts.webp"><img src="madrid shorts.webp" alt="Real Madrid Shorts"><h4>Real Madrid Shorts 2026</h4><p>Adidas • Aeroready</p><p class="price">€65</p><button class="add-to-cart-btn" onclick="addToCart('Real Madrid Shorts 2026', 65, 'madrid shorts.webp')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Liverpool Shorts 2026" data-price="59" data-img="liverpool shorts.avif"><img src="liverpool shorts.avif" alt="Liverpool Shorts"><h4>Liverpool Shorts 2026</h4><p>Nike • Dri-FIT</p><p class="price">€59</p><button class="add-to-cart-btn" onclick="addToCart('Liverpool Shorts 2026', 59, 'liverpool shorts.avif')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Man City Shorts 2026" data-price="55" data-img="city shorts.avif"><img src="city shorts.avif" alt="Man City Shorts"><h4>Man City Shorts 2026</h4><p>Puma • Ultraweave</p><p class="price">€55</p><button class="add-to-cart-btn" onclick="addToCart('Man City Shorts 2026', 55, 'city shorts.avif')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Arsenal Shorts 2026" data-price="59" data-img="arsenal shorts.webp"><img src="arsenal shorts.webp" alt="Arsenal Shorts"><h4>Arsenal Shorts 2026</h4><p>Adidas • Authentic</p><p class="price">€59</p><button class="add-to-cart-btn" onclick="addToCart('Arsenal Shorts 2026', 59, 'arsenal shorts.webp')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Chelsea Shorts 2026" data-price="55" data-img="chelsea shorts.avif"><img src="chelsea shorts.avif" alt="Chelsea Shorts"><h4>Chelsea Shorts 2026</h4><p>Nike • London blue</p><p class="price">€55</p><button class="add-to-cart-btn" onclick="addToCart('Chelsea Shorts 2026', 55, 'chelsea shorts.avif')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="PSG Shorts 2026" data-price="69" data-img="psg shorts.avif"><img src="psg shorts.avif" alt="PSG Shorts"><h4>PSG Shorts 2026</h4><p>Nike/Jordan • Paris</p><p class="price">€69</p><button class="add-to-cart-btn" onclick="addToCart('PSG Shorts 2026', 69, 'psg shorts.avif')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Juventus Shorts 2026" data-price="59" data-img="juventus shorts.avif"><img src="juventus shorts.avif" alt="Juventus Shorts"><h4>Juventus Shorts 2026</h4><p>Adidas • Bianconeri</p><p class="price">€59</p><button class="add-to-cart-btn" onclick="addToCart('Juventus Shorts 2026', 59, 'juventus shorts.avif')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="AC Milan Shorts 2026" data-price="55" data-img="AcMilan shorts.avif"><img src="AcMilan shorts.avif" alt="AC Milan Shorts"><h4>AC Milan Shorts 2026</h4><p>Puma • Rossoneri</p><p class="price">€55</p><button class="add-to-cart-btn" onclick="addToCart('AC Milan Shorts 2026', 55, 'AcMilan shorts.avif')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Inter Milan Shorts 2026" data-price="55" data-img="inter shorts.avif"><img src="inter shorts.avif" alt="Inter Shorts"><h4>Inter Milan Shorts 2026</h4><p>Nike • Nerazzurri</p><p class="price">€55</p><button class="add-to-cart-btn" onclick="addToCart('Inter Milan Shorts 2026', 55, 'inter shorts.avif')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Napoli Shorts 2026" data-price="52" data-img="napoli shorts.webp"><img src="napoli shorts.webp" alt="Napoli Shorts"><h4>Napoli Shorts 2026</h4><p>EA7 • Azzurri</p><p class="price">€52</p><button class="add-to-cart-btn" onclick="addToCart('Napoli Shorts 2026', 52, 'napoli shorts.webp')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Bayern Shorts 2026" data-price="62" data-img="bayern shorts.avif"><img src="bayern shorts.avif" alt="Bayern Shorts"><h4>Bayern Shorts 2026</h4><p>Adidas • Champions</p><p class="price">€62</p><button class="add-to-cart-btn" onclick="addToCart('Bayern Shorts 2026', 62, 'bayern shorts.avif')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Dortmund Shorts 2026" data-price="55" data-img="borussia shorts.avif"><img src="borussia shorts.avif" alt="Dortmund Shorts"><h4>Dortmund Shorts 2026</h4><p>Puma • BVB</p><p class="price">€55</p><button class="add-to-cart-btn" onclick="addToCart('Dortmund Shorts 2026', 55, 'borussia shorts.avif')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="RB Leipzig Shorts 2026" data-price="52" data-img="RB shorts.avif"><img src="RB shorts.avif" alt="Leipzig Shorts"><h4>RB Leipzig Shorts 2026</h4><p>Nike • Energy</p><p class="price">€52</p><button class="add-to-cart-btn" onclick="addToCart('RB Leipzig Shorts 2026', 52, 'RB shorts.avif')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Leverkusen Shorts 2026" data-price="49" data-img="leverkusen shorts.avif"><img src="leverkusen shorts.avif" alt="Leverkusen Shorts"><h4>Leverkusen Shorts 2026</h4><p>Castore • Werkself</p><p class="price">€49</p><button class="add-to-cart-btn" onclick="addToCart('Leverkusen Shorts 2026', 49, 'leverkusen shorts.avif')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Atletico Madrid Shorts" data-price="55" data-img="athletico shorts.webp"><img src="athletico shorts.webp" alt="Atletico Shorts"><h4>Atletico Madrid Shorts</h4><p>Nike • Rojiblancos</p><p class="price">€55</p><button class="add-to-cart-btn" onclick="addToCart('Atletico Madrid Shorts', 55, 'athletico shorts.webp')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Sevilla Shorts 2026" data-price="49" data-img="sevila short.avif"><img src="sevila short.avif" alt="Sevilla Shorts"><h4>Sevilla Shorts 2026</h4><p>Castore • Hispalense</p><p class="price">€49</p><button class="add-to-cart-btn" onclick="addToCart('Sevilla Shorts 2026', 49, 'sevila short.avif')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Marseille Shorts 2026" data-price="52" data-img="olympique shorts.avif"><img src="olympique shorts.avif" alt="Marseille Shorts"><h4>Marseille Shorts 2026</h4><p>Puma • OM</p><p class="price">€52</p><button class="add-to-cart-btn" onclick="addToCart('Marseille Shorts 2026', 52, 'olympique shorts.avif')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Lyon Shorts 2026" data-price="49" data-img="lyon shorts.avif"><img src="lyon shorts.avif" alt="Lyon Shorts"><h4>Lyon Shorts 2026</h4><p>Adidas • OL</p><p class="price">€49</p><button class="add-to-cart-btn" onclick="addToCart('Lyon Shorts 2026', 49, 'lyon shorts.avif')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Monaco Shorts 2026" data-price="45" data-img="monaco shorts.avif"><img src="monaco shorts.avif" alt="Monaco Shorts"><h4>Monaco Shorts 2026</h4><p>Kappa • ASM</p><p class="price">€45</p><button class="add-to-cart-btn" onclick="addToCart('Monaco Shorts 2026', 45, 'monaco shorts.avif')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="barcelona shorts.avif" alt="Barcelona Shorts"><h4>Barcelona Shorts</h4><p>Nike • Match issue</p><p class="price">€59</p><button class="add-to-cart-btn" onclick="addToCart('Barcelona Shorts 2026', 59, 'barcelona shorts.avif')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="madrid shorts.webp" alt="Real Madrid Shorts"><h4>Real Madrid Shorts</h4><p>Adidas • Aeroready</p><p class="price">€65</p><button class="add-to-cart-btn" onclick="addToCart('Real Madrid Shorts 2026', 65, 'madrid shorts.webp')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="liverpool shorts.avif" alt="Liverpool Shorts"><h4>Liverpool Shorts</h4><p>Nike • Dri-FIT</p><p class="price">€59</p><button class="add-to-cart-btn" onclick="addToCart('Liverpool Shorts 2026', 59, 'liverpool shorts.avif')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="city shorts.avif" alt="Man City Shorts"><h4>Man City Shorts</h4><p>Puma • Ultraweave</p><p class="price">€55</p><button class="add-to-cart-btn" onclick="addToCart('Man City Shorts 2026', 55, 'city shorts.avif')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="arsenal shorts.webp" alt="Arsenal Shorts"><h4>Arsenal Shorts</h4><p>Adidas • Authentic</p><p class="price">€59</p><button class="add-to-cart-btn" onclick="addToCart('Arsenal Shorts 2026', 59, 'arsenal shorts.webp')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="chelsea shorts.avif" alt="Chelsea Shorts"><h4>Chelsea Shorts</h4><p>Nike • London blue</p><p class="price">€55</p><button class="add-to-cart-btn" onclick="addToCart('Chelsea Shorts 2026', 55, 'chelsea shorts.avif')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="psg shorts.avif" alt="PSG Shorts"><h4>PSG Shorts</h4><p>Nike/Jordan</p><p class="price">€69</p><button class="add-to-cart-btn" onclick="addToCart('PSG Shorts 2026', 69, 'psg shorts.avif')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="juventus shorts.avif" alt="Juventus Shorts"><h4>Juventus Shorts</h4><p>Adidas • Bianconeri</p><p class="price">€59</p><button class="add-to-cart-btn" onclick="addToCart('Juventus Shorts 2026', 59, 'juventus shorts.avif')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="AcMilan shorts.avif" alt="AC Milan Shorts"><h4>AC Milan Shorts</h4><p>Puma • Rossoneri</p><p class="price">€55</p><button class="add-to-cart-btn" onclick="addToCart('AC Milan Shorts 2026', 55, 'AcMilan shorts.avif')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="inter shorts.avif" alt="Inter Shorts"><h4>Inter Milan Shorts</h4><p>Nike • Nerazzurri</p><p class="price">€55</p><button class="add-to-cart-btn" onclick="addToCart('Inter Milan Shorts 2026', 55, 'inter shorts.avif')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="napoli shorts.webp" alt="Napoli Shorts"><h4>Napoli Shorts</h4><p>EA7 • Azzurri</p><p class="price">€52</p><button class="add-to-cart-btn" onclick="addToCart('Napoli Shorts 2026', 52, 'napoli shorts.webp')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="bayern shorts.avif" alt="Bayern Shorts"><h4>Bayern Shorts</h4><p>Adidas • Champions</p><p class="price">€62</p><button class="add-to-cart-btn" onclick="addToCart('Bayern Shorts 2026', 62, 'bayern shorts.avif')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="borussia shorts.avif" alt="Dortmund Shorts"><h4>Dortmund Shorts</h4><p>Puma • BVB</p><p class="price">€55</p><button class="add-to-cart-btn" onclick="addToCart('Dortmund Shorts 2026', 55, 'borussia shorts.avif')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="RB shorts.avif" alt="Leipzig Shorts"><h4>RB Leipzig Shorts</h4><p>Nike • Energy</p><p class="price">€52</p><button class="add-to-cart-btn" onclick="addToCart('RB Leipzig Shorts 2026', 52, 'RB shorts.avif')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="leverkusen shorts.avif" alt="Leverkusen Shorts"><h4>Leverkusen Shorts</h4><p>Castore • Werkself</p><p class="price">€49</p><button class="add-to-cart-btn" onclick="addToCart('Leverkusen Shorts 2026', 49, 'leverkusen shorts.avif')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="athletico shorts.webp" alt="Atletico Shorts"><h4>Atletico Madrid Shorts</h4><p>Nike • Rojiblancos</p><p class="price">€55</p><button class="add-to-cart-btn" onclick="addToCart('Atletico Madrid Shorts', 55, 'athletico shorts.webp')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="sevila short.avif" alt="Sevilla Shorts"><h4>Sevilla Shorts</h4><p>Castore • Hispalense</p><p class="price">€49</p><button class="add-to-cart-btn" onclick="addToCart('Sevilla Shorts 2026', 49, 'sevila short.avif')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="olympique shorts.avif" alt="Marseille Shorts"><h4>Marseille Shorts</h4><p>Puma • OM</p><p class="price">€52</p><button class="add-to-cart-btn" onclick="addToCart('Marseille Shorts 2026', 52, 'olympique shorts.avif')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="lyon shorts.avif" alt="Lyon Shorts"><h4>Lyon Shorts</h4><p>Adidas • OL</p><p class="price">€49</p><button class="add-to-cart-btn" onclick="addToCart('Lyon Shorts 2026', 49, 'lyon shorts.avif')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="monaco shorts.avif" alt="Monaco Shorts"><h4>Monaco Shorts</h4><p>Kappa • ASM</p><p class="price">€45</p><button class="add-to-cart-btn" onclick="addToCart('Monaco Shorts 2026', 45, 'monaco shorts.avif')">🛒 Add to Cart</button></div>
             </div>
             <button class="scroll-btn" onclick="scrollGallery('shortsGallery', 'next')">→</button>
         </div>
     </div>
 
-    <!-- BOOTS SECTION - ALL 8 ORIGINAL IMAGES -->
+    <!-- ==================== BOOTS SECTION - ALL 8 MODELS ==================== -->
     <div class="shop-section">
         <div class="section-header">
             <h3 class="section-title">👟 PREMIUM BOOTS 2026 (8 Models)</h3>
@@ -540,31 +476,31 @@
         <div class="scroll-wrapper">
             <button class="scroll-btn" onclick="scrollGallery('bootsGallery', 'prev')">←</button>
             <div class="scroll-container" id="bootsGallery">
-                <div class="scroll-item" data-name="F50 Elite - Messi" data-price="299" data-img="f50 elite.jpg"><span class="product-badge">LIMITED</span><img src="f50 elite.jpg" alt="Messi Boots"><h4>F50 Elite - Messi</h4><p>"Chaos" Edition • 500 pairs</p><p class="price">€299</p><button class="add-to-cart-btn" onclick="addToCart('F50 Elite - Messi', 299, 'f50 elite.jpg')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Predator 30 - Pedri" data-price="279" data-img="pedri predator.jpg"><span class="product-badge">SIGNED</span><img src="pedri predator.jpg" alt="Pedri Boots"><h4>Predator 30 - Pedri</h4><p>"Control" • Signed</p><p class="price">€279</p><button class="add-to-cart-btn" onclick="addToCart('Predator 30 - Pedri', 279, 'pedri predator.jpg')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="F50 Chaos - Yamal" data-price="289" data-img="yamal f50.jpg"><span class="product-badge">NEW</span><img src="yamal f50.jpg" alt="Yamal Boots"><h4>F50 Chaos - Yamal</h4><p>Speed Demon • Limited</p><p class="price">€289</p><button class="add-to-cart-btn" onclick="addToCart('F50 Chaos - Yamal', 289, 'yamal f50.jpg')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Predator - Bellingham" data-price="269" data-img="jude.jpg"><img src="jude.jpg" alt="Bellingham Boots"><h4>Predator - Bellingham</h4><p>Midnight Edition</p><p class="price">€269</p><button class="add-to-cart-btn" onclick="addToCart('Predator - Bellingham', 269, 'jude.jpg')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Copa Pure 3" data-price="245" data-img="copa pure 3.jpg"><img src="copa pure 3.jpg" alt="Copa Pure"><h4>Copa Pure 3</h4><p>Classic Heritage</p><p class="price">€245</p><button class="add-to-cart-btn" onclick="addToCart('Copa Pure 3', 245, 'copa pure 3.jpg')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="X Speedflow - Mbappé" data-price="275" data-img="x speedflow.jpg"><img src="x speedflow.jpg" alt="X Speedflow"><h4>X Speedflow - Mbappé</h4><p>Adidas • Lightning</p><p class="price">€275</p><button class="add-to-cart-btn" onclick="addToCart('X Speedflow - Mbappé', 275, 'x speedflow.jpg')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Mercurial - Haaland" data-price="289" data-img="mecurial.jpg"><img src="mecurial.jpg" alt="Mercurial"><h4>Mercurial - Haaland</h4><p>Nike • Speed</p><p class="price">€289</p><button class="add-to-cart-btn" onclick="addToCart('Mercurial - Haaland', 289, 'mecurial.jpg')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Puma Ultra - Neymar" data-price="265" data-img="neymar puma.jpg"><img src="neymar puma.jpg" alt="Puma Ultra"><h4>Puma Ultra - Neymar</h4><p>Limited Edition</p><p class="price">€265</p><button class="add-to-cart-btn" onclick="addToCart('Puma Ultra - Neymar', 265, 'neymar puma.jpg')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><span class="product-badge">LIMITED</span><img src="f50 elite.jpg" alt="Messi"><h4>F50 Elite - Messi</h4><p>"Chaos" • 500 pairs</p><p class="price">€299</p><button class="add-to-cart-btn" onclick="addToCart('F50 Elite - Messi', 299, 'f50 elite.jpg')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><span class="product-badge">SIGNED</span><img src="pedri predator.jpg" alt="Pedri"><h4>Predator 30 - Pedri</h4><p>"Control" • Signed</p><p class="price">€279</p><button class="add-to-cart-btn" onclick="addToCart('Predator 30 - Pedri', 279, 'pedri predator.jpg')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><span class="product-badge">NEW</span><img src="yamal f50.jpg" alt="Yamal"><h4>F50 Chaos - Yamal</h4><p>Speed Demon</p><p class="price">€289</p><button class="add-to-cart-btn" onclick="addToCart('F50 Chaos - Yamal', 289, 'yamal f50.jpg')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="jude.jpg" alt="Bellingham"><h4>Predator - Bellingham</h4><p>Midnight Edition</p><p class="price">€269</p><button class="add-to-cart-btn" onclick="addToCart('Predator - Bellingham', 269, 'jude.jpg')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="copa pure 3.jpg" alt="Copa Pure"><h4>Copa Pure 3</h4><p>Classic Heritage</p><p class="price">€245</p><button class="add-to-cart-btn" onclick="addToCart('Copa Pure 3', 245, 'copa pure 3.jpg')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="x speedflow.jpg" alt="X Speedflow"><h4>X Speedflow - Mbappé</h4><p>Adidas • Lightning</p><p class="price">€275</p><button class="add-to-cart-btn" onclick="addToCart('X Speedflow - Mbappé', 275, 'x speedflow.jpg')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="mecurial.jpg" alt="Mercurial"><h4>Mercurial - Haaland</h4><p>Nike • Speed</p><p class="price">€289</p><button class="add-to-cart-btn" onclick="addToCart('Mercurial - Haaland', 289, 'mecurial.jpg')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="neymar puma.jpg" alt="Puma Ultra"><h4>Puma Ultra - Neymar</h4><p>Limited Edition</p><p class="price">€265</p><button class="add-to-cart-btn" onclick="addToCart('Puma Ultra - Neymar', 265, 'neymar puma.jpg')">🛒 Add to Cart</button></div>
             </div>
             <button class="scroll-btn" onclick="scrollGallery('bootsGallery', 'next')">→</button>
         </div>
     </div>
 
-    <!-- MEMORABILIA SECTION - ALL 6 ORIGINAL IMAGES -->
+    <!-- ==================== MEMORABILIA SECTION - SIGNED ITEMS ==================== -->
     <div class="container-card">
         <h3>✨ SIGNED MEMORABILIA</h3>
         <div class="scroll-wrapper">
             <button class="scroll-btn" onclick="scrollGallery('memGallery', 'prev')">←</button>
             <div class="scroll-container" id="memGallery">
-                <div class="scroll-item" data-name="Pedri Signed Boot" data-price="1899" data-img="pedri signed.jpg"><span class="product-badge">AUTOGRAPHED</span><img src="pedri signed.jpg" alt="Pedri Signed"><h4>Pedri Signed Boot</h4><p>Right boot • 92' winner at Bernabéu</p><p class="price">€1,899</p><button class="add-to-cart-btn" onclick="addToCart('Pedri Signed Boot', 1899, 'pedri signed.jpg')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Pedri Boots Set" data-price="1899" data-img="pedri 2.jpg"><img src="pedri 2.jpg" alt="Pedri Boots Set"><h4>Pedri Boots Set</h4><p>Complete pair • Signed</p><p class="price">€1,899</p><button class="add-to-cart-btn" onclick="addToCart('Pedri Boots Set', 1899, 'pedri 2.jpg')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Messi 2009 UCL Shirt" data-price="4999" data-img="ms1.webp"><span class="product-badge">MATCH WORN</span><img src="ms1.webp" alt="Messi Shirt"><h4>Messi 2009 UCL Shirt</h4><p>Rome final • COA included</p><p class="price">€4,999</p><button class="add-to-cart-btn" onclick="addToCart('Messi 2009 UCL Shirt', 4999, 'ms1.webp')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Messi Signed Memorabilia" data-price="4999" data-img="ms2.jpg"><img src="ms2.jpg" alt="Messi Signed"><h4>Messi Signed Memorabilia</h4><p>Limited edition framed</p><p class="price">€4,999</p><button class="add-to-cart-btn" onclick="addToCart('Messi Signed Memorabilia', 4999, 'ms2.jpg')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Yamal Card Set" data-price="899" data-img="yamal card.jpg"><span class="product-badge">ROOKIE</span><img src="yamal card.jpg" alt="Yamal Cards"><h4>Yamal Card Set</h4><p>Gold refractor + rookie #304</p><p class="price">€899</p><button class="add-to-cart-btn" onclick="addToCart('Yamal Card Set', 899, 'yamal card.jpg')">🛒 Add to Cart</button></div>
-                <div class="scroll-item" data-name="Yamal Rookie Collection" data-price="899" data-img="yamal card 2.jpg"><img src="yamal card 2.jpg" alt="Yamal Cards 2"><h4>Yamal Rookie Collection</h4><p>Limited edition set</p><p class="price">€899</p><button class="add-to-cart-btn" onclick="addToCart('Yamal Rookie Collection', 899, 'yamal card 2.jpg')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><span class="product-badge">AUTOGRAPHED</span><img src="pedri signed.jpg" alt="Pedri Signed"><h4>Pedri Signed Boot</h4><p>92' winner at Bernabéu</p><p class="price">€1,899</p><button class="add-to-cart-btn" onclick="addToCart('Pedri Signed Boot', 1899, 'pedri signed.jpg')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="pedri 2.jpg" alt="Pedri Set"><h4>Pedri Boots Set</h4><p>Complete pair • Signed</p><p class="price">€1,899</p><button class="add-to-cart-btn" onclick="addToCart('Pedri Boots Set', 1899, 'pedri 2.jpg')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><span class="product-badge">MATCH WORN</span><img src="ms1.webp" alt="Messi"><h4>Messi 2009 UCL Shirt</h4><p>Rome final • COA</p><p class="price">€4,999</p><button class="add-to-cart-btn" onclick="addToCart('Messi 2009 UCL Shirt', 4999, 'ms1.webp')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="ms2.jpg" alt="Messi Signed"><h4>Messi Signed Memorabilia</h4><p>Limited edition</p><p class="price">€4,999</p><button class="add-to-cart-btn" onclick="addToCart('Messi Signed Memorabilia', 4999, 'ms2.jpg')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><span class="product-badge">ROOKIE</span><img src="yamal card.jpg" alt="Yamal Cards"><h4>Yamal Card Set</h4><p>Gold refractor #304</p><p class="price">€899</p><button class="add-to-cart-btn" onclick="addToCart('Yamal Card Set', 899, 'yamal card.jpg')">🛒 Add to Cart</button></div>
+                <div class="scroll-item"><img src="yamal card 2.jpg" alt="Yamal Cards 2"><h4>Yamal Rookie Collection</h4><p>Limited set</p><p class="price">€899</p><button class="add-to-cart-btn" onclick="addToCart('Yamal Rookie Collection', 899, 'yamal card 2.jpg')">🛒 Add to Cart</button></div>
             </div>
             <button class="scroll-btn" onclick="scrollGallery('memGallery', 'next')">→</button>
         </div>
@@ -617,6 +553,7 @@
     🇰🇪 Free East Africa Shipping | 30-Day Returns | 100% Authentic
 </footer>
 
+<script src="slideshow.js"></script>
 <script>
 // Shopping Cart Array
 let cart = [];
@@ -630,30 +567,22 @@ function loadCart() {
     updateCartDisplay();
 }
 
-// Save cart to localStorage
 function saveCart() {
     localStorage.setItem('lockerRoomCart', JSON.stringify(cart));
 }
 
-// Add item to cart
 function addToCart(name, price, img) {
     const existingItem = cart.find(item => item.name === name);
     if (existingItem) {
         existingItem.quantity += 1;
     } else {
-        cart.push({
-            name: name,
-            price: price,
-            img: img,
-            quantity: 1
-        });
+        cart.push({ name: name, price: price, img: img, quantity: 1 });
     }
     saveCart();
     updateCartDisplay();
     showToast(`${name} added to cart!`);
 }
 
-// Update cart display
 function updateCartDisplay() {
     const cartItemsDiv = document.getElementById('cartItems');
     const cartTotalSpan = document.getElementById('cartTotal');
@@ -696,7 +625,6 @@ function updateCartDisplay() {
     cartCountSpan.innerText = itemCount;
 }
 
-// Update quantity
 function updateQuantity(index, change) {
     const newQuantity = cart[index].quantity + change;
     if (newQuantity <= 0) {
@@ -708,7 +636,6 @@ function updateQuantity(index, change) {
     }
 }
 
-// Remove item
 function removeItem(index) {
     cart.splice(index, 1);
     saveCart();
@@ -716,7 +643,6 @@ function removeItem(index) {
     showToast('Item removed from cart');
 }
 
-// Clear cart
 function clearCart() {
     if (confirm('Are you sure you want to clear your cart?')) {
         cart = [];
@@ -726,30 +652,24 @@ function clearCart() {
     }
 }
 
-// Show toast notification
 function showToast(message) {
     const toast = document.createElement('div');
     toast.className = 'toast';
     toast.innerText = message;
     document.body.appendChild(toast);
-    setTimeout(() => {
-        toast.remove();
-    }, 2300);
+    setTimeout(() => toast.remove(), 2300);
 }
 
-// Open cart sidebar
 function openCart() {
     document.getElementById('cartSidebar').classList.add('open');
     document.getElementById('cartOverlay').classList.add('show');
 }
 
-// Close cart sidebar
 function closeCart() {
     document.getElementById('cartSidebar').classList.remove('open');
     document.getElementById('cartOverlay').classList.remove('show');
 }
 
-// Open checkout modal
 function openCheckout() {
     if (cart.length === 0) {
         showToast('Your cart is empty! Add some items first.');
@@ -758,16 +678,14 @@ function openCheckout() {
     document.getElementById('checkoutModal').classList.add('show');
 }
 
-// Close checkout modal
 function closeCheckout() {
     document.getElementById('checkoutModal').classList.remove('show');
 }
 
-// Complete checkout
 function completeCheckout(event) {
     event.preventDefault();
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    alert(`✅ Order placed successfully!\n\nTotal: €${total.toLocaleString()}\n\nThank you for shopping at The Locker-Room!\nYou will receive a confirmation email shortly.`);
+    alert(`✅ Order placed successfully!\n\nTotal: €${total.toLocaleString()}\n\nThank you for shopping at The Locker-Room!`);
     cart = [];
     saveCart();
     updateCartDisplay();
@@ -777,7 +695,6 @@ function completeCheckout(event) {
     event.target.reset();
 }
 
-// Scroll gallery function
 function scrollGallery(galleryId, direction) {
     const container = document.getElementById(galleryId);
     if (!container) return;
@@ -789,7 +706,6 @@ function scrollGallery(galleryId, direction) {
     }
 }
 
-// Initialize cart on page load
 loadCart();
 </script>
 </body>
