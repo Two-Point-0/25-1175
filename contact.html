@@ -2,65 +2,311 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Contact / Purchase</title>
-<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>The Locker-Room | Contact Us - Nairobi Flagship</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --locker-metal: #2c3e50;
+    --locker-accent: #c49a6c;
+    --locker-light: #f5e6d3;
+    --team-silver: #a8a9ad;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: #0a0c10;
+    color: #e8e9ea;
+    line-height: 1.5;
+}
+
+.locker-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.65)), url('https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat fixed;
+    background-blend-mode: overlay;
+}
+
+.locker-bg::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: repeating-linear-gradient(45deg, rgba(139,90,43,0.1) 0px, rgba(139,90,43,0.1) 2px, transparent 2px, transparent 8px);
+    pointer-events: none;
+}
+
+.menu-bar {
+    background: rgba(20, 25, 32, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    border-bottom: 3px solid var(--locker-accent);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.menu-bar a {
+    color: var(--locker-light);
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.5rem 1.2rem;
+    border-radius: 40px;
+    transition: all 0.2s;
+}
+.menu-bar a:hover, .menu-bar a.active {
+    background: var(--locker-accent);
+    color: #1a1e24;
+}
+
+.page-content {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: rgba(26, 30, 36, 0.85);
+    backdrop-filter: blur(2px);
+    border-radius: 40px;
+    border: 1px solid var(--locker-accent);
+}
+
+.container-card {
+    background: rgba(35, 43, 51, 0.9);
+    border-radius: 28px;
+    padding: 1.8rem;
+    margin: 2rem 0;
+    border: 1px solid var(--locker-accent);
+}
+
+.two-col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin: 2rem 0;
+}
+@media (max-width: 800px) {
+    .two-col { grid-template-columns: 1fr; }
+}
+
+.table-full {
+    width: 100%;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(0,0,0,0.5);
+    border-radius: 20px;
+    overflow: hidden;
+}
+th, td {
+    padding: 14px 10px;
+    border-bottom: 1px solid var(--locker-accent);
+    text-align: left;
+}
+th {
+    background: #2c3e50;
+    color: var(--locker-accent);
+}
+
+.nested-list-demo {
+    background: #1f2a33;
+    padding: 1.5rem;
+    border-radius: 20px;
+    margin: 1rem 0;
+}
+.nested-list-demo ul, .nested-list-demo ol {
+    margin-left: 1.8rem;
+}
+.nested-list-demo li {
+    margin: 8px 0;
+}
+
+.formatted-p {
+    background: rgba(0,0,0,0.4);
+    padding: 1.2rem;
+    border-left: 4px solid var(--locker-accent);
+    margin: 1.5rem 0;
+}
+
+.btn-feature {
+    background: var(--locker-accent);
+    color: #1e2a32;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 60px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+.btn-feature:hover {
+    background: #e6b17e;
+}
+
+.footer-locker {
+    background: rgba(10, 14, 18, 0.95);
+    text-align: center;
+    padding: 3rem 1rem;
+    margin-top: 3rem;
+    border-top: 4px solid var(--locker-accent);
+}
+</style>
 </head>
+<body>
+<div class="locker-bg"></div>
 
-<body class="home-bg">
+<div class="menu-bar">
+    <a href="index.html">🏠 HOME</a>
+    <a href="shop.html">🛍️ SHOP</a>
+    <a href="size.html">📏 SIZE GUIDE</a>
+    <a href="videos.html">🎬 VIDEOS</a>
+    <a href="contact.html" class="active">📞 CONTACT</a>
+</div>
 
-<nav>
-<ul class="menu">
-<li><a href="index.html">Home</a></li>
-<li><a href="shop.html">Shop</a></li>
-<li><a href="size.html">Size</a></li>
-<li><a href="videos.html">Videos</a></li>
-<li><a href="contact.html">Contact</a></li>
-</ul>
-</nav>
+<div class="page-content">
+    <h2 style="color:var(--locker-accent)">📞 CONTACT THE LOCKER-ROOM</h2>
+    
+    <div class="two-col">
+        <div class="container-card">
+            <h3>📍 Nairobi Flagship Store</h3>
+            <p><strong>Address:</strong> Muthithi Road, Westlands, Nairobi, Kenya</p>
+            <p><strong>Hours:</strong> Open daily: 9am – 7pm (including weekends)</p>
+            <p><strong>Phone:</strong> +254 700 123 456</p>
+            <p><strong>Email:</strong> info@thelocker-room.co.ke</p>
+            <button class="btn-feature" onclick="window.location.href='tel:+254700123456'">📞 Call Now</button>
+        </div>
+        <div class="container-card">
+            <h3>📬 Customer Support</h3>
+            <p><strong>24/7 Live Chat:</strong> Available on website</p>
+            <p><strong>WhatsApp:</strong> +254 712 345 678</p>
+            <p><strong>Returns & Exchanges:</strong> 30-day easy returns policy</p>
+            <button class="btn-feature" onclick="alert('Support team will reach out within 2 hours. WhatsApp: +254712345678')">💬 Contact Support</button>
+        </div>
+    </div>
 
-<h2 style="text-align:center;">Order / Contact Form</h2>
+    <!-- TABLE 1: Store Locations -->
+    <div class="table-full container-card">
+        <h3>🏪 KENYA STORE LOCATIONS</h3>
+        <table>
+            <thead><tr><th>Store</th><th>Monday-Friday</th><th>Saturday</th><th>Sunday</th></tr></thead>
+            <tbody>
+                <tr><td>Nairobi Westlands (Flagship)</td><td>9am - 7pm</td><td>10am - 6pm</td><td>11am - 5pm</td></tr>
+                <tr><td>Mombasa City Mall</td><td>10am - 8pm</td><td>10am - 5pm</td><td>Closed</td></tr>
+                <tr><td>Kisumu Mega Centre</td><td>9am - 6pm</td><td>9am - 4pm</td><td>Closed</td></tr>
+                <tr><td>Eldoret Sports Hub</td><td>10am - 7pm</td><td>10am - 5pm</td><td>Closed</td></tr>
+            </tbody>
+        </table>
+    </div>
 
-<p style="text-align:center;">
-Use this form to inquire about or purchase items from our locker room collection.  
-Select the product type, size, and provide any special notes.
-</p>
+    <!-- TABLE 2: Support Departments -->
+    <div class="table-full container-card">
+        <h3>📧 DEPARTMENT CONTACTS</h3>
+        <table>
+            <thead><tr><th>Department</th><th>Email</th><th>Response Time</th></tr></thead>
+            <tbody>
+                <tr><td>Sales & Orders</td><td>sales@thelocker-room.co.ke</td><td>Within 2 hours</td></tr>
+                <tr><td>Returns & Refunds</td><td>returns@thelocker-room.co.ke</td><td>Within 24 hours</td></tr>
+                <tr><td>Wholesale / Bulk</td><td>bulk@thelocker-room.co.ke</td><td>Within 12 hours</td></tr>
+                <tr><td>Press & Media</td><td>press@thelocker-room.co.ke</td><td>Within 48 hours</td></tr>
+            </tbody>
+        </table>
+    </div>
 
-<form style="max-width:600px; margin: 20px auto; background: rgba(0,0,0,0.7); padding: 20px; border-radius: 15px; color: gold;">
-<label>Name:</label><br>
-<input type="text" name="name" placeholder="Full Name" required style="width:100%; padding:10px; margin:5px 0;"><br>
+    <!-- NESTED LIST (5 items deep) -->
+    <div class="container-card">
+        <h3>📋 ENQUIRY DEPARTMENTS (Nested Structure)</h3>
+        <div class="nested-list-demo">
+            <ul>
+                <li>📞 Sales & Orders
+                    <ul>
+                        <li>🛍️ Retail & Individual Purchases
+                            <ul>
+                                <li>👕 Kit Customization & Printing
+                                    <ul>
+                                        <li>⚡ Name & Number Printing
+                                            <ul>
+                                                <li>Email: printing@thelocker-room.co.ke</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>🏢 Corporate & Team Orders
+                            <ul>
+                                <li>Bulk discounts available
+                                    <ul>
+                                        <li>Contact: bulk@thelocker-room.co.ke</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>🔄 Returns & Warranty
+                    <ul>
+                        <li>30-day return policy
+                            <ul>
+                                <li>Free returns for defective items
+                                    <ul>
+                                        <li>Support: returns@thelocker-room.co.ke</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>🌍 International Shipping
+                    <ul>
+                        <li>East Africa: 2-3 days
+                            <ul>
+                                <li>International: 5-7 business days</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
 
-<label>Email:</label><br>
-<input type="email" name="email" placeholder="Email Address" required style="width:100%; padding:10px; margin:5px 0;"><br>
+    <!-- FORMATTED PARAGRAPHS -->
+    <div class="formatted-p">
+        <strong>🌟 Visit Our Flagship:</strong> Experience the immersive 360° locker room atmosphere at our Westlands location. Try on the full 2026 collection, meet our fitting experts, and enjoy exclusive in-store promotions.
+    </div>
+    <div class="formatted-p">
+        <strong>🚚 Kenyan Delivery:</strong> Same-day delivery available for Nairobi within 3 hours of order confirmation. Next-day delivery for Mombasa, Kisumu, and Eldoret. Trusted by Harambee Stars and local football academies.
+    </div>
+    <div class="formatted-p">
+        <strong>💳 Payment Options:</strong> We accept M-Pesa, Visa, Mastercard, American Express, and PayPal. Installment plans available through Lipa Later for orders above KES 10,000.
+    </div>
+    <div class="formatted-p">
+        <strong>⭐ VIP Membership:</strong> Join The Locker-Room Elite Club for early access to limited drops, 15% off your first purchase, and exclusive player meet-and-greet events.
+    </div>
+    <div class="formatted-p">
+        <strong>🏆 Partnerships:</strong> Official merchandise partner for UEFA Champions League viewing parties in Nairobi. Follow us on Instagram @thelockerroom_ke for live updates and giveaways.
+    </div>
+</div>
 
-<label>Product Type:</label><br>
-<select name="product-type" required style="width:100%; padding:10px; margin:5px 0;">
-  <option value="">--Select--</option>
-  <option value="shirt">Shirt</option>
-  <option value="short">Short</option>
-  <option value="boots">Boots</option>
-  <option value="card">Special Memorabilia / Card</option>
-</select><br>
-
-<label>Size (if applicable):</label><br>
-<select name="size" style="width:100%; padding:10px; margin:5px 0;">
-  <option value="">--Select--</option>
-  <option value="S">S</option>
-  <option value="M">M</option>
-  <option value="L">L</option>
-  <option value="XL">XL</option>
-  <option value="XXL">XXL</option>
-</select><br>
-
-<label>Quantity:</label><br>
-<input type="number" name="quantity" placeholder="Number of items" min="1" style="width:100%; padding:10px; margin:5px 0;"><br>
-
-<label>Additional Notes / Message:</label><br>
-<textarea name="message" placeholder="Any special requests or notes..." rows="5" style="width:100%; padding:10px; margin:5px 0;"></textarea><br>
-
-<button type="submit" style="width:100%; padding:15px; background: gold; border:none; font-weight:bold; color:black; border-radius:10px; cursor:pointer;">Submit Order / Inquiry</button>
-</form>
-
-<footer style="text-align:center; margin-top:30px;">© 2026 The Locker Room</footer>
-
+<footer class="footer-locker">
+    ⚽ THE LOCKER-ROOM - OFFICIAL UEFA MERCHANDISE PARTNER ⚽<br>
+    © 2026 The Locker-Room | Muthithi Road, Westlands, Nairobi, Kenya<br>
+    📞 24/7 Support: +254 700 123 456 | ✉️ info@thelocker-room.co.ke<br>
+    🇰🇪 Free East Africa Shipping | 30-Day Returns | 100% Authentic
+</footer>
 </body>
 </html>
