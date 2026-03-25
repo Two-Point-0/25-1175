@@ -7,108 +7,94 @@
 <link rel="stylesheet" href="style.css">
 
 <style>
-/* 🔥 BACKGROUND SLIDER (ADDED) */
+/* 🔥 BACKGROUND SLIDER */
 .locker-bg {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     z-index: -1;
     background-size: cover;
     background-position: center;
     animation: bgSlide 45s infinite;
 }
-
 @keyframes bgSlide {
-    0%   { background-image: url('locker1.jpg'); }
-    11%  { background-image: url('locker2.jpg'); }
-    22%  { background-image: url('locker3.jpg'); }
-    33%  { background-image: url('locker4.jpg'); }
-    44%  { background-image: url('locker5.jpg'); }
-    55%  { background-image: url('locker6.jpg'); }
-    66%  { background-image: url('locker7.jpg'); }
-    77%  { background-image: url('locker8.jpg'); }
-    88%  { background-image: url('stadium.jpg'); }
-    100% { background-image: url('locker1.jpg'); }
+    0%{background-image:url('locker1.jpg');}
+    11%{background-image:url('locker2.jpg');}
+    22%{background-image:url('locker3.jpg');}
+    33%{background-image:url('locker4.jpg');}
+    44%{background-image:url('locker5.jpg');}
+    55%{background-image:url('locker6.jpg');}
+    66%{background-image:url('locker7.jpg');}
+    77%{background-image:url('locker8.jpg');}
+    88%{background-image:url('stadium.jpg');}
+    100%{background-image:url('locker1.jpg');}
 }
-
-/* DARK OVERLAY */
 body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.6);
-    z-index: -1;
+    content:"";
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.6);
+    z-index:-1;
 }
 
-/* YOUR ORIGINAL STYLES (UNCHANGED) */
+/* 🔥 NEW LAYOUT */
+.video-layout {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+/* CENTER VIDEOS */
 .video-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
-    margin: 2rem 0;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
 }
+
+/* SIDE VIDEOS */
+.side-video {
+    background: #1f2a33;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid var(--locker-accent);
+}
+.side-video video {
+    width: 100%;
+    aspect-ratio: 9/16;
+    object-fit: cover;
+}
+
+/* ORIGINAL VIDEO CARD */
 .video-card {
     background: #1f2a33;
     border-radius: 28px;
     overflow: hidden;
     border: 2px solid var(--locker-accent);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.video-card:hover {
-    transform: translateY(-8px);
-    border-color: var(--locker-light);
-    box-shadow: 0 20px 30px rgba(196,154,108,0.3);
 }
 .video-card video {
     width: 100%;
     aspect-ratio: 9 / 16;
     object-fit: cover;
-    background: #0a0e12;
-    display: block;
 }
 .video-info {
-    padding: 1.2rem;
+    padding: 1rem;
     text-align: center;
-    background: linear-gradient(145deg, #1a222a, #151d24);
 }
-.video-info h4 {
-    color: var(--locker-accent);
-    margin-bottom: 8px;
-    font-size: 1.2rem;
-    font-weight: 700;
-}
-.video-info p {
-    font-size: 0.85rem;
-    color: var(--team-silver);
-    line-height: 1.4;
-}
-.video-badge {
-    display: inline-block;
-    background: var(--team-gold);
-    color: #000;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.7rem;
-    font-weight: bold;
-    margin-top: 8px;
-}
-.video-stats {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 10px;
-    font-size: 0.75rem;
-    color: var(--team-silver);
+
+/* MOBILE FIX */
+@media(max-width:900px){
+    .video-layout {
+        grid-template-columns: 1fr;
+    }
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
 }
 </style>
 </head>
 
 <body>
 <div class="locker-bg"></div>
-
-<!-- ✅ EVERYTHING BELOW IS YOUR ORIGINAL CONTENT (UNCHANGED) -->
 
 <div class="menu-bar">
     <a href="index.html">🏠 HOME</a>
@@ -119,83 +105,63 @@ body::before {
 </div>
 
 <div class="page-content">
-    <h2 style="text-align: center; color: var(--locker-accent);">🎬 2026 KIT PREVIEWS</h2>
-    <p style="text-align: center; margin-bottom: 2rem; color: var(--team-silver);">📱 Vertical TikTok-style videos • Autoplay & Muted • Tap to unmute</p>
+<h2 style="text-align:center;">🎬 2026 KIT PREVIEWS</h2>
 
-    <!-- (rest of your content stays exactly the same) -->
+<div class="video-layout">
+
+    <!-- LEFT SIDE VIDEO -->
+    <div class="side-video">
+        <video autoplay muted loop playsinline>
+            <source src="matchday-left.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- CENTER MAIN VIDEOS -->
+    <div class="video-grid">
+
+        <div class="video-card">
+            <video controls autoplay muted loop playsinline>
+                <source src="country jersey.mp4" type="video/mp4">
+            </video>
+            <div class="video-info">
+                🇦🇷 COUNTRY JERSEY 2026
+            </div>
+        </div>
+
+        <div class="video-card">
+            <video controls autoplay muted loop playsinline>
+                <source src="country jersey 2.mp4" type="video/mp4">
+            </video>
+            <div class="video-info">
+                🌍 WORLD CUP 2026
+            </div>
+        </div>
+
+        <div class="video-card">
+            <video controls autoplay muted loop playsinline>
+                <source src="club jersey.mp4" type="video/mp4">
+            </video>
+            <div class="video-info">
+                ⚽ CLUB COLLECTION
+            </div>
+        </div>
+
+    </div>
+
+    <!-- RIGHT SIDE VIDEO -->
+    <div class="side-video">
+        <video autoplay muted loop playsinline>
+            <source src="matchday-right.mp4" type="video/mp4">
+        </video>
+    </div>
+
+</div>
 
 </div>
 
 <footer class="footer-locker">
-    ⚽ THE LOCKER-ROOM - OFFICIAL UEFA MERCHANDISE PARTNER ⚽<br>
-    © 2026 The Locker-Room | Muthithi Road, Westlands, Nairobi, Kenya<br>
-    📞 24/7 Support: +254 700 123 456 | ✉️ info@thelocker-room.co.ke<br>
-    🇰🇪 Free East Africa Shipping | 30-Day Returns | 100% Authentic
+⚽ THE LOCKER-ROOM ⚽
 </footer>
-
-<!-- REMAINING ORIGINAL STYLES -->
-<style>
-.media-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-}
-.btn-feature {
-    background: var(--locker-accent);
-    color: #1e2a32;
-    border: none;
-    padding: 12px 28px;
-    border-radius: 60px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    font-size: 1rem;
-}
-.btn-feature:hover {
-    background: #e6b17e;
-    transform: scale(1.02);
-}
-.size-chart {
-    width: 100%;
-    overflow-x: auto;
-}
-.size-chart table {
-    width: 100%;
-    border-collapse: collapse;
-    background: rgba(0,0,0,0.5);
-    border-radius: 20px;
-    overflow: hidden;
-}
-.size-chart th, .size-chart td {
-    padding: 14px 12px;
-    border-bottom: 1px solid var(--locker-accent);
-    text-align: left;
-}
-.size-chart th {
-    background: var(--locker-metal);
-    color: var(--locker-accent);
-    font-weight: 700;
-}
-.formatted-p {
-    background: rgba(0,0,0,0.4);
-    padding: 1rem;
-    border-left: 4px solid var(--locker-accent);
-    margin: 1rem 0;
-    border-radius: 0 12px 12px 0;
-}
-.container-card {
-    background: rgba(35, 43, 51, 0.92);
-    border-radius: 28px;
-    padding: 1.8rem;
-    margin: 1.8rem 0;
-    border: 1px solid var(--locker-accent);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-}
-h3 {
-    color: var(--team-silver);
-    margin-bottom: 1rem;
-}
-</style>
 
 </body>
 </html>
