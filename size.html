@@ -15,18 +15,31 @@
 }
 .measurement-tip {
     display: flex;
-    align-items: center;
+    justify-content: center;   /* FIX: center all items */
+    align-items: stretch;
     gap: 1rem;
     flex-wrap: wrap;
     margin: 1rem 0;
+    text-align: center;        /* FIX: center text */
 }
 .measurement-icon {
     background: var(--locker-metal);
     padding: 1rem;
     border-radius: 15px;
+    flex: 1 1 250px;           /* FIX: responsive sizing */
+    max-width: 300px;
     text-align: center;
-    flex: 1;
-    min-width: 150px;
+}
+.measurement-icon img {
+    display: block;
+    margin: 1rem auto 0 auto;  /* FIX: center images */
+    width: 100%;
+    max-width: 200px;
+    border-radius: 15px;
+}
+.container-card img {
+    display: block;
+    margin: 1.5rem auto;       /* FIX: center bottom image */
 }
 .fit-note {
     background: rgba(196,154,108,0.2);
@@ -64,19 +77,16 @@
                 <strong>📏 Waist</strong>
                 <p>Measure around natural waistline</p>
                 <small>Above belly button</small>
-                                <img src="num.jpg" alt="Image" style="width: 100%; max-width: 350px; display: block; margin: 1rem auto; border-radius: 15px;">
-
+                <img src="num.jpg" alt="Image">
             </div>
             <div class="measurement-icon">
                 <strong>📏 Hips</strong>
                 <p>Measure around widest part</p>
                 <small>For shorts fitting</small>
-                                <img src="10.jpg" alt="Image" style="width: 100%; max-width: 350px; display: block; margin: 1rem auto; border-radius: 15px;">
-
+                <img src="10.jpg" alt="Image">
             </div>
         </div>
-                <img src="size.jpg" alt="Image" style="width: 100%; max-width: 350px; display: block; margin: 1rem auto; border-radius: 15px;">
-
+        <img src="size.jpg" alt="Image">
     </div>
 
     <!-- SHIRT SIZE CHART -->
