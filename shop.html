@@ -121,12 +121,16 @@
     border-radius: 8px;
     padding: 10px;
     min-width: 180px;
+    min-height: 240px; /* raised height for better shirt display */
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .scroll-item img {
     width: 100%;
-    height: 150px;
-    object-fit: cover;
+    height: 180px;
+    object-fit: contain; /* preserves full image */
     border-radius: 5px;
 }
 .scroll-item .price { font-weight: bold; margin: 5px 0; }
@@ -137,6 +141,21 @@
     padding: 10px 12px;
     border-radius: 5px;
     font-size: 18px;
+    cursor: pointer;
+}
+.add-cart-btn {
+    background: #e6b17e;
+    color: #000;
+    border: none;
+    padding: 6px 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.add-cart-btn:hover {
+    background: #ffcb7a;
 }
 
 /* ====== CART ====== */
@@ -200,32 +219,43 @@
 <!-- CART -->
 <div id="cart">🛒 Cart: <span id="cart-count">0</span></div>
 
+<!-- ====== FUNCTION TO CREATE ITEMS ====== -->
+<script>
+function createItemHTML(img,name){
+    return `
+        <img src="${img}" alt="${name}">
+        <p>${name}</p>
+        <button class="add-cart-btn" onclick="addToCart('${name}')">Add to Cart</button>
+    `;
+}
+</script>
+
 <!-- ====== SHIRTS ====== -->
 <div class="shop-section" id="shirts">
     <h2 class="section-header">Shirts</h2>
     <div class="scroll-wrapper">
         <button class="scroll-btn" onclick="scrollGallery('shirts-container','prev')">‹</button>
         <div class="scroll-container" id="shirts-container">
-            <div class="scroll-item"><img src="barca.png"><p>Barcelona</p></div>
-            <div class="scroll-item"><img src="madrid.avif"><p>Real Madrid</p></div>
-            <div class="scroll-item"><img src="liverpool.avif"><p>Liverpool</p></div>
-            <div class="scroll-item"><img src="city.avif"><p>Manchester City</p></div>
-            <div class="scroll-item"><img src="arsenal.avif"><p>Arsenal</p></div>
-            <div class="scroll-item"><img src="chelsea.avif"><p>Chelsea</p></div>
-            <div class="scroll-item"><img src="psg.avif"><p>PSG</p></div>
-            <div class="scroll-item"><img src="juventus.avif"><p>Juventus</p></div>
-            <div class="scroll-item"><img src="AC Milan.jpg"><p>AC Milan</p></div>
-            <div class="scroll-item"><img src="inter.avif"><p>Inter</p></div>
-            <div class="scroll-item"><img src="napoli.webp"><p>Napoli</p></div>
-            <div class="scroll-item"><img src="bayern.avif"><p>Bayern Munich</p></div>
-            <div class="scroll-item"><img src="borussia.avif"><p>Borussia Dortmund</p></div>
-            <div class="scroll-item"><img src="RB.avif"><p>RB Leipzig</p></div>
-            <div class="scroll-item"><img src="leverkusen.avif"><p>Leverkusen</p></div>
-            <div class="scroll-item"><img src="athletico.jpg"><p>Atletico Madrid</p></div>
-            <div class="scroll-item"><img src="sevila.jpg"><p>Sevilla</p></div>
-            <div class="scroll-item"><img src="olympique.avif"><p>Olympique Marseille</p></div>
-            <div class="scroll-item"><img src="lyon.avif"><p>Lyon</p></div>
-            <div class="scroll-item"><img src="monaco.avif"><p>Monaco</p></div>
+            <div class="scroll-item" id="shirt1"></div>
+            <div class="scroll-item" id="shirt2"></div>
+            <div class="scroll-item" id="shirt3"></div>
+            <div class="scroll-item" id="shirt4"></div>
+            <div class="scroll-item" id="shirt5"></div>
+            <div class="scroll-item" id="shirt6"></div>
+            <div class="scroll-item" id="shirt7"></div>
+            <div class="scroll-item" id="shirt8"></div>
+            <div class="scroll-item" id="shirt9"></div>
+            <div class="scroll-item" id="shirt10"></div>
+            <div class="scroll-item" id="shirt11"></div>
+            <div class="scroll-item" id="shirt12"></div>
+            <div class="scroll-item" id="shirt13"></div>
+            <div class="scroll-item" id="shirt14"></div>
+            <div class="scroll-item" id="shirt15"></div>
+            <div class="scroll-item" id="shirt16"></div>
+            <div class="scroll-item" id="shirt17"></div>
+            <div class="scroll-item" id="shirt18"></div>
+            <div class="scroll-item" id="shirt19"></div>
+            <div class="scroll-item" id="shirt20"></div>
         </div>
         <button class="scroll-btn" onclick="scrollGallery('shirts-container','next')">›</button>
     </div>
@@ -237,26 +267,26 @@
     <div class="scroll-wrapper">
         <button class="scroll-btn" onclick="scrollGallery('shorts-container','prev')">‹</button>
         <div class="scroll-container" id="shorts-container">
-            <div class="scroll-item"><img src="barcelona shorts.avif"><p>Barcelona</p></div>
-            <div class="scroll-item"><img src="madrid shorts.webp"><p>Real Madrid</p></div>
-            <div class="scroll-item"><img src="liverpool shorts.avif"><p>Liverpool</p></div>
-            <div class="scroll-item"><img src="city shorts.avif"><p>Manchester City</p></div>
-            <div class="scroll-item"><img src="arsenal shorts.webp"><p>Arsenal</p></div>
-            <div class="scroll-item"><img src="chelsea shorts.avif"><p>Chelsea</p></div>
-            <div class="scroll-item"><img src="psg shorts.avif"><p>PSG</p></div>
-            <div class="scroll-item"><img src="juventus shorts.avif"><p>Juventus</p></div>
-            <div class="scroll-item"><img src="AcMilan shorts.avif"><p>AC Milan</p></div>
-            <div class="scroll-item"><img src="inter shorts.avif"><p>Inter</p></div>
-            <div class="scroll-item"><img src="napoli shorts.webp"><p>Napoli</p></div>
-            <div class="scroll-item"><img src="bayern shorts.avif"><p>Bayern Munich</p></div>
-            <div class="scroll-item"><img src="borussia shorts.avif"><p>Borussia Dortmund</p></div>
-            <div class="scroll-item"><img src="RB shorts.avif"><p>RB Leipzig</p></div>
-            <div class="scroll-item"><img src="leverkusen shorts.avif"><p>Leverkusen</p></div>
-            <div class="scroll-item"><img src="athletico shorts.webp"><p>Atletico Madrid</p></div>
-            <div class="scroll-item"><img src="sevila short.avif"><p>Sevilla</p></div>
-            <div class="scroll-item"><img src="olympique shorts.avif"><p>Olympique Marseille</p></div>
-            <div class="scroll-item"><img src="lyon shorts.avif"><p>Lyon</p></div>
-            <div class="scroll-item"><img src="monaco shorts.avif"><p>Monaco</p></div>
+            <div class="scroll-item" id="short1"></div>
+            <div class="scroll-item" id="short2"></div>
+            <div class="scroll-item" id="short3"></div>
+            <div class="scroll-item" id="short4"></div>
+            <div class="scroll-item" id="short5"></div>
+            <div class="scroll-item" id="short6"></div>
+            <div class="scroll-item" id="short7"></div>
+            <div class="scroll-item" id="short8"></div>
+            <div class="scroll-item" id="short9"></div>
+            <div class="scroll-item" id="short10"></div>
+            <div class="scroll-item" id="short11"></div>
+            <div class="scroll-item" id="short12"></div>
+            <div class="scroll-item" id="short13"></div>
+            <div class="scroll-item" id="short14"></div>
+            <div class="scroll-item" id="short15"></div>
+            <div class="scroll-item" id="short16"></div>
+            <div class="scroll-item" id="short17"></div>
+            <div class="scroll-item" id="short18"></div>
+            <div class="scroll-item" id="short19"></div>
+            <div class="scroll-item" id="short20"></div>
         </div>
         <button class="scroll-btn" onclick="scrollGallery('shorts-container','next')">›</button>
     </div>
@@ -268,14 +298,14 @@
     <div class="scroll-wrapper">
         <button class="scroll-btn" onclick="scrollGallery('boots-container','prev')">‹</button>
         <div class="scroll-container" id="boots-container">
-            <div class="scroll-item"><img src="f50 elite.jpg"><p>F50 Elite</p></div>
-            <div class="scroll-item"><img src="pedri predator.jpg"><p>Pedri Predator</p></div>
-            <div class="scroll-item"><img src="yamal f50.jpg"><p>Yamal F50</p></div>
-            <div class="scroll-item"><img src="jude.jpg"><p>Jude Boot</p></div>
-            <div class="scroll-item"><img src="copa pure 3.jpg"><p>Copa Pure 3</p></div>
-            <div class="scroll-item"><img src="x speedflow.jpg"><p>X Speedflow</p></div>
-            <div class="scroll-item"><img src="mecurial.jpg"><p>Mercurial</p></div>
-            <div class="scroll-item"><img src="neymar puma.jpg"><p>Neymar Puma</p></div>
+            <div class="scroll-item" id="boot1"></div>
+            <div class="scroll-item" id="boot2"></div>
+            <div class="scroll-item" id="boot3"></div>
+            <div class="scroll-item" id="boot4"></div>
+            <div class="scroll-item" id="boot5"></div>
+            <div class="scroll-item" id="boot6"></div>
+            <div class="scroll-item" id="boot7"></div>
+            <div class="scroll-item" id="boot8"></div>
         </div>
         <button class="scroll-btn" onclick="scrollGallery('boots-container','next')">›</button>
     </div>
@@ -287,12 +317,12 @@
     <div class="scroll-wrapper">
         <button class="scroll-btn" onclick="scrollGallery('memorabilia-container','prev')">‹</button>
         <div class="scroll-container" id="memorabilia-container">
-            <div class="scroll-item"><img src="pedri signed.jpg"><p>Pedri Signed</p></div>
-            <div class="scroll-item"><img src="pedri 2.jpg"><p>Pedri 2</p></div>
-            <div class="scroll-item"><img src="ms1.webp"><p>Memorabilia 1</p></div>
-            <div class="scroll-item"><img src="ms2.jpg"><p>Memorabilia 2</p></div>
-            <div class="scroll-item"><img src="yamal card.jpg"><p>Yamal Card</p></div>
-            <div class="scroll-item"><img src="yamal card 2.jpg"><p>Yamal Card 2</p></div>
+            <div class="scroll-item" id="mem1"></div>
+            <div class="scroll-item" id="mem2"></div>
+            <div class="scroll-item" id="mem3"></div>
+            <div class="scroll-item" id="mem4"></div>
+            <div class="scroll-item" id="mem5"></div>
+            <div class="scroll-item" id="mem6"></div>
         </div>
         <button class="scroll-btn" onclick="scrollGallery('memorabilia-container','next')">›</button>
     </div>
@@ -330,13 +360,40 @@ function scrollGallery(id,direction){
     }
 }
 
-/* ====== SIMPLE CART ====== */
+/* ====== CART ====== */
 let cartCount = 0;
-function addToCart(name,price,img){
+function addToCart(name){
     cartCount++;
     document.getElementById('cart-count').innerText = cartCount;
     alert(name + " added to cart!");
 }
+
+/* ====== LOAD ITEMS ====== */
+const shirts = [
+"barca.png","madrid.avif","liverpool.avif","city.avif","arsenal.avif","chelsea.avif","psg.avif","juventus.avif",
+"AC Milan.jpg","inter.avif","napoli.webp","bayern.avif","borussia.avif","RB.avif","leverkusen.avif","athletico.jpg",
+"sevila.jpg","olympique.avif","lyon.avif","monaco.avif"
+];
+const shorts = [
+"barcelona shorts.avif","madrid shorts.webp","liverpool shorts.avif","city shorts.avif","arsenal shorts.webp","chelsea shorts.avif","psg shorts.avif","juventus shorts.avif",
+"AcMilan shorts.avif","inter shorts.avif","napoli shorts.webp","bayern shorts.avif","borussia shorts.avif","RB shorts.avif","leverkusen shorts.avif","athletico shorts.webp",
+"sevila short.avif","olympique shorts.avif","lyon shorts.avif","monaco shorts.avif"
+];
+const boots = ["f50 elite.jpg","pedri predator.jpg","yamal f50.jpg","jude.jpg","copa pure 3.jpg","x speedflow.jpg","mecurial.jpg","neymar puma.jpg"];
+const memorabilia = ["pedri signed.jpg","pedri 2.jpg","ms1.webp","ms2.jpg","yamal card.jpg","yamal card 2.jpg"];
+
+shirts.forEach((src,i)=>{
+    document.getElementById("shirt"+(i+1)).innerHTML=createItemHTML(src,src.split('.')[0]);
+});
+shorts.forEach((src,i)=>{
+    document.getElementById("short"+(i+1)).innerHTML=createItemHTML(src,src.split('.')[0]);
+});
+boots.forEach((src,i)=>{
+    document.getElementById("boot"+(i+1)).innerHTML=createItemHTML(src,src.split('.')[0]);
+});
+memorabilia.forEach((src,i)=>{
+    document.getElementById("mem"+(i+1)).innerHTML=createItemHTML(src,src.split('.')[0]);
+});
 </script>
 
 </body>
