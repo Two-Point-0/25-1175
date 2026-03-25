@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Locker-Room | Home</title>
 
+<!-- Font Awesome for premium icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
 /* Background Slideshow */
 .slideshow-container {
@@ -30,7 +33,7 @@
     opacity: 1;
 }
 
-/* LIGHTER OVERLAY (more image visible) */
+/* LIGHTER OVERLAY */
 .slideshow-overlay {
     position: fixed;
     width: 100%;
@@ -58,6 +61,9 @@
     background: rgba(0,0,0,0.5);
     backdrop-filter: blur(6px);
     transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .menu-bar a:hover {
@@ -132,6 +138,11 @@
     font-size: 0.85rem;
     backdrop-filter: blur(6px);
 }
+
+/* ICON SIZE */
+.menu-bar a i {
+    font-size: 1.1rem;
+}
 </style>
 </head>
 
@@ -147,13 +158,13 @@
 </div>
 <div class="slideshow-overlay"></div>
 
-<!-- NAV -->
+<!-- NAVIGATION WITH ICONS -->
 <div class="menu-bar">
-    <a href="index.html">🏠 HOME</a>
-    <a href="shop.html">🛍️ SHOP</a>
-    <a href="size.html">📏 SIZE GUIDE</a>
-    <a href="videos.html">🎬 VIDEOS</a>
-    <a href="contact.html">📞 CONTACT</a>
+    <a href="index.html"><i class="fas fa-house"></i> Home</a>
+    <a href="shop.html"><i class="fas fa-bag-shopping"></i> Shop</a>
+    <a href="size.html"><i class="fas fa-ruler"></i> Size Guide</a>
+    <a href="videos.html"><i class="fas fa-video"></i> Videos</a>
+    <a href="contact.html"><i class="fas fa-phone"></i> Contact</a>
 </div>
 
 <!-- HERO -->
