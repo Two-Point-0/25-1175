@@ -36,22 +36,21 @@ body::before {
     z-index:-1;
 }
 
-/* 🔥 NEW LAYOUT */
+/* 🔥 LAYOUT */
 .video-layout {
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
     gap: 1.5rem;
-    align-items: start;
 }
 
-/* CENTER VIDEOS */
+/* CENTER */
 .video-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
 }
 
-/* SIDE VIDEOS */
+/* SIDE */
 .side-video {
     background: #1f2a33;
     border-radius: 20px;
@@ -64,7 +63,7 @@ body::before {
     object-fit: cover;
 }
 
-/* ORIGINAL VIDEO CARD */
+/* MAIN CARDS */
 .video-card {
     background: #1f2a33;
     border-radius: 28px;
@@ -73,22 +72,19 @@ body::before {
 }
 .video-card video {
     width: 100%;
-    aspect-ratio: 9 / 16;
+    aspect-ratio: 9/16;
     object-fit: cover;
+    display: block;
 }
 .video-info {
     padding: 1rem;
     text-align: center;
 }
 
-/* MOBILE FIX */
+/* MOBILE */
 @media(max-width:900px){
-    .video-layout {
-        grid-template-columns: 1fr;
-    }
-    .video-grid {
-        grid-template-columns: 1fr;
-    }
+    .video-layout { grid-template-columns: 1fr; }
+    .video-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -109,7 +105,7 @@ body::before {
 
 <div class="video-layout">
 
-    <!-- LEFT SIDE VIDEO -->
+    <!-- LEFT SIDE -->
     <div class="side-video">
         <video autoplay muted loop playsinline>
             <source src="matchday-left.mp4" type="video/mp4">
@@ -119,27 +115,33 @@ body::before {
     <!-- CENTER MAIN VIDEOS -->
     <div class="video-grid">
 
+        <!-- VIDEO 1 -->
         <div class="video-card">
-            <video controls autoplay muted loop playsinline>
+            <video controls autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1489944445-9b8e3d9b2b5a?w=600">
                 <source src="country jersey.mp4" type="video/mp4">
+                Your browser does not support video.
             </video>
             <div class="video-info">
                 🇦🇷 COUNTRY JERSEY 2026
             </div>
         </div>
 
+        <!-- VIDEO 2 -->
         <div class="video-card">
-            <video controls autoplay muted loop playsinline>
+            <video controls autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1518091043644-c1d4457512c6?w=600">
                 <source src="country jersey 2.mp4" type="video/mp4">
+                Your browser does not support video.
             </video>
             <div class="video-info">
                 🌍 WORLD CUP 2026
             </div>
         </div>
 
+        <!-- VIDEO 3 -->
         <div class="video-card">
-            <video controls autoplay muted loop playsinline>
+            <video controls autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=600">
                 <source src="club jersey.mp4" type="video/mp4">
+                Your browser does not support video.
             </video>
             <div class="video-info">
                 ⚽ CLUB COLLECTION
@@ -148,7 +150,7 @@ body::before {
 
     </div>
 
-    <!-- RIGHT SIDE VIDEO -->
+    <!-- RIGHT SIDE -->
     <div class="side-video">
         <video autoplay muted loop playsinline>
             <source src="matchday-right.mp4" type="video/mp4">
