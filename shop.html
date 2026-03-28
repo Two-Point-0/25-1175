@@ -19,12 +19,12 @@ body { background:#111; color:white; }
 .container { display:flex; overflow-x:auto; gap:15px; padding:10px; scroll-behavior:smooth; scrollbar-width:none; -ms-overflow-style:none; }
 .container::-webkit-scrollbar { display:none; }
 
-.card { width:200px; background:rgba(255,255,255,0.05); border-radius:15px; padding:10px; text-align:center; transition:0.3s; flex-shrink:0; }
+.card { width:200px; background:rgba(255,255,255,0.05); border-radius:15px; padding:10px; text-align:center; transition:0.3s; flex-shrink:0; position:relative; }
 .card:hover { transform:scale(1.05); }
 .card img { width:100%; border-radius:10px; height:220px; object-fit:cover; }
 .card h4 { margin:8px 0; font-size:0.9rem; }
 .price { color:#f3b44f; font-weight:bold; }
-.btn { margin-top:6px; padding:8px 12px; border:none; border-radius:25px; background:linear-gradient(135deg,#e6b17e,#f3c17f); cursor:pointer; transition:0.2s; font-weight:600; }
+.btn { margin-top:6px; padding:8px 12px; border:none; border-radius:25px; background:linear-gradient(135deg,#e6b17e,#f3c17f); cursor:pointer; transition:0.2s; font-weight:600; position:relative; z-index:1; }
 .btn:active { transform:scale(0.9); }
 
 .scroll-btn { width:40px; height:40px; border:none; border-radius:50%; background:#e6b17e; color:black; font-size:1.2rem; cursor:pointer; transition:0.2s; flex-shrink:0; }
@@ -40,6 +40,9 @@ body { background:#111; color:white; }
 .checkout .mpesa { background:#00a859; color:white; }
 .checkout .visa { background:#1a1f71; color:white; }
 .checkout button:hover { opacity:0.85; }
+
+/* FLYING IMAGE EFFECT */
+.fly-img { position:absolute; width:80px; height:80px; border-radius:10px; z-index:500; pointer-events:none; transition:all 0.8s ease-in-out; }
 </style>
 </head>
 <body>
@@ -140,7 +143,7 @@ function loadItems(list,id,price){
             <img src="${img}">
             <h4>${img.split('.')[0]}</h4>
             <p class="price">€${price}</p>
-            <button class="btn" onclick="addToCart('${img}',${price})">Add to Cart</button>
+            <button class="btn" onclick="addToCartFly(this,'${img}',${price})">Add to Cart</button>
         </div>`;
     });
 }
@@ -154,6 +157,30 @@ function scrollRow(id,amt){ document.getElementById(id).scrollBy({left:amt,behav
 
 // ================= CART =================
 let cart=[];
+function addToCartFly(button,imgSrc,price){
+    const img = button.parentElement.querySelector("img");
+    const flyImg = img.cloneNode(true);
+    flyImg.classList.add('fly-img');
+    const rect = img.getBoundingClientRect();
+    flyImg.style.top = rect.top + "px";
+    flyImg.style.left = rect.left + "px";
+    document.body.appendChild(flyImg);
+
+    const popup = document.getElementById("cartPopup");
+    const popupRect = popup.getBoundingClientRect();
+    setTimeout(()=>{
+        flyImg.style.top = (popupRect.top + popupRect.height/2 - 40) + "px";
+        flyImg.style.left = (popupRect.left + popupRect.width/2 - 40) + "px";
+        flyImg.style.width = "80px";
+        flyImg.style.height = "80px";
+    },10);
+
+    setTimeout(()=>{
+        flyImg.remove();
+        addToCart(imgSrc,price);
+    },800);
+}
+
 function addToCart(name,price){
     cart.push({name,price});
     renderCart();
@@ -175,7 +202,6 @@ function toggleCart(){
 function showCartPopup(){
     let popup=document.getElementById("cartPopup");
     popup.style.display='block';
-    setTimeout(()=>{popup.style.display='none';},2500);
 }
 </script>
 
