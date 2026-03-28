@@ -6,6 +6,7 @@
 <title>The Locker-Room | Shop</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
+/* ================= BODY ================= */
 body {
   margin:0;
   font-family:'Inter', sans-serif;
@@ -238,66 +239,10 @@ body {
 
 <script>
 /* ================= PRODUCTS 54 ITEMS ================= */
-const products=[
-  // SHIRTS 1-18
-  {name:"Barcelona Shirt",price:60,img:"images/1.avif"},
-  {name:"Madrid Shirt",price:60,img:"images/2.avif"},
-  {name:"Liverpool Shirt",price:60,img:"images/3.avif"},
-  {name:"City Shirt",price:60,img:"images/4.avif"},
-  {name:"Arsenal Shirt",price:60,img:"images/5.avif"},
-  {name:"Chelsea Shirt",price:60,img:"images/6.avif"},
-  {name:"PSG Shirt",price:60,img:"images/7.avif"},
-  {name:"Juventus Shirt",price:60,img:"images/8.avif"},
-  {name:"AC Milan Shirt",price:60,img:"images/9.avif"},
-  {name:"Inter Shirt",price:60,img:"images/10.avif"},
-  {name:"Napoli Shirt",price:60,img:"images/11.avif"},
-  {name:"Bayern Shirt",price:60,img:"images/12.avif"},
-  {name:"Borussia Shirt",price:60,img:"images/13.avif"},
-  {name:"RB Shirt",price:60,img:"images/14.avif"},
-  {name:"Leverkusen Shirt",price:60,img:"images/15.avif"},
-  {name:"Athletico Shirt",price:60,img:"images/16.avif"},
-  {name:"Sevilla Shirt",price:60,img:"images/17.avif"},
-  {name:"Olympique Shirt",price:60,img:"images/18.avif"},
-  // SHORTS 19-30
-  {name:"Barcelona Shorts",price:30,img:"images/19.avif"},
-  {name:"Madrid Shorts",price:30,img:"images/20.avif"},
-  {name:"Liverpool Shorts",price:30,img:"images/21.avif"},
-  {name:"City Shorts",price:30,img:"images/22.avif"},
-  {name:"Arsenal Shorts",price:30,img:"images/23.avif"},
-  {name:"Chelsea Shorts",price:30,img:"images/24.avif"},
-  {name:"PSG Shorts",price:30,img:"images/25.avif"},
-  {name:"Juventus Shorts",price:30,img:"images/26.avif"},
-  {name:"AC Milan Shorts",price:30,img:"images/27.avif"},
-  {name:"Inter Shorts",price:30,img:"images/28.avif"},
-  {name:"Napoli Shorts",price:30,img:"images/29.avif"},
-  {name:"Bayern Shorts",price:30,img:"images/30.avif"},
-  // BOOTS 31-42
-  {name:"Adidas Boots",price:120,img:"images/31.avif"},
-  {name:"Nike Boots",price:120,img:"images/32.avif"},
-  {name:"Puma Boots",price:120,img:"images/33.avif"},
-  {name:"Under Armour Boots",price:120,img:"images/34.avif"},
-  {name:"New Balance Boots",price:120,img:"images/35.avif"},
-  {name:"Mizuno Boots",price:120,img:"images/36.avif"},
-  {name:"Asics Boots",price:120,img:"images/37.avif"},
-  {name:"Umbro Boots",price:120,img:"images/38.avif"},
-  {name:"Diadora Boots",price:120,img:"images/39.avif"},
-  {name:"Kappa Boots",price:120,img:"images/40.avif"},
-  {name:"Sondico Boots",price:120,img:"images/41.avif"},
-  {name:"Hummel Boots",price:120,img:"images/42.avif"},
-  // MEMORABILIA 43-54
-  {name:"Barcelona Scarf",price:20,img:"images/43.avif"},
-  {name:"Madrid Scarf",price:20,img:"images/44.avif"},
-  {name:"Liverpool Scarf",price:20,img:"images/45.avif"},
-  {name:"City Cap",price:20,img:"images/46.avif"},
-  {name:"Arsenal Cap",price:20,img:"images/47.avif"},
-  {name:"Chelsea Cap",price:20,img:"images/48.avif"},
-  {name:"PSG Cap",price:20,img:"images/49.avif"},
-  {name:"Juventus Cap",price:20,img:"images/50.avif"},
-  {name:"AC Milan Cap",price:20,img:"images/51.avif"},
-  {name:"Inter Cap",price:20,img:"images/52.avif"},
-  {name:"Napoli Cap",price:20,img:"images/53.avif"},
-  {name:"Bayern Cap",price:20,img:"images/54.avif"}
-];
+const products=[];
+for(let i=1;i<=54;i++){
+  products.push({name:"Product "+i, price:20+((i%10)*5), img:"images/img"+i+".avif"});
+}
 
 /* ================= POPULATE SHOP ================= */
 const shopContainer=document.getElementById('shopContainer');
@@ -318,7 +263,6 @@ let cart=[];
 function addToCart(name,price,img,btn){
   cart.push({name,price,img});
   renderCart();
-  // Floating image animation
   const fimg=document.createElement('img');
   fimg.src=img;
   fimg.className='floating-img';
