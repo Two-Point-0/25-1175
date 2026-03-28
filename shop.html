@@ -4,205 +4,358 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Locker-Room | Shop</title>
+<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-* { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
-body { background:#111; color:white; }
-.menu-bar { display:flex; justify-content:center; gap:25px; padding:20px 0; background:rgba(20,20,20,0.9); position:sticky; top:0; z-index:10; }
-.menu-bar a { color:white; text-decoration:none; font-weight:600; padding:10px 20px; border-radius:25px; display:flex; align-items:center; gap:8px; transition:0.3s; background:rgba(255,255,255,0.05); }
-.menu-bar a:hover { background:#e6b17e; color:black; }
+body {
+    font-family:'Inter', sans-serif;
+    margin:0;
+    padding:0;
+    background:#111;
+    color:#eee;
+    overflow-x:hidden;
+}
+/* MENU BAR */
+.menu-bar {
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    padding:15px;
+    background:rgba(0,0,0,0.5);
+    backdrop-filter:blur(6px);
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+.menu-bar a {
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    padding:8px 16px;
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    transition:0.3s;
+}
+.menu-bar a:hover {
+    background:rgba(230,177,126,0.8);
+    color:black;
+}
+.menu-bar a i { font-size:1.2rem; }
 
-.section { margin:40px 5%; }
-.section h2 { color:#e6b17e; margin-bottom:15px; }
+/* HERO */
+.hero {
+    display:flex;
+    justify-content:center;
+    margin:30px 0;
+}
+.hero-box {
+    padding:15px 25px;
+    background:rgba(0,0,0,0.4);
+    border-radius:25px;
+    backdrop-filter:blur(6px);
+    text-align:center;
+}
+.hero-box h1 { font-size:3rem; color:#e6b17e; margin:0; }
+.hero-box p { color:#ddd; margin-top:5px; }
 
-.row { display:flex; align-items:center; gap:10px; }
-.container { display:flex; overflow-x:auto; gap:15px; padding:10px; scroll-behavior:smooth; scrollbar-width:none; -ms-overflow-style:none; }
-.container::-webkit-scrollbar { display:none; }
+/* SHOP SECTIONS */
+.shop-section {
+    margin:40px auto;
+    max-width:1200px;
+}
+.section-title {
+    text-align:center;
+    font-size:2rem;
+    margin-bottom:20px;
+    color:#e6b17e;
+}
 
-.card { width:200px; background:rgba(255,255,255,0.05); border-radius:15px; padding:10px; text-align:center; transition:0.3s; flex-shrink:0; position:relative; }
-.card:hover { transform:scale(1.05); }
-.card img { width:100%; border-radius:10px; height:220px; object-fit:cover; }
-.card h4 { margin:8px 0; font-size:0.9rem; }
-.price { color:#f3b44f; font-weight:bold; }
-.btn { margin-top:6px; padding:8px 12px; border:none; border-radius:25px; background:linear-gradient(135deg,#e6b17e,#f3c17f); cursor:pointer; transition:0.2s; font-weight:600; position:relative; z-index:1; }
-.btn:active { transform:scale(0.9); }
+/* ITEM CONTAINER */
+.shop-container {
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    justify-content:center;
+    margin:0 10px;
+}
+.shop-item {
+    width:180px;
+    background:rgba(0,0,0,0.45);
+    border-radius:15px;
+    text-align:center;
+    padding:10px;
+    transition:0.3s;
+    position:relative;
+}
+.shop-item img {
+    width:100%;
+    border-radius:12px;
+    margin-bottom:8px;
+}
+.shop-item h4 { font-size:1rem; margin:4px 0; }
+.shop-item .price { font-weight:bold; color:#f3b44f; margin-bottom:6px; }
 
-.scroll-btn { width:40px; height:40px; border:none; border-radius:50%; background:#e6b17e; color:black; font-size:1.2rem; cursor:pointer; transition:0.2s; flex-shrink:0; }
-.scroll-btn:hover { background:#f3c17f; }
+/* ADD TO CART BUTTON */
+.add-to-cart-btn {
+    padding:8px 12px;
+    border:none;
+    border-radius:15px;
+    background:#e6b17e;
+    color:black;
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.3s;
+    position:relative;
+}
+.add-to-cart-btn:hover {
+    background:#f3c17f;
+    transform:scale(1.1);
+}
 
-.cart-popup { position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:#222; padding:30px; border-radius:15px; width:350px; max-width:90%; display:none; z-index:100; box-shadow:0 5px 25px rgba(0,0,0,0.5); }
-.cart-popup h3 { margin-bottom:15px; text-align:center; color:#e6b17e; }
-.cart-item { display:flex; justify-content:space-between; margin:10px 0; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:5px; font-size:0.9rem; }
-.total { margin-top:15px; font-weight:bold; font-size:1.1rem; text-align:right; }
-.close-cart { position:absolute; top:10px; right:15px; cursor:pointer; font-size:1.2rem; color:#f3b44f; }
-.checkout { margin-top:15px; display:flex; justify-content:space-between; gap:10px; }
-.checkout button { flex:1; padding:10px; border:none; border-radius:20px; font-weight:600; cursor:pointer; transition:0.3s; }
-.checkout .mpesa { background:#00a859; color:white; }
-.checkout .visa { background:#1a1f71; color:white; }
-.checkout button:hover { opacity:0.85; }
+/* CART POPUP */
+#cartPopup {
+    display:none;
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:#1a1a1a;
+    color:white;
+    padding:30px;
+    border-radius:20px;
+    z-index:300;
+    width:350px;
+    max-width:90%;
+    text-align:center;
+    box-shadow:0 5px 25px rgba(0,0,0,0.6);
+}
+#cartPopup h3 { color:#e6b17e; margin-bottom:15px; }
+#cartPopup .cart-items { max-height:300px; overflow-y:auto; margin-bottom:15px; }
+.cart-item {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    justify-content:space-between;
+    margin-bottom:10px;
+}
+.cart-item img { width:40px; border-radius:5px; }
+.cart-item span { flex:1; text-align:left; }
+.cart-item button { background:#f3b44f; border:none; border-radius:8px; padding:2px 6px; cursor:pointer; font-size:0.8rem; }
+#cartPopup .total { text-align:right; font-weight:bold; margin-top:10px; margin-bottom:10px; }
+#cartPopup .checkout button {
+    width:100%;
+    padding:10px;
+    margin-bottom:10px;
+    border:none;
+    border-radius:15px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+#cartPopup .checkout .mpesa { background:#00a859; color:white; }
+#cartPopup .checkout .visa { background:#0066cc; color:white; }
+#cartPopup .checkout button:hover { transform:scale(1.05); }
 
-/* FLYING IMAGE EFFECT */
-.fly-img { position:absolute; width:80px; height:80px; border-radius:10px; z-index:500; pointer-events:none; transition:all 0.8s ease-in-out; }
+/* FOOTER */
+.footer-locker {
+    text-align:center;
+    background:rgba(0,0,0,0.4);
+    padding:15px 10px;
+    color:white;
+    backdrop-filter:blur(6px);
+    margin-top:40px;
+}
 </style>
 </head>
 <body>
 
 <!-- MENU -->
 <div class="menu-bar">
-<a href="index.html"><i class="fas fa-home"></i>Home</a>
-<a href="shop.html"><i class="fas fa-bag-shopping"></i>Shop</a>
-<a href="video.html"><i class="fas fa-video"></i>Video</a>
-<a href="size.html"><i class="fas fa-ruler"></i>Size Guide</a>
-<a href="contact.html"><i class="fas fa-envelope"></i>Contact</a>
+    <a href="index.html"><i class="fas fa-house"></i> Home</a>
+    <a href="shop.html"><i class="fas fa-bag-shopping"></i> Shop</a>
+    <a href="size.html"><i class="fas fa-ruler"></i> Size Guide</a>
+    <a href="videos.html"><i class="fas fa-video"></i> Videos</a>
+    <a href="contact.html"><i class="fas fa-phone"></i> Contact</a>
 </div>
 
-<!-- ================= SHIRTS ================= -->
-<div class="section">
-<h2>Shirts</h2>
-<div class="row">
-<button class="scroll-btn" onclick="scrollRow('shirts',-300)">‹</button>
-<div class="container" id="shirts"></div>
-<button class="scroll-btn" onclick="scrollRow('shirts',300)">›</button>
-</div>
+<!-- HERO -->
+<div class="hero">
+    <div class="hero-box">
+        <h1>⚡ THE LOCKER-ROOM ⚡</h1>
+        <p>Where Champions Gear Up</p>
+    </div>
 </div>
 
-<!-- ================= SHORTS ================= -->
-<div class="section">
-<h2>Shorts</h2>
-<div class="row">
-<button class="scroll-btn" onclick="scrollRow('shorts',-300)">‹</button>
-<div class="container" id="shorts"></div>
-<button class="scroll-btn" onclick="scrollRow('shorts',300)">›</button>
+<!-- ==================== SHOP ITEMS ==================== -->
+<div class="shop-section">
+<h2 class="section-title">All Products</h2>
+<div class="shop-container" id="shopContainer">
+    <!-- All 54 images will be added dynamically -->
 </div>
 </div>
 
-<!-- ================= BOOTS ================= -->
-<div class="section">
-<h2>Boots</h2>
-<div class="row">
-<button class="scroll-btn" onclick="scrollRow('boots',-300)">‹</button>
-<div class="container" id="boots"></div>
-<button class="scroll-btn" onclick="scrollRow('boots',300)">›</button>
-</div>
-</div>
-
-<!-- ================= MEMORABILIA ================= -->
-<div class="section">
-<h2>Memorabilia</h2>
-<div class="row">
-<button class="scroll-btn" onclick="scrollRow('mem',-300)">‹</button>
-<div class="container" id="mem"></div>
-<button class="scroll-btn" onclick="scrollRow('mem',300)">›</button>
-</div>
+<!-- ==================== CART POPUP ==================== -->
+<div id="cartPopup">
+    <h3>Your Cart</h3>
+    <div class="cart-items"></div>
+    <div class="total">Total: €<span id="cart-total">0</span></div>
+    <div class="checkout">
+        <button class="mpesa" onclick="simulateMpesa()">Pay with Mpesa</button>
+        <button class="visa" onclick="alert('Visa payment coming soon')">Pay with Visa</button>
+    </div>
 </div>
 
-<!-- CART POPUP -->
-<div class="cart-popup" id="cartPopup">
-<span class="close-cart" onclick="toggleCart()">✖</span>
-<h3>🛒 Your Cart</h3>
-<div id="items"></div>
-<p class="total">Total: €<span id="total">0</span></p>
-<div class="checkout">
-<button class="mpesa">Pay with Mpesa</button>
-<button class="visa">Pay with Visa</button>
-</div>
+<!-- ==================== OTP POPUP ==================== -->
+<div id="otpPopup" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#1a1a1a;color:white;padding:30px;border-radius:20px;z-index:300;width:320px;text-align:center;box-shadow:0 5px 25px rgba(0,0,0,0.6);">
+<h3 style="color:#00a859;">Mpesa Payment</h3>
+<p style="margin:10px 0;">Request sent to <br><strong>+254724726032</strong></p>
+<p style="font-size:0.9rem; color:#ccc;">Enter OTP to complete payment</p>
+<input id="otpInput" type="text" placeholder="Enter OTP" style="width:100%; padding:10px; margin:15px 0; border:none; border-radius:10px; outline:none;">
+<button onclick="verifyOtp()" style="width:100%; padding:10px; border:none; border-radius:15px; background:#00a859; color:white; font-weight:bold; cursor:pointer; margin-bottom:10px;">Confirm Payment</button>
+<button onclick="closeOtp()" style="width:100%; padding:8px; border:none; border-radius:15px; background:#444; color:white; cursor:pointer;">Cancel</button>
 </div>
 
+<!-- ==================== FOOTER ==================== -->
+<div class="footer-locker">
+⚽ THE LOCKER-ROOM - OFFICIAL UEFA MERCHANDISE PARTNER ⚽<br>
+© 2026 The Locker-Room | Muthithi Road, Westlands, Nairobi, Kenya<br>
+📞 24/7 Support: +254 700 123 456 | ✉️ info@thelocker-room.co.ke<br>
+🇰🇪 Free East Africa Shipping | 30-Day Returns | 100% Authentic
+</div>
+
+<!-- ==================== SCRIPT ==================== -->
 <script>
-// ================= DATA (ALL 54 IMAGES) =================
-const shirts = [
-"barca.png","madrid.avif","liverpool.avif","city.avif","arsenal.avif","chelsea.avif",
-"psg.avif","juventus.avif","AC Milan.jpg","inter.avif","napoli.webp","bayern.avif",
-"borussia.avif","RB.avif","leverkusen.avif","athletico.jpg","sevila.jpg","olympique.avif",
-"lyon.avif","monaco.avif"
+// Product data for all 54 images
+const products = [
+  // SHORTS (18)
+  {name:"Barcelona Shorts", price:50, img:"barcelona shorts.avif"},
+  {name:"Madrid Shorts", price:50, img:"madrid shorts.webp"},
+  {name:"Liverpool Shorts", price:50, img:"liverpool shorts.avif"},
+  {name:"City Shorts", price:50, img:"city shorts.avif"},
+  {name:"Arsenal Shorts", price:50, img:"arsenal shorts.webp"},
+  {name:"Chelsea Shorts", price:50, img:"chelsea shorts.avif"},
+  {name:"PSG Shorts", price:50, img:"psg shorts.avif"},
+  {name:"Juventus Shorts", price:50, img:"juventus shorts.avif"},
+  {name:"AC Milan Shorts", price:50, img:"AcMilan shorts.avif"},
+  {name:"Inter Shorts", price:50, img:"inter shorts.avif"},
+  {name:"Napoli Shorts", price:50, img:"napoli shorts.webp"},
+  {name:"Bayern Shorts", price:50, img:"bayern shorts.avif"},
+  {name:"Borussia Shorts", price:50, img:"borussia shorts.avif"},
+  {name:"RB Shorts", price:50, img:"RB shorts.avif"},
+  {name:"Leverkusen Shorts", price:50, img:"leverkusen shorts.avif"},
+  {name:"Athletico Shorts", price:50, img:"athletico shorts.webp"},
+  {name:"Sevilla Shorts", price:50, img:"sevila short.avif"},
+  {name:"Olympique Shorts", price:50, img:"olympique shorts.avif"},
+  // SHIRTS (18)
+  {name:"Barcelona Shirt", price:80, img:"barca.png"},
+  {name:"Madrid Shirt", price:80, img:"madrid.avif"},
+  {name:"Liverpool Shirt", price:80, img:"liverpool.avif"},
+  {name:"City Shirt", price:80, img:"city.avif"},
+  {name:"Arsenal Shirt", price:80, img:"arsenal.avif"},
+  {name:"Chelsea Shirt", price:80, img:"chelsea.avif"},
+  {name:"PSG Shirt", price:80, img:"psg.avif"},
+  {name:"Juventus Shirt", price:80, img:"juventus.avif"},
+  {name:"AC Milan Shirt", price:80, img:"AC Milan.jpg"},
+  {name:"Inter Shirt", price:80, img:"inter.avif"},
+  {name:"Napoli Shirt", price:80, img:"napoli.webp"},
+  {name:"Bayern Shirt", price:80, img:"bayern.avif"},
+  {name:"Borussia Shirt", price:80, img:"borussia.avif"},
+  {name:"RB Shirt", price:80, img:"RB.avif"},
+  {name:"Leverkusen Shirt", price:80, img:"leverkusen.avif"},
+  {name:"Athletico Shirt", price:80, img:"athletico.jpg"},
+  {name:"Sevilla Shirt", price:80, img:"sevila.jpg"},
+  {name:"Olympique Shirt", price:80, img:"olympique.avif"},
+  // BOOTS (8)
+  {name:"F50 Elite", price:120, img:"f50 elite.jpg"},
+  {name:"Pedri Predator", price:130, img:"pedri predator.jpg"},
+  {name:"Yamal F50", price:120, img:"yamal f50.jpg"},
+  {name:"Jude Boot", price:110, img:"jude.jpg"},
+  {name:"Copa Pure 3", price:140, img:"copa pure 3.jpg"},
+  {name:"X Speedflow", price:135, img:"x speedflow.jpg"},
+  {name:"Mercurial", price:140, img:"mecurial.jpg"},
+  {name:"Neymar Puma", price:150, img:"neymar puma.jpg"},
+  // MEMORABILIA (10)
+  {name:"Pedri Signed", price:250, img:"pedri signed.jpg"},
+  {name:"Pedri Memorabilia", price:220, img:"pedri 2.jpg"},
+  {name:"Messi 1", price:300, img:"ms1.webp"},
+  {name:"Messi 2", price:320, img:"ms2.jpg"},
+  {name:"Yamal Card", price:180, img:"yamal card.jpg"},
+  {name:"Yamal Card 2", price:190, img:"yamal card 2.jpg"},
+  {name:"Messi Jersey", price:280, img:"messi jersey.jpg"},
+  {name:"Ronaldo Jersey", price:290, img:"ronaldo jersey.jpg"},
+  {name:"Neymar Card", price:200, img:"neymar card.jpg"},
+  {name:"Mbappe Card", price:210, img:"mbappe card.jpg"},
 ];
 
-const shorts = [
-"barcelona shorts.avif","madrid shorts.webp","liverpool shorts.avif","city shorts.avif",
-"arsenal shorts.webp","chelsea shorts.avif","psg shorts.avif","juventus shorts.avif",
-"AcMilan shorts.avif","inter shorts.avif","napoli shorts.webp","bayern shorts.avif",
-"borussia shorts.avif","RB shorts.avif","leverkusen shorts.avif","athletico shorts.webp",
-"sevila short.avif","olympique shorts.avif","lyon shorts.avif","monaco shorts.avif"
-];
+// Populate shop items
+const shopContainer = document.getElementById('shopContainer');
+products.forEach(product=>{
+    const div = document.createElement('div');
+    div.className='shop-item';
+    div.innerHTML = `
+        <img src="${product.img}" alt="${product.name}">
+        <h4>${product.name}</h4>
+        <p class="price">€${product.price}</p>
+        <button class="add-to-cart-btn" onclick="addToCart('${product.name}',${product.price},'${product.img}')">Add to Cart</button>
+    `;
+    shopContainer.appendChild(div);
+});
 
-const boots = [
-"f50 elite.jpg","pedri predator.jpg","yamal f50.jpg","jude.jpg","copa pure 3.jpg",
-"x speedflow.jpg","mecurial.jpg","neymar puma.jpg"
-];
-
-const mem = [
-"pedri signed.jpg","pedri 2.jpg","ms1.webp","ms2.jpg","yamal card.jpg","yamal card 2.jpg"
-];
-
-// ================= CREATE ITEMS =================
-function loadItems(list,id,price){
-    let container=document.getElementById(id);
-    list.forEach(img=>{
-        container.innerHTML+=`
-        <div class="card">
-            <img src="${img}">
-            <h4>${img.split('.')[0]}</h4>
-            <p class="price">€${price}</p>
-            <button class="btn" onclick="addToCartFly(this,'${img}',${price})">Add to Cart</button>
-        </div>`;
-    });
-}
-loadItems(shirts,"shirts",80);
-loadItems(shorts,"shorts",50);
-loadItems(boots,"boots",130);
-loadItems(mem,"mem",250);
-
-// ================= SCROLL =================
-function scrollRow(id,amt){ document.getElementById(id).scrollBy({left:amt,behavior:'smooth'}); }
-
-// ================= CART =================
+// CART
 let cart=[];
-function addToCartFly(button,imgSrc,price){
-    const img = button.parentElement.querySelector("img");
-    const flyImg = img.cloneNode(true);
-    flyImg.classList.add('fly-img');
-    const rect = img.getBoundingClientRect();
-    flyImg.style.top = rect.top + "px";
-    flyImg.style.left = rect.left + "px";
-    document.body.appendChild(flyImg);
-
-    const popup = document.getElementById("cartPopup");
-    const popupRect = popup.getBoundingClientRect();
-    setTimeout(()=>{
-        flyImg.style.top = (popupRect.top + popupRect.height/2 - 40) + "px";
-        flyImg.style.left = (popupRect.left + popupRect.width/2 - 40) + "px";
-        flyImg.style.width = "80px";
-        flyImg.style.height = "80px";
-    },10);
-
-    setTimeout(()=>{
-        flyImg.remove();
-        addToCart(imgSrc,price);
-    },800);
-}
-
-function addToCart(name,price){
-    cart.push({name,price});
+function addToCart(name,price,img){
+    cart.push({name,price,img});
     renderCart();
-    showCartPopup();
+    showCartPopup(`${name} added to cart!`);
 }
-
 function renderCart(){
-    let html='',total=0;
-    cart.forEach(i=>{ total+=i.price; html+=`<div class="cart-item">${i.name} €${i.price}</div>`; });
-    document.getElementById("items").innerHTML=html;
-    document.getElementById("total").innerText=total;
+    const cartItems=document.querySelector('#cartPopup .cart-items');
+    cartItems.innerHTML='';
+    let total=0;
+    cart.forEach((item,index)=>{
+        total+=item.price;
+        const div=document.createElement('div');
+        div.className='cart-item';
+        div.innerHTML=`<img src="${item.img}" alt="${item.name}"><span>${item.name} - €${item.price}</span><button onclick="removeCartItem(${index})">X</button>`;
+        cartItems.appendChild(div);
+    });
+    document.getElementById('cart-total').innerText=total;
 }
 
-function toggleCart(){
-    let popup=document.getElementById("cartPopup");
-    popup.style.display=(popup.style.display==='block') ? 'none' : 'block';
+// REMOVE ITEM
+function removeCartItem(index){
+    cart.splice(index,1);
+    renderCart();
 }
 
-function showCartPopup(){
-    let popup=document.getElementById("cartPopup");
+// SHOW CART POPUP FLOATING
+function showCartPopup(message){
+    const popup=document.getElementById('cartPopup');
     popup.style.display='block';
+    popup.querySelector('h3').innerText=message;
+    setTimeout(()=>{
+        popup.style.display='none';
+        popup.querySelector('h3').innerText='Your Cart';
+    },2000);
 }
+
+// SIMULATE MPESA
+function simulateMpesa(){
+    if(cart.length===0){ alert("Cart empty!"); return; }
+    document.getElementById('otpPopup').style.display='block';
+    setTimeout(()=>{ alert("OTP sent to +254724726032"); },500);
+}
+function verifyOtp(){
+    const otp=document.getElementById('otpInput').value;
+    if(otp==="1234"){
+        alert("✅ Payment Successful via Mpesa!");
+        cart=[]; renderCart();
+        closeOtp();
+    } else { alert("❌ Incorrect OTP. Try 1234 (demo)"); }
+}
+function closeOtp(){ document.getElementById('otpPopup').style.display='none'; }
 </script>
 
 </body>
