@@ -6,230 +6,73 @@
 <title>The Locker-Room | Shop</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-/* ================= BODY ================= */
-body {
-  margin:0;
-  font-family:'Inter', sans-serif;
-  background:#111;
-  color:#eee;
-  overflow-x:hidden;
-}
-
-/* ================= MENU ================= */
-.menu-bar {
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:25px;
-  padding:15px 0;
-  position:sticky;
-  top:0;
-  backdrop-filter:blur(10px);
-  background:rgba(0,0,0,0.4);
-  z-index:100;
-  box-shadow:0 2px 8px rgba(0,0,0,0.3);
-}
-.menu-bar a {
-  display:flex;
-  align-items:center;
-  gap:8px;
-  color:white;
-  font-weight:bold;
-  text-decoration:none;
-  padding:8px 20px;
-  border-radius:20px;
-  transition:0.3s;
-}
-.menu-bar a:hover {
-  background:#e6b17e;
-  color:black;
-}
-.menu-bar a i { font-size:1.2rem; }
-
-/* ================= HERO ================= */
-.hero {
-  display:flex;
-  justify-content:center;
-  margin:25px 0;
-}
-.hero-box {
-  padding:20px 30px;
-  background:rgba(0,0,0,0.5);
-  border-radius:25px;
-  backdrop-filter:blur(6px);
-  text-align:center;
-}
-.hero-box h1 { font-size:3rem; color:#e6b17e; margin:0; }
-.hero-box p { color:#ddd; margin-top:5px; }
-
-/* ================= SHOP ================= */
-.shop-section { max-width:1200px; margin:40px auto; }
-.section-title { text-align:center; font-size:2rem; color:#e6b17e; margin-bottom:25px; }
-.shop-container {
-  display:flex;
-  flex-wrap:nowrap;
-  overflow-x:auto;
-  gap:20px;
-  padding:10px;
-}
-.shop-container::-webkit-scrollbar { height:8px; }
-.shop-container::-webkit-scrollbar-thumb { background:#e6b17e; border-radius:4px; }
-.shop-item {
-  flex:0 0 200px;
-  background:rgba(0,0,0,0.5);
-  border-radius:15px;
-  text-align:center;
-  padding:10px;
-  position:relative;
-  transition:0.3s;
-}
-.shop-item img { width:100%; border-radius:12px; margin-bottom:8px; }
-.shop-item h4 { font-size:1rem; margin:4px 0; }
-.shop-item .price { color:#f3b44f; font-weight:bold; margin-bottom:6px; }
-.add-to-cart-btn {
-  padding:8px 12px;
-  border:none;
-  border-radius:15px;
-  background:#e6b17e;
-  color:black;
-  cursor:pointer;
-  font-weight:bold;
-  transition:0.3s;
-}
-.add-to-cart-btn:hover { transform:scale(1.1); background:#f3c17f; }
-
-/* ================= CART POPUP ================= */
-#cartPopup {
-  display:none;
-  position:fixed;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  background:#1a1a1a;
-  color:white;
-  padding:30px;
-  border-radius:20px;
-  z-index:300;
-  width:350px;
-  max-width:90%;
-  text-align:center;
-  box-shadow:0 5px 25px rgba(0,0,0,0.6);
-}
-#cartPopup h3 { color:#e6b17e; margin-bottom:15px; }
-#cartPopup .cart-items { max-height:300px; overflow-y:auto; margin-bottom:15px; }
-.cart-item { display:flex; align-items:center; gap:10px; justify-content:space-between; margin-bottom:10px; }
-.cart-item img { width:40px; border-radius:5px; }
-.cart-item span { flex:1; text-align:left; }
-.cart-item button { background:#f3b44f; border:none; border-radius:8px; padding:2px 6px; cursor:pointer; font-size:0.8rem; }
-#cartPopup .total { text-align:right; font-weight:bold; margin-bottom:10px; }
-#cartPopup .checkout button {
-  width:100%;
-  padding:10px;
-  margin-bottom:10px;
-  border:none;
-  border-radius:15px;
-  font-weight:bold;
-  cursor:pointer;
-  transition:0.3s;
-}
-#cartPopup .checkout .mpesa { background:#00a859; color:white; }
-#cartPopup .checkout .visa { background:#0066cc; color:white; }
-#cartPopup .checkout button:hover { transform:scale(1.05); }
-
-/* ================= OTP POPUP ================= */
-#otpPopup {
-  display:none;
-  position:fixed;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  background:#1a1a1a;
-  color:white;
-  padding:30px;
-  border-radius:20px;
-  z-index:400;
-  width:320px;
-  text-align:center;
-  box-shadow:0 5px 25px rgba(0,0,0,0.6);
-}
-#otpPopup h3 { color:#00a859; margin-bottom:10px; }
-#otpPopup input {
-  width:100%;
-  padding:10px;
-  margin:15px 0;
-  border:none;
-  border-radius:10px;
-  outline:none;
-}
-
-/* ================= FOOTER ================= */
-.footer-locker {
-  text-align:center;
-  background:rgba(0,0,0,0.4);
-  padding:15px 10px;
-  color:white;
-  backdrop-filter:blur(6px);
-  margin-top:40px;
-}
-
-/* ================= FLOATING ADD-TO-CART IMAGE ================= */
-.floating-img {
-  position:fixed;
-  width:60px;
-  height:60px;
-  border-radius:12px;
-  pointer-events:none;
-  z-index:500;
-  transition:all 0.8s ease-in-out;
-}
+  body { font-family:'Inter', sans-serif; margin:0; padding:0; background:#111; color:#eee; overflow-x:hidden; }
+  .menu-bar { display:flex; justify-content:center; gap:15px; padding:15px; background:rgba(0,0,0,0.5); backdrop-filter:blur(6px); position:sticky; top:0; z-index:100; }
+  .menu-bar a { color:white; text-decoration:none; font-weight:bold; padding:8px 16px; border-radius:20px; display:flex; align-items:center; gap:6px; transition:0.3s; }
+  .menu-bar a:hover { background:rgba(230,177,126,0.8); color:black; }
+  .menu-bar a i { font-size:1.1rem; }
+  .hero { display:flex; justify-content:center; margin:30px 0; }
+  .hero-box { padding:15px 25px; background:rgba(0,0,0,0.4); border-radius:25px; backdrop-filter:blur(6px); text-align:center; }
+  .hero-box h1 { font-size:3rem; color:#e6b17e; margin:0; }
+  .hero-box p { color:#ddd; margin-top:5px; }
+  .shop-section { margin:40px auto; max-width:1200px; }
+  .section-title { text-align:center; font-size:2rem; margin-bottom:20px; color:#e6b17e; }
+  .product-container { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
+  .product-item { width:180px; background:rgba(0,0,0,0.45); border-radius:15px; text-align:center; padding:10px; transition:0.3s; }
+  .product-item img { width:100%; border-radius:12px; margin-bottom:8px; }
+  .product-item h4 { font-size:1rem; margin:4px 0; }
+  .product-item .price { font-weight:bold; color:#f3b44f; }
+  .add-to-cart-btn { margin-top:5px; padding:6px 10px; border:none; border-radius:12px; background:#e6b17e; color:black; cursor:pointer; font-weight:bold; transition:0.3s; }
+  .add-to-cart-btn:hover { background:#f3c17f; transform:translateY(-4px); }
+  #cart-popup { position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); width:350px; max-width:90%; background:rgba(0,0,0,0.95); backdrop-filter:blur(8px); padding:20px; border-radius:15px; display:none; flex-direction:column; z-index:200; color:white; }
+  #cart-popup h3 { text-align:center; color:#e6b17e; margin-bottom:10px; }
+  .cart-items { max-height:300px; overflow-y:auto; margin-bottom:10px; }
+  .cart-item { display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
+  .cart-item img { width:40px; border-radius:5px; margin-right:8px; }
+  .cart-item span { flex:1; font-size:0.9rem; }
+  .cart-item button { background:#f3b44f; border:none; border-radius:6px; padding:2px 6px; cursor:pointer; font-size:0.8rem; }
+  .cart-total { font-weight:bold; text-align:right; margin-top:10px; }
+  #checkoutBtn, #mpesaBtn, #visaBtn { width:100%; margin-top:8px; background:#e6b17e; padding:8px; font-weight:bold; cursor:pointer; border-radius:12px; transition:0.3s; }
+  #checkoutBtn:hover, #mpesaBtn:hover, #visaBtn:hover { background:#f3c17f; }
+  .footer-locker { text-align:center; background:rgba(0,0,0,0.4); padding:15px 10px; color:white; backdrop-filter:blur(6px); margin-top:40px; }
 </style>
 </head>
 <body>
 
 <!-- MENU -->
 <div class="menu-bar">
-  <a href="index.html"><i class="fas fa-house"></i> Home</a>
-  <a href="shop.html"><i class="fas fa-bag-shopping"></i> Shop</a>
-  <a href="size.html"><i class="fas fa-ruler"></i> Size Guide</a>
-  <a href="videos.html"><i class="fas fa-video"></i> Videos</a>
-  <a href="contact.html"><i class="fas fa-phone"></i> Contact</a>
+    <a href="index.html"><i class="fas fa-house"></i> Home</a>
+    <a href="shop.html"><i class="fas fa-bag-shopping"></i> Shop</a>
+    <a href="size.html"><i class="fas fa-ruler"></i> Size Guide</a>
+    <a href="videos.html"><i class="fas fa-video"></i> Videos</a>
+    <a href="contact.html"><i class="fas fa-phone"></i> Contact</a>
 </div>
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-box">
-    <h1>⚡ THE LOCKER-ROOM ⚡</h1>
-    <p>Where Champions Gear Up</p>
-  </div>
+    <div class="hero-box">
+        <h1>⚡ THE LOCKER-ROOM ⚡</h1>
+        <p>Where Champions Gear Up</p>
+    </div>
 </div>
 
-<!-- SHOP ITEMS -->
+<!-- ==================== SHOP PRODUCTS ==================== -->
 <div class="shop-section">
-<h2 class="section-title">All Products</h2>
-<div class="shop-container" id="shopContainer"></div>
+<h2 class="section-title">Shirts</h2>
+<div class="product-container" id="products"></div>
 </div>
 
-<!-- CART POPUP -->
-<div id="cartPopup">
+<!-- ==================== CART POPUP ==================== -->
+<div id="cart-popup">
   <h3>Your Cart</h3>
   <div class="cart-items"></div>
-  <div class="total">Total: €<span id="cart-total">0</span></div>
-  <div class="checkout">
-    <button class="mpesa" onclick="simulateMpesa()">Pay with Mpesa</button>
-    <button class="visa" onclick="alert('Visa payment coming soon')">Pay with Visa</button>
-  </div>
+  <div class="cart-total">Total: €<span id="cart-total">0</span></div>
+  <button id="checkoutBtn" onclick="checkout()">Checkout</button>
+  <button id="mpesaBtn" onclick="mpesaPay()">Pay with M-Pesa</button>
+  <button id="visaBtn" onclick="visaPay()">Pay with Visa</button>
 </div>
 
-<!-- OTP POPUP -->
-<div id="otpPopup">
-<h3>Mpesa Payment</h3>
-<p>OTP sent to <br><strong>+254724726032</strong></p>
-<input id="otpInput" type="text" placeholder="Enter OTP">
-<button onclick="verifyOtp()">Confirm Payment</button>
-<button onclick="closeOtp()" style="background:#444;">Cancel</button>
-</div>
-
-<!-- FOOTER -->
+<!-- ==================== FOOTER ==================== -->
 <div class="footer-locker">
 ⚽ THE LOCKER-ROOM - OFFICIAL UEFA MERCHANDISE PARTNER ⚽<br>
 © 2026 The Locker-Room | Muthithi Road, Westlands, Nairobi, Kenya<br>
@@ -237,80 +80,127 @@ body {
 🇰🇪 Free East Africa Shipping | 30-Day Returns | 100% Authentic
 </div>
 
+<!-- ==================== SCRIPTS ==================== -->
 <script>
-/* ================= PRODUCTS 54 ITEMS ================= */
-const products=[];
-for(let i=1;i<=54;i++){
-  products.push({name:"Product "+i, price:20+((i%10)*5), img:"images/img"+i+".avif"});
+let products = [
+  // --- Shirts 12 ---
+  {name:"Barcelona Shirt", price:80, img:"barca.png"},
+  {name:"Madrid Shirt", price:80, img:"madrid.avif"},
+  {name:"Liverpool Shirt", price:80, img:"liverpool.avif"},
+  {name:"City Shirt", price:80, img:"city.avif"},
+  {name:"Arsenal Shirt", price:80, img:"arsenal.avif"},
+  {name:"Chelsea Shirt", price:80, img:"chelsea.avif"},
+  {name:"PSG Shirt", price:80, img:"psg.avif"},
+  {name:"Juventus Shirt", price:80, img:"juventus.avif"},
+  {name:"AC Milan Shirt", price:80, img:"AC Milan.jpg"},
+  {name:"Inter Shirt", price:80, img:"inter.avif"},
+  {name:"Napoli Shirt", price:80, img:"napoli.webp"},
+  {name:"Bayern Shirt", price:80, img:"bayern.avif"},
+  // --- Shorts 12 ---
+  {name:"Barcelona Shorts", price:50, img:"barcelona shorts.avif"},
+  {name:"Madrid Shorts", price:50, img:"madrid shorts.webp"},
+  {name:"Liverpool Shorts", price:50, img:"liverpool shorts.avif"},
+  {name:"City Shorts", price:50, img:"city shorts.avif"},
+  {name:"Arsenal Shorts", price:50, img:"arsenal shorts.webp"},
+  {name:"Chelsea Shorts", price:50, img:"chelsea shorts.avif"},
+  {name:"PSG Shorts", price:50, img:"psg shorts.avif"},
+  {name:"Juventus Shorts", price:50, img:"juventus shorts.avif"},
+  {name:"AC Milan Shorts", price:50, img:"AcMilan shorts.avif"},
+  {name:"Inter Shorts", price:50, img:"inter shorts.avif"},
+  {name:"Napoli Shorts", price:50, img:"napoli shorts.webp"},
+  {name:"Bayern Shorts", price:50, img:"bayern shorts.avif"},
+  // --- Boots 8 ---
+  {name:"F50 Elite", price:120, img:"f50 elite.jpg"},
+  {name:"Pedri Predator", price:130, img:"pedri predator.jpg"},
+  {name:"Yamal F50", price:120, img:"yamal f50.jpg"},
+  {name:"Jude Boot", price:110, img:"jude.jpg"},
+  {name:"Copa Pure 3", price:140, img:"copa pure 3.jpg"},
+  {name:"X Speedflow", price:135, img:"x speedflow.jpg"},
+  {name:"Mercurial", price:140, img:"mecurial.jpg"},
+  {name:"Neymar Puma", price:150, img:"neymar puma.jpg"},
+  // --- Memorabilia 8 ---
+  {name:"Pedri Signed", price:250, img:"pedri signed.jpg"},
+  {name:"Pedri Memorabilia", price:220, img:"pedri 2.jpg"},
+  {name:"Messi 1", price:300, img:"ms1.webp"},
+  {name:"Messi 2", price:320, img:"ms2.jpg"},
+  {name:"Yamal Card", price:180, img:"yamal card.jpg"},
+  {name:"Yamal Card 2", price:190, img:"yamal card 2.jpg"},
+  {name:"RB Shirt", price:80, img:"RB.avif"},
+  {name:"Leverkusen Shirt", price:80, img:"leverkusen.avif"},
+  {name:"Athletico Shirt", price:80, img:"athletico.jpg"},
+  {name:"Sevilla Shirt", price:80, img:"sevila.jpg"},
+  {name:"Olympique Shirt", price:80, img:"olympique.avif"},
+  {name:"Lyon Shirt", price:80, img:"lyon.avif"},
+  {name:"Monaco Shirt", price:80, img:"monaco.avif"},
+  {name:"Borussia Shirt", price:80, img:"borussia.avif"}
+];
+
+let cart = [];
+
+function renderProducts(){
+  const container = document.getElementById("products");
+  container.innerHTML="";
+  products.forEach((p,index)=>{
+    const div = document.createElement("div");
+    div.classList.add("product-item");
+    div.innerHTML = `
+      <img src="${p.img}" alt="${p.name}">
+      <h4>${p.name}</h4>
+      <p class="price">€${p.price}</p>
+      <button class="add-to-cart-btn" onclick="addToCart(${index})">Add to Cart</button>
+    `;
+    container.appendChild(div);
+  });
 }
 
-/* ================= POPULATE SHOP ================= */
-const shopContainer=document.getElementById('shopContainer');
-products.forEach((p,i)=>{
-  const div=document.createElement('div');
-  div.className='shop-item';
-  div.innerHTML=`
-    <img src="${p.img}" alt="${p.name}">
-    <h4>${p.name}</h4>
-    <p class="price">€${p.price}</p>
-    <button class="add-to-cart-btn" onclick="addToCart('${p.name}',${p.price},'${p.img}',this)">Add to Cart</button>
-  `;
-  shopContainer.appendChild(div);
-});
-
-/* ================= CART ================= */
-let cart=[];
-function addToCart(name,price,img,btn){
-  cart.push({name,price,img});
-  renderCart();
-  const fimg=document.createElement('img');
-  fimg.src=img;
-  fimg.className='floating-img';
-  document.body.appendChild(fimg);
-  const rect=btn.getBoundingClientRect();
-  fimg.style.left=rect.left+'px';
-  fimg.style.top=rect.top+'px';
-  setTimeout(()=>{ 
-    const cartPopup=document.getElementById('cartPopup');
-    cartPopup.style.display='block';
-    const cRect=cartPopup.getBoundingClientRect();
-    fimg.style.left=cRect.left+(cRect.width/2-30)+'px';
-    fimg.style.top=cRect.top+'px';
-    fimg.style.width='0px'; fimg.style.height='0px';
-  },50);
-  setTimeout(()=>{ fimg.remove(); },800);
+function addToCart(index){
+  const product = products[index];
+  cart.push(product);
+  renderCartPopup();
 }
-function renderCart(){
-  const cartItems=document.querySelector('#cartPopup .cart-items');
-  cartItems.innerHTML='';
+
+function renderCartPopup(){
+  const popup = document.getElementById("cart-popup");
+  popup.style.display="flex";
+  const itemsDiv = popup.querySelector(".cart-items");
+  itemsDiv.innerHTML="";
   let total=0;
   cart.forEach((item,i)=>{
     total+=item.price;
-    const div=document.createElement('div');
-    div.className='cart-item';
-    div.innerHTML=`<img src="${item.img}"><span>${item.name} - €${item.price}</span><button onclick="removeCartItem(${i})">X</button>`;
-    cartItems.appendChild(div);
+    const div = document.createElement("div");
+    div.classList.add("cart-item");
+    div.innerHTML=`<img src="${item.img}" alt="${item.name}"><span>${item.name} - €${item.price}</span>
+    <button onclick="removeCartItem(${i})">X</button>`;
+    itemsDiv.appendChild(div);
   });
-  document.getElementById('cart-total').innerText=total;
+  document.getElementById("cart-total").innerText=total;
 }
-function removeCartItem(i){ cart.splice(i,1); renderCart(); }
 
-/* ================= MPESA OTP SIMULATION ================= */
-function simulateMpesa(){
-  if(cart.length===0){ alert("Cart is empty!"); return; }
-  document.getElementById('otpPopup').style.display='block';
-  setTimeout(()=>{ alert("✅ Dummy OTP sent to +254724726032"); },500);
+function removeCartItem(i){
+  cart.splice(i,1);
+  renderCartPopup();
 }
-function verifyOtp(){
-  const otp=document.getElementById('otpInput').value;
-  if(otp==="1234"){ 
-    alert("✅ Payment Successful via Mpesa!"); 
-    cart=[]; renderCart(); closeOtp(); 
-  } else {
-    alert("❌ Incorrect OTP. Enter 1234 (dummy)"); 
-  }
+
+function checkout(){
+  if(cart.length===0){ alert("Cart is empty"); return; }
+  alert("Checkout successful! Total: €"+cart.reduce((sum,i)=>sum+i.price,0));
+  cart=[];
+  renderCartPopup();
 }
-function closeOtp(){ document.getElementById('otpPopup').style.display='none'; }
+
+function mpesaPay(){
+  if(cart.length===0){ alert("Cart is empty"); return; }
+  const otp = prompt("Enter OTP sent to +254724726032 (simulated)","");
+  if(otp){ alert("M-Pesa payment successful!"); cart=[]; renderCartPopup(); }
+}
+
+function visaPay(){
+  if(cart.length===0){ alert("Cart is empty"); return; }
+  const otp = prompt("Enter Visa OTP (simulated)","");
+  if(otp){ alert("Visa payment successful!"); cart=[]; renderCartPopup(); }
+}
+
+renderProducts();
 </script>
 </body>
 </html>
