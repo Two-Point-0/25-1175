@@ -4,9 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Locker-Room | Size Guide - Find Your Perfect Fit</title>
-<link rel="stylesheet" href="style.css">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
+
 /* BACKGROUND SLIDER */
 .locker-bg {
     position: fixed;
@@ -20,115 +23,214 @@
     animation: bgSlide 45s infinite;
 }
 
-/* KEYFRAMES FOR 9 IMAGES */
 @keyframes bgSlide {
-    0%   { background-image: url('locker1.jpg'); }
-    11%  { background-image: url('locker2.jpg'); }
-    22%  { background-image: url('locker3.jpg'); }
-    33%  { background-image: url('locker4.jpg'); }
-    44%  { background-image: url('locker5.jpg'); }
-    55%  { background-image: url('locker6.jpg'); }
-    66%  { background-image: url('locker7.jpg'); }
-    77%  { background-image: url('locker8.jpg'); }
-    88%  { background-image: url('stadium.jpg'); }
+    0% { background-image: url('locker1.jpg'); }
+    11% { background-image: url('locker2.jpg'); }
+    22% { background-image: url('locker3.jpg'); }
+    33% { background-image: url('locker4.jpg'); }
+    44% { background-image: url('locker5.jpg'); }
+    55% { background-image: url('locker6.jpg'); }
+    66% { background-image: url('locker7.jpg'); }
+    77% { background-image: url('locker8.jpg'); }
+    88% { background-image: url('stadium.jpg'); }
     100% { background-image: url('locker1.jpg'); }
 }
 
-/* OPTIONAL DARK OVERLAY FOR READABILITY */
 body::before {
     content: "";
     position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0,0,0,0.6);
     z-index: -1;
 }
 
-/* YOUR EXISTING STYLES */
+/* ✅ MATCHED MENU BAR */
+.menu-bar {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 15px;
+}
+
+.menu-bar a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.3s;
+}
+
+.menu-bar a:hover,
+.menu-bar a.active {
+    background: rgba(230,177,126,0.8);
+    color: black;
+}
+
+/* CONTENT */
 .size-card {
     background: #1f2a33;
     padding: 1.5rem;
     border-radius: 20px;
     margin: 1rem 0;
-    border-left: 4px solid var(--locker-accent);
+    border-left: 4px solid #e6b17e;
 }
+
 .measurement-tip {
     display: flex;
     justify-content: center;
-    align-items: stretch;
     gap: 1rem;
     flex-wrap: wrap;
     margin: 1rem 0;
-    text-align: center;
 }
+
 .measurement-icon {
-    background: var(--locker-metal);
+    background: #2c3a45;
     padding: 1rem;
     border-radius: 15px;
     flex: 1 1 250px;
     max-width: 300px;
-    text-align: center;
 }
+
+/* ✅ IMAGE FIX */
 .container-card img {
     display: block;
     margin: 1.5rem auto;
-}
-.fit-note {
-    background: rgba(196,154,108,0.2);
-    padding: 1rem;
+    width: 90%;
+    max-width: 500px;
     border-radius: 15px;
-    margin-top: 1rem;
 }
+
+/* ✅ SIZE BUTTONS */
+.size-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.size-buttons button {
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 20px;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.size-buttons button:hover,
+.size-buttons button.active {
+    background: #e6b17e;
+    color: black;
+}
+
+/* SIZE INFO */
+.size-info {
+    text-align: center;
+    margin-top: 15px;
+    background: rgba(0,0,0,0.4);
+    padding: 15px;
+    border-radius: 15px;
+    display: inline-block;
+}
+
+/* FOOTER */
+.footer-locker {
+    text-align: center;
+    background: rgba(0,0,0,0.4);
+    padding: 15px;
+    margin-top: 30px;
+    color: white;
+}
+
 </style>
 </head>
 
 <body>
+
 <div class="locker-bg"></div>
 
-<!-- YOUR PAGE CONTENT (UNCHANGED) -->
+<!-- ✅ MATCHED MENU -->
 <div class="menu-bar">
-    <a href="index.html">🏠 HOME</a>
-    <a href="shop.html">🛍️ SHOP</a>
-    <a href="size.html" class="active">📏 SIZE GUIDE</a>
-    <a href="videos.html">🎬 VIDEOS</a>
-    <a href="contact.html">📞 CONTACT</a>
+    <a href="index.html"><i class="fas fa-house"></i> Home</a>
+    <a href="shop.html"><i class="fas fa-bag-shopping"></i> Shop</a>
+    <a href="size.html" class="active"><i class="fas fa-ruler"></i> Size Guide</a>
+    <a href="videos.html"><i class="fas fa-video"></i> Videos</a>
+    <a href="contact.html"><i class="fas fa-phone"></i> Contact</a>
 </div>
 
 <div class="page-content">
-    <h2 style="text-align: center;">📏 SIZE GUIDE</h2>
-    <p style="text-align: center; margin-bottom: 2rem;">Find your perfect fit for shirts, shorts, and boots</p>
+    <h2 style="text-align:center;">📏 SIZE GUIDE</h2>
+    <p style="text-align:center;">Find your perfect fit</p>
 
     <div class="container-card">
         <h3>📐 HOW TO MEASURE</h3>
+
         <div class="measurement-tip">
             <div class="measurement-icon">
                 <strong>📏 Chest</strong>
                 <p>Measure around fullest part</p>
-                <small>Under arms, across shoulder blades</small>
             </div>
             <div class="measurement-icon">
                 <strong>📏 Waist</strong>
                 <p>Measure around natural waistline</p>
-                <small>Above belly button</small>
             </div>
             <div class="measurement-icon">
                 <strong>📏 Hips</strong>
-                <p>Measure around widest part</p>
-                <small>For shorts fitting</small>
+                <p>Measure widest part</p>
             </div>
         </div>
-        <img src="size.jpg" alt="Image">
-    </div>
 
-    <!-- REST OF YOUR CONTENT REMAINS EXACTLY THE SAME -->
+        <img src="size.jpg">
+
+        <!-- ✅ SIZE SELECTOR -->
+        <div class="size-buttons">
+            <button onclick="selectSize('S')" id="btn-S">S</button>
+            <button onclick="selectSize('M')" id="btn-M">M</button>
+            <button onclick="selectSize('L')" id="btn-L">L</button>
+            <button onclick="selectSize('XL')" id="btn-XL">XL</button>
+        </div>
+
+        <div class="size-info" id="sizeInfo">
+            Select a size to see measurements
+        </div>
+
+    </div>
 </div>
 
 <footer class="footer-locker">
-    ⚽ THE LOCKER-ROOM - OFFICIAL UEFA MERCHANDISE PARTNER ⚽<br>
-    © 2026 The Locker-Room | Muthithi Road, Westlands, Nairobi, Kenya<br>
-    📞 24/7 Support: +254 700 123 456 | ✉️ info@thelocker-room.co.ke
+⚽ THE LOCKER-ROOM - OFFICIAL UEFA MERCHANDISE PARTNER ⚽<br>
+© 2026 The Locker-Room | Nairobi, Kenya
 </footer>
+
+<script>
+const sizes = {
+    S: "Chest: 88-94 cm | Waist: 76-81 cm",
+    M: "Chest: 95-102 cm | Waist: 82-88 cm",
+    L: "Chest: 103-110 cm | Waist: 89-96 cm",
+    XL: "Chest: 111-118 cm | Waist: 97-104 cm"
+};
+
+function selectSize(size) {
+    document.getElementById("sizeInfo").innerHTML = sizes[size];
+
+    // ✅ SAVE FOR SHOP PAGE
+    localStorage.setItem("selectedSize", size);
+
+    document.querySelectorAll(".size-buttons button").forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    document.getElementById("btn-" + size).classList.add("active");
+}
+</script>
+
 </body>
 </html>
