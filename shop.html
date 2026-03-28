@@ -5,221 +5,260 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Locker-Room | Shop</title>
 
-<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-body { font-family:'Inter', sans-serif; margin:0; padding:0; background:#111; color:#eee; }
-.menu-bar { display:flex; justify-content:center; gap:15px; padding:15px; background:rgba(0,0,0,0.5); backdrop-filter:blur(6px); position:sticky; top:0; z-index:100; }
-.menu-bar a { color:white; text-decoration:none; font-weight:bold; padding:8px 16px; border-radius:20px; display:flex; align-items:center; gap:6px; transition:0.3s; }
-.menu-bar a:hover { background:rgba(230,177,126,0.8); color:black; }
-.menu-bar a i { font-size:1.1rem; }
-.hero { display:flex; justify-content:center; margin:30px 0; }
-.hero-box { padding:15px 25px; background:rgba(0,0,0,0.4); border-radius:25px; backdrop-filter:blur(6px); text-align:center; }
-.hero-box h1 { font-size:3rem; color:#e6b17e; margin:0; }
-.hero-box p { color:#ddd; margin-top:5px; }
-.shop-section { margin:40px 0; }
-.section-title { text-align:center; font-size:2rem; margin-bottom:20px; color:#e6b17e; }
-.scroll-wrapper { display:flex; align-items:center; gap:10px; }
-.scroll-container { display:flex; overflow-x:auto; scroll-behavior:smooth; padding:10px; gap:15px; }
-.scroll-item { min-width:180px; max-width:180px; background:rgba(0,0,0,0.45); border-radius:15px; text-align:center; padding:10px; flex-shrink:0; transition:transform 0.3s; }
-.scroll-item img { width:100%; border-radius:12px; margin-bottom:8px; }
-.scroll-item h4 { font-size:1rem; margin:4px 0; }
-.scroll-item .price { font-weight:bold; color:#f3b44f; }
-.scroll-item button.add-to-cart-btn { margin-top:5px; padding:6px 10px; border:none; border-radius:12px; background:#e6b17e; color:black; cursor:pointer; font-weight:bold; transition:0.3s; }
-.scroll-item button.add-to-cart-btn:hover { background:#f3c17f; }
-.scroll-btn { background:#e6b17e; border:none; border-radius:50%; width:40px; height:40px; cursor:pointer; font-weight:bold; color:black; font-size:1.2rem; }
-.scroll-btn:hover { background:#f3c17f; }
-#cart { position:fixed; right:0; top:0; width:320px; height:100%; background:rgba(0,0,0,0.9); backdrop-filter:blur(8px); padding:20px; display:flex; flex-direction:column; transform:translateX(100%); transition:transform 0.3s; z-index:200; }
-#cart.show {transform:translateX(0);}
-#cart h3 { text-align:center; color:#e6b17e; }
-.cart-items { flex-grow:1; overflow-y:auto; margin:10px 0; }
-.cart-item { display:flex; justify-content:space-between; margin-bottom:10px; align-items:center; }
-.cart-item span { flex:1; }
-.cart-item button { background:#f3b44f; border:none; border-radius:8px; padding:2px 6px; cursor:pointer; font-size:0.8rem; }
-#cart .total { text-align:right; font-weight:bold; margin-top:10px; }
-#cart button#checkoutBtn { width:100%; margin-top:10px; background:#e6b17e; padding:8px; font-weight:bold; cursor:pointer; border-radius:12px; }
-.footer-locker { text-align:center; background:rgba(0,0,0,0.4); padding:15px 10px; color:white; backdrop-filter:blur(6px); }
+
+/* BACKGROUND */
+body::before{
+content:"";
+position:fixed;
+width:100%;
+height:100%;
+z-index:-2;
+background-size:cover;
+animation:bg 25s infinite;
+}
+@keyframes bg{
+0%{background:url('locker1.jpg')}
+25%{background:url('locker2.jpg')}
+50%{background:url('locker3.jpg')}
+75%{background:url('locker4.jpg')}
+100%{background:url('locker5.jpg')}
+}
+
+body::after{
+content:"";
+position:fixed;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+z-index:-1;
+}
+
+body{font-family:Inter; margin:0; color:#fff;}
+
+/* MENU */
+.menu-bar{
+display:flex;
+justify-content:center;
+gap:15px;
+padding:15px;
+}
+.menu-bar a{
+padding:8px 16px;
+border-radius:20px;
+background:rgba(0,0,0,0.5);
+color:white;
+text-decoration:none;
+}
+
+/* GRID */
+.section-title{
+text-align:center;
+color:#e6b17e;
+margin-top:20px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:20px;
+padding:20px;
+}
+
+.card{
+background:rgba(0,0,0,0.5);
+padding:10px;
+border-radius:15px;
+text-align:center;
+}
+.card img{
+width:100%;
+border-radius:10px;
+}
+.price{color:#f3b44f;}
+.card button{
+background:#e6b17e;
+border:none;
+padding:5px;
+border-radius:10px;
+cursor:pointer;
+}
+
+/* CART */
+#cart{
+position:fixed;
+right:0;
+top:0;
+width:300px;
+height:100%;
+background:#111;
+padding:20px;
+transform:translateX(100%);
+transition:0.3s;
+}
+#cart.show{transform:translateX(0);}
+
+.cart-item{
+display:flex;
+gap:10px;
+margin-bottom:10px;
+}
+.cart-item img{width:40px;}
+
 </style>
 </head>
+
 <body>
 
-<!-- MENU -->
 <div class="menu-bar">
-    <a href="index.html"><i class="fas fa-house"></i> Home</a>
-    <a href="shop.html"><i class="fas fa-bag-shopping"></i> Shop</a>
-    <a href="size.html"><i class="fas fa-ruler"></i> Size Guide</a>
-    <a href="videos.html"><i class="fas fa-video"></i> Videos</a>
-    <a href="contact.html"><i class="fas fa-phone"></i> Contact</a>
-    <a href="#" onclick="toggleCart()"><i class="fas fa-cart-shopping"></i> Cart (<span id="cart-count">0</span>)</a>
+<a href="index.html">Home</a>
+<a href="shop.html">Shop</a>
+<a href="size.html">Size</a>
+<a href="#" onclick="toggleCart()">Cart (<span id="cart-count">0</span>)</a>
 </div>
 
-<!-- HERO -->
-<div class="hero">
-    <div class="hero-box">
-        <h1>⚡ THE LOCKER-ROOM ⚡</h1>
-        <p>Where Champions Gear Up</p>
-    </div>
-</div>
-
-<!-- ==================== SHORTS ==================== -->
-<div class="shop-section">
-<h2 class="section-title">Shorts</h2>
-<div class="scroll-wrapper">
-    <button class="scroll-btn" onclick="scrollGallery('shorts','prev')"><i class="fas fa-chevron-left"></i></button>
-    <div id="shorts" class="scroll-container">
-        <div class="scroll-item"><img src="barcelona shorts.avif" alt="Barcelona Shorts"><h4>Barcelona Shorts</h4><p class="price">€50</p><button class="add-to-cart-btn" onclick="addToCart('Barcelona Shorts',50,'barcelona shorts.avif')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="madrid shorts.webp" alt="Madrid Shorts"><h4>Madrid Shorts</h4><p class="price">€50</p><button class="add-to-cart-btn" onclick="addToCart('Madrid Shorts',50,'madrid shorts.webp')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="liverpool shorts.avif" alt="Liverpool Shorts"><h4>Liverpool Shorts</h4><p class="price">€50</p><button class="add-to-cart-btn" onclick="addToCart('Liverpool Shorts',50,'liverpool shorts.avif')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="city shorts.avif" alt="City Shorts"><h4>City Shorts</h4><p class="price">€50</p><button class="add-to-cart-btn" onclick="addToCart('City Shorts',50,'city shorts.avif')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="arsenal shorts.webp" alt="Arsenal Shorts"><h4>Arsenal Shorts</h4><p class="price">€50</p><button class="add-to-cart-btn" onclick="addToCart('Arsenal Shorts',50,'arsenal shorts.webp')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="chelsea shorts.avif" alt="Chelsea Shorts"><h4>Chelsea Shorts</h4><p class="price">€50</p><button class="add-to-cart-btn" onclick="addToCart('Chelsea Shorts',50,'chelsea shorts.avif')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="psg shorts.avif" alt="PSG Shorts"><h4>PSG Shorts</h4><p class="price">€50</p><button class="add-to-cart-btn" onclick="addToCart('PSG Shorts',50,'psg shorts.avif')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="juventus shorts.avif" alt="Juventus Shorts"><h4>Juventus Shorts</h4><p class="price">€50</p><button class="add-to-cart-btn" onclick="addToCart('Juventus Shorts',50,'juventus shorts.avif')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="AcMilan shorts.avif" alt="AC Milan Shorts"><h4>AC Milan Shorts</h4><p class="price">€50</p><button class="add-to-cart-btn" onclick="addToCart('AC Milan Shorts',50,'AcMilan shorts.avif')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="inter shorts.avif" alt="Inter Shorts"><h4>Inter Shorts</h4><p class="price">€50</p><button class="add-to-cart-btn" onclick="addToCart('Inter Shorts',50,'inter shorts.avif')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="napoli shorts.webp" alt="Napoli Shorts"><h4>Napoli Shorts</h4><p class="price">€50</p><button class="add-to-cart-btn" onclick="addToCart('Napoli Shorts',50,'napoli shorts.webp')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="bayern shorts.avif" alt="Bayern Shorts"><h4>Bayern Shorts</h4><p class="price">€50</p><button class="add-to-cart-btn" onclick="addToCart('Bayern Shorts',50,'bayern shorts.avif')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="borussia shorts.avif" alt="Borussia Shorts"><h4>Borussia Shorts</h4><p class="price">€50</p><button class="add-to-cart-btn" onclick="addToCart('Borussia Shorts',50,'borussia shorts.avif')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="RB shorts.avif" alt="RB Shorts"><h4>RB Shorts</h4><p class="price">€50</p><button class="add-to-cart-btn" onclick="addToCart('RB Shorts',50,'RB shorts.avif')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="leverkusen shorts.avif" alt="Leverkusen Shorts"><h4>Leverkusen Shorts</h4><p class="price">€50</p><button class="add-to-cart-btn" onclick="addToCart('Leverkusen Shorts',50,'leverkusen shorts.avif')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="athletico shorts.webp" alt="Athletico Shorts"><h4>Athletico Shorts</h4><p class="price">€50</p><button class="add-to-cart-btn" onclick="addToCart('Athletico Shorts',50,'athletico shorts.webp')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="sevila short.avif" alt="Sevilla Shorts"><h4>Sevilla Shorts</h4><p class="price">€50</p><button class="add-to-cart-btn" onclick="addToCart('Sevilla Shorts',50,'sevila short.avif')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="olympique shorts.avif" alt="Olympique Shorts"><h4>Olympique Shorts</h4><p class="price">€50</p><button class="add-to-cart-btn" onclick="addToCart('Olympique Shorts',50,'olympique shorts.avif')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="lyon shorts.avif" alt="Lyon Shorts"><h4>Lyon Shorts</h4><p class="price">€50</p><button class="add-to-cart-btn" onclick="addToCart('Lyon Shorts',50,'lyon shorts.avif')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="monaco shorts.avif" alt="Monaco Shorts"><h4>Monaco Shorts</h4><p class="price">€50</p><button class="add-to-cart-btn" onclick="addToCart('Monaco Shorts',50,'monaco shorts.avif')">Add to Cart</button></div>
-    </div>
-    <button class="scroll-btn" onclick="scrollGallery('shorts','next')"><i class="fas fa-chevron-right"></i></button>
-</div>
-</div>
-
-<!-- ==================== SHIRTS ==================== -->
-<div class="shop-section">
 <h2 class="section-title">Shirts</h2>
-<div class="scroll-wrapper">
-    <button class="scroll-btn" onclick="scrollGallery('shirts','prev')"><i class="fas fa-chevron-left"></i></button>
-    <div id="shirts" class="scroll-container">
-        <div class="scroll-item"><img src="barca.png" alt="Barcelona Shirt"><h4>Barcelona Shirt</h4><p class="price">€80</p><button class="add-to-cart-btn" onclick="addToCart('Barcelona Shirt',80,'barca.png')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="madrid.avif" alt="Madrid Shirt"><h4>Madrid Shirt</h4><p class="price">€80</p><button class="add-to-cart-btn" onclick="addToCart('Madrid Shirt',80,'madrid.avif')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="liverpool.avif" alt="Liverpool Shirt"><h4>Liverpool Shirt</h4><p class="price">€80</p><button class="add-to-cart-btn" onclick="addToCart('Liverpool Shirt',80,'liverpool.avif')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="city.avif" alt="City Shirt"><h4>City Shirt</h4><p class="price">€80</p><button class="add-to-cart-btn" onclick="addToCart('City Shirt',80,'city.avif')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="arsenal.avif" alt="Arsenal Shirt"><h4>Arsenal Shirt</h4><p class="price">€80</p><button class="add-to-cart-btn" onclick="addToCart('Arsenal Shirt',80,'arsenal.avif')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="chelsea.avif" alt="Chelsea Shirt"><h4>Chelsea Shirt</h4><p class="price">€80</p><button class="add-to-cart-btn" onclick="addToCart('Chelsea Shirt',80,'chelsea.avif')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="psg.avif" alt="PSG Shirt"><h4>PSG Shirt</h4><p class="price">€80</p><button class="add-to-cart-btn" onclick="addToCart('PSG Shirt',80,'psg.avif')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="juventus.avif" alt="Juventus Shirt"><h4>Juventus Shirt</h4><p class="price">€80</p><button class="add-to-cart-btn" onclick="addToCart('Juventus Shirt',80,'juventus.avif')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="AC Milan.jpg" alt="AC Milan Shirt"><h4>AC Milan Shirt</h4><p class="price">€80</p><button class="add-to-cart-btn" onclick="addToCart('AC Milan Shirt',80,'AC Milan.jpg')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="inter.avif" alt="Inter Shirt"><h4>Inter Shirt</h4><p class="price">€80</p><button class="add-to-cart-btn" onclick="addToCart('Inter Shirt',80,'inter.avif')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="napoli.webp" alt="Napoli Shirt"><h4>Napoli Shirt</h4><p class="price">€80</p><button class="add-to-cart-btn" onclick="addToCart('Napoli Shirt',80,'napoli.webp')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="bayern.avif" alt="Bayern Shirt"><h4>Bayern Shirt</h4><p class="price">€80</p><button class="add-to-cart-btn" onclick="addToCart('Bayern Shirt',80,'bayern.avif')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="borussia.avif" alt="Borussia Shirt"><h4>Borussia Shirt</h4><p class="price">€80</p><button class="add-to-cart-btn" onclick="addToCart('Borussia Shirt',80,'borussia.avif')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="RB.avif" alt="RB Shirt"><h4>RB Shirt</h4><p class="price">€80</p><button class="add-to-cart-btn" onclick="addToCart('RB Shirt',80,'RB.avif')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="leverkusen.avif" alt="Leverkusen Shirt"><h4>Leverkusen Shirt</h4><p class="price">€80</p><button class="add-to-cart-btn" onclick="addToCart('Leverkusen Shirt',80,'leverkusen.avif')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="athletico.jpg" alt="Athletico Shirt"><h4>Athletico Shirt</h4><p class="price">€80</p><button class="add-to-cart-btn" onclick="addToCart('Athletico Shirt',80,'athletico.jpg')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="sevila.jpg" alt="Sevilla Shirt"><h4>Sevilla Shirt</h4><p class="price">€80</p><button class="add-to-cart-btn" onclick="addToCart('Sevilla Shirt',80,'sevila.jpg')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="olympique.avif" alt="Olympique Shirt"><h4>Olympique Shirt</h4><p class="price">€80</p><button class="add-to-cart-btn" onclick="addToCart('Olympique Shirt',80,'olympique.avif')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="lyon.avif" alt="Lyon Shirt"><h4>Lyon Shirt</h4><p class="price">€80</p><button class="add-to-cart-btn" onclick="addToCart('Lyon Shirt',80,'lyon.avif')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="monaco.avif" alt="Monaco Shirt"><h4>Monaco Shirt</h4><p class="price">€80</p><button class="add-to-cart-btn" onclick="addToCart('Monaco Shirt',80,'monaco.avif')">Add to Cart</button></div>
-    </div>
-    <button class="scroll-btn" onclick="scrollGallery('shirts','next')"><i class="fas fa-chevron-right"></i></button>
-</div>
-</div>
-<!-- ==================== BOOTS ==================== -->
-<div class="shop-section">
+<div class="grid" id="shirts"></div>
+
+<h2 class="section-title">Shorts</h2>
+<div class="grid" id="shorts"></div>
+
 <h2 class="section-title">Boots</h2>
-<div class="scroll-wrapper">
-    <button class="scroll-btn" onclick="scrollGallery('boots','prev')"><i class="fas fa-chevron-left"></i></button>
-    <div id="boots" class="scroll-container">
-        <div class="scroll-item"><img src="f50 elite.jpg" alt="F50 Elite"><h4>F50 Elite</h4><p class="price">€120</p><button class="add-to-cart-btn" onclick="addToCart('F50 Elite',120,'f50 elite.jpg')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="pedri predator.jpg" alt="Pedri Predator"><h4>Pedri Predator</h4><p class="price">€130</p><button class="add-to-cart-btn" onclick="addToCart('Pedri Predator',130,'pedri predator.jpg')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="yamal f50.jpg" alt="Yamal F50"><h4>Yamal F50</h4><p class="price">€120</p><button class="add-to-cart-btn" onclick="addToCart('Yamal F50',120,'yamal f50.jpg')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="jude.jpg" alt="Jude Boot"><h4>Jude Boot</h4><p class="price">€110</p><button class="add-to-cart-btn" onclick="addToCart('Jude Boot',110,'jude.jpg')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="copa pure 3.jpg" alt="Copa Pure 3"><h4>Copa Pure 3</h4><p class="price">€140</p><button class="add-to-cart-btn" onclick="addToCart('Copa Pure 3',140,'copa pure 3.jpg')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="x speedflow.jpg" alt="X Speedflow"><h4>X Speedflow</h4><p class="price">€135</p><button class="add-to-cart-btn" onclick="addToCart('X Speedflow',135,'x speedflow.jpg')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="mecurial.jpg" alt="Mercurial"><h4>Mercurial</h4><p class="price">€140</p><button class="add-to-cart-btn" onclick="addToCart('Mercurial',140,'mecurial.jpg')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="neymar puma.jpg" alt="Neymar Puma"><h4>Neymar Puma</h4><p class="price">€150</p><button class="add-to-cart-btn" onclick="addToCart('Neymar Puma',150,'neymar puma.jpg')">Add to Cart</button></div>
-    </div>
-    <button class="scroll-btn" onclick="scrollGallery('boots','next')"><i class="fas fa-chevron-right"></i></button>
-</div>
-</div>
+<div class="grid" id="boots"></div>
 
-<!-- ==================== MEMORABILIA ==================== -->
-<div class="shop-section">
 <h2 class="section-title">Memorabilia</h2>
-<div class="scroll-wrapper">
-    <button class="scroll-btn" onclick="scrollGallery('memorabilia','prev')"><i class="fas fa-chevron-left"></i></button>
-    <div id="memorabilia" class="scroll-container">
-        <div class="scroll-item"><img src="pedri signed.jpg" alt="Pedri Signed"><h4>Pedri Signed</h4><p class="price">€250</p><button class="add-to-cart-btn" onclick="addToCart('Pedri Signed',250,'pedri signed.jpg')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="pedri 2.jpg" alt="Pedri Memorabilia"><h4>Pedri Memorabilia</h4><p class="price">€220</p><button class="add-to-cart-btn" onclick="addToCart('Pedri Memorabilia',220,'pedri 2.jpg')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="ms1.webp" alt="Messi 1"><h4>Messi 1</h4><p class="price">€300</p><button class="add-to-cart-btn" onclick="addToCart('Messi 1',300,'ms1.webp')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="ms2.jpg" alt="Messi 2"><h4>Messi 2</h4><p class="price">€320</p><button class="add-to-cart-btn" onclick="addToCart('Messi 2',320,'ms2.jpg')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="yamal card.jpg" alt="Yamal Card"><h4>Yamal Card</h4><p class="price">€180</p><button class="add-to-cart-btn" onclick="addToCart('Yamal Card',180,'yamal card.jpg')">Add to Cart</button></div>
-        <div class="scroll-item"><img src="yamal card 2.jpg" alt="Yamal Card 2"><h4>Yamal Card 2</h4><p class="price">€190</p><button class="add-to-cart-btn" onclick="addToCart('Yamal Card 2',190,'yamal card 2.jpg')">Add to Cart</button></div>
-    </div>
-    <button class="scroll-btn" onclick="scrollGallery('memorabilia','next')"><i class="fas fa-chevron-right"></i></button>
-</div>
-</div>
+<div class="grid" id="memo"></div>
 
-<!-- ==================== CART PANEL ==================== -->
+<!-- CART -->
 <div id="cart">
-<h3>Your Cart</h3>
+<h3>Cart</h3>
 <div class="cart-items"></div>
-<div class="total">Total: €<span id="cart-total">0</span></div>
-<button id="checkoutBtn" onclick="checkout()">Checkout</button>
+<p>Total €<span id="total">0</span></p>
 </div>
 
-<!-- ==================== FOOTER ==================== -->
-<div class="footer-locker">
-⚽ THE LOCKER-ROOM - OFFICIAL UEFA MERCHANDISE PARTNER ⚽<br>
-© 2026 The Locker-Room | Muthithi Road, Westlands, Nairobi, Kenya<br>
-📞 24/7 Support: +254 700 123 456 | ✉️ info@thelocker-room.co.ke<br>
-🇰🇪 Free East Africa Shipping | 30-Day Returns | 100% Authentic
-</div>
-
-<!-- ==================== SCRIPTS ==================== -->
 <script>
-// Horizontal scroll buttons
-function scrollGallery(id, direction) {
-    const container = document.getElementById(id);
-    const scrollAmount = 200;
-    if(direction==='next') container.scrollBy({left:scrollAmount, behavior:'smooth'});
-    else container.scrollBy({left:-scrollAmount, behavior:'smooth'});
+
+/* 🔥 PRODUCTS (ALL YOUR 54 ITEMS) */
+
+const shirts=[
+["Barcelona Shirt",80,"barca.png"],
+["Madrid Shirt",80,"madrid.avif"],
+["Liverpool Shirt",80,"liverpool.avif"],
+["City Shirt",80,"city.avif"],
+["Arsenal Shirt",80,"arsenal.avif"],
+["Chelsea Shirt",80,"chelsea.avif"],
+["PSG Shirt",80,"psg.avif"],
+["Juventus Shirt",80,"juventus.avif"],
+["AC Milan Shirt",80,"AC Milan.jpg"],
+["Inter Shirt",80,"inter.avif"],
+["Napoli Shirt",80,"napoli.webp"],
+["Bayern Shirt",80,"bayern.avif"],
+["Borussia Shirt",80,"borussia.avif"],
+["RB Shirt",80,"RB.avif"],
+["Leverkusen Shirt",80,"leverkusen.avif"],
+["Athletico Shirt",80,"athletico.jpg"],
+["Sevilla Shirt",80,"sevila.jpg"],
+["Olympique Shirt",80,"olympique.avif"],
+["Lyon Shirt",80,"lyon.avif"],
+["Monaco Shirt",80,"monaco.avif"]
+];
+
+const shorts=[
+["Barcelona Shorts",50,"barcelona shorts.avif"],
+["Madrid Shorts",50,"madrid shorts.webp"],
+["Liverpool Shorts",50,"liverpool shorts.avif"],
+["City Shorts",50,"city shorts.avif"],
+["Arsenal Shorts",50,"arsenal shorts.webp"],
+["Chelsea Shorts",50,"chelsea shorts.avif"],
+["PSG Shorts",50,"psg shorts.avif"],
+["Juventus Shorts",50,"juventus shorts.avif"],
+["AC Milan Shorts",50,"AcMilan shorts.avif"],
+["Inter Shorts",50,"inter shorts.avif"],
+["Napoli Shorts",50,"napoli shorts.webp"],
+["Bayern Shorts",50,"bayern shorts.avif"],
+["Borussia Shorts",50,"borussia shorts.avif"],
+["RB Shorts",50,"RB shorts.avif"],
+["Leverkusen Shorts",50,"leverkusen shorts.avif"],
+["Athletico Shorts",50,"athletico shorts.webp"],
+["Sevilla Shorts",50,"sevila short.avif"],
+["Olympique Shorts",50,"olympique shorts.avif"],
+["Lyon Shorts",50,"lyon shorts.avif"],
+["Monaco Shorts",50,"monaco shorts.avif"]
+];
+
+const boots=[
+["F50 Elite",120,"f50 elite.jpg"],
+["Pedri Predator",130,"pedri predator.jpg"],
+["Yamal F50",120,"yamal f50.jpg"],
+["Jude Boot",110,"jude.jpg"],
+["Copa Pure 3",140,"copa pure 3.jpg"],
+["X Speedflow",135,"x speedflow.jpg"],
+["Mercurial",140,"mecurial.jpg"],
+["Neymar Puma",150,"neymar puma.jpg"]
+];
+
+const memo=[
+["Pedri Signed",250,"pedri signed.jpg"],
+["Pedri Memorabilia",220,"pedri 2.jpg"],
+["Messi 1",300,"ms1.webp"],
+["Messi 2",320,"ms2.jpg"],
+["Yamal Card",180,"yamal card.jpg"],
+["Yamal Card 2",190,"yamal card 2.jpg"]
+];
+
+/* 🔥 RENDER FUNCTION */
+function render(section,id){
+let container=document.getElementById(id);
+section.forEach(item=>{
+container.innerHTML+=`
+<div class="card">
+<img src="${item[2]}">
+<h4>${item[0]}</h4>
+<p class="price">€${item[1]}</p>
+<button onclick="add('${item[0]}',${item[1]},'${item[2]}')">Add</button>
+</div>`;
+});
 }
 
-// Cart functionality
-let cart = [];
-function addToCart(name, price, img) {
-    cart.push({name, price, img});
-    renderCart();
+render(shirts,"shirts");
+render(shorts,"shorts");
+render(boots,"boots");
+render(memo,"memo");
+
+/* CART */
+let cart=[];
+function add(name,price,img){
+let size=localStorage.getItem("selectedSize");
+if(!size){alert("Select size first");return;}
+
+cart.push({name,price,img,size});
+update();
 }
-function renderCart() {
-    const cartItems = document.querySelector('.cart-items');
-    cartItems.innerHTML = '';
-    let total = 0;
-    cart.forEach((item, index) => {
-        total += item.price;
-        const div = document.createElement('div');
-        div.classList.add('cart-item');
-        div.innerHTML = `<img src="${item.img}" width="40" style="border-radius:5px;margin-right:5px;">
-                         <span>${item.name} - €${item.price}</span>
-                         <button onclick="removeCartItem(${index})">X</button>`;
-        cartItems.appendChild(div);
-    });
-    document.getElementById('cart-total').innerText = total;
-    document.getElementById('cart-count').innerText = cart.length;
+
+function update(){
+let c=document.querySelector(".cart-items");
+c.innerHTML="";
+let total=0;
+
+cart.forEach((i,x)=>{
+total+=i.price;
+c.innerHTML+=`
+<div class="cart-item">
+<img src="${i.img}">
+<div>${i.name}<br>Size:${i.size}</div>
+<button onclick="remove(${x})">X</button>
+</div>`;
+});
+
+document.getElementById("total").innerText=total;
+document.getElementById("cart-count").innerText=cart.length;
 }
-function removeCartItem(index) {
-    cart.splice(index,1);
-    renderCart();
-}
-function toggleCart() {
-    document.getElementById('cart').classList.toggle('show');
-}
-function checkout() {
-    if(cart.length===0) { alert('Your cart is empty!'); return; }
-    alert('Checkout Successful! Total: €' + cart.reduce((sum,i)=>sum+i.price,0));
-    cart = [];
-    renderCart();
-}
+
+function remove(i){cart.splice(i,1);update();}
+function toggleCart(){document.getElementById("cart").classList.toggle("show");}
+
 </script>
 
 </body>
