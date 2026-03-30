@@ -159,22 +159,23 @@ body::before {
     gap: 12px;
 }
 
-/* Carousel Wrapper */
+/* Carousel Wrapper - Shows 3 items with center highlighted */
 .carousel-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 15px;
     padding: 0 20px;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
+    position: relative;
 }
 
 .carousel-container {
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    gap: 22px;
-    padding: 15px 10px;
+    gap: 25px;
+    padding: 20px 0;
     scroll-behavior: smooth;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -187,26 +188,36 @@ body::before {
     display: none;
 }
 
-/* Product Cards */
+/* Product Cards - Only 3 visible, center highlighted */
 .scroll-item {
-    min-width: 200px;
-    max-width: 200px;
+    min-width: 220px;
+    max-width: 220px;
     flex-shrink: 0;
     scroll-snap-align: center;
-    background: rgba(18, 20, 26, 0.9);
+    background: rgba(18, 20, 26, 0.85);
     backdrop-filter: blur(12px);
     border-radius: 24px;
-    padding: 16px 14px;
+    padding: 18px 16px;
     text-align: center;
-    transition: all 0.4s ease;
-    border: 1px solid rgba(230, 177, 126, 0.35);
+    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    border: 1px solid rgba(230, 177, 126, 0.3);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    opacity: 0.5;
+    transform: scale(0.9);
+}
+
+/* Highlight the centered/active item */
+.scroll-item.active-center {
+    opacity: 1;
+    transform: scale(1.05);
+    border: 2px solid #e6b17e;
+    box-shadow: 0 20px 40px rgba(230, 177, 126, 0.4);
+    background: rgba(25, 28, 35, 0.95);
 }
 
 .scroll-item:hover {
-    transform: translateY(-8px);
+    transform: scale(1.02);
     border-color: #e6b17e;
-    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5);
 }
 
 .scroll-item img {
@@ -216,12 +227,17 @@ body::before {
     border-radius: 18px;
     background: #1e212a;
     margin-bottom: 12px;
+    transition: transform 0.3s ease;
+}
+
+.scroll-item.active-center img {
+    transform: scale(1.02);
 }
 
 .item-name {
     font-weight: 600;
-    font-size: 0.85rem;
-    margin: 8px 0 4px;
+    font-size: 0.9rem;
+    margin: 10px 0 5px;
     color: #fff;
     white-space: nowrap;
     overflow: hidden;
@@ -232,7 +248,7 @@ body::before {
     font-weight: 800;
     color: #e6b17e;
     margin-bottom: 12px;
-    font-size: 1rem;
+    font-size: 1.1rem;
 }
 
 .add-btn {
@@ -257,24 +273,28 @@ body::before {
     box-shadow: 0 4px 15px rgba(230, 177, 126, 0.5);
 }
 
+/* Navigation Buttons */
 .carousel-btn {
     background: rgba(230, 177, 126, 0.9);
     backdrop-filter: blur(5px);
     border: none;
     border-radius: 50%;
-    width: 44px;
-    height: 44px;
-    font-size: 1.6rem;
+    width: 48px;
+    height: 48px;
+    font-size: 1.8rem;
     cursor: pointer;
     color: #111;
+    font-weight: bold;
     transition: 0.3s;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     flex-shrink: 0;
+    z-index: 10;
 }
 
 .carousel-btn:hover {
     background: #e6b17e;
     transform: scale(1.08);
+    box-shadow: 0 6px 18px rgba(230, 177, 126, 0.4);
 }
 
 /* Cart Badge */
@@ -444,12 +464,19 @@ body::before {
 }
 
 @media (max-width: 768px) {
-    .scroll-item { min-width: 170px; max-width: 170px; }
+    .scroll-item { min-width: 180px; max-width: 180px; }
     .section-title { font-size: 1.5rem; }
     .hero h1 { font-size: 2rem; }
     .menu-bar a { padding: 6px 12px; font-size: 0.7rem; }
-    .carousel-btn { width: 38px; height: 38px; font-size: 1.3rem; }
+    .carousel-btn { width: 40px; height: 40px; font-size: 1.4rem; }
     .cart-badge { width: 52px; height: 52px; font-size: 1.4rem; }
+    .carousel-container { max-width: 500px; gap: 15px; }
+}
+
+@media (max-width: 480px) {
+    .scroll-item { min-width: 160px; max-width: 160px; padding: 12px 10px; }
+    .carousel-container { max-width: 420px; gap: 12px; }
+    .carousel-btn { width: 36px; height: 36px; font-size: 1.2rem; }
 }
 </style>
 </head>
@@ -472,7 +499,7 @@ body::before {
     <p>Where Champions Gear Up | Authentic Kits • Elite Boots • Collector's Items</p>
 </div>
 
-<!-- SHIRTS SECTION -->
+<!-- SHIRTS SECTION - 20 items -->
 <h2 class="section-title"><i class="fas fa-tshirt"></i> Official Match Shirts <i class="fas fa-futbol"></i></h2>
 <div class="carousel-wrapper">
     <button class="carousel-btn" onclick="scrollCarousel('shirtsRow', -280)">‹</button>
@@ -480,7 +507,7 @@ body::before {
     <button class="carousel-btn" onclick="scrollCarousel('shirtsRow', 280)">›</button>
 </div>
 
-<!-- SHORTS SECTION -->
+<!-- SHORTS SECTION - 20 items -->
 <h2 class="section-title"><i class="fas fa-shorts"></i> Pro Training Shorts <i class="fas fa-running"></i></h2>
 <div class="carousel-wrapper">
     <button class="carousel-btn" onclick="scrollCarousel('shortsRow', -280)">‹</button>
@@ -488,7 +515,7 @@ body::before {
     <button class="carousel-btn" onclick="scrollCarousel('shortsRow', 280)">›</button>
 </div>
 
-<!-- BOOTS SECTION -->
+<!-- BOOTS SECTION - 8 items -->
 <h2 class="section-title"><i class="fas fa-shoe-prints"></i> Elite Performance Boots <i class="fas fa-medal"></i></h2>
 <div class="carousel-wrapper">
     <button class="carousel-btn" onclick="scrollCarousel('bootsRow', -280)">‹</button>
@@ -496,7 +523,7 @@ body::before {
     <button class="carousel-btn" onclick="scrollCarousel('bootsRow', 280)">›</button>
 </div>
 
-<!-- MEMORABILIA SECTION -->
+<!-- MEMORABILIA SECTION - 6 items -->
 <h2 class="section-title"><i class="fas fa-star"></i> Signed Memorabilia <i class="fas fa-crown"></i></h2>
 <div class="carousel-wrapper">
     <button class="carousel-btn" onclick="scrollCarousel('memorabiliaRow', -280)">‹</button>
@@ -524,7 +551,7 @@ body::before {
 </footer>
 
 <script>
-// PRODUCT DATA - All 54 items
+// PRODUCT DATA - All 54 items (20 shirts, 20 shorts, 8 boots, 6 memorabilia)
 const shirtsData = [
     { name: "Barcelona Shirt", price: 80, img: "barca.png" },
     { name: "Madrid Shirt", price: 80, img: "madrid.avif" },
@@ -591,15 +618,14 @@ const memorabiliaData = [
     { name: "Yamal Auto Card", price: 99, img: "yamal card 2.jpg" }
 ];
 
-// Render function
-function renderProducts(containerId, productsArray) {
+// Render products in carousel
+function renderCarousel(containerId, productsArray) {
     const container = document.getElementById(containerId);
     if (!container) return;
     container.innerHTML = '';
-    productsArray.forEach((product, index) => {
+    productsArray.forEach(product => {
         const itemDiv = document.createElement('div');
         itemDiv.className = 'scroll-item';
-        itemDiv.setAttribute('data-index', index);
         itemDiv.innerHTML = `
             <img src="${product.img}" alt="${product.name}" onerror="this.src='https://placehold.co/300x300/1e2a3a/e6b17e?text=Image+Not+Found'">
             <div class="item-name">${product.name}</div>
@@ -617,16 +643,54 @@ function renderProducts(containerId, productsArray) {
             addToCart(name, price);
         });
     });
+    
+    setupCarouselHighlight(containerId);
 }
 
-// CART FUNCTIONALITY - FIXED DELETE
+// Function to highlight centered item in carousel
+function setupCarouselHighlight(containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    
+    const updateHighlight = () => {
+        const items = container.querySelectorAll('.scroll-item');
+        const containerRect = container.getBoundingClientRect();
+        const centerX = containerRect.left + containerRect.width / 2;
+        
+        let closestItem = null;
+        let closestDistance = Infinity;
+        
+        items.forEach(item => {
+            const itemRect = item.getBoundingClientRect();
+            const itemCenterX = itemRect.left + itemRect.width / 2;
+            const distance = Math.abs(centerX - itemCenterX);
+            
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                closestItem = item;
+            }
+        });
+        
+        items.forEach(item => item.classList.remove('active-center'));
+        if (closestItem) {
+            closestItem.classList.add('active-center');
+        }
+    };
+    
+    container.addEventListener('scroll', () => {
+        requestAnimationFrame(updateHighlight);
+    });
+    
+    setTimeout(updateHighlight, 100);
+}
+
+// CART FUNCTIONALITY
 let cart = [];
 
 function addToCart(name, price) {
     cart.push({ name, price, id: Date.now() + Math.random() });
     updateCartDisplay();
     document.getElementById('cartModal').classList.add('show');
-    // Animation feedback
     const badge = document.getElementById('cartCount');
     badge.style.transform = 'scale(1.2)';
     setTimeout(() => { badge.style.transform = 'scale(1)'; }, 200);
@@ -645,7 +709,6 @@ function updateCartDisplay() {
         total += item.price;
         const cartRow = document.createElement('div');
         cartRow.className = 'cart-item';
-        cartRow.setAttribute('data-cart-id', item.id);
         cartRow.innerHTML = `
             <span>${item.name} <strong>€${item.price}</strong></span>
             <button class="remove-cart-item" data-idx="${idx}"><i class="fas fa-trash"></i> Remove</button>
@@ -656,7 +719,6 @@ function updateCartDisplay() {
     if (totalSpan) totalSpan.innerText = total.toFixed(2);
     if (badgeSpan) badgeSpan.innerText = cart.length;
     
-    // Attach remove event listeners - FIXED to use index properly
     document.querySelectorAll('.remove-cart-item').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -691,11 +753,11 @@ function closeCartModal() {
     document.getElementById('cartModal').classList.remove('show');
 }
 
-// Render all products
-renderProducts('shirtsRow', shirtsData);
-renderProducts('shortsRow', shortsData);
-renderProducts('bootsRow', bootsData);
-renderProducts('memorabiliaRow', memorabiliaData);
+// Render all carousels
+renderCarousel('shirtsRow', shirtsData);
+renderCarousel('shortsRow', shortsData);
+renderCarousel('bootsRow', bootsData);
+renderCarousel('memorabiliaRow', memorabiliaData);
 
 // Event listeners
 const cartModal = document.getElementById('cartModal');
