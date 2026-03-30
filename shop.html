@@ -159,7 +159,7 @@ body::before {
     gap: 12px;
 }
 
-/* Carousel Wrapper - Shows 3 items with center highlighted */
+/* Carousel Wrapper */
 .carousel-wrapper {
     display: flex;
     align-items: center;
@@ -188,7 +188,7 @@ body::before {
     display: none;
 }
 
-/* Product Cards - Only 3 visible, center highlighted */
+/* Product Cards */
 .scroll-item {
     min-width: 220px;
     max-width: 220px;
@@ -204,6 +204,40 @@ body::before {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     opacity: 0.5;
     transform: scale(0.9);
+}
+
+/* Dummy Item - Black Container */
+.dummy-item {
+    min-width: 220px;
+    max-width: 220px;
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(12px);
+    border-radius: 24px;
+    padding: 18px 16px;
+    text-align: center;
+    border: 1px solid rgba(100, 100, 100, 0.3);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    opacity: 0.4;
+    transform: scale(0.9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 320px;
+}
+
+.dummy-item i {
+    font-size: 3rem;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.dummy-item p {
+    color: #555;
+    font-size: 0.9rem;
+    font-weight: 500;
 }
 
 /* Highlight the centered/active item */
@@ -273,38 +307,6 @@ body::before {
     box-shadow: 0 4px 15px rgba(230, 177, 126, 0.5);
 }
 
-/* Float Animation for Add to Cart */
-@keyframes floatToCart {
-    0% {
-        transform: scale(1) translateY(0);
-        opacity: 1;
-    }
-    50% {
-        transform: scale(1.3) translateY(-30px);
-        opacity: 0.8;
-    }
-    100% {
-        transform: scale(0) translateY(-80px) translateX(50px);
-        opacity: 0;
-    }
-}
-
-.float-element {
-    position: fixed;
-    z-index: 2000;
-    pointer-events: none;
-    animation: floatToCart 0.6s ease-out forwards;
-    font-size: 1.5rem;
-    background: #e6b17e;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 15px rgba(230, 177, 126, 0.8);
-}
-
 /* Navigation Buttons */
 .carousel-btn {
     background: rgba(230, 177, 126, 0.9);
@@ -371,115 +373,124 @@ body::before {
     transform: scale(1.1);
 }
 
-/* Cart Modal */
-.cart-popup {
+/* Cart Sidebar - Bottom Right Corner */
+.cart-sidebar {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.92);
+    bottom: 100px;
+    right: 26px;
+    width: 340px;
+    max-width: calc(100vw - 52px);
     background: rgba(12, 14, 19, 0.98);
     backdrop-filter: blur(20px);
-    padding: 28px;
-    border-radius: 32px;
-    width: 400px;
-    max-width: 90vw;
-    z-index: 2000;
-    transition: 0.3s ease-out;
-    opacity: 0;
-    visibility: hidden;
-    border: 1px solid rgba(230, 177, 126, 0.5);
-    box-shadow: 0 30px 50px rgba(0, 0, 0, 0.6);
-}
-
-.cart-popup.show {
-    transform: translate(-50%, -50%) scale(1);
+    border-radius: 24px;
+    padding: 20px;
+    z-index: 1050;
+    border: 1px solid rgba(230, 177, 126, 0.4);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    transform: translateX(0);
     opacity: 1;
     visibility: visible;
 }
 
-.cart-popup h3 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
+.cart-sidebar.hidden {
+    transform: translateX(120%);
+    opacity: 0;
+    visibility: hidden;
+}
+
+.cart-sidebar h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
     color: #e6b17e;
     display: flex;
-    gap: 12px;
     align-items: center;
+    gap: 10px;
 }
 
-.cart-items {
-    max-height: 300px;
+.cart-sidebar .cart-items {
+    max-height: 350px;
     overflow-y: auto;
-    margin: 15px 0;
-    padding-right: 8px;
+    margin: 10px 0;
 }
 
-.cart-item {
+.cart-sidebar .cart-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: #1b1e27;
-    padding: 12px 16px;
-    border-radius: 20px;
-    margin-bottom: 12px;
-    font-size: 0.85rem;
+    padding: 10px 12px;
+    border-radius: 16px;
+    margin-bottom: 10px;
+    font-size: 0.8rem;
 }
 
-.cart-item button {
+.cart-sidebar .cart-item button {
     background: linear-gradient(135deg, #ff5e6e, #ff3b4a);
     border: none;
     color: white;
-    border-radius: 30px;
-    padding: 5px 14px;
+    border-radius: 25px;
+    padding: 4px 12px;
     cursor: pointer;
     font-weight: bold;
-    transition: 0.2s;
 }
 
-.cart-item button:hover {
-    transform: scale(1.05);
-}
-
-.total-row {
-    font-size: 1.4rem;
+.cart-sidebar .total-row {
+    font-size: 1.2rem;
     font-weight: 800;
-    margin: 18px 0;
+    margin: 12px 0;
     text-align: right;
     border-top: 1px solid #333;
-    padding-top: 15px;
+    padding-top: 12px;
     color: #e6b17e;
 }
 
-.checkout-btn {
+.cart-sidebar .checkout-btn {
     width: 100%;
-    padding: 14px;
+    padding: 12px;
     background: linear-gradient(135deg, #e6b17e, #d49c64);
     border: none;
-    border-radius: 50px;
+    border-radius: 40px;
     font-weight: 800;
-    font-size: 1rem;
     cursor: pointer;
-    transition: 0.3s;
     color: #0a0c10;
 }
 
-.checkout-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(230, 177, 126, 0.4);
-}
-
-.close-cart {
+.close-cart-sidebar {
     position: absolute;
-    top: 18px;
-    right: 22px;
-    font-size: 1.8rem;
+    top: 12px;
+    right: 15px;
+    font-size: 1.4rem;
     cursor: pointer;
-    color: #ccc;
+    color: #aaa;
     transition: 0.2s;
 }
 
-.close-cart:hover {
+.close-cart-sidebar:hover {
     color: #e6b17e;
-    transform: rotate(90deg);
+}
+
+/* Float Animation */
+@keyframes floatToCart {
+    0% { transform: scale(1) translateY(0); opacity: 1; }
+    50% { transform: scale(1.3) translateY(-40px); opacity: 0.8; }
+    100% { transform: scale(0) translateY(-100px) translateX(50px); opacity: 0; }
+}
+
+.float-element {
+    position: fixed;
+    z-index: 2000;
+    pointer-events: none;
+    animation: floatToCart 0.6s ease-out forwards;
+    font-size: 1.5rem;
+    background: #e6b17e;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 15px rgba(230, 177, 126, 0.8);
 }
 
 /* Footer */
@@ -496,17 +507,18 @@ body::before {
 }
 
 @media (max-width: 768px) {
-    .scroll-item { min-width: 180px; max-width: 180px; }
+    .scroll-item, .dummy-item { min-width: 180px; max-width: 180px; }
     .section-title { font-size: 1.5rem; }
     .hero h1 { font-size: 2rem; }
     .menu-bar a { padding: 6px 12px; font-size: 0.7rem; }
     .carousel-btn { width: 40px; height: 40px; font-size: 1.4rem; }
     .cart-badge { width: 52px; height: 52px; font-size: 1.4rem; }
     .carousel-container { max-width: 500px; gap: 15px; }
+    .cart-sidebar { width: 300px; right: 16px; bottom: 90px; }
 }
 
 @media (max-width: 480px) {
-    .scroll-item { min-width: 160px; max-width: 160px; padding: 12px 10px; }
+    .scroll-item, .dummy-item { min-width: 160px; max-width: 160px; padding: 12px 10px; }
     .carousel-container { max-width: 420px; gap: 12px; }
     .carousel-btn { width: 36px; height: 36px; font-size: 1.2rem; }
 }
@@ -531,7 +543,7 @@ body::before {
     <p>Where Champions Gear Up | Authentic Kits • Elite Boots • Collector's Items</p>
 </div>
 
-<!-- SHIRTS SECTION - 20 items -->
+<!-- SHIRTS SECTION -->
 <h2 class="section-title"><i class="fas fa-tshirt"></i> Official Match Shirts <i class="fas fa-futbol"></i></h2>
 <div class="carousel-wrapper">
     <button class="carousel-btn" onclick="scrollCarousel('shirtsRow', -270)">‹</button>
@@ -539,7 +551,7 @@ body::before {
     <button class="carousel-btn" onclick="scrollCarousel('shirtsRow', 270)">›</button>
 </div>
 
-<!-- SHORTS SECTION - 20 items -->
+<!-- SHORTS SECTION -->
 <h2 class="section-title"><i class="fas fa-shorts"></i> Pro Training Shorts <i class="fas fa-running"></i></h2>
 <div class="carousel-wrapper">
     <button class="carousel-btn" onclick="scrollCarousel('shortsRow', -270)">‹</button>
@@ -547,7 +559,7 @@ body::before {
     <button class="carousel-btn" onclick="scrollCarousel('shortsRow', 270)">›</button>
 </div>
 
-<!-- BOOTS SECTION - 8 items -->
+<!-- BOOTS SECTION -->
 <h2 class="section-title"><i class="fas fa-shoe-prints"></i> Elite Performance Boots <i class="fas fa-medal"></i></h2>
 <div class="carousel-wrapper">
     <button class="carousel-btn" onclick="scrollCarousel('bootsRow', -270)">‹</button>
@@ -555,7 +567,7 @@ body::before {
     <button class="carousel-btn" onclick="scrollCarousel('bootsRow', 270)">›</button>
 </div>
 
-<!-- MEMORABILIA SECTION - 6 items -->
+<!-- MEMORABILIA SECTION -->
 <h2 class="section-title"><i class="fas fa-star"></i> Signed Memorabilia <i class="fas fa-crown"></i></h2>
 <div class="carousel-wrapper">
     <button class="carousel-btn" onclick="scrollCarousel('memorabiliaRow', -270)">‹</button>
@@ -566,13 +578,13 @@ body::before {
 <!-- CART BUTTON - Bottom Right -->
 <button class="cart-badge" id="cartBtn"><i class="fas fa-shopping-cart"></i><span id="cartCount">0</span></button>
 
-<!-- CART MODAL -->
-<div id="cartModal" class="cart-popup">
-    <span class="close-cart" id="closeCart">&times;</span>
+<!-- CART SIDEBAR - Bottom Right Corner -->
+<div id="cartSidebar" class="cart-sidebar hidden">
+    <span class="close-cart-sidebar" id="closeCartSidebar">&times;</span>
     <h3><i class="fas fa-basket-shopping"></i> Your Cart</h3>
-    <div id="cartItems" class="cart-items"></div>
-    <div class="total-row">Total: €<span id="cartTotal">0</span></div>
-    <button class="checkout-btn" id="checkoutBtn">💳 CHECKOUT</button>
+    <div id="cartItemsList" class="cart-items"></div>
+    <div class="total-row">Total: €<span id="cartTotalAmount">0</span></div>
+    <button class="checkout-btn" id="checkoutBtnSidebar">💳 CHECKOUT</button>
 </div>
 
 <footer class="footer-locker">
@@ -583,7 +595,7 @@ body::before {
 </footer>
 
 <script>
-// PRODUCT DATA - All 54 items
+// PRODUCT DATA - All items with Barcelona first
 const shirtsData = [
     { name: "Barcelona Shirt", price: 80, img: "barca.png" },
     { name: "Madrid Shirt", price: 80, img: "madrid.avif" },
@@ -642,7 +654,7 @@ const bootsData = [
 ];
 
 const memorabiliaData = [
-    { name: "Pedri Signed Jersey", price: 349, img: "pedri signed.jpg" },
+    { name: "Pedri Signed Boots", price: 349, img: "pedri signed.jpg" },
     { name: "Pedri Match Photo", price: 89, img: "pedri 2.jpg" },
     { name: "MSN Signed Print", price: 159, img: "ms1.webp" },
     { name: "Legends Trio", price: 129, img: "ms2.jpg" },
@@ -650,21 +662,47 @@ const memorabiliaData = [
     { name: "Yamal Auto Card", price: 99, img: "yamal card 2.jpg" }
 ];
 
-// Render products in carousel
+// Add dummy items to the end of each array for visual balance
+function addDummyItems(arr) {
+    const dummyCount = 2; // Add 2 dummy items at the end
+    for (let i = 0; i < dummyCount; i++) {
+        arr.push({ isDummy: true, name: "", price: 0, img: "" });
+    }
+    return arr;
+}
+
+// Render products in carousel with dummy items
 function renderCarousel(containerId, productsArray) {
     const container = document.getElementById(containerId);
     if (!container) return;
     container.innerHTML = '';
-    productsArray.forEach(product => {
-        const itemDiv = document.createElement('div');
-        itemDiv.className = 'scroll-item';
-        itemDiv.innerHTML = `
-            <img src="${product.img}" alt="${product.name}" onerror="this.src='https://placehold.co/300x300/1e2a3a/e6b17e?text=Image+Not+Found'">
-            <div class="item-name">${product.name}</div>
-            <div class="item-price">€${product.price}</div>
-            <button class="add-btn" data-name="${product.name}" data-price="${product.price}"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-        `;
-        container.appendChild(itemDiv);
+    
+    // Add dummy items to end
+    const extendedArray = [...productsArray];
+    addDummyItems(extendedArray);
+    
+    extendedArray.forEach((product, idx) => {
+        if (product.isDummy) {
+            const dummyDiv = document.createElement('div');
+            dummyDiv.className = 'dummy-item';
+            dummyDiv.innerHTML = `
+                <i class="fas fa-ellipsis-h"></i>
+                <p>More Coming Soon</p>
+                <i class="fas fa-star" style="font-size: 1.5rem; margin-top: 10px;"></i>
+            `;
+            container.appendChild(dummyDiv);
+        } else {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'scroll-item';
+            itemDiv.setAttribute('data-index', idx);
+            itemDiv.innerHTML = `
+                <img src="${product.img}" alt="${product.name}" onerror="this.src='https://placehold.co/300x300/1e2a3a/e6b17e?text=Image+Not+Found'">
+                <div class="item-name">${product.name}</div>
+                <div class="item-price">€${product.price}</div>
+                <button class="add-btn" data-name="${product.name}" data-price="${product.price}"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+            `;
+            container.appendChild(itemDiv);
+        }
     });
     
     container.querySelectorAll('.add-btn').forEach(btn => {
@@ -672,7 +710,6 @@ function renderCarousel(containerId, productsArray) {
             e.stopPropagation();
             const name = btn.getAttribute('data-name');
             const price = parseFloat(btn.getAttribute('data-price'));
-            // Get button position for float animation
             const rect = btn.getBoundingClientRect();
             addToCart(name, price, rect);
         });
@@ -681,7 +718,7 @@ function renderCarousel(containerId, productsArray) {
     setupCarouselHighlight(containerId);
 }
 
-// Function to highlight centered item in carousel
+// Function to highlight centered item
 function setupCarouselHighlight(containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
@@ -716,14 +753,12 @@ function setupCarouselHighlight(containerId) {
     });
     
     setTimeout(updateHighlight, 100);
-    // Also update on window resize
     window.addEventListener('resize', updateHighlight);
 }
 
 // CART FUNCTIONALITY
 let cart = [];
 
-// Create floating animation element
 function createFloatAnimation(startX, startY) {
     const floatDiv = document.createElement('div');
     floatDiv.className = 'float-element';
@@ -731,33 +766,29 @@ function createFloatAnimation(startX, startY) {
     floatDiv.style.left = startX + 'px';
     floatDiv.style.top = startY + 'px';
     document.body.appendChild(floatDiv);
-    
-    setTimeout(() => {
-        floatDiv.remove();
-    }, 600);
+    setTimeout(() => floatDiv.remove(), 600);
 }
 
 function addToCart(name, price, buttonRect) {
     cart.push({ name, price, id: Date.now() + Math.random() });
     updateCartDisplay();
     
-    // Create float animation from button position
     if (buttonRect) {
         createFloatAnimation(buttonRect.left + buttonRect.width / 2 - 20, buttonRect.top + buttonRect.height / 2 - 20);
     }
     
-    // Show cart modal
-    document.getElementById('cartModal').classList.add('show');
-    
-    // Animate cart badge
     const badge = document.getElementById('cartCount');
     badge.style.transform = 'scale(1.3)';
     setTimeout(() => { badge.style.transform = 'scale(1)'; }, 200);
+    
+    // Auto show cart sidebar when adding items
+    const cartSidebar = document.getElementById('cartSidebar');
+    cartSidebar.classList.remove('hidden');
 }
 
 function updateCartDisplay() {
-    const cartContainer = document.getElementById('cartItems');
-    const totalSpan = document.getElementById('cartTotal');
+    const cartContainer = document.getElementById('cartItemsList');
+    const totalSpan = document.getElementById('cartTotalAmount');
     const badgeSpan = document.getElementById('cartCount');
     let total = 0;
     
@@ -798,29 +829,28 @@ function checkout() {
     alert("✅ PAYMENT SUCCESSFUL! ⚽ Thank you for shopping at THE LOCKER-ROOM. Your order is confirmed.");
     cart = [];
     updateCartDisplay();
-    document.getElementById('cartModal').classList.remove('show');
+    document.getElementById('cartSidebar').classList.add('hidden');
 }
 
 function scrollCarousel(elementId, distance) {
     const el = document.getElementById(elementId);
     if (el) {
-        const currentScroll = el.scrollLeft;
-        const targetScroll = currentScroll + distance;
-        el.scrollTo({ left: targetScroll, behavior: 'smooth' });
+        el.scrollBy({ left: distance, behavior: 'smooth' });
     }
 }
 
-function closeCartModal() {
-    document.getElementById('cartModal').classList.remove('show');
+function toggleCartSidebar() {
+    const sidebar = document.getElementById('cartSidebar');
+    sidebar.classList.toggle('hidden');
 }
 
-// Scroll to first item (Barcelona) on page load
+// Scroll to first item on load
 function scrollToFirstItem(containerId) {
     const container = document.getElementById(containerId);
     if (container && container.children.length > 0) {
         setTimeout(() => {
             container.scrollTo({ left: 0, behavior: 'smooth' });
-        }, 100);
+        }, 150);
     }
 }
 
@@ -836,23 +866,18 @@ setTimeout(() => {
     scrollToFirstItem('shortsRow');
     scrollToFirstItem('bootsRow');
     scrollToFirstItem('memorabiliaRow');
-}, 200);
+}, 300);
 
 // Event listeners
-const cartModal = document.getElementById('cartModal');
-const closeModal = document.getElementById('closeCart');
-const floatingCart = document.getElementById('cartBtn');
-const checkoutBtn = document.getElementById('checkoutBtn');
+const cartBtn = document.getElementById('cartBtn');
+const closeSidebar = document.getElementById('closeCartSidebar');
+const checkoutSidebar = document.getElementById('checkoutBtnSidebar');
 
-if (closeModal) closeModal.addEventListener('click', closeCartModal);
-if (floatingCart) floatingCart.addEventListener('click', () => cartModal.classList.add('show'));
-if (checkoutBtn) checkoutBtn.addEventListener('click', checkout);
-
-window.addEventListener('click', (e) => {
-    if (cartModal.classList.contains('show') && !cartModal.contains(e.target) && e.target !== floatingCart) {
-        closeCartModal();
-    }
+if (cartBtn) cartBtn.addEventListener('click', toggleCartSidebar);
+if (closeSidebar) closeSidebar.addEventListener('click', () => {
+    document.getElementById('cartSidebar').classList.add('hidden');
 });
+if (checkoutSidebar) checkoutSidebar.addEventListener('click', checkout);
 
 // Preload background images
 const bgImages = ['locker1.jpg', 'locker2.jpg', 'locker3.jpg', 'locker4.jpg', 'locker5.jpg', 'locker6.jpg', 'locker7.jpg', 'locker8.jpg', 'stadium.jpg'];
