@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>The Locker-Room | Ultimate Football Shop</title>
-<!-- Font Awesome 6 (free icons) -->
+<title>The Locker-Room | Premium Football Shop</title>
+<!-- Font Awesome 6 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<!-- Google Fonts: Inter for modern look -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
 <style>
   * {
     margin: 0;
@@ -22,46 +22,44 @@
     overflow-x: hidden;
   }
 
-  /* custom scrollbar for modern feel */
+  /* custom elegant scrollbar for body only, not for containers */
   ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+    width: 5px;
   }
   ::-webkit-scrollbar-track {
-    background: #1e1e24;
-    border-radius: 10px;
+    background: #1a1c22;
   }
   ::-webkit-scrollbar-thumb {
     background: #e6b17e;
     border-radius: 10px;
   }
 
-  /* sticky menu */
+  /* menu bar */
   .menu-bar {
     display: flex;
     justify-content: center;
     gap: 12px;
     padding: 14px 20px;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(12px);
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(14px);
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 1px solid rgba(230, 177, 126, 0.3);
+    border-bottom: 1px solid rgba(230, 177, 126, 0.4);
     flex-wrap: wrap;
   }
   .menu-bar a {
     color: white;
     text-decoration: none;
     font-weight: 600;
-    padding: 8px 18px;
+    padding: 8px 20px;
     border-radius: 40px;
     display: flex;
     align-items: center;
     gap: 8px;
     transition: 0.25s ease;
     font-size: 0.9rem;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.2px;
     background: rgba(255,255,255,0.05);
   }
   .menu-bar a:hover {
@@ -78,29 +76,27 @@
     padding: 0 15px;
   }
   .hero h1 {
-    font-size: 2.6rem;
-    background: linear-gradient(135deg, #e6b17e, #ffd89a);
+    font-size: 2.8rem;
+    background: linear-gradient(135deg, #e6b17e, #ffda9e);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    letter-spacing: -0.5px;
     font-weight: 800;
-    text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    letter-spacing: -0.5px;
   }
   .hero p {
-    color: #bbb;
-    font-size: 1rem;
-    margin-top: 6px;
+    color: #aaa;
+    margin-top: 8px;
+    font-weight: 400;
   }
 
   /* section titles */
   .section-title {
     text-align: center;
-    margin: 40px 0 15px;
+    margin: 45px 0 20px;
     color: #e6b17e;
     font-size: 2rem;
     font-weight: 700;
-    letter-spacing: -0.3px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -111,68 +107,73 @@
     opacity: 0.9;
   }
 
-  /* scroll wrapper */
+  /* scroll wrapper - modern, no visible scrollbar */
   .scroll-wrapper {
     display: flex;
     align-items: center;
     gap: 12px;
     padding: 0 25px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
   .scroll-container {
     display: flex;
     overflow-x: auto;
-    gap: 20px;
-    padding: 12px 8px;
+    gap: 22px;
+    padding: 12px 8px 18px 8px;
     scroll-behavior: smooth;
-    scrollbar-width: thin;
-    border-radius: 28px;
+    /* HIDE SCROLLBAR - modern clean look */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
   }
   .scroll-container::-webkit-scrollbar {
-    height: 5px;
+    display: none; /* Chrome, Safari, Opera */
   }
+  
   .scroll-item {
     min-width: 190px;
     max-width: 190px;
-    background: rgba(20, 22, 27, 0.8);
+    background: rgba(18, 20, 26, 0.85);
     backdrop-filter: blur(2px);
-    border-radius: 24px;
+    border-radius: 26px;
     padding: 14px 12px;
     text-align: center;
-    transition: all 0.25s ease;
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     border: 1px solid rgba(230, 177, 126, 0.25);
-    box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.3);
   }
   .scroll-item:hover {
-    transform: translateY(-6px);
+    transform: translateY(-7px);
     border-color: #e6b17e;
-    background: #181c24;
-    box-shadow: 0 16px 28px rgba(0,0,0,0.4);
+    background: #1e212a;
+    box-shadow: 0 20px 30px rgba(0,0,0,0.4);
   }
   .scroll-item img {
     width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
-    border-radius: 18px;
-    background: #2a2e36;
+    border-radius: 20px;
+    background: #262a33;
     margin-bottom: 12px;
     transition: 0.2s;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
   }
   .item-name {
     font-weight: 600;
     font-size: 0.9rem;
     margin: 6px 0 4px;
-    color: #f0f0f0;
+    color: #f5f5f5;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .item-price {
-    font-weight: 700;
+    font-weight: 800;
     color: #e6b17e;
     margin-bottom: 10px;
     font-size: 1rem;
   }
   .add-btn {
-    padding: 8px 14px;
+    padding: 8px 12px;
     border: none;
     border-radius: 40px;
     background: #e6b17e;
@@ -188,9 +189,8 @@
     gap: 6px;
   }
   .add-btn:hover {
-    background: #f5cb9c;
+    background: #fad896;
     transform: scale(0.97);
-    box-shadow: 0 2px 8px rgba(230,177,126,0.5);
   }
   .scroll-btn {
     background: #e6b17e;
@@ -198,37 +198,78 @@
     border-radius: 50%;
     width: 44px;
     height: 44px;
-    font-size: 1.6rem;
+    font-size: 1.7rem;
     cursor: pointer;
     color: #111;
     font-weight: bold;
     transition: 0.2s;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     flex-shrink: 0;
   }
   .scroll-btn:hover {
-    background: #ffcd94;
+    background: #ffdd9e;
     transform: scale(1.05);
   }
 
-  /* cart popup - modern glass */
+  /* floating cart */
+  .cart-badge {
+    position: fixed;
+    bottom: 26px;
+    right: 26px;
+    background: #e6b17e;
+    color: #111;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7rem;
+    cursor: pointer;
+    z-index: 1100;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.4);
+    transition: 0.2s;
+    border: none;
+  }
+  .cart-badge span {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #ff4d4d;
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #0a0c10;
+  }
+  .cart-badge:hover {
+    transform: scale(1.08);
+    background: #ffd194;
+  }
+
+  /* cart modal */
   .cart-popup {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0.9);
-    background: rgba(10, 12, 16, 0.98);
-    backdrop-filter: blur(16px);
+    transform: translate(-50%, -50%) scale(0.92);
+    background: rgba(12, 14, 19, 0.98);
+    backdrop-filter: blur(20px);
     padding: 24px;
-    border-radius: 32px;
-    width: 360px;
+    border-radius: 36px;
+    width: 380px;
     max-width: 90vw;
     z-index: 2000;
-    transition: 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    transition: 0.25s ease-out;
     opacity: 0;
     visibility: hidden;
-    border: 1px solid rgba(230,177,126,0.5);
-    box-shadow: 0 25px 45px rgba(0,0,0,0.6);
+    border: 1px solid rgba(230,177,126,0.6);
+    box-shadow: 0 30px 50px rgba(0,0,0,0.6);
   }
   .cart-popup.show {
     transform: translate(-50%, -50%) scale(1);
@@ -237,25 +278,28 @@
   }
   .cart-popup h3 {
     font-size: 1.7rem;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
     color: #e6b17e;
     display: flex;
-    gap: 12px;
+    gap: 10px;
     align-items: center;
   }
   .cart-items {
-    max-height: 260px;
+    max-height: 280px;
     overflow-y: auto;
     margin: 12px 0;
     padding-right: 6px;
+  }
+  .cart-items::-webkit-scrollbar {
+    width: 3px;
   }
   .cart-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #1a1d24;
+    background: #1b1e27;
     padding: 10px 14px;
-    border-radius: 20px;
+    border-radius: 24px;
     margin-bottom: 10px;
     font-size: 0.85rem;
   }
@@ -264,17 +308,15 @@
     border: none;
     color: white;
     border-radius: 30px;
-    padding: 4px 12px;
+    padding: 5px 12px;
     cursor: pointer;
     font-weight: bold;
-  }
-  .cart-item button:hover {
-    background: #ff3030;
+    transition: 0.1s;
   }
   .total-row {
     font-size: 1.3rem;
     font-weight: 800;
-    margin: 12px 0;
+    margin: 15px 0;
     text-align: right;
     border-top: 1px solid #333;
     padding-top: 12px;
@@ -289,66 +331,21 @@
     font-size: 1rem;
     cursor: pointer;
     transition: 0.2s;
-    margin-top: 10px;
-  }
-  .checkout-btn:hover {
-    background: #f7cd91;
-    transform: scale(0.98);
   }
   .close-cart {
     position: absolute;
-    top: 12px;
-    right: 18px;
-    font-size: 1.4rem;
+    top: 16px;
+    right: 20px;
+    font-size: 1.6rem;
     cursor: pointer;
     color: #ccc;
   }
-  /* cart icon badge */
-  .cart-badge {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    background: #e6b17e;
-    color: #111;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.6rem;
-    cursor: pointer;
-    z-index: 1100;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-    transition: 0.2s;
-    border: none;
-  }
-  .cart-badge span {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    background: #ff4d4d;
-    color: white;
-    border-radius: 50%;
-    width: 22px;
-    height: 22px;
-    font-size: 0.7rem;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .cart-badge:hover {
-    transform: scale(1.07);
-    background: #ffcd8a;
-  }
-  /* footer */
   .footer-locker {
     text-align: center;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 22px 15px;
-    color: #ddd;
-    margin-top: 50px;
+    background: rgba(0, 0, 0, 0.65);
+    padding: 24px 15px;
+    color: #ccc;
+    margin-top: 55px;
     font-size: 0.8rem;
     line-height: 1.5;
     border-top: 1px solid #2a2e36;
@@ -362,14 +359,19 @@
     }
     .menu-bar a {
       padding: 5px 12px;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
+    }
+    .cart-badge {
+      width: 52px;
+      height: 52px;
+      font-size: 1.4rem;
     }
   }
 </style>
 </head>
 <body>
 
-<!-- MENU BAR -->
+<!-- MENU -->
 <div class="menu-bar">
   <a href="#"><i class="fas fa-house"></i> HOME</a>
   <a href="#"><i class="fas fa-bag-shopping"></i> SHOP</a>
@@ -380,46 +382,46 @@
 
 <div class="hero">
   <h1>⚡ THE LOCKER-ROOM ⚡</h1>
-  <p>Authentic kits • Elite boots • Collector memorabilia</p>
+  <p>Elite kits • Pro boots • Signed memorabilia</p>
 </div>
 
-<!-- ========== SHIRTS SECTION (20 items) ========== -->
+<!-- ========= SHIRTS (20 items) ========= -->
 <h2 class="section-title"><i class="fas fa-tshirt"></i> Shirts <i class="fas fa-futbol"></i></h2>
 <div class="scroll-wrapper">
-  <button class="scroll-btn" onclick="scrollRow('shirtsRow', -320)">‹</button>
-  <div id="shirtsRow" class="scroll-container"></div>
-  <button class="scroll-btn" onclick="scrollRow('shirtsRow', 320)">›</button>
+  <button class="scroll-btn" onclick="scrollRow('shirtsContainer', -330)">‹</button>
+  <div id="shirtsContainer" class="scroll-container"></div>
+  <button class="scroll-btn" onclick="scrollRow('shirtsContainer', 330)">›</button>
 </div>
 
-<!-- ========== SHORTS SECTION (20 items) ========== -->
+<!-- ========= SHORTS (20 items) ========= -->
 <h2 class="section-title"><i class="fas fa-shorts"></i> Shorts <i class="fas fa-running"></i></h2>
 <div class="scroll-wrapper">
-  <button class="scroll-btn" onclick="scrollRow('shortsRow', -320)">‹</button>
-  <div id="shortsRow" class="scroll-container"></div>
-  <button class="scroll-btn" onclick="scrollRow('shortsRow', 320)">›</button>
+  <button class="scroll-btn" onclick="scrollRow('shortsContainer', -330)">‹</button>
+  <div id="shortsContainer" class="scroll-container"></div>
+  <button class="scroll-btn" onclick="scrollRow('shortsContainer', 330)">›</button>
 </div>
 
-<!-- ========== BOOTS & MEMORABILIA (14 items) ========== -->
+<!-- ========= BOOTS + MEMORABILIA (14 items) ========= -->
 <h2 class="section-title"><i class="fas fa-shoe-prints"></i> Boots & Memorabilia <i class="fas fa-star"></i></h2>
 <div class="scroll-wrapper">
-  <button class="scroll-btn" onclick="scrollRow('bootsRow', -320)">‹</button>
-  <div id="bootsRow" class="scroll-container"></div>
-  <button class="scroll-btn" onclick="scrollRow('bootsRow', 320)">›</button>
+  <button class="scroll-btn" onclick="scrollRow('bootsContainer', -330)">‹</button>
+  <div id="bootsContainer" class="scroll-container"></div>
+  <button class="scroll-btn" onclick="scrollRow('bootsContainer', 330)">›</button>
 </div>
 
-<!-- floating cart badge -->
-<button class="cart-badge" id="cartBadgeBtn">
+<!-- Floating Cart Button -->
+<button class="cart-badge" id="cartFloatingBtn">
   <i class="fas fa-shopping-cart"></i>
-  <span id="cartCountBadge">0</span>
+  <span id="cartItemCount">0</span>
 </button>
 
-<!-- CART POPUP -->
-<div id="cartPopup" class="cart-popup">
-  <span class="close-cart" id="closeCartBtn">&times;</span>
+<!-- CART MODAL -->
+<div id="cartModal" class="cart-popup">
+  <span class="close-cart" id="closeCartModal">&times;</span>
   <h3><i class="fas fa-basket-shopping"></i> Your Cart</h3>
   <div class="cart-items" id="cartItemsList"></div>
-  <div class="total-row">Total: €<span id="cartTotalPrice">0</span></div>
-  <button class="checkout-btn" id="checkoutBtn">✅ CHECKOUT</button>
+  <div class="total-row">Total: €<span id="cartTotalAmount">0</span></div>
+  <button class="checkout-btn" id="proceedCheckout">💳 CHECKOUT</button>
 </div>
 
 <!-- FOOTER -->
@@ -431,9 +433,13 @@
 </div>
 
 <script>
-  // ---------- PRODUCT DATABASE (dynamic generation) ----------
-  // Shirts (20 clubs) with price 80€ each, images as per original but we keep consistent naming
-  const shirtsList = [
+  // --------------------------------------------------------------
+  // 54 PRODUCTS: 20 Shirts + 20 Shorts + 14 Boots/Memorabilia
+  // All images exactly as original filenames (preserved)
+  // --------------------------------------------------------------
+  
+  // 1) SHIRTS (20) - price 80€
+  const shirtsData = [
     { name: "Barcelona Shirt", price: 80, img: "barca.png" },
     { name: "Madrid Shirt", price: 80, img: "madrid.avif" },
     { name: "Liverpool Shirt", price: 80, img: "liverpool.avif" },
@@ -456,8 +462,8 @@
     { name: "AC Milan Shirt", price: 80, img: "AC Milan.jpg" }
   ];
 
-  // Shorts (20 items) with price 45€ each
-  const shortsList = [
+  // 2) SHORTS (20) - price 45€
+  const shortsData = [
     { name: "Barcelona Shorts", price: 45, img: "barcelona shorts.avif" },
     { name: "Madrid Shorts", price: 45, img: "madrid shorts.webp" },
     { name: "Liverpool Shorts", price: 45, img: "liverpool shorts.avif" },
@@ -480,8 +486,8 @@
     { name: "AC Milan Shorts", price: 45, img: "AcMilan shorts.avif" }
   ];
 
-  // Boots & Memorabilia (14 items) dynamic naming + prices vary
-  const bootsMemorabilia = [
+  // 3) BOOTS & MEMORABILIA (14 items) - varied prices
+  const bootsData = [
     { name: "adidas F50 Elite", price: 229, img: "f50 elite.jpg" },
     { name: "Copa Pure 3", price: 199, img: "copa pure 3.jpg" },
     { name: "X Speedflow+", price: 215, img: "x speedflow.jpg" },
@@ -494,33 +500,30 @@
     { name: "Pedri Match Photo", price: 89, img: "pedri 2.jpg" },
     { name: "MSN Signed Print", price: 159, img: "ms1.webp" },
     { name: "Legends Trio", price: 129, img: "ms2.jpg" },
-    { name: "Yamal RC Rookie Card", price: 79, img: "yamal card.jpg" },
+    { name: "Yamal RC Card", price: 79, img: "yamal card.jpg" },
     { name: "Yamal Auto Card", price: 99, img: "yamal card 2.jpg" }
   ];
 
-  // Helper: render dynamic products into a container
-  function renderProductRow(containerId, productsArray, categoryPrefix = "") {
+  // Helper: render products into scroll container (no scrollbar visible)
+  function renderProducts(containerId, productsArray) {
     const container = document.getElementById(containerId);
     if (!container) return;
-    container.innerHTML = "";
-    productsArray.forEach((prod, idx) => {
-      const itemDiv = document.createElement("div");
-      itemDiv.className = "scroll-item";
-      const imgSrc = prod.img || "placeholder.jpg";
-      // fallback image handling: if image missing, use a default placeholder
-      const imgHtml = `<img src="${imgSrc}" alt="${prod.name}" onerror="this.src='https://placehold.co/300x300/1e1e2a/e6b17e?text=Jersey'">`;
-      const itemName = prod.name;
-      const priceVal = prod.price;
+    container.innerHTML = '';
+    productsArray.forEach(product => {
+      const itemDiv = document.createElement('div');
+      itemDiv.className = 'scroll-item';
+      // fallback image if src fails
+      const imgSrc = product.img;
       itemDiv.innerHTML = `
-        ${imgHtml}
-        <div class="item-name">${itemName}</div>
-        <div class="item-price">€${priceVal}</div>
-        <button class="add-btn" data-name="${itemName}" data-price="${priceVal}"><i class="fas fa-cart-plus"></i> Add</button>
+        <img src="${imgSrc}" alt="${product.name}" onerror="this.src='https://placehold.co/300x300/1e1e2a/e6b17e?text=Football+Item'">
+        <div class="item-name">${product.name}</div>
+        <div class="item-price">€${product.price}</div>
+        <button class="add-to-cart-btn" data-name="${product.name}" data-price="${product.price}"><i class="fas fa-cart-plus"></i> Add</button>
       `;
       container.appendChild(itemDiv);
     });
-    // attach event listeners to all add buttons inside this row (dynamic)
-    container.querySelectorAll('.add-btn').forEach(btn => {
+    // attach event listeners to all add buttons inside this container
+    container.querySelectorAll('.add-to-cart-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.stopPropagation();
         const name = btn.getAttribute('data-name');
@@ -531,62 +534,59 @@
   }
 
   // ---------- CART STATE ----------
-  let cartItems = []; // each element { name, price }
+  let cart = []; // each item { name, price }
 
   function addToCart(name, price) {
-    cartItems.push({ name, price });
-    updateCartUI();
-    // Show cart popup with a little delay for better UX
-    const cartPopup = document.getElementById('cartPopup');
-    cartPopup.classList.add('show');
-    // auto-hide after 2.5 seconds? better to let user close, but we keep manual but nice
-    // but we do not force auto-close; user can click X or background. Provide close button.
+    cart.push({ name, price });
+    updateCartDisplay();
+    // open cart modal on add for better UX
+    const modal = document.getElementById('cartModal');
+    modal.classList.add('show');
   }
 
-  function updateCartUI() {
-    // update badge count
-    const badgeSpan = document.getElementById('cartCountBadge');
-    if (badgeSpan) badgeSpan.innerText = cartItems.length;
-    // render cart items list
-    const cartItemsDiv = document.getElementById('cartItemsList');
-    const totalSpan = document.getElementById('cartTotalPrice');
+  function updateCartDisplay() {
+    const cartContainer = document.getElementById('cartItemsList');
+    const totalSpan = document.getElementById('cartTotalAmount');
+    const badgeSpan = document.getElementById('cartItemCount');
     let total = 0;
-    if (!cartItemsDiv) return;
-    cartItemsDiv.innerHTML = '';
-    cartItems.forEach((item, idx) => {
+    if (!cartContainer) return;
+    cartContainer.innerHTML = '';
+    cart.forEach((item, idx) => {
       total += item.price;
-      const itemRow = document.createElement('div');
-      itemRow.className = 'cart-item';
-      itemRow.innerHTML = `
+      const cartRow = document.createElement('div');
+      cartRow.className = 'cart-item';
+      cartRow.innerHTML = `
         <span>${item.name} <strong>€${item.price}</strong></span>
-        <button class="remove-item-btn" data-index="${idx}"><i class="fas fa-trash-alt"></i> X</button>
+        <button class="remove-cart-item" data-index="${idx}"><i class="fas fa-trash"></i> X</button>
       `;
-      cartItemsDiv.appendChild(itemRow);
+      cartContainer.appendChild(cartRow);
     });
     if (totalSpan) totalSpan.innerText = total.toFixed(2);
+    if (badgeSpan) badgeSpan.innerText = cart.length;
     // attach remove events
-    document.querySelectorAll('.remove-item-btn').forEach(btn => {
+    document.querySelectorAll('.remove-cart-item').forEach(btn => {
       btn.addEventListener('click', (e) => {
-        const idx = parseInt(btn.getAttribute('data-index'));
-        if (!isNaN(idx)) {
-          cartItems.splice(idx, 1);
-          updateCartUI();
+        const index = parseInt(btn.getAttribute('data-index'));
+        if (!isNaN(index)) {
+          cart.splice(index, 1);
+          updateCartDisplay();
         }
       });
     });
   }
 
-  function checkoutAction() {
-    if (cartItems.length === 0) {
-      alert("🛒 Your cart is empty! Add some amazing gear.");
+  function checkoutProcess() {
+    if (cart.length === 0) {
+      alert("🛒 Your cart is empty! Grab some exclusive gear.");
       return;
     }
-    alert("✅ Payment Successful! Thank you for shopping at THE LOCKER-ROOM. ⚽ Your order is being processed.");
-    cartItems = [];
-    updateCartUI();
-    document.getElementById('cartPopup').classList.remove('show');
+    alert("✅ PAYMENT SUCCESSFUL! ⚽ Thank you for shopping at THE LOCKER-ROOM. Your order is confirmed.");
+    cart = [];
+    updateCartDisplay();
+    document.getElementById('cartModal').classList.remove('show');
   }
 
+  // Scroll row function (smooth)
   function scrollRow(elementId, distance) {
     const el = document.getElementById(elementId);
     if (el) {
@@ -594,43 +594,42 @@
     }
   }
 
-  // Close cart popup by X or clicking outside? we add close function
-  function closeCartPopup() {
-    document.getElementById('cartPopup').classList.remove('show');
+  // close cart modal
+  function closeCartModalFn() {
+    document.getElementById('cartModal').classList.remove('show');
   }
 
-  // initial rendering of all categories
-  renderProductRow('shirtsRow', shirtsList);
-  renderProductRow('shortsRow', shortsList);
-  renderProductRow('bootsRow', bootsMemorabilia);
+  // Render all 54 products (20 shirts + 20 shorts + 14 boots)
+  renderProducts('shirtsContainer', shirtsData);
+  renderProducts('shortsContainer', shortsData);
+  renderProducts('bootsContainer', bootsData);
 
-  // Setup cart popup interactions
-  const cartPopupDiv = document.getElementById('cartPopup');
-  const closeBtn = document.getElementById('closeCartBtn');
-  const checkoutBtn = document.getElementById('checkoutBtn');
-  const cartBadgeBtn = document.getElementById('cartBadgeBtn');
+  // Event listeners for cart modal and floating button
+  const cartModalDiv = document.getElementById('cartModal');
+  const closeModalBtn = document.getElementById('closeCartModal');
+  const floatingCart = document.getElementById('cartFloatingBtn');
+  const checkoutButton = document.getElementById('proceedCheckout');
 
-  if (closeBtn) closeBtn.addEventListener('click', closeCartPopup);
-  if (checkoutBtn) checkoutBtn.addEventListener('click', checkoutAction);
-  if (cartBadgeBtn) {
-    cartBadgeBtn.addEventListener('click', () => {
-      cartPopupDiv.classList.add('show');
+  if (closeModalBtn) closeModalBtn.addEventListener('click', closeCartModalFn);
+  if (floatingCart) {
+    floatingCart.addEventListener('click', () => {
+      cartModalDiv.classList.add('show');
     });
   }
-  // optional: click outside to close? (simple overlay effect)
+  if (checkoutButton) checkoutButton.addEventListener('click', checkoutProcess);
+
+  // Click outside modal to close (optional but elegant)
   window.addEventListener('click', (e) => {
-    if (cartPopupDiv.classList.contains('show') && !cartPopupDiv.contains(e.target) && e.target !== cartBadgeBtn && !cartBadgeBtn.contains(e.target)) {
-      closeCartPopup();
+    if (cartModalDiv.classList.contains('show') && !cartModalDiv.contains(e.target) && e.target !== floatingCart && !floatingCart.contains(e.target)) {
+      closeCartModalFn();
     }
   });
 
-  // Initialize cart badge count
-  updateCartUI();
+  // Initial update
+  updateCartDisplay();
 
-  // Additional polish: placeholder error handling for images (generic fallback already added via onerror)
-  // Also, for any missing images in shorts and boots we provide consistent fallback.
-  // some filenames are capital sensitive but we preserve as given. onerror will handle missing.
-  console.log("Shop fully loaded — 20 shirts, 20 shorts, 14 boots & memorabilia items 🔥");
+  // additional image fallback for any missing assets (global)
+  console.log("✅ The Locker-Room shop loaded | 54 products total | No scrollbars on rows — modern design");
 </script>
 </body>
 </html>
