@@ -157,9 +157,11 @@ body::before {
     font-size: 0.9rem;
 }
 
-/* Main Video Player */
+/* Main Video Player - TikTok Style (vertical 9:16) */
 .main-video-container {
-    max-width: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 20px auto 40px;
     padding: 0 20px;
     animation: cardStretch 0.6s ease-out;
@@ -173,6 +175,8 @@ body::before {
     border: 1px solid rgba(230, 177, 126, 0.4);
     transition: all 0.3s ease;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    max-width: 360px;
+    width: 100%;
 }
 
 .main-video-card:hover {
@@ -183,7 +187,7 @@ body::before {
 
 .main-video-card video {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 9 / 16;
     object-fit: cover;
     display: block;
     background: #000;
@@ -193,7 +197,7 @@ body::before {
     padding: 1rem;
     text-align: center;
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #e6b17e;
     background: rgba(0, 0, 0, 0.5);
     display: flex;
@@ -222,7 +226,7 @@ body::before {
 
 .thumbnail-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 20px;
 }
 
@@ -251,7 +255,7 @@ body::before {
 
 .thumbnail-card video {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 9 / 16;
     object-fit: cover;
     display: block;
     background: #000;
@@ -263,7 +267,7 @@ body::before {
     text-align: center;
     font-weight: 600;
     color: #e6b17e;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     background: rgba(0, 0, 0, 0.5);
     display: flex;
     align-items: center;
@@ -327,17 +331,25 @@ body::before {
     }
 }
 
+/* Responsive adjustments */
 @media (max-width: 768px) {
+    .main-video-card {
+        max-width: 320px;
+    }
+    .video-title {
+        font-size: 0.9rem;
+        padding: 0.8rem;
+    }
     .thumbnail-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 15px;
     }
-    .main-video-card video {
-        aspect-ratio: 16 / 9;
+    .thumbnail-card video {
+        aspect-ratio: 9 / 16;
     }
-    .video-title {
-        font-size: 1rem;
-        padding: 0.8rem;
+    .thumbnail-info {
+        font-size: 0.7rem;
+        padding: 0.6rem;
     }
     .gallery-title {
         font-size: 1.3rem;
@@ -356,6 +368,9 @@ body::before {
     }
     .page-header h1 {
         font-size: 1.6rem;
+    }
+    .main-video-card {
+        max-width: 280px;
     }
     .thumbnail-grid {
         grid-template-columns: 1fr;
@@ -383,7 +398,7 @@ body::before {
     <p>Exclusive first looks • Matchday moments • Training sessions</p>
 </div>
 
-<!-- Main Video Player -->
+<!-- Main Video Player (TikTok style vertical) -->
 <div class="main-video-container">
     <div class="main-video-card">
         <video id="mainVideo" controls autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1489944445-9b8e3d9b2b5a?w=600">
@@ -461,7 +476,7 @@ const videos = [
     }
 ];
 
-// Get DOM elements
+// DOM elements
 const mainVideo = document.getElementById('mainVideo');
 const mainVideoTitle = document.getElementById('mainVideoTitle');
 const thumbnailGrid = document.getElementById('thumbnailGrid');
@@ -472,14 +487,14 @@ function setMainVideo(video) {
     mainVideo.pause();
     // Change source
     mainVideo.src = video.src;
-    // Update poster
+    // Update poster if exists
     if (video.poster) mainVideo.poster = video.poster;
     // Load and play
     mainVideo.load();
     mainVideo.play().catch(e => console.log("Autoplay prevented:", e));
     // Update title
     mainVideoTitle.innerHTML = `<i class="${video.icon}"></i> ${video.title}`;
-    // Highlight active thumbnail (optional)
+    // Highlight active thumbnail
     document.querySelectorAll('.thumbnail-card').forEach(card => {
         card.style.borderColor = 'rgba(230, 177, 126, 0.3)';
     });
@@ -487,7 +502,7 @@ function setMainVideo(video) {
     if (activeCard) activeCard.style.borderColor = '#e6b17e';
 }
 
-// Create thumbnails
+// Build thumbnail gallery
 function buildThumbnails() {
     thumbnailGrid.innerHTML = '';
     videos.forEach(video => {
@@ -500,10 +515,9 @@ function buildThumbnails() {
         videoElem.src = video.src;
         videoElem.muted = true;
         videoElem.loop = true;
-        videoElem.autoplay = false;
         videoElem.playsInline = true;
-        videoElem.poster = video.poster || '';
-        // Optional: play on hover? We'll just use static preview
+        if (video.poster) videoElem.poster = video.poster;
+        // Optional hover preview
         videoElem.addEventListener('mouseenter', () => {
             videoElem.play().catch(e => {});
         });
@@ -532,10 +546,9 @@ bgImages.forEach(src => {
 // Initialize
 buildThumbnails();
 
-// Set initial active highlight
+// Set first video as active
 setTimeout(() => {
-    const firstVideo = videos[0];
-    setMainVideo(firstVideo);
+    setMainVideo(videos[0]);
 }, 100);
 </script>
 
