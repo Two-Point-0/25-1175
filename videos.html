@@ -48,46 +48,16 @@ html::-webkit-scrollbar {
 }
 
 @keyframes bgStretch {
-    0% { 
-        background-image: url('locker1.jpg');
-        transform: scale(1);
-    }
-    11% { 
-        background-image: url('locker2.jpg');
-        transform: scale(1.03);
-    }
-    22% { 
-        background-image: url('locker3.jpg');
-        transform: scale(1.05);
-    }
-    33% { 
-        background-image: url('locker4.jpg');
-        transform: scale(1.02);
-    }
-    44% { 
-        background-image: url('locker5.jpg');
-        transform: scale(1.04);
-    }
-    55% { 
-        background-image: url('locker6.jpg');
-        transform: scale(1.01);
-    }
-    66% { 
-        background-image: url('locker7.jpg');
-        transform: scale(1.06);
-    }
-    77% { 
-        background-image: url('locker8.jpg');
-        transform: scale(1.03);
-    }
-    88% { 
-        background-image: url('stadium.jpg');
-        transform: scale(1.02);
-    }
-    100% { 
-        background-image: url('locker1.jpg');
-        transform: scale(1);
-    }
+    0% { background-image: url('locker1.jpg'); transform: scale(1); }
+    11% { background-image: url('locker2.jpg'); transform: scale(1.03); }
+    22% { background-image: url('locker3.jpg'); transform: scale(1.05); }
+    33% { background-image: url('locker4.jpg'); transform: scale(1.02); }
+    44% { background-image: url('locker5.jpg'); transform: scale(1.04); }
+    55% { background-image: url('locker6.jpg'); transform: scale(1.01); }
+    66% { background-image: url('locker7.jpg'); transform: scale(1.06); }
+    77% { background-image: url('locker8.jpg'); transform: scale(1.03); }
+    88% { background-image: url('stadium.jpg'); transform: scale(1.02); }
+    100% { background-image: url('locker1.jpg'); transform: scale(1); }
 }
 
 /* DARK OVERLAY with subtle pulse */
@@ -104,12 +74,8 @@ body::before {
 }
 
 @keyframes overlayPulse {
-    0% {
-        background: linear-gradient(135deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.6) 100%);
-    }
-    100% {
-        background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.55) 100%);
-    }
+    0% { background: linear-gradient(135deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.6) 100%); }
+    100% { background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.55) 100%); }
 }
 
 /* MENU BAR - Transparent, just individual containers, no background bar */
@@ -392,81 +358,60 @@ body::before {
     }
 }
 
-/* Footer */
-.footer-locker {
+/* Footer - own container, no background bar */
+.footer-wrapper {
+    margin-top: 40px;
+    padding: 25px 0;
+}
+
+.footer-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
     text-align: center;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(8px);
-    padding: 20px 16px;
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 0.7rem;
-    border-top: 1px solid rgba(230, 177, 126, 0.2);
-    margin-top: 20px;
-    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.8rem;
+    line-height: 1.6;
+}
+.footer-container a {
+    color: #e6b17e;
+    text-decoration: none;
+}
+.footer-container a:hover {
+    text-decoration: underline;
+}
+.footer-container .footer-social {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.footer-container .footer-social a {
+    width: 36px;
+    height: 36px;
+    background: rgba(230, 177, 126, 0.2);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    color: #e6b17e;
+}
+.footer-container .footer-social a:hover {
+    background: #e6b17e;
+    color: #0a0c10;
+    transform: translateY(-3px);
 }
 
-@media (min-width: 768px) {
-    .footer-locker {
-        padding: 22px 20px;
-        font-size: 0.8rem;
-        margin-top: 30px;
+/* Responsive adjustments for footer */
+@media (max-width: 768px) {
+    .footer-container {
+        padding: 0 16px;
     }
 }
-
-/* Extra small devices */
 @media (max-width: 480px) {
-    .menu-bar {
-        gap: 6px;
-        padding: 12px 8px;
-    }
-    
-    .menu-bar a {
-        padding: 6px 12px;
+    .footer-container {
         font-size: 0.7rem;
-        gap: 4px;
-    }
-    
-    .menu-bar a i {
-        font-size: 0.75rem;
-    }
-    
-    .page-header {
-        margin: 20px 12px 20px;
-    }
-    
-    .page-header h1 {
-        font-size: 1.6rem;
-    }
-    
-    .page-header p {
-        font-size: 0.8rem;
-    }
-    
-    .video-layout {
-        padding: 0 12px 30px;
-        gap: 1rem;
-    }
-    
-    .video-grid {
-        gap: 1rem;
-    }
-    
-    .video-card {
-        border-radius: 20px;
-    }
-    
-    .video-info {
-        padding: 0.7rem;
-        font-size: 0.8rem;
-    }
-    
-    .mobile-side-videos {
-        gap: 0.8rem;
-    }
-    
-    .footer-locker {
-        padding: 16px 12px;
-        font-size: 0.65rem;
     }
 }
 </style>
@@ -571,13 +516,21 @@ body::before {
     </div>
 </div>
 
-<!-- Footer -->
-<footer class="footer-locker">
-    ⚽ THE LOCKER-ROOM - OFFICIAL UEFA MERCHANDISE PARTNER ⚽<br>
-    © 2026 The Locker-Room | Muthithi Road, Westlands, Nairobi, Kenya<br>
-    📞 24/7 Support: +254 700 123 456 | ✉️ info@thelocker-room.co.ke<br>
-    🇰🇪 Free East Africa Shipping | 30-Day Returns | 100% Authentic
-</footer>
+<!-- Footer in its own container, no background bar -->
+<div class="footer-wrapper">
+    <div class="footer-container">
+        ⚽ THE LOCKER-ROOM - OFFICIAL UEFA MERCHANDISE PARTNER ⚽<br>
+        © 2026 The Locker-Room | Muthithi Road, Westlands, Nairobi, Kenya<br>
+        📞 24/7 Support: <a href="tel:+254700123456">+254 700 123 456</a> | ✉️ <a href="mailto:info@thelocker-room.co.ke">info@thelocker-room.co.ke</a><br>
+        🇰🇪 Free East Africa Shipping | 30-Day Returns | 100% Authentic
+        <div class="footer-social">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+</div>
 
 <script>
 // Video interaction enhancement
