@@ -4,247 +4,143 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Locker-Room | Shop</title>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Inter',sans-serif;background:#111;color:#eee;overflow-x:hidden;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+body{background:#111;color:#fff;overflow-x:hidden}
 
-/* MENU */
-.menu-bar{
-display:flex;justify-content:center;gap:15px;padding:15px;
-background:rgba(0,0,0,0.5);backdrop-filter:blur(6px);
-position:sticky;top:0;z-index:100;
-}
-.menu-bar a{
-color:white;text-decoration:none;font-weight:bold;
-padding:8px 16px;border-radius:20px;
-display:flex;align-items:center;gap:6px;
-transition:0.3s;font-size:0.95rem;
-}
-.menu-bar a:hover{background:#e6b17e;color:black;}
+.menu-bar{display:flex;justify-content:center;gap:20px;padding:15px;background:rgba(0,0,0,0.6);backdrop-filter:blur(10px);position:sticky;top:0;z-index:100}
+.menu-bar a{color:#fff;text-decoration:none;font-weight:bold;display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:20px;transition:.3s}
+.menu-bar a:hover{background:#e6b17e;color:#000}
 
-/* HERO */
-.hero{text-align:center;margin:25px 0;}
-.hero h1{font-size:2.5rem;color:#e6b17e;}
+.section{margin:30px 0}
+.section h2{text-align:center;margin-bottom:15px;color:#e6b17e}
 
-/* SECTION */
-.section-title{text-align:center;margin:25px 0;color:#e6b17e;font-size:2rem;}
-.scroll-wrapper{display:flex;align-items:center;gap:10px;padding:0 20px;}
-.scroll-container{
-display:flex;overflow-x:auto;gap:15px;padding:10px;
-scroll-behavior:smooth;
-}
-.scroll-container::-webkit-scrollbar{display:none;}
+.scroll{display:flex;overflow-x:auto;gap:15px;padding:10px;scroll-behavior:smooth}
+.scroll::-webkit-scrollbar{display:none}
 
-.scroll-item{
-min-width:180px;max-width:180px;
-background:rgba(0,0,0,0.45);
-border-radius:15px;padding:10px;text-align:center;
-flex-shrink:0;transition:0.3s;
-}
-.scroll-item:hover{transform:translateY(-5px);}
-.scroll-item img{width:100%;border-radius:12px;margin-bottom:8px;}
+.card{min-width:180px;max-width:180px;background:#1c1c1c;border-radius:15px;padding:10px;text-align:center}
+.card img{width:100%;border-radius:10px}
+.card h4{font-size:.9rem;margin:5px 0}
+.price{color:#e6b17e;font-weight:bold}
+button{margin-top:5px;padding:6px 10px;border:none;border-radius:10px;background:#e6b17e;color:#000;cursor:pointer;font-weight:bold}
+button:hover{background:#f3c17f}
 
-.add-btn{
-padding:6px 10px;border:none;border-radius:12px;
-background:#e6b17e;color:black;font-weight:bold;
-cursor:pointer;transition:0.3s;
-}
-.add-btn:hover{background:#f3c17f;}
+#cart{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);width:340px;background:#000;padding:20px;border-radius:15px;z-index:200;transition:.3s}
+#cart.active{transform:translate(-50%,-50%) scale(1)}
+.cart-items{max-height:200px;overflow-y:auto}
+.cart-item{display:flex;justify-content:space-between;margin:5px 0}
 
-.scroll-btn{
-background:#e6b17e;border:none;border-radius:50%;
-width:40px;height:40px;cursor:pointer;
-}
-
-/* CART */
-.cart-popup{
-position:fixed;top:50%;left:50%;
-transform:translate(-50%,-50%) scale(0);
-background:#111;padding:20px;border-radius:20px;
-width:320px;z-index:200;transition:0.3s;
-}
-.cart-popup.show{transform:translate(-50%,-50%) scale(1);}
-
-.cart-items{max-height:200px;overflow:auto;margin:10px 0;}
-.cart-item{display:flex;justify-content:space-between;margin-bottom:8px;}
-
-.checkout-btn{
-width:100%;padding:10px;background:#e6b17e;
-border:none;border-radius:10px;cursor:pointer;
-}
-
-/* FOOTER */
-.footer-locker{
-text-align:center;background:rgba(0,0,0,0.4);
-padding:15px;color:white;margin-top:30px;
-}
+.footer-locker{text-align:center;background:rgba(0,0,0,0.4);padding:15px 10px;color:white;margin-top:30px}
 </style>
 </head>
 
 <body>
 
-<!-- MENU -->
 <div class="menu-bar">
-<a href="index.html"><i class="fas fa-house"></i> HOME</a>
-<a href="shop.html"><i class="fas fa-bag-shopping"></i> SHOP</a>
-<a href="size.html"><i class="fas fa-ruler"></i> SIZE GUIDE</a>
-<a href="videos.html"><i class="fas fa-video"></i> VIDEOS</a>
-<a href="contact.html"><i class="fas fa-phone"></i> CONTACT</a>
+<a href="index.html"><i class="fas fa-house"></i> Home</a>
+<a href="shop.html"><i class="fas fa-bag-shopping"></i> Shop</a>
+<a href="size.html"><i class="fas fa-ruler"></i> Size Guide</a>
+<a href="videos.html"><i class="fas fa-video"></i> Videos</a>
+<a href="contact.html"><i class="fas fa-phone"></i> Contact</a>
 </div>
 
-<div class="hero">
-<h1>⚡ THE LOCKER-ROOM ⚡</h1>
+<!-- SHIRTS -->
+<div class="section">
+<h2>Shirts</h2>
+<div class="scroll" id="shirts"></div>
 </div>
 
-<!-- ================= SHIRTS (20) ================= -->
-<h2 class="section-title">Shirts</h2>
-<div class="scroll-wrapper">
-<button class="scroll-btn" onclick="scrollRow('shirts',-300)">‹</button>
-<div id="shirts" class="scroll-container">
-
-<div class="scroll-item"><img src="barca.png"><button class="add-btn" onclick="addToCart('Barcelona Shirt',80)">Add</button></div>
-<div class="scroll-item"><img src="madrid.avif"><button class="add-btn" onclick="addToCart('Madrid Shirt',80)">Add</button></div>
-<div class="scroll-item"><img src="liverpool.avif"><button class="add-btn" onclick="addToCart('Liverpool Shirt',80)">Add</button></div>
-<div class="scroll-item"><img src="city.avif"><button class="add-btn" onclick="addToCart('City Shirt',80)">Add</button></div>
-<div class="scroll-item"><img src="arsenal.avif"><button class="add-btn" onclick="addToCart('Arsenal Shirt',80)">Add</button></div>
-<div class="scroll-item"><img src="chelsea.avif"><button class="add-btn" onclick="addToCart('Chelsea Shirt',80)">Add</button></div>
-<div class="scroll-item"><img src="psg.avif"><button class="add-btn" onclick="addToCart('PSG Shirt',80)">Add</button></div>
-<div class="scroll-item"><img src="juventus.avif"><button class="add-btn" onclick="addToCart('Juventus Shirt',80)">Add</button></div>
-<div class="scroll-item"><img src="inter.avif"><button class="add-btn" onclick="addToCart('Inter Shirt',80)">Add</button></div>
-<div class="scroll-item"><img src="napoli.webp"><button class="add-btn" onclick="addToCart('Napoli Shirt',80)">Add</button></div>
-<div class="scroll-item"><img src="bayern.avif"><button class="add-btn" onclick="addToCart('Bayern Shirt',80)">Add</button></div>
-<div class="scroll-item"><img src="borussia.avif"><button class="add-btn" onclick="addToCart('Borussia Shirt',80)">Add</button></div>
-<div class="scroll-item"><img src="RB.avif"><button class="add-btn" onclick="addToCart('RB Shirt',80)">Add</button></div>
-<div class="scroll-item"><img src="leverkusen.avif"><button class="add-btn" onclick="addToCart('Leverkusen Shirt',80)">Add</button></div>
-<div class="scroll-item"><img src="athletico.jpg"><button class="add-btn" onclick="addToCart('Athletico Shirt',80)">Add</button></div>
-<div class="scroll-item"><img src="sevila.jpg"><button class="add-btn" onclick="addToCart('Sevilla Shirt',80)">Add</button></div>
-<div class="scroll-item"><img src="olympique.avif"><button class="add-btn" onclick="addToCart('Olympique Shirt',80)">Add</button></div>
-<div class="scroll-item"><img src="lyon.avif"><button class="add-btn" onclick="addToCart('Lyon Shirt',80)">Add</button></div>
-<div class="scroll-item"><img src="monaco.avif"><button class="add-btn" onclick="addToCart('Monaco Shirt',80)">Add</button></div>
-<div class="scroll-item"><img src="AC Milan.jpg"><button class="add-btn" onclick="addToCart('AC Milan Shirt',80)">Add</button></div>
-
-</div>
-<button class="scroll-btn" onclick="scrollRow('shirts',300)">›</button>
+<!-- SHORTS -->
+<div class="section">
+<h2>Shorts</h2>
+<div class="scroll" id="shorts"></div>
 </div>
 
-<!-- ================= SHORTS (20) ================= -->
-<h2 class="section-title">Shorts</h2>
-<div class="scroll-wrapper">
-<button class="scroll-btn" onclick="scrollRow('shorts',-300)">‹</button>
-<div id="shorts" class="scroll-container">
-
-<div class="scroll-item"><img src="barcelona shorts.avif"><button class="add-btn"></button></div>
-<div class="scroll-item"><img src="madrid shorts.webp"></div>
-<div class="scroll-item"><img src="liverpool shorts.avif"></div>
-<div class="scroll-item"><img src="city shorts.avif"></div>
-<div class="scroll-item"><img src="arsenal shorts.webp"></div>
-<div class="scroll-item"><img src="chelsea shorts.avif"></div>
-<div class="scroll-item"><img src="psg shorts.avif"></div>
-<div class="scroll-item"><img src="juventus shorts.avif"></div>
-<div class="scroll-item"><img src="inter shorts.avif"></div>
-<div class="scroll-item"><img src="napoli shorts.webp"></div>
-<div class="scroll-item"><img src="bayern shorts.avif"></div>
-<div class="scroll-item"><img src="borussia shorts.avif"></div>
-<div class="scroll-item"><img src="RB shorts.avif"></div>
-<div class="scroll-item"><img src="leverkusen shorts.avif"></div>
-<div class="scroll-item"><img src="athletico shorts.webp"></div>
-<div class="scroll-item"><img src="sevila short.avif"></div>
-<div class="scroll-item"><img src="olympique shorts.avif"></div>
-<div class="scroll-item"><img src="lyon shorts.avif"></div>
-<div class="scroll-item"><img src="monaco shorts.avif"></div>
-<div class="scroll-item"><img src="AcMilan shorts.avif"></div>
-
-</div>
-<button class="scroll-btn" onclick="scrollRow('shorts',300)">›</button>
+<!-- BOOTS -->
+<div class="section">
+<h2>Boots</h2>
+<div class="scroll" id="boots"></div>
 </div>
 
-<!-- ================= BOOTS + MEMORABILIA (14) ================= -->
-<h2 class="section-title">Boots & Memorabilia</h2>
-<div class="scroll-wrapper">
-<button class="scroll-btn" onclick="scrollRow('boots',-300)">‹</button>
-<div id="boots" class="scroll-container">
-
-<div class="scroll-item"><img src="f50 elite.jpg"></div>
-<div class="scroll-item"><img src="copa pure 3.jpg"></div>
-<div class="scroll-item"><img src="x speedflow.jpg"></div>
-<div class="scroll-item"><img src="mecurial.jpg"></div>
-<div class="scroll-item"><img src="neymar puma.jpg"></div>
-<div class="scroll-item"><img src="pedri predator.jpg"></div>
-<div class="scroll-item"><img src="yamal f50.jpg"></div>
-<div class="scroll-item"><img src="jude.jpg"></div>
-
-<div class="scroll-item"><img src="pedri signed.jpg"></div>
-<div class="scroll-item"><img src="pedri 2.jpg"></div>
-<div class="scroll-item"><img src="ms1.webp"></div>
-<div class="scroll-item"><img src="ms2.jpg"></div>
-<div class="scroll-item"><img src="yamal card.jpg"></div>
-<div class="scroll-item"><img src="yamal card 2.jpg"></div>
-
-</div>
-<button class="scroll-btn" onclick="scrollRow('boots',300)">›</button>
+<!-- MEMORABILIA -->
+<div class="section">
+<h2>Memorabilia</h2>
+<div class="scroll" id="mem"></div>
 </div>
 
-<!-- CART -->
-<div id="cart" class="cart-popup">
+<div id="cart">
 <h3>Your Cart</h3>
 <div class="cart-items"></div>
 <p>Total: €<span id="total">0</span></p>
-<button class="checkout-btn" onclick="checkout()">Checkout</button>
+<button onclick="checkout()">Checkout</button>
 </div>
 
-<!-- FOOTER -->
 <div class="footer-locker">
 ⚽ THE LOCKER-ROOM - OFFICIAL UEFA MERCHANDISE PARTNER ⚽<br>
 © 2026 The Locker-Room | Muthithi Road, Westlands, Nairobi, Kenya<br>
-📞 24/7 Support: +254 700 123 456 | ✉️ info@thelocker-room.co.ke<br>
-🇰🇪 Free East Africa Shipping | 30-Day Returns | 100% Authentic
+📞 24/7 Support: +254 700 123 456 | ✉️ info@thelocker-room.co.ke
 </div>
 
 <script>
+
+const shirts=[
+"barca.png","madrid.avif","liverpool.avif","city.avif","arsenal.avif","chelsea.avif","psg.avif","juventus.avif","AC Milan.jpg","inter.avif","napoli.webp","bayern.avif","borussia.avif","RB.avif","leverkusen.avif","athletico.jpg","sevila.jpg","monaco.avif"
+];
+
+const shorts=[
+"barcelona shorts.avif","madrid shorts.webp","liverpool shorts.avif","city shorts.avif","arsenal shorts.webp","chelsea shorts.avif","psg shorts.avif","juventus shorts.avif","AcMilan shorts.avif","inter shorts.avif","napoli shorts.webp","bayern shorts.avif","borussia shorts.avif","RB shorts.avif","leverkusen shorts.avif","athletico shorts.webp","sevila short.avif","monaco shorts.avif"
+];
+
+const boots=[
+"f50 elite.jpg","pedri predator.jpg","yamal f50.jpg","jude.jpg","copa pure 3.jpg","x speedflow.jpg","mecurial.jpg","neymar puma.jpg"
+];
+
+const mem=[
+"pedri signed.jpg","pedri 2.jpg","ms1.webp","ms2.jpg","yamal card.jpg","yamal card 2.jpg","messi frame.jpg","ronaldo frame.jpg"
+];
+
+function loadItems(arr,containerId,price){
+ const container=document.getElementById(containerId);
+ arr.forEach(img=>{
+  const div=document.createElement('div');
+  div.className='card';
+  div.innerHTML=`<img src="${img}"><h4>${img}</h4><p class='price'>€${price}</p><button onclick="add('${img}',${price})">Add to Cart</button>`;
+  container.appendChild(div);
+ });
+}
+
+loadItems(shirts,'shirts',80);
+loadItems(shorts,'shorts',50);
+loadItems(boots,'boots',120);
+loadItems(mem,'mem',200);
+
 let cart=[];
-
-function scrollRow(id,amount){
-document.getElementById(id).scrollBy({left:amount,behavior:'smooth'});
+function add(name,price){
+ cart.push({name,price});
+ document.getElementById('cart').classList.add('active');
+ render();
 }
 
-function addToCart(name,price){
-cart.push({name,price});
-renderCart();
-document.getElementById('cart').classList.add('show');
-}
-
-function renderCart(){
-let container=document.querySelector('.cart-items');
-container.innerHTML='';
-let total=0;
-
-cart.forEach((item,index)=>{
-total+=item.price;
-container.innerHTML+=`
-<div class="cart-item">
-${item.name} €${item.price}
-<button onclick="removeItem(${index})">X</button>
-</div>`;
-});
-
-document.getElementById('total').innerText=total;
-}
-
-function removeItem(i){
-cart.splice(i,1);
-renderCart();
+function render(){
+ const box=document.querySelector('.cart-items');
+ box.innerHTML='';let total=0;
+ cart.forEach((i,index)=>{
+  total+=i.price;
+  box.innerHTML+=`<div class='cart-item'>${i.name} €${i.price}</div>`;
+ });
+ document.getElementById('total').innerText=total;
 }
 
 function checkout(){
-if(cart.length===0){alert("Cart empty!");return;}
-alert("Payment Successful ✅");
-cart=[];
-renderCart();
-document.getElementById('cart').classList.remove('show');
+ if(cart.length===0)return alert('Cart is empty');
+ alert('OTP sent to +254724726032 (Demo Payment Successful)');
+ cart=[];
+ render();
+ document.getElementById('cart').classList.remove('active');
 }
+
 </script>
 
 </body>
