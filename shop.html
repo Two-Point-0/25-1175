@@ -10,29 +10,64 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
 body{background:#111;color:#fff;overflow-x:hidden}
 
-.menu-bar{display:flex;justify-content:center;gap:20px;padding:15px;background:rgba(0,0,0,0.6);backdrop-filter:blur(10px);position:sticky;top:0;z-index:100}
-.menu-bar a{color:#fff;text-decoration:none;font-weight:bold;display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:20px;transition:.3s}
+/* MENU BAR (MATCH HOME) */
+.menu-bar{
+ display:flex;justify-content:center;gap:20px;padding:15px;
+ background:rgba(0,0,0,0.6);backdrop-filter:blur(10px);
+ position:sticky;top:0;z-index:100
+}
+.menu-bar a{
+ color:#fff;text-decoration:none;font-weight:bold;
+ display:flex;align-items:center;gap:6px;
+ padding:8px 16px;border-radius:20px;transition:.3s
+}
 .menu-bar a:hover{background:#e6b17e;color:#000}
 
 .section{margin:30px 0}
-.section h2{text-align:center;margin-bottom:15px;color:#e6b17e}
+.section h2{text-align:center;margin-bottom:10px;color:#e6b17e}
 
-.scroll{display:flex;overflow-x:auto;gap:15px;padding:10px;scroll-behavior:smooth}
-.scroll::-webkit-scrollbar{display:none}
+.scroll-wrapper{
+ display:flex;align-items:center;gap:10px;padding:0 10px
+}
 
-.card{min-width:180px;max-width:180px;background:#1c1c1c;border-radius:15px;padding:10px;text-align:center}
+.scroll{
+ display:flex;overflow:hidden;gap:15px;padding:10px;
+ scroll-behavior:smooth;width:100%
+}
+
+.card{
+ min-width:180px;max-width:180px;background:#1c1c1c;
+ border-radius:15px;padding:10px;text-align:center;flex-shrink:0
+}
 .card img{width:100%;border-radius:10px}
 .card h4{font-size:.9rem;margin:5px 0}
 .price{color:#e6b17e;font-weight:bold}
-button{margin-top:5px;padding:6px 10px;border:none;border-radius:10px;background:#e6b17e;color:#000;cursor:pointer;font-weight:bold}
+button{
+ margin-top:5px;padding:6px 10px;border:none;border-radius:10px;
+ background:#e6b17e;color:#000;cursor:pointer;font-weight:bold
+}
 button:hover{background:#f3c17f}
 
-#cart{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);width:340px;background:#000;padding:20px;border-radius:15px;z-index:200;transition:.3s}
+.scroll-btn{
+ background:#e6b17e;border:none;border-radius:50%;
+ width:40px;height:40px;cursor:pointer;font-size:1.2rem
+}
+
+/* CART POPUP */
+#cart{
+ position:fixed;top:50%;left:50%;
+ transform:translate(-50%,-50%) scale(0);
+ width:340px;background:#000;padding:20px;border-radius:15px;
+ z-index:200;transition:.3s
+}
 #cart.active{transform:translate(-50%,-50%) scale(1)}
 .cart-items{max-height:200px;overflow-y:auto}
 .cart-item{display:flex;justify-content:space-between;margin:5px 0}
 
-.footer-locker{text-align:center;background:rgba(0,0,0,0.4);padding:15px 10px;color:white;margin-top:30px}
+.footer-locker{
+ text-align:center;background:rgba(0,0,0,0.4);
+ padding:15px 10px;color:white;margin-top:30px
+}
 </style>
 </head>
 
@@ -46,29 +81,28 @@ button:hover{background:#f3c17f}
 <a href="contact.html"><i class="fas fa-phone"></i> Contact</a>
 </div>
 
-<!-- SHIRTS -->
-<div class="section">
-<h2>Shirts</h2>
-<div class="scroll" id="shirts"></div>
-</div>
+<!-- SECTION TEMPLATE -->
+<script>
+function createSection(title,id){
+ document.write(`
+ <div class="section">
+ <h2>${title}</h2>
+ <div class="scroll-wrapper">
+ <button class="scroll-btn" onclick="scrollLeft('${id}')"><i class="fas fa-chevron-left"></i></button>
+ <div class="scroll" id="${id}"></div>
+ <button class="scroll-btn" onclick="scrollRight('${id}')"><i class="fas fa-chevron-right"></i></button>
+ </div>
+ </div>
+ `);
+}
+</script>
 
-<!-- SHORTS -->
-<div class="section">
-<h2>Shorts</h2>
-<div class="scroll" id="shorts"></div>
-</div>
-
-<!-- BOOTS -->
-<div class="section">
-<h2>Boots</h2>
-<div class="scroll" id="boots"></div>
-</div>
-
-<!-- MEMORABILIA -->
-<div class="section">
-<h2>Memorabilia</h2>
-<div class="scroll" id="mem"></div>
-</div>
+<script>
+createSection('Shirts','shirts');
+createSection('Shorts','shorts');
+createSection('Boots','boots');
+createSection('Memorabilia','mem');
+</script>
 
 <div id="cart">
 <h3>Your Cart</h3>
@@ -85,24 +119,16 @@ button:hover{background:#f3c17f}
 
 <script>
 
-const shirts=[
-"barca.png","madrid.avif","liverpool.avif","city.avif","arsenal.avif","chelsea.avif","psg.avif","juventus.avif","AC Milan.jpg","inter.avif","napoli.webp","bayern.avif","borussia.avif","RB.avif","leverkusen.avif","athletico.jpg","sevila.jpg","monaco.avif"
-];
+const shirts=["barca.png","madrid.avif","liverpool.avif","city.avif","arsenal.avif","chelsea.avif","psg.avif","juventus.avif","AC Milan.jpg","inter.avif","napoli.webp","bayern.avif","borussia.avif","RB.avif","leverkusen.avif","athletico.jpg","sevila.jpg","monaco.avif"];
 
-const shorts=[
-"barcelona shorts.avif","madrid shorts.webp","liverpool shorts.avif","city shorts.avif","arsenal shorts.webp","chelsea shorts.avif","psg shorts.avif","juventus shorts.avif","AcMilan shorts.avif","inter shorts.avif","napoli shorts.webp","bayern shorts.avif","borussia shorts.avif","RB shorts.avif","leverkusen shorts.avif","athletico shorts.webp","sevila short.avif","monaco shorts.avif"
-];
+const shorts=["barcelona shorts.avif","madrid shorts.webp","liverpool shorts.avif","city shorts.avif","arsenal shorts.webp","chelsea shorts.avif","psg shorts.avif","juventus shorts.avif","AcMilan shorts.avif","inter shorts.avif","napoli shorts.webp","bayern shorts.avif","borussia shorts.avif","RB shorts.avif","leverkusen shorts.avif","athletico shorts.webp","sevila short.avif","monaco shorts.avif"];
 
-const boots=[
-"f50 elite.jpg","pedri predator.jpg","yamal f50.jpg","jude.jpg","copa pure 3.jpg","x speedflow.jpg","mecurial.jpg","neymar puma.jpg"
-];
+const boots=["f50 elite.jpg","pedri predator.jpg","yamal f50.jpg","jude.jpg","copa pure 3.jpg","x speedflow.jpg","mecurial.jpg","neymar puma.jpg"];
 
-const mem=[
-"pedri signed.jpg","pedri 2.jpg","ms1.webp","ms2.jpg","yamal card.jpg","yamal card 2.jpg","messi frame.jpg","ronaldo frame.jpg"
-];
+const mem=["pedri signed.jpg","pedri 2.jpg","ms1.webp","ms2.jpg","yamal card.jpg","yamal card 2.jpg","messi frame.jpg","ronaldo frame.jpg","ucl ball.jpg","worldcup.jpg"];
 
-function loadItems(arr,containerId,price){
- const container=document.getElementById(containerId);
+function loadItems(arr,id,price){
+ const container=document.getElementById(id);
  arr.forEach(img=>{
   const div=document.createElement('div');
   div.className='card';
@@ -116,6 +142,13 @@ loadItems(shorts,'shorts',50);
 loadItems(boots,'boots',120);
 loadItems(mem,'mem',200);
 
+function scrollLeft(id){
+ document.getElementById(id).scrollBy({left:-300,behavior:'smooth'});
+}
+function scrollRight(id){
+ document.getElementById(id).scrollBy({left:300,behavior:'smooth'});
+}
+
 let cart=[];
 function add(name,price){
  cart.push({name,price});
@@ -126,7 +159,7 @@ function add(name,price){
 function render(){
  const box=document.querySelector('.cart-items');
  box.innerHTML='';let total=0;
- cart.forEach((i,index)=>{
+ cart.forEach(i=>{
   total+=i.price;
   box.innerHTML+=`<div class='cart-item'>${i.name} €${i.price}</div>`;
  });
