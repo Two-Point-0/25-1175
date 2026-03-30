@@ -5,318 +5,298 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Locker-Room | Shop</title>
 
+<!-- Font Awesome for icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-
-/* BACKGROUND */
 body {
-    margin:0;
-    font-family:'Inter',sans-serif;
-    color:white;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #111;
+    color: white;
 }
 
-.slideshow-container {
-    position: fixed;
-    width:100%;
-    height:100%;
-    z-index:-2;
-}
-
-.slide {
-    position:absolute;
-    width:100%;
-    height:100%;
-    background-size:cover;
-    background-position:center;
-    opacity:0;
-    transition:1s;
-}
-
-.slide.active { opacity:1; }
-
-.slideshow-overlay {
-    position:fixed;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.45);
-    z-index:-1;
-}
-
-/* MENU (MATCH HOME) */
+/* Menu Bar */
 .menu-bar {
-    display:flex;
-    justify-content:center;
-    gap:15px;
-    padding:15px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 15px;
+    position: sticky;
+    top: 0;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(6px);
+    z-index: 1000;
 }
 
 .menu-bar a {
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
-    padding:8px 16px;
-    border-radius:20px;
-    background:rgba(0,0,0,0.5);
-    backdrop-filter:blur(6px);
-    display:flex;
-    gap:6px;
-    align-items:center;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.3s;
 }
 
 .menu-bar a:hover {
-    background:#e6b17e;
-    color:black;
+    background: rgba(230,177,126,0.8);
+    color: black;
 }
 
-/* SHOP */
-.shop-section {
-    margin:40px 20px;
+.menu-bar a i {
+    font-size: 1.1rem;
 }
 
-.section-title {
-    text-align:center;
-    color:#e6b17e;
-    margin-bottom:15px;
+/* Category Title */
+.category-title {
+    font-size: 1.8rem;
+    margin: 20px;
+    color: #e6b17e;
 }
 
-/* SCROLL */
-.scroll-wrapper {
-    display:flex;
-    align-items:center;
-}
-
+/* Horizontal scroll container */
 .scroll-container {
-    display:flex;
-    gap:15px;
-    overflow-x:auto;
-    scroll-behavior:smooth;
-    padding:10px;
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding: 10px 20px;
+    scroll-behavior: smooth;
 }
 
-/* hide scrollbar */
-.scroll-container::-webkit-scrollbar { display:none; }
-
-.scroll-btn {
-    background:#e6b17e;
-    border:none;
-    border-radius:50%;
-    width:40px;
-    height:40px;
-    cursor:pointer;
+.scroll-container::-webkit-scrollbar {
+    height: 10px;
 }
 
-/* PRODUCT CARD */
-.item {
-    min-width:180px;
-    background:rgba(0,0,0,0.5);
-    padding:10px;
-    border-radius:15px;
-    text-align:center;
+.scroll-container::-webkit-scrollbar-thumb {
+    background: #e6b17e;
+    border-radius: 5px;
 }
 
-.item img {
-    width:100%;
-    border-radius:10px;
+.item-box {
+    min-width: 200px;
+    max-width: 200px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 15px;
+    padding: 10px;
+    text-align: center;
+    backdrop-filter: blur(6px);
+    transition: transform 0.3s;
+    flex-shrink: 0;
+}
+
+.item-box:hover {
+    transform: translateY(-5px);
+}
+
+.item-box img {
+    width: 100%;
+    border-radius: 12px;
 }
 
 .price {
-    color:#f3b44f;
-    font-weight:bold;
+    margin: 10px 0;
+    font-weight: bold;
+    color: #e6b17e;
 }
 
-/* BUTTON */
+/* Add to Cart button */
 .add-btn {
-    background:#e6b17e;
-    border:none;
-    padding:6px 10px;
-    border-radius:10px;
-    cursor:pointer;
-    margin-top:5px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    background: #e6b17e;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-/* CART POPUP */
-.cart-popup {
-    position:fixed;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%) scale(0);
-    background:#111;
-    padding:20px;
-    border-radius:15px;
-    width:300px;
-    z-index:999;
-    transition:0.3s;
+.add-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(230,177,126,0.7);
 }
 
-.cart-popup.show {
-    transform:translate(-50%,-50%) scale(1);
+/* Floating cart popup */
+#cart-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.9);
+    padding: 25px 30px;
+    border-radius: 20px;
+    text-align: center;
+    display: none;
+    z-index: 2000;
+    width: 300px;
+    color: white;
 }
 
-.cart-item {
-    display:flex;
-    justify-content:space-between;
-    margin:5px 0;
+#cart-popup button {
+    margin-top: 15px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-.checkout-btn {
-    width:100%;
-    background:#e6b17e;
-    border:none;
-    padding:8px;
-    margin-top:10px;
+#checkout-btn {
+    background: #28a745;
+    color: white;
 }
 
-/* FOOTER */
+#pay-btn {
+    background: #0073e6;
+    color: white;
+    margin-left: 10px;
+}
+
+/* Footer */
 .footer-wrapper {
-    display:flex;
-    justify-content:center;
-    margin-top:30px;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(6px);
+    color: white;
+    text-align: center;
+    padding: 15px 10px;
+    font-size: 0.85rem;
+    margin-top: 30px;
 }
 
-.footer-locker {
-    background:rgba(0,0,0,0.4);
-    padding:12px 20px;
-    border-radius:15px;
-    text-align:center;
-    font-size:0.85rem;
+/* Responsive */
+@media(max-width:600px){
+    .item-box {min-width: 150px; max-width: 150px;}
 }
-
-/* HERO */
-.hero {
-    display:flex;
-    justify-content:center;
-    margin-top:30px;
-}
-
-.hero-box {
-    background:rgba(0,0,0,0.4);
-    padding:15px 25px;
-    border-radius:25px;
-    text-align:center;
-}
-
-.hero-box h1 { color:#e6b17e; }
-
 </style>
 </head>
-
 <body>
 
-<!-- BACKGROUND -->
-<div class="slideshow-container">
-<div class="slide active" style="background-image:url('locker1.jpg')"></div>
-<div class="slide" style="background-image:url('locker2.jpg')"></div>
-<div class="slide" style="background-image:url('locker3.jpg')"></div>
-</div>
-<div class="slideshow-overlay"></div>
-
-<!-- MENU -->
+<!-- MENU BAR -->
 <div class="menu-bar">
-<a href="index.html"><i class="fas fa-house"></i> Home</a>
-<a href="shop.html"><i class="fas fa-bag-shopping"></i> Shop</a>
-<a href="size.html"><i class="fas fa-ruler"></i> Size Guide</a>
-<a href="videos.html"><i class="fas fa-video"></i> Videos</a>
-<a href="contact.html"><i class="fas fa-phone"></i> Contact</a>
+    <a href="index.html"><i class="fas fa-house"></i> Home</a>
+    <a href="shop.html"><i class="fas fa-bag-shopping"></i> Shop</a>
+    <a href="size.html"><i class="fas fa-ruler"></i> Size Guide</a>
+    <a href="videos.html"><i class="fas fa-video"></i> Videos</a>
+    <a href="contact.html"><i class="fas fa-phone"></i> Contact</a>
 </div>
 
-<!-- HERO -->
-<div class="hero">
-<div class="hero-box">
-<h1>⚡ SHOP ⚡</h1>
-<p>Pick Your Gear</p>
-</div>
-</div>
+<!-- SHOP ITEMS -->
 
-<!-- SHIRTS (FIRST) -->
-<div class="shop-section">
-<h2 class="section-title">Shirts</h2>
-<div class="scroll-wrapper">
-<button class="scroll-btn" onclick="scrollRow('shirts',-200)">◀</button>
-
-<div id="shirts" class="scroll-container">
-
-<!-- ALL SHIRTS -->
-<div class="item"><img src="barca.png"><h4>Barcelona</h4><p class="price">€80</p><button class="add-btn" onclick="add('Barcelona',80)">Add</button></div>
-<div class="item"><img src="madrid.avif"><h4>Madrid</h4><p class="price">€80</p><button class="add-btn" onclick="add('Madrid',80)">Add</button></div>
-<div class="item"><img src="liverpool.avif"><h4>Liverpool</h4><p class="price">€80</p><button class="add-btn" onclick="add('Liverpool',80)">Add</button></div>
-<div class="item"><img src="city.avif"><h4>City</h4><p class="price">€80</p><button class="add-btn" onclick="add('City',80)">Add</button></div>
-<div class="item"><img src="arsenal.avif"><h4>Arsenal</h4><p class="price">€80</p><button class="add-btn" onclick="add('Arsenal',80)">Add</button></div>
-<div class="item"><img src="chelsea.avif"><h4>Chelsea</h4><p class="price">€80</p><button class="add-btn" onclick="add('Chelsea',80)">Add</button></div>
-<div class="item"><img src="psg.avif"><h4>PSG</h4><p class="price">€80</p><button class="add-btn" onclick="add('PSG',80)">Add</button></div>
-<div class="item"><img src="juventus.avif"><h4>Juventus</h4><p class="price">€80</p><button class="add-btn" onclick="add('Juventus',80)">Add</button></div>
-<div class="item"><img src="AC Milan.jpg"><h4>AC Milan</h4><p class="price">€80</p><button class="add-btn" onclick="add('AC Milan',80)">Add</button></div>
-<div class="item"><img src="inter.avif"><h4>Inter</h4><p class="price">€80</p><button class="add-btn" onclick="add('Inter',80)">Add</button></div>
-
+<!-- Shirts -->
+<h2 class="category-title">Shirts</h2>
+<div class="scroll-container">
+    <!-- Example 1 -->
+    <div class="item-box">
+        <img src="barcelona-shirt.jpg" alt="Barcelona Shirt">
+        <div class="price">KSh 6,500</div>
+        <button class="add-btn" onclick="addToCart('Barcelona Shirt', 6500)">Add to Cart</button>
+    </div>
+    <div class="item-box">
+        <img src="real-madrid-shirt.jpg" alt="Real Madrid Shirt">
+        <div class="price">KSh 6,500</div>
+        <button class="add-btn" onclick="addToCart('Real Madrid Shirt', 6500)">Add to Cart</button>
+    </div>
+    <div class="item-box">
+        <img src="psg-shirt.jpg" alt="PSG Shirt">
+        <div class="price">KSh 6,500</div>
+        <button class="add-btn" onclick="addToCart('PSG Shirt', 6500)">Add to Cart</button>
+    </div>
+    <!-- Continue adding all shirts until total of 20 -->
+    <!-- ... add remaining shirt images similarly ... -->
 </div>
 
-<button class="scroll-btn" onclick="scrollRow('shirts',200)">▶</button>
-</div>
+<!-- Shorts -->
+<h2 class="category-title">Shorts</h2>
+<div class="scroll-container">
+    <div class="item-box">
+        <img src="barcelona-shorts.jpg" alt="Barcelona Shorts">
+        <div class="price">KSh 3,500</div>
+        <button class="add-btn" onclick="addToCart('Barcelona Shorts', 3500)">Add to Cart</button>
+    </div>
+    <div class="item-box">
+        <img src="real-madrid-shorts.jpg" alt="Real Madrid Shorts">
+        <div class="price">KSh 3,500</div>
+        <button class="add-btn" onclick="addToCart('Real Madrid Shorts', 3500)">Add to Cart</button>
+    </div>
+    <!-- Continue adding all shorts until total of 10 -->
 </div>
 
-<!-- CART POPUP -->
-<div id="cart" class="cart-popup">
-<h3>Cart</h3>
-<div id="cartItems"></div>
-<p>Total: €<span id="total">0</span></p>
-<button class="checkout-btn" onclick="checkout()">Checkout</button>
+<!-- Boots -->
+<h2 class="category-title">Boots</h2>
+<div class="scroll-container">
+    <div class="item-box">
+        <img src="nike-mercurial.jpg" alt="Nike Mercurial">
+        <div class="price">KSh 12,500</div>
+        <button class="add-btn" onclick="addToCart('Nike Mercurial', 12500)">Add to Cart</button>
+    </div>
+    <!-- Continue adding all boots until total of 8 -->
+</div>
+
+<!-- Memorabilia -->
+<h2 class="category-title">Memorabilia</h2>
+<div class="scroll-container">
+    <div class="item-box">
+        <img src="messi-autograph.jpg" alt="Messi Autograph">
+        <div class="price">KSh 50,000</div>
+        <button class="add-btn" onclick="addToCart('Messi Autograph', 50000)">Add to Cart</button>
+    </div>
+    <!-- Continue adding memorabilia until total of 10 -->
+</div>
+
+<!-- Cards -->
+<h2 class="category-title">Trading Cards</h2>
+<div class="scroll-container">
+    <div class="item-box">
+        <img src="ronaldo-card.jpg" alt="Ronaldo Card">
+        <div class="price">KSh 1,500</div>
+        <button class="add-btn" onclick="addToCart('Ronaldo Card', 1500)">Add to Cart</button>
+    </div>
+    <!-- Continue adding trading cards until total of 6 -->
+</div>
+
+<!-- Floating Cart Popup -->
+<div id="cart-popup">
+    <div id="cart-items">Item added!</div>
+    <button id="checkout-btn" onclick="checkout()">Checkout</button>
+    <button id="pay-btn" onclick="pay()">Pay</button>
 </div>
 
 <!-- FOOTER -->
 <div class="footer-wrapper">
-<div class="footer-locker">
 ⚽ THE LOCKER-ROOM - OFFICIAL UEFA MERCHANDISE PARTNER ⚽<br>
 © 2026 The Locker-Room | Muthithi Road, Westlands, Nairobi, Kenya<br>
 📞 24/7 Support: +254 700 123 456 | ✉️ info@thelocker-room.co.ke<br>
 🇰🇪 Free East Africa Shipping | 30-Day Returns | 100% Authentic
 </div>
-</div>
 
 <script>
+let cart = [];
 
-/* SLIDES */
-let slides=document.querySelectorAll('.slide');
-let i=0;
-setInterval(()=>{
-slides[i].classList.remove('active');
-i=(i+1)%slides.length;
-slides[i].classList.add('active');
-},4000);
-
-/* SCROLL */
-function scrollRow(id, val){
-document.getElementById(id).scrollBy({left:val,behavior:'smooth'});
+function addToCart(name, price){
+    cart.push({name, price});
+    const popup = document.getElementById('cart-popup');
+    document.getElementById('cart-items').innerHTML = cart.map(i=>i.name).join('<br>');
+    popup.style.display = 'block';
 }
 
-/* CART */
-let cart=[];
-
-function add(name,price){
-cart.push({name,price});
-render();
-document.getElementById('cart').classList.add('show');
-}
-
-function render(){
-let list=document.getElementById('cartItems');
-list.innerHTML="";
-let total=0;
-
-cart.forEach(item=>{
-total+=item.price;
-list.innerHTML+=`<div class="cart-item">${item.name} €${item.price}</div>`;
-});
-
-document.getElementById('total').innerText=total;
-}
-
+// Dummy Checkout
 function checkout(){
-alert("Payment Successful ✅");
-cart=[];
-render();
-document.getElementById('cart').classList.remove('show');
+    alert('Checkout successful! Total: KSh ' + cart.reduce((a,b)=>a+b.price,0));
+    cart = [];
+    document.getElementById('cart-popup').style.display = 'none';
 }
 
+// Dummy Pay
+function pay(){
+    alert('Payment successful! (Simulated)');
+    cart = [];
+    document.getElementById('cart-popup').style.display = 'none';
+}
 </script>
 
 </body>
