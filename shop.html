@@ -2,620 +2,211 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>The Locker-Room | Shop – Premium Football Gear</title>
-<!-- Font Awesome 6 -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Locker-Room | Shop</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<!-- Google Fonts: Inter -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
 <style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:#0a0c10;color:#eee;overflow-x:hidden;}
+html{scrollbar-width:none;}html::-webkit-scrollbar{display:none;}
 
-  body {
-    font-family: 'Inter', sans-serif;
-    background: #0a0c10;
-    color: #f0f2f5;
-    overflow-x: hidden;
-  }
+.menu-bar{display:flex;justify-content:center;gap:15px;padding:15px;background:rgba(0,0,0,0.7);backdrop-filter:blur(12px);position:sticky;top:0;z-index:100;flex-wrap:wrap;}
+.menu-bar a{color:white;text-decoration:none;font-weight:bold;padding:8px 20px;border-radius:40px;display:flex;align-items:center;gap:8px;transition:0.3s;background:rgba(255,255,255,0.05);}
+.menu-bar a:hover{background:#e6b17e;color:black;}
+.menu-bar a.active{background:#e6b17e;color:black;}
 
-  /* Hide scrollbars but keep functionality */
-  html {
-    overflow-y: scroll;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  html::-webkit-scrollbar {
-    display: none;
-  }
-  body {
-    overflow-y: auto;
-    scrollbar-width: none;
-  }
-  body::-webkit-scrollbar {
-    display: none;
-  }
+.hero{text-align:center;margin:30px 0;}
+.hero h1{font-size:2.5rem;background:linear-gradient(135deg,#e6b17e,#ffda9e);-webkit-background-clip:text;background-clip:text;color:transparent;}
 
-  /* menu bar */
-  .menu-bar {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    padding: 14px 20px;
-    background: rgba(0, 0, 0, 0.75);
-    backdrop-filter: blur(14px);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 1px solid rgba(230, 177, 126, 0.4);
-    flex-wrap: wrap;
-  }
-  .menu-bar a {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    padding: 8px 20px;
-    border-radius: 40px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: 0.25s ease;
-    font-size: 0.9rem;
-    letter-spacing: 0.2px;
-    background: rgba(255,255,255,0.05);
-  }
-  .menu-bar a:hover {
-    background: #e6b17e;
-    color: #0a0c10;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 14px rgba(230,177,126,0.3);
-  }
-
-  /* hero */
-  .hero {
-    text-align: center;
-    margin: 35px 0 20px;
-    padding: 0 15px;
-  }
-  .hero h1 {
-    font-size: 2.8rem;
-    background: linear-gradient(135deg, #e6b17e, #ffda9e);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    font-weight: 800;
-    letter-spacing: -0.5px;
-  }
-  .hero p {
-    color: #aaa;
-    margin-top: 8px;
-    font-weight: 400;
-  }
-
-  /* section titles */
-  .section-title {
-    text-align: center;
-    margin: 45px 0 20px;
-    color: #e6b17e;
-    font-size: 2rem;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .section-title i {
-    font-size: 1.8rem;
-    opacity: 0.9;
-  }
-
-  /* scroll wrapper - modern, no visible scrollbar */
-  .scroll-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 0 25px;
-    margin-bottom: 30px;
-  }
-  .scroll-container {
-    display: flex;
-    overflow-x: auto;
-    gap: 22px;
-    padding: 12px 8px 18px 8px;
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  .scroll-container::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .scroll-item {
-    min-width: 190px;
-    max-width: 190px;
-    background: rgba(18, 20, 26, 0.85);
-    backdrop-filter: blur(2px);
-    border-radius: 26px;
-    padding: 14px 12px;
-    text-align: center;
-    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    border: 1px solid rgba(230, 177, 126, 0.25);
-    box-shadow: 0 10px 22px rgba(0,0,0,0.3);
-  }
-  .scroll-item:hover {
-    transform: translateY(-7px);
-    border-color: #e6b17e;
-    background: #1e212a;
-    box-shadow: 0 20px 30px rgba(0,0,0,0.4);
-  }
-  .scroll-item img {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    border-radius: 20px;
-    background: #262a33;
-    margin-bottom: 12px;
-    transition: 0.2s;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-  }
-  .item-name {
-    font-weight: 600;
-    font-size: 0.9rem;
-    margin: 6px 0 4px;
-    color: #f5f5f5;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .item-price {
-    font-weight: 800;
-    color: #e6b17e;
-    margin-bottom: 10px;
-    font-size: 1rem;
-  }
-  .add-btn {
-    padding: 8px 12px;
-    border: none;
-    border-radius: 40px;
-    background: #e6b17e;
-    color: #0a0c10;
-    font-weight: 700;
-    cursor: pointer;
-    transition: 0.2s;
-    font-size: 0.8rem;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-  }
-  .add-btn:hover {
-    background: #fad896;
-    transform: scale(0.97);
-  }
-  .scroll-btn {
-    background: #e6b17e;
-    border: none;
-    border-radius: 50%;
-    width: 44px;
-    height: 44px;
-    font-size: 1.7rem;
-    cursor: pointer;
-    color: #111;
-    font-weight: bold;
-    transition: 0.2s;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-    flex-shrink: 0;
-  }
-  .scroll-btn:hover {
-    background: #ffdd9e;
-    transform: scale(1.05);
-  }
-
-  /* floating cart */
-  .cart-badge {
-    position: fixed;
-    bottom: 26px;
-    right: 26px;
-    background: #e6b17e;
-    color: #111;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.7rem;
-    cursor: pointer;
-    z-index: 1100;
-    box-shadow: 0 10px 24px rgba(0,0,0,0.4);
-    transition: 0.2s;
-    border: none;
-  }
-  .cart-badge span {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    background: #ff4d4d;
-    color: white;
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
-    font-size: 0.7rem;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid #0a0c10;
-  }
-  .cart-badge:hover {
-    transform: scale(1.08);
-    background: #ffd194;
-  }
-
-  /* cart modal */
-  .cart-popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.92);
-    background: rgba(12, 14, 19, 0.98);
-    backdrop-filter: blur(20px);
-    padding: 24px;
-    border-radius: 36px;
-    width: 380px;
-    max-width: 90vw;
-    z-index: 2000;
-    transition: 0.25s ease-out;
-    opacity: 0;
-    visibility: hidden;
-    border: 1px solid rgba(230,177,126,0.6);
-    box-shadow: 0 30px 50px rgba(0,0,0,0.6);
-  }
-  .cart-popup.show {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-    visibility: visible;
-  }
-  .cart-popup h3 {
-    font-size: 1.7rem;
-    margin-bottom: 18px;
-    color: #e6b17e;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
-  .cart-items {
-    max-height: 280px;
-    overflow-y: auto;
-    margin: 12px 0;
-    padding-right: 6px;
-  }
-  .cart-items::-webkit-scrollbar {
-    width: 3px;
-  }
-  .cart-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #1b1e27;
-    padding: 10px 14px;
-    border-radius: 24px;
-    margin-bottom: 10px;
-    font-size: 0.85rem;
-  }
-  .cart-item button {
-    background: #ff5e6e;
-    border: none;
-    color: white;
-    border-radius: 30px;
-    padding: 5px 12px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.1s;
-  }
-  .total-row {
-    font-size: 1.3rem;
-    font-weight: 800;
-    margin: 15px 0;
-    text-align: right;
-    border-top: 1px solid #333;
-    padding-top: 12px;
-  }
-  .checkout-btn {
-    width: 100%;
-    padding: 12px;
-    background: #e6b17e;
-    border: none;
-    border-radius: 40px;
-    font-weight: 800;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: 0.2s;
-  }
-  .close-cart {
-    position: absolute;
-    top: 16px;
-    right: 20px;
-    font-size: 1.6rem;
-    cursor: pointer;
-    color: #ccc;
-  }
-  .footer-locker {
-    text-align: center;
-    background: rgba(0, 0, 0, 0.65);
-    padding: 24px 15px;
-    color: #ccc;
-    margin-top: 55px;
-    font-size: 0.8rem;
-    line-height: 1.5;
-    border-top: 1px solid #2a2e36;
-  }
-  @media (max-width: 650px) {
-    .scroll-item {
-      min-width: 160px;
-    }
-    .section-title {
-      font-size: 1.6rem;
-    }
-    .menu-bar a {
-      padding: 5px 12px;
-      font-size: 0.7rem;
-    }
-    .cart-badge {
-      width: 52px;
-      height: 52px;
-      font-size: 1.4rem;
-    }
-  }
+.section-title{text-align:center;margin:35px 0 20px;color:#e6b17e;font-size:1.8rem;}
+.scroll-wrapper{display:flex;align-items:center;gap:10px;padding:0 20px;}
+.scroll-container{display:flex;overflow-x:auto;gap:20px;padding:10px;scroll-behavior:smooth;scrollbar-width:none;}
+.scroll-container::-webkit-scrollbar{display:none;}
+.scroll-item{min-width:180px;max-width:180px;background:rgba(20,22,27,0.85);border-radius:20px;padding:12px;text-align:center;transition:0.3s;border:1px solid rgba(230,177,126,0.3);}
+.scroll-item:hover{transform:translateY(-5px);border-color:#e6b17e;}
+.scroll-item img{width:100%;border-radius:15px;margin-bottom:8px;aspect-ratio:1/1;object-fit:cover;}
+.item-name{font-weight:600;font-size:0.85rem;margin:5px 0;}
+.item-price{font-weight:700;color:#e6b17e;margin-bottom:8px;}
+.add-btn{padding:6px 12px;border:none;border-radius:30px;background:#e6b17e;color:black;font-weight:bold;cursor:pointer;width:100%;display:flex;align-items:center;justify-content:center;gap:5px;}
+.add-btn:hover{background:#f5cb9c;}
+.scroll-btn{background:#e6b17e;border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:1.3rem;flex-shrink:0;}
+.cart-badge{position:fixed;bottom:25px;right:25px;background:#e6b17e;width:55px;height:55px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;cursor:pointer;z-index:1100;box-shadow:0 5px 15px rgba(0,0,0,0.3);border:none;}
+.cart-badge span{position:absolute;top:-5px;right:-5px;background:#ff4d4d;color:white;border-radius:50%;width:22px;height:22px;font-size:0.7rem;display:flex;align-items:center;justify-content:center;}
+.cart-popup{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.9);background:#111;padding:20px;border-radius:25px;width:340px;z-index:2000;transition:0.2s;opacity:0;visibility:hidden;border:1px solid #e6b17e;}
+.cart-popup.show{transform:translate(-50%,-50%) scale(1);opacity:1;visibility:visible;}
+.cart-items{max-height:250px;overflow:auto;margin:10px 0;}
+.cart-item{display:flex;justify-content:space-between;margin-bottom:8px;background:#1e212a;padding:8px 12px;border-radius:15px;}
+.cart-item button{background:#ff5e6e;border:none;color:white;border-radius:20px;padding:2px 10px;cursor:pointer;}
+.total-row{font-size:1.2rem;font-weight:bold;margin:10px 0;text-align:right;}
+.checkout-btn{width:100%;padding:10px;background:#e6b17e;border:none;border-radius:25px;font-weight:bold;cursor:pointer;}
+.close-cart{position:absolute;top:10px;right:15px;font-size:1.3rem;cursor:pointer;color:#aaa;}
+.footer-locker{text-align:center;background:rgba(0,0,0,0.6);padding:20px;color:white;margin-top:40px;font-size:0.75rem;}
 </style>
 </head>
 <body>
 
-<!-- MENU BAR - Properly linked to all pages -->
 <div class="menu-bar">
     <a href="index.html"><i class="fas fa-house"></i> Home</a>
-    <a href="shop.html"><i class="fas fa-bag-shopping"></i> Shop</a>
+    <a href="shop.html" class="active"><i class="fas fa-bag-shopping"></i> Shop</a>
     <a href="size.html"><i class="fas fa-ruler"></i> Size Guide</a>
     <a href="videos.html"><i class="fas fa-video"></i> Videos</a>
     <a href="contact.html"><i class="fas fa-phone"></i> Contact</a>
 </div>
 
 <div class="hero">
-  <h1>⚡ THE LOCKER-ROOM ⚡</h1>
-  <p>Elite kits • Pro boots • Signed memorabilia</p>
+    <h1>⚡ THE LOCKER-ROOM ⚡</h1>
+    <p>Premium Football Gear</p>
 </div>
 
-<!-- ========= SHIRTS (20 items) ========= -->
-<h2 class="section-title"><i class="fas fa-tshirt"></i> Shirts <i class="fas fa-futbol"></i></h2>
+<!-- Shirts Section -->
+<h2 class="section-title"><i class="fas fa-tshirt"></i> Shirts</h2>
 <div class="scroll-wrapper">
-  <button class="scroll-btn" onclick="scrollRow('shirtsContainer', -330)">‹</button>
-  <div id="shirtsContainer" class="scroll-container"></div>
-  <button class="scroll-btn" onclick="scrollRow('shirtsContainer', 330)">›</button>
+    <button class="scroll-btn" onclick="scrollRow('shirtsRow', -320)">‹</button>
+    <div id="shirtsRow" class="scroll-container"></div>
+    <button class="scroll-btn" onclick="scrollRow('shirtsRow', 320)">›</button>
 </div>
 
-<!-- ========= SHORTS (20 items) ========= -->
-<h2 class="section-title"><i class="fas fa-shorts"></i> Shorts <i class="fas fa-running"></i></h2>
+<!-- Shorts Section -->
+<h2 class="section-title"><i class="fas fa-shorts"></i> Shorts</h2>
 <div class="scroll-wrapper">
-  <button class="scroll-btn" onclick="scrollRow('shortsContainer', -330)">‹</button>
-  <div id="shortsContainer" class="scroll-container"></div>
-  <button class="scroll-btn" onclick="scrollRow('shortsContainer', 330)">›</button>
+    <button class="scroll-btn" onclick="scrollRow('shortsRow', -320)">‹</button>
+    <div id="shortsRow" class="scroll-container"></div>
+    <button class="scroll-btn" onclick="scrollRow('shortsRow', 320)">›</button>
 </div>
 
-<!-- ========= BOOTS + MEMORABILIA (14 items) ========= -->
-<h2 class="section-title"><i class="fas fa-shoe-prints"></i> Boots & Memorabilia <i class="fas fa-star"></i></h2>
+<!-- Boots Section -->
+<h2 class="section-title"><i class="fas fa-shoe-prints"></i> Boots & Memorabilia</h2>
 <div class="scroll-wrapper">
-  <button class="scroll-btn" onclick="scrollRow('bootsContainer', -330)">‹</button>
-  <div id="bootsContainer" class="scroll-container"></div>
-  <button class="scroll-btn" onclick="scrollRow('bootsContainer', 330)">›</button>
+    <button class="scroll-btn" onclick="scrollRow('bootsRow', -320)">‹</button>
+    <div id="bootsRow" class="scroll-container"></div>
+    <button class="scroll-btn" onclick="scrollRow('bootsRow', 320)">›</button>
 </div>
 
-<!-- Floating Cart Button -->
-<button class="cart-badge" id="cartFloatingBtn">
-  <i class="fas fa-shopping-cart"></i>
-  <span id="cartItemCount">0</span>
-</button>
+<button class="cart-badge" id="cartBtn"><i class="fas fa-shopping-cart"></i><span id="cartCount">0</span></button>
 
-<!-- CART MODAL -->
 <div id="cartModal" class="cart-popup">
-  <span class="close-cart" id="closeCartModal">&times;</span>
-  <h3><i class="fas fa-basket-shopping"></i> Your Cart</h3>
-  <div class="cart-items" id="cartItemsList"></div>
-  <div class="total-row">Total: €<span id="cartTotalAmount">0</span></div>
-  <button class="checkout-btn" id="proceedCheckout">💳 CHECKOUT</button>
+    <span class="close-cart" id="closeCart">&times;</span>
+    <h3>Your Cart</h3>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="total-row">Total: €<span id="cartTotal">0</span></div>
+    <button class="checkout-btn" id="checkoutBtn">Checkout</button>
 </div>
 
-<!-- FOOTER -->
-<div class="footer-locker">
-  ⚽ THE LOCKER-ROOM - OFFICIAL UEFA MERCHANDISE PARTNER ⚽<br>
-  © 2026 The Locker-Room | Muthithi Road, Westlands, Nairobi, Kenya<br>
-  📞 24/7 Support: +254 700 123 456 | ✉️ info@thelocker-room.co.ke<br>
-  🇰🇪 Free East Africa Shipping | 30-Day Returns | 100% Authentic
-</div>
+<footer class="footer-locker">
+    ⚽ THE LOCKER-ROOM - OFFICIAL UEFA MERCHANDISE PARTNER ⚽<br>
+    © 2026 The Locker-Room | Muthithi Road, Westlands, Nairobi, Kenya
+</footer>
 
 <script>
-  // 54 PRODUCTS: 20 Shirts + 20 Shorts + 14 Boots/Memorabilia
-  
-  // 1) SHIRTS (20) - price 80€
-  const shirtsData = [
-    { name: "Barcelona Shirt", price: 80, img: "barca.png" },
-    { name: "Madrid Shirt", price: 80, img: "madrid.avif" },
-    { name: "Liverpool Shirt", price: 80, img: "liverpool.avif" },
-    { name: "City Shirt", price: 80, img: "city.avif" },
-    { name: "Arsenal Shirt", price: 80, img: "arsenal.avif" },
-    { name: "Chelsea Shirt", price: 80, img: "chelsea.avif" },
-    { name: "PSG Shirt", price: 80, img: "psg.avif" },
-    { name: "Juventus Shirt", price: 80, img: "juventus.avif" },
-    { name: "Inter Shirt", price: 80, img: "inter.avif" },
-    { name: "Napoli Shirt", price: 80, img: "napoli.webp" },
-    { name: "Bayern Shirt", price: 80, img: "bayern.avif" },
-    { name: "Borussia Shirt", price: 80, img: "borussia.avif" },
-    { name: "RB Shirt", price: 80, img: "RB.avif" },
-    { name: "Leverkusen Shirt", price: 80, img: "leverkusen.avif" },
-    { name: "Athletico Shirt", price: 80, img: "athletico.jpg" },
-    { name: "Sevilla Shirt", price: 80, img: "sevila.jpg" },
-    { name: "Olympique Shirt", price: 80, img: "olympique.avif" },
-    { name: "Lyon Shirt", price: 80, img: "lyon.avif" },
-    { name: "Monaco Shirt", price: 80, img: "monaco.avif" },
-    { name: "AC Milan Shirt", price: 80, img: "AC Milan.jpg" }
-  ];
+// Product Data
+const shirts = [
+    {name:"Barcelona Shirt",price:80,img:"https://placehold.co/300x300/1e2a3a/e6b17e?text=Barca"},
+    {name:"Madrid Shirt",price:80,img:"https://placehold.co/300x300/2a2a2a/e6b17e?text=Madrid"},
+    {name:"Liverpool Shirt",price:80,img:"https://placehold.co/300x300/c41e3a/e6b17e?text=Liverpool"},
+    {name:"City Shirt",price:80,img:"https://placehold.co/300x300/6caddf/e6b17e?text=City"},
+    {name:"Arsenal Shirt",price:80,img:"https://placehold.co/300x300/ef0107/e6b17e?text=Arsenal"},
+    {name:"Chelsea Shirt",price:80,img:"https://placehold.co/300x300/034694/e6b17e?text=Chelsea"},
+    {name:"PSG Shirt",price:80,img:"https://placehold.co/300x300/002654/e6b17e?text=PSG"},
+    {name:"Juventus Shirt",price:80,img:"https://placehold.co/300x300/000000/e6b17e?text=Juventus"},
+    {name:"Inter Shirt",price:80,img:"https://placehold.co/300x300/0a3a82/e6b17e?text=Inter"},
+    {name:"Bayern Shirt",price:80,img:"https://placehold.co/300x300/dc052d/e6b17e?text=Bayern"},
+    {name:"Borussia Shirt",price:80,img:"https://placehold.co/300x300/fde100/e6b17e?text=Dortmund"},
+    {name:"AC Milan Shirt",price:80,img:"https://placehold.co/300x300/fb0a2c/e6b17e?text=Milan"},
+    {name:"Napoli Shirt",price:80,img:"https://placehold.co/300x300/1b4d8c/e6b17e?text=Napoli"},
+    {name:"Leverkusen Shirt",price:80,img:"https://placehold.co/300x300/e32219/e6b17e?text=Leverkusen"},
+    {name:"Sevilla Shirt",price:80,img:"https://placehold.co/300x300/ffffff/e6b17e?text=Sevilla"},
+    {name:"Lyon Shirt",price:80,img:"https://placehold.co/300x300/1c3a6b/e6b17e?text=Lyon"},
+    {name:"Monaco Shirt",price:80,img:"https://placehold.co/300x300/e31836/e6b17e?text=Monaco"},
+    {name:"RB Shirt",price:80,img:"https://placehold.co/300x300/2e6b3e/e6b17e?text=RB"},
+    {name:"Athletico Shirt",price:80,img:"https://placehold.co/300x300/cb2f2f/e6b17e?text=Atletico"},
+    {name:"Olympique Shirt",price:80,img:"https://placehold.co/300x300/107a8b/e6b17e?text=Marseille"}
+];
 
-  // 2) SHORTS (20) - price 45€
-  const shortsData = [
-    { name: "Barcelona Shorts", price: 45, img: "barcelona shorts.avif" },
-    { name: "Madrid Shorts", price: 45, img: "madrid shorts.webp" },
-    { name: "Liverpool Shorts", price: 45, img: "liverpool shorts.avif" },
-    { name: "City Shorts", price: 45, img: "city shorts.avif" },
-    { name: "Arsenal Shorts", price: 45, img: "arsenal shorts.webp" },
-    { name: "Chelsea Shorts", price: 45, img: "chelsea shorts.avif" },
-    { name: "PSG Shorts", price: 45, img: "psg shorts.avif" },
-    { name: "Juventus Shorts", price: 45, img: "juventus shorts.avif" },
-    { name: "Inter Shorts", price: 45, img: "inter shorts.avif" },
-    { name: "Napoli Shorts", price: 45, img: "napoli shorts.webp" },
-    { name: "Bayern Shorts", price: 45, img: "bayern shorts.avif" },
-    { name: "Borussia Shorts", price: 45, img: "borussia shorts.avif" },
-    { name: "RB Shorts", price: 45, img: "RB shorts.avif" },
-    { name: "Leverkusen Shorts", price: 45, img: "leverkusen shorts.avif" },
-    { name: "Athletico Shorts", price: 45, img: "athletico shorts.webp" },
-    { name: "Sevilla Shorts", price: 45, img: "sevila short.avif" },
-    { name: "Olympique Shorts", price: 45, img: "olympique shorts.avif" },
-    { name: "Lyon Shorts", price: 45, img: "lyon shorts.avif" },
-    { name: "Monaco Shorts", price: 45, img: "monaco shorts.avif" },
-    { name: "AC Milan Shorts", price: 45, img: "AcMilan shorts.avif" }
-  ];
+const shorts = [
+    {name:"Barcelona Shorts",price:45,img:"https://placehold.co/300x300/1e2a3a/e6b17e?text=Barca+Shorts"},
+    {name:"Madrid Shorts",price:45,img:"https://placehold.co/300x300/2a2a2a/e6b17e?text=Madrid+Shorts"},
+    {name:"Liverpool Shorts",price:45,img:"https://placehold.co/300x300/c41e3a/e6b17e?text=Liverpool+Shorts"},
+    {name:"City Shorts",price:45,img:"https://placehold.co/300x300/6caddf/e6b17e?text=City+Shorts"},
+    {name:"Arsenal Shorts",price:45,img:"https://placehold.co/300x300/ef0107/e6b17e?text=Arsenal+Shorts"},
+    {name:"Chelsea Shorts",price:45,img:"https://placehold.co/300x300/034694/e6b17e?text=Chelsea+Shorts"},
+    {name:"PSG Shorts",price:45,img:"https://placehold.co/300x300/002654/e6b17e?text=PSG+Shorts"},
+    {name:"Juventus Shorts",price:45,img:"https://placehold.co/300x300/000000/e6b17e?text=Juventus+Shorts"},
+    {name:"Inter Shorts",price:45,img:"https://placehold.co/300x300/0a3a82/e6b17e?text=Inter+Shorts"},
+    {name:"Bayern Shorts",price:45,img:"https://placehold.co/300x300/dc052d/e6b17e?text=Bayern+Shorts"}
+];
 
-  // 3) BOOTS & MEMORABILIA (14 items)
-  const bootsData = [
-    { name: "adidas F50 Elite", price: 229, img: "f50 elite.jpg" },
-    { name: "Copa Pure 3", price: 199, img: "copa pure 3.jpg" },
-    { name: "X Speedflow+", price: 215, img: "x speedflow.jpg" },
-    { name: "Mercurial Vapor", price: 249, img: "mecurial.jpg" },
-    { name: "Neymar Puma Future", price: 219, img: "neymar puma.jpg" },
-    { name: "Pedri Predator", price: 209, img: "pedri predator.jpg" },
-    { name: "Yamal F50", price: 229, img: "yamal f50.jpg" },
-    { name: "Jude Bellingham X", price: 239, img: "jude.jpg" },
-    { name: "Pedri Signed Jersey", price: 349, img: "pedri signed.jpg" },
-    { name: "Pedri Match Photo", price: 89, img: "pedri 2.jpg" },
-    { name: "MSN Signed Print", price: 159, img: "ms1.webp" },
-    { name: "Legends Trio", price: 129, img: "ms2.jpg" },
-    { name: "Yamal RC Card", price: 79, img: "yamal card.jpg" },
-    { name: "Yamal Auto Card", price: 99, img: "yamal card 2.jpg" }
-  ];
+const boots = [
+    {name:"adidas F50 Elite",price:229,img:"https://placehold.co/300x300/4a90e2/e6b17e?text=F50"},
+    {name:"Mercurial Vapor",price:249,img:"https://placehold.co/300x300/f39c12/e6b17e?text=Mercurial"},
+    {name:"Predator Elite",price:209,img:"https://placehold.co/300x300/e67e22/e6b17e?text=Predator"},
+    {name:"Neymar Puma",price:219,img:"https://placehold.co/300x300/2ecc71/e6b17e?text=Neymar"},
+    {name:"Pedri Signed Jersey",price:349,img:"https://placehold.co/300x300/9b59b6/e6b17e?text=Pedri+Signed"},
+    {name:"Yamal RC Card",price:79,img:"https://placehold.co/300x300/3498db/e6b17e?text=Yamal+Card"},
+    {name:"MSN Signed Print",price:159,img:"https://placehold.co/300x300/e74c3c/e6b17e?text=MSN"}
+];
 
-  function renderProducts(containerId, productsArray) {
+function renderProducts(containerId, products) {
     const container = document.getElementById(containerId);
-    if (!container) return;
     container.innerHTML = '';
-    productsArray.forEach(product => {
-      const itemDiv = document.createElement('div');
-      itemDiv.className = 'scroll-item';
-      const imgSrc = product.img;
-      itemDiv.innerHTML = `
-        <img src="${imgSrc}" alt="${product.name}" onerror="this.src='https://placehold.co/300x300/1e1e2a/e6b17e?text=Football+Item'">
-        <div class="item-name">${product.name}</div>
-        <div class="item-price">€${product.price}</div>
-        <button class="add-to-cart-btn" data-name="${product.name}" data-price="${product.price}"><i class="fas fa-cart-plus"></i> Add</button>
-      `;
-      container.appendChild(itemDiv);
+    products.forEach(p => {
+        const div = document.createElement('div');
+        div.className = 'scroll-item';
+        div.innerHTML = `
+            <img src="${p.img}" alt="${p.name}">
+            <div class="item-name">${p.name}</div>
+            <div class="item-price">€${p.price}</div>
+            <button class="add-btn" onclick="addToCart('${p.name}', ${p.price})"><i class="fas fa-cart-plus"></i> Add</button>
+        `;
+        container.appendChild(div);
     });
-    container.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const name = btn.getAttribute('data-name');
-        const price = parseFloat(btn.getAttribute('data-price'));
-        addToCart(name, price);
-      });
-    });
-  }
+}
 
-  let cart = [];
+let cart = [];
 
-  function addToCart(name, price) {
-    cart.push({ name, price });
-    updateCartDisplay();
-    const modal = document.getElementById('cartModal');
-    modal.classList.add('show');
-  }
+function addToCart(name, price) {
+    cart.push({name, price});
+    updateCartUI();
+    document.getElementById('cartModal').classList.add('show');
+}
 
-  function updateCartDisplay() {
-    const cartContainer = document.getElementById('cartItemsList');
-    const totalSpan = document.getElementById('cartTotalAmount');
-    const badgeSpan = document.getElementById('cartItemCount');
+function updateCartUI() {
+    const container = document.getElementById('cartItems');
+    const totalSpan = document.getElementById('cartTotal');
+    const countSpan = document.getElementById('cartCount');
     let total = 0;
-    if (!cartContainer) return;
-    cartContainer.innerHTML = '';
-    cart.forEach((item, idx) => {
-      total += item.price;
-      const cartRow = document.createElement('div');
-      cartRow.className = 'cart-item';
-      cartRow.innerHTML = `
-        <span>${item.name} <strong>€${item.price}</strong></span>
-        <button class="remove-cart-item" data-index="${idx}"><i class="fas fa-trash"></i> X</button>
-      `;
-      cartContainer.appendChild(cartRow);
+    container.innerHTML = '';
+    cart.forEach((item, i) => {
+        total += item.price;
+        container.innerHTML += `<div class="cart-item">${item.name} €${item.price}<button onclick="removeItem(${i})">X</button></div>`;
     });
-    if (totalSpan) totalSpan.innerText = total.toFixed(2);
-    if (badgeSpan) badgeSpan.innerText = cart.length;
-    document.querySelectorAll('.remove-cart-item').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const index = parseInt(btn.getAttribute('data-index'));
-        if (!isNaN(index)) {
-          cart.splice(index, 1);
-          updateCartDisplay();
-        }
-      });
-    });
-  }
+    totalSpan.innerText = total;
+    countSpan.innerText = cart.length;
+}
 
-  function checkoutProcess() {
-    if (cart.length === 0) {
-      alert("🛒 Your cart is empty! Grab some exclusive gear.");
-      return;
-    }
-    alert("✅ PAYMENT SUCCESSFUL! ⚽ Thank you for shopping at THE LOCKER-ROOM. Your order is confirmed.");
+function removeItem(index) {
+    cart.splice(index, 1);
+    updateCartUI();
+}
+
+function checkout() {
+    if(cart.length === 0) { alert("Cart is empty!"); return; }
+    alert("✅ Payment Successful! Thank you for shopping at THE LOCKER-ROOM!");
     cart = [];
-    updateCartDisplay();
+    updateCartUI();
     document.getElementById('cartModal').classList.remove('show');
-  }
+}
 
-  function scrollRow(elementId, distance) {
-    const el = document.getElementById(elementId);
-    if (el) {
-      el.scrollBy({ left: distance, behavior: 'smooth' });
-    }
-  }
+function scrollRow(id, amount) {
+    document.getElementById(id).scrollBy({left: amount, behavior: 'smooth'});
+}
 
-  function closeCartModalFn() {
-    document.getElementById('cartModal').classList.remove('show');
-  }
+renderProducts('shirtsRow', shirts);
+renderProducts('shortsRow', shorts);
+renderProducts('bootsRow', boots);
 
-  renderProducts('shirtsContainer', shirtsData);
-  renderProducts('shortsContainer', shortsData);
-  renderProducts('bootsContainer', bootsData);
-
-  const cartModalDiv = document.getElementById('cartModal');
-  const closeModalBtn = document.getElementById('closeCartModal');
-  const floatingCart = document.getElementById('cartFloatingBtn');
-  const checkoutButton = document.getElementById('proceedCheckout');
-
-  if (closeModalBtn) closeModalBtn.addEventListener('click', closeCartModalFn);
-  if (floatingCart) {
-    floatingCart.addEventListener('click', () => {
-      cartModalDiv.classList.add('show');
-    });
-  }
-  if (checkoutButton) checkoutButton.addEventListener('click', checkoutProcess);
-
-  window.addEventListener('click', (e) => {
-    if (cartModalDiv.classList.contains('show') && !cartModalDiv.contains(e.target) && e.target !== floatingCart && !floatingCart.contains(e.target)) {
-      closeCartModalFn();
-    }
-  });
-
-  updateCartDisplay();
+document.getElementById('cartBtn').onclick = () => document.getElementById('cartModal').classList.add('show');
+document.getElementById('closeCart').onclick = () => document.getElementById('cartModal').classList.remove('show');
+document.getElementById('checkoutBtn').onclick = checkout;
 </script>
 </body>
 </html>
