@@ -206,38 +206,48 @@ body::before {
     transform: scale(0.9);
 }
 
-/* Dummy Item - Black Container */
+/* Dummy Item - Black Container (Coming Soon) */
 .dummy-item {
     min-width: 220px;
     max-width: 220px;
     flex-shrink: 0;
     scroll-snap-align: center;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(12px);
     border-radius: 24px;
     padding: 18px 16px;
     text-align: center;
-    border: 1px solid rgba(100, 100, 100, 0.3);
+    border: 1px solid rgba(80, 80, 80, 0.5);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    opacity: 0.4;
-    transform: scale(0.9);
+    opacity: 0.6;
+    transform: scale(0.92);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 320px;
+    cursor: default;
+    pointer-events: none;
 }
 
 .dummy-item i {
     font-size: 3rem;
-    color: #555;
+    color: #6b6b6b;
     margin-bottom: 15px;
 }
 
 .dummy-item p {
-    color: #555;
-    font-size: 0.9rem;
+    color: #8b8b8b;
+    font-size: 1rem;
     font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.dummy-item .coming-soon-text {
+    font-size: 0.8rem;
+    color: #e6b17e;
+    margin-top: 10px;
+    font-weight: 600;
 }
 
 /* Highlight the centered/active item */
@@ -408,7 +418,7 @@ body::before {
     gap: 10px;
 }
 
-.cart-sidebar .cart-items {
+.cart-sidebar .cart-items-list {
     max-height: 350px;
     overflow-y: auto;
     margin: 10px 0;
@@ -521,6 +531,8 @@ body::before {
     .scroll-item, .dummy-item { min-width: 160px; max-width: 160px; padding: 12px 10px; }
     .carousel-container { max-width: 420px; gap: 12px; }
     .carousel-btn { width: 36px; height: 36px; font-size: 1.2rem; }
+    .dummy-item i { font-size: 2rem; }
+    .dummy-item p { font-size: 0.8rem; }
 }
 </style>
 </head>
@@ -582,7 +594,7 @@ body::before {
 <div id="cartSidebar" class="cart-sidebar hidden">
     <span class="close-cart-sidebar" id="closeCartSidebar">&times;</span>
     <h3><i class="fas fa-basket-shopping"></i> Your Cart</h3>
-    <div id="cartItemsList" class="cart-items"></div>
+    <div id="cartItemsList" class="cart-items-list"></div>
     <div class="total-row">Total: €<span id="cartTotalAmount">0</span></div>
     <button class="checkout-btn" id="checkoutBtnSidebar">💳 CHECKOUT</button>
 </div>
@@ -595,7 +607,7 @@ body::before {
 </footer>
 
 <script>
-// PRODUCT DATA - All items with Barcelona first
+// PRODUCT DATA
 const shirtsData = [
     { name: "Barcelona Shirt", price: 80, img: "barca.png" },
     { name: "Madrid Shirt", price: 80, img: "madrid.avif" },
@@ -654,7 +666,7 @@ const bootsData = [
 ];
 
 const memorabiliaData = [
-    { name: "Pedri Signed Boots", price: 349, img: "pedri signed.jpg" },
+    { name: "Pedri Signed Jersey", price: 349, img: "pedri signed.jpg" },
     { name: "Pedri Match Photo", price: 89, img: "pedri 2.jpg" },
     { name: "MSN Signed Print", price: 159, img: "ms1.webp" },
     { name: "Legends Trio", price: 129, img: "ms2.jpg" },
@@ -662,48 +674,54 @@ const memorabiliaData = [
     { name: "Yamal Auto Card", price: 99, img: "yamal card 2.jpg" }
 ];
 
-// Add dummy items to the end of each array for visual balance
-function addDummyItems(arr) {
-    const dummyCount = 2; // Add 2 dummy items at the end
-    for (let i = 0; i < dummyCount; i++) {
-        arr.push({ isDummy: true, name: "", price: 0, img: "" });
-    }
-    return arr;
+// Create dummy items (Coming Soon)
+function createDummyItem() {
+    return { isDummy: true, name: "", price: 0, img: "" };
 }
 
-// Render products in carousel with dummy items
+// Render products with dummy items on BOTH sides (2 at start, 2 at end)
 function renderCarousel(containerId, productsArray) {
     const container = document.getElementById(containerId);
     if (!container) return;
     container.innerHTML = '';
     
-    // Add dummy items to end
-    const extendedArray = [...productsArray];
-    addDummyItems(extendedArray);
+    // Add 2 dummy items at the BEGINNING
+    for (let i = 0; i < 2; i++) {
+        const dummyDiv = document.createElement('div');
+        dummyDiv.className = 'dummy-item';
+        dummyDiv.innerHTML = `
+            <i class="fas fa-clock"></i>
+            <p>COMING SOON</p>
+            <div class="coming-soon-text">New Arrivals</div>
+        `;
+        container.appendChild(dummyDiv);
+    }
     
-    extendedArray.forEach((product, idx) => {
-        if (product.isDummy) {
-            const dummyDiv = document.createElement('div');
-            dummyDiv.className = 'dummy-item';
-            dummyDiv.innerHTML = `
-                <i class="fas fa-ellipsis-h"></i>
-                <p>More Coming Soon</p>
-                <i class="fas fa-star" style="font-size: 1.5rem; margin-top: 10px;"></i>
-            `;
-            container.appendChild(dummyDiv);
-        } else {
-            const itemDiv = document.createElement('div');
-            itemDiv.className = 'scroll-item';
-            itemDiv.setAttribute('data-index', idx);
-            itemDiv.innerHTML = `
-                <img src="${product.img}" alt="${product.name}" onerror="this.src='https://placehold.co/300x300/1e2a3a/e6b17e?text=Image+Not+Found'">
-                <div class="item-name">${product.name}</div>
-                <div class="item-price">€${product.price}</div>
-                <button class="add-btn" data-name="${product.name}" data-price="${product.price}"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-            `;
-            container.appendChild(itemDiv);
-        }
+    // Add actual products
+    productsArray.forEach((product, idx) => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'scroll-item';
+        itemDiv.setAttribute('data-index', idx);
+        itemDiv.innerHTML = `
+            <img src="${product.img}" alt="${product.name}" onerror="this.src='https://placehold.co/300x300/1e2a3a/e6b17e?text=Image+Not+Found'">
+            <div class="item-name">${product.name}</div>
+            <div class="item-price">€${product.price}</div>
+            <button class="add-btn" data-name="${product.name}" data-price="${product.price}"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+        `;
+        container.appendChild(itemDiv);
     });
+    
+    // Add 2 dummy items at the END
+    for (let i = 0; i < 2; i++) {
+        const dummyDiv = document.createElement('div');
+        dummyDiv.className = 'dummy-item';
+        dummyDiv.innerHTML = `
+            <i class="fas fa-star"></i>
+            <p>MORE COMING</p>
+            <div class="coming-soon-text">Stay Tuned</div>
+        `;
+        container.appendChild(dummyDiv);
+    }
     
     container.querySelectorAll('.add-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -844,13 +862,20 @@ function toggleCartSidebar() {
     sidebar.classList.toggle('hidden');
 }
 
-// Scroll to first item on load
-function scrollToFirstItem(containerId) {
+// Scroll to center on load (show Barcelona items)
+function scrollToCenter(containerId) {
     const container = document.getElementById(containerId);
     if (container && container.children.length > 0) {
         setTimeout(() => {
-            container.scrollTo({ left: 0, behavior: 'smooth' });
-        }, 150);
+            // Scroll to show first actual product (skip the 2 dummy items)
+            const firstProduct = container.querySelector('.scroll-item');
+            if (firstProduct) {
+                const containerRect = container.getBoundingClientRect();
+                const productRect = firstProduct.getBoundingClientRect();
+                const scrollPosition = productRect.left - containerRect.left - 100;
+                container.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+            }
+        }, 200);
     }
 }
 
@@ -860,13 +885,13 @@ renderCarousel('shortsRow', shortsData);
 renderCarousel('bootsRow', bootsData);
 renderCarousel('memorabiliaRow', memorabiliaData);
 
-// Scroll to first items on load
+// Scroll to show Barcelona items on load
 setTimeout(() => {
-    scrollToFirstItem('shirtsRow');
-    scrollToFirstItem('shortsRow');
-    scrollToFirstItem('bootsRow');
-    scrollToFirstItem('memorabiliaRow');
-}, 300);
+    scrollToCenter('shirtsRow');
+    scrollToCenter('shortsRow');
+    scrollToCenter('bootsRow');
+    scrollToCenter('memorabiliaRow');
+}, 400);
 
 // Event listeners
 const cartBtn = document.getElementById('cartBtn');
