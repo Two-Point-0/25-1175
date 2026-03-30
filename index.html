@@ -16,6 +16,7 @@ body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     overflow-x: hidden;
     min-height: 100vh;
+    position: relative;
 }
 
 /* Background Slideshow with your images */
@@ -46,124 +47,10 @@ body {
     position: fixed;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.45) 100%);
+    background: rgba(0, 0, 0, 0.55);
     top: 0;
     left: 0;
     z-index: -1;
-}
-
-.menu-bar {
-    display: flex;
-    justify-content: center;
-    gap: 18px;
-    padding: 18px 24px;
-    background: rgba(0, 0, 0, 0.65);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(230, 177, 126, 0.4);
-    flex-wrap: wrap;
-}
-
-.menu-bar a {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    padding: 10px 24px;
-    border-radius: 40px;
-    background: rgba(20, 20, 30, 0.7);
-    transition: all 0.25s ease;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 0.95rem;
-    border: 1px solid rgba(255,255,255,0.1);
-}
-
-.menu-bar a:hover {
-    background: #e6b17e;
-    color: #0a0c10;
-    transform: translateY(-2px);
-}
-
-.menu-bar a.active {
-    background: #e6b17e;
-    color: #0a0c10;
-}
-
-.hero {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 12vh;
-    padding: 0 20px;
-}
-
-.hero-box {
-    padding: 32px 48px;
-    background: rgba(0, 0, 0, 0.55);
-    border-radius: 48px;
-    backdrop-filter: blur(16px);
-    text-align: center;
-    border: 1px solid rgba(230, 177, 126, 0.4);
-}
-
-.hero-box h1 {
-    font-size: 3.2rem;
-    background: linear-gradient(135deg, #e6b17e, #ffda9e);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    font-weight: 800;
-}
-
-.hero-box p {
-    color: #f0f0f0;
-    margin-top: 8px;
-    font-size: 1.2rem;
-}
-
-.feature-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 28px;
-    padding: 60px 40px 100px 40px;
-    max-width: 1300px;
-    margin: 0 auto;
-}
-
-.feature-box {
-    background: rgba(12, 14, 20, 0.8);
-    backdrop-filter: blur(12px);
-    padding: 32px 24px;
-    border-radius: 32px;
-    text-align: center;
-    transition: 0.3s;
-    border: 1px solid rgba(230, 177, 126, 0.25);
-}
-
-.feature-box:hover {
-    transform: translateY(-8px);
-    border-color: #e6b17e;
-}
-
-.feature-box h3 {
-    font-size: 1.5rem;
-    margin-bottom: 18px;
-    color: #e6b17e;
-}
-
-.feature-box p {
-    color: #dddddd;
-    line-height: 1.5;
-}
-
-.footer-locker {
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(12px);
-    padding: 20px;
-    text-align: center;
-    color: #ececec;
-    font-size: 0.8rem;
-    border-top: 1px solid rgba(230,177,126,0.3);
 }
 
 html {
@@ -174,15 +61,196 @@ html::-webkit-scrollbar {
     display: none;
 }
 
+/* Transparent Menu Bar */
+.menu-bar {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 20px 24px;
+    background: transparent;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    flex-wrap: wrap;
+}
+.menu-bar a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px 24px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(10px);
+    font-size: 0.9rem;
+    letter-spacing: 0.3px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.menu-bar a:hover {
+    background: #e6b17e;
+    color: #0a0c10;
+    transform: translateY(-2px);
+    border-color: #e6b17e;
+    box-shadow: 0 5px 20px rgba(230, 177, 126, 0.3);
+}
+.menu-bar a.active {
+    background: #e6b17e;
+    color: #0a0c10;
+    border-color: #e6b17e;
+}
+
+/* Modern Animated Hero */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12vh;
+    padding: 0 20px;
+    animation: fadeInUp 0.8s ease-out;
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-box {
+    padding: 32px 48px;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(16px);
+    text-align: center;
+    border-radius: 60px;
+    border: 1px solid rgba(230, 177, 126, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.hero-box h1 {
+    font-size: 4.2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #e6b17e 0%, #ffda9e 25%, #f5c88c 50%, #ffda9e 75%, #e6b17e 100%);
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 3s linear infinite, glowPulse 2s ease-in-out infinite;
+    letter-spacing: -1px;
+    margin-bottom: 10px;
+}
+@keyframes shimmer {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+@keyframes glowPulse {
+    0%, 100% { filter: drop-shadow(0 0 5px rgba(230, 177, 126, 0.3)); }
+    50% { filter: drop-shadow(0 0 20px rgba(230, 177, 126, 0.6)); }
+}
+
+.hero-box p {
+    color: rgba(255, 255, 255, 0.95);
+    margin-top: 8px;
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+/* Feature Grid */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
+    padding: 60px 40px 100px 40px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.feature-box {
+    background: rgba(12, 14, 20, 0.7);
+    backdrop-filter: blur(12px);
+    padding: 32px 24px;
+    border-radius: 28px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    border: 1px solid rgba(230, 177, 126, 0.25);
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.feature-box:hover {
+    transform: translateY(-10px);
+    border-color: #e6b17e;
+    background: rgba(20, 22, 32, 0.8);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.4);
+}
+
+.feature-box h3 {
+    font-size: 1.6rem;
+    margin-bottom: 18px;
+    color: #e6b17e;
+    font-weight: 700;
+}
+
+.feature-box p {
+    color: #dddddd;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Footer */
+.footer-locker {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    padding: 22px 20px;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.8rem;
+    border-top: 1px solid rgba(230, 177, 126, 0.2);
+    line-height: 1.5;
+}
+
 @media (max-width: 768px) {
-    .hero-box h1 { font-size: 2rem; }
-    .menu-bar a { padding: 6px 14px; font-size: 0.75rem; }
-    .feature-grid { padding: 40px 20px; }
+    .hero-box h1 {
+        font-size: 2.5rem;
+    }
+    .hero-box {
+        padding: 20px 28px;
+    }
+    .hero-box p {
+        font-size: 0.9rem;
+    }
+    .menu-bar a {
+        padding: 6px 14px;
+        font-size: 0.75rem;
+    }
+    .feature-grid {
+        padding: 40px 20px 80px 20px;
+        gap: 20px;
+    }
+    .feature-box h3 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-box h1 {
+        font-size: 1.8rem;
+    }
+    .hero-box p {
+        font-size: 0.8rem;
+    }
 }
 </style>
 </head>
 <body>
 
+<!-- Background Slideshow with your images -->
 <div class="slideshow-container">
     <div class="slide active" style="background-image: url('locker1.jpg');"></div>
     <div class="slide" style="background-image: url('locker2.jpg');"></div>
@@ -196,6 +264,7 @@ html::-webkit-scrollbar {
 </div>
 <div class="slideshow-overlay"></div>
 
+<!-- Transparent Menu Bar -->
 <div class="menu-bar">
     <a href="index.html" class="active"><i class="fas fa-house"></i> Home</a>
     <a href="shop.html"><i class="fas fa-bag-shopping"></i> Shop</a>
@@ -204,28 +273,31 @@ html::-webkit-scrollbar {
     <a href="contact.html"><i class="fas fa-phone"></i> Contact</a>
 </div>
 
+<!-- Animated Hero Section -->
 <div class="hero">
     <div class="hero-box">
         <h1>⚡ THE LOCKER-ROOM ⚡</h1>
-        <p>Where Champions Gear Up</p>
+        <p>Where Champions Gear Up | Authentic Kits • Elite Boots • Collector's Items</p>
     </div>
 </div>
 
+<!-- Feature Grid -->
 <div class="feature-grid">
     <div class="feature-box">
         <h3>🔐 20+ Years of Excellence</h3>
-        <p>Over two decades of delivering elite football kits to passionate fans across East Africa. Trusted by collectors, players, and clubs alike.</p>
+        <p>Over two decades of delivering elite football kits to passionate fans across East Africa. Trusted by collectors, players, and clubs alike. Our legacy speaks through every jersey we deliver.</p>
     </div>
     <div class="feature-box">
         <h3>🏆 100% Authentic</h3>
-        <p>Every product is officially licensed and verified. No replicas — only genuine, high-quality football gear from top global brands.</p>
+        <p>Every product is officially licensed and verified. No replicas — only genuine, high-quality football gear from top global brands including Nike, Adidas, Puma, and official UEFA merchandise.</p>
     </div>
     <div class="feature-box">
         <h3>🚚 Free East Africa Shipping</h3>
-        <p>Enjoy fast and reliable delivery across Kenya, Uganda, Tanzania, and Rwanda — with zero shipping cost on qualifying orders.</p>
+        <p>Enjoy fast and reliable delivery across Kenya, Uganda, Tanzania, and Rwanda — with zero shipping cost on qualifying orders. Express delivery available for Nairobi within 24 hours.</p>
     </div>
 </div>
 
+<!-- Footer -->
 <footer class="footer-locker">
     ⚽ THE LOCKER-ROOM - OFFICIAL UEFA MERCHANDISE PARTNER ⚽<br>
     © 2026 The Locker-Room | Muthithi Road, Westlands, Nairobi, Kenya<br>
@@ -234,13 +306,57 @@ html::-webkit-scrollbar {
 </footer>
 
 <script>
+// Background slideshow with smooth transitions
 const slides = document.querySelectorAll('.slide');
 let current = 0;
-setInterval(() => {
+
+function nextSlide() {
     slides[current].classList.remove('active');
     current = (current + 1) % slides.length;
     slides[current].classList.add('active');
-}, 4500);
+}
+
+// Start slideshow with 4.5 second intervals
+setInterval(nextSlide, 4500);
+
+// Preload images for smoother transitions
+const images = ['locker1.jpg', 'locker2.jpg', 'locker3.jpg', 'locker4.jpg', 'locker5.jpg', 'locker6.jpg', 'locker7.jpg', 'locker8.jpg', 'stadium.jpg'];
+images.forEach(src => {
+    const img = new Image();
+    img.src = src;
+});
+
+// Optional: Pause slideshow when hovering over interactive elements
+const heroSection = document.querySelector('.hero');
+const featureGrid = document.querySelector('.feature-grid');
+let slideshowInterval;
+
+function startSlideshow() {
+    if (slideshowInterval) clearInterval(slideshowInterval);
+    slideshowInterval = setInterval(nextSlide, 4500);
+}
+
+function pauseSlideshow() {
+    if (slideshowInterval) {
+        clearInterval(slideshowInterval);
+        slideshowInterval = null;
+    }
+}
+
+if (heroSection) {
+    heroSection.addEventListener('mouseenter', pauseSlideshow);
+    heroSection.addEventListener('mouseleave', startSlideshow);
+}
+if (featureGrid) {
+    featureGrid.addEventListener('mouseenter', pauseSlideshow);
+    featureGrid.addEventListener('mouseleave', startSlideshow);
+}
+
+// Add animation delay to feature boxes for staggered appearance
+const featureBoxes = document.querySelectorAll('.feature-box');
+featureBoxes.forEach((box, index) => {
+    box.style.animationDelay = `${index * 0.1}s`;
+});
 </script>
 </body>
 </html>
