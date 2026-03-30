@@ -48,46 +48,16 @@ html::-webkit-scrollbar {
 }
 
 @keyframes bgStretch {
-    0% { 
-        background-image: url('locker1.jpg');
-        transform: scale(1);
-    }
-    11% { 
-        background-image: url('locker2.jpg');
-        transform: scale(1.03);
-    }
-    22% { 
-        background-image: url('locker3.jpg');
-        transform: scale(1.05);
-    }
-    33% { 
-        background-image: url('locker4.jpg');
-        transform: scale(1.02);
-    }
-    44% { 
-        background-image: url('locker5.jpg');
-        transform: scale(1.04);
-    }
-    55% { 
-        background-image: url('locker6.jpg');
-        transform: scale(1.01);
-    }
-    66% { 
-        background-image: url('locker7.jpg');
-        transform: scale(1.06);
-    }
-    77% { 
-        background-image: url('locker8.jpg');
-        transform: scale(1.03);
-    }
-    88% { 
-        background-image: url('stadium.jpg');
-        transform: scale(1.02);
-    }
-    100% { 
-        background-image: url('locker1.jpg');
-        transform: scale(1);
-    }
+    0% { background-image: url('locker1.jpg'); transform: scale(1); }
+    11% { background-image: url('locker2.jpg'); transform: scale(1.03); }
+    22% { background-image: url('locker3.jpg'); transform: scale(1.05); }
+    33% { background-image: url('locker4.jpg'); transform: scale(1.02); }
+    44% { background-image: url('locker5.jpg'); transform: scale(1.04); }
+    55% { background-image: url('locker6.jpg'); transform: scale(1.01); }
+    66% { background-image: url('locker7.jpg'); transform: scale(1.06); }
+    77% { background-image: url('locker8.jpg'); transform: scale(1.03); }
+    88% { background-image: url('stadium.jpg'); transform: scale(1.02); }
+    100% { background-image: url('locker1.jpg'); transform: scale(1); }
 }
 
 /* DARK OVERLAY with subtle pulse */
@@ -104,12 +74,8 @@ body::before {
 }
 
 @keyframes overlayPulse {
-    0% {
-        background: linear-gradient(135deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.6) 100%);
-    }
-    100% {
-        background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.55) 100%);
-    }
+    0% { background: linear-gradient(135deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.6) 100%); }
+    100% { background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.55) 100%); }
 }
 
 /* MENU BAR - Transparent, just individual containers, no background bar */
@@ -324,7 +290,8 @@ body::before {
 }
 
 .form-group input,
-.form-group textarea {
+.form-group textarea,
+.form-group select {
     width: 100%;
     padding: 14px 18px;
     background: rgba(0, 0, 0, 0.5);
@@ -336,8 +303,18 @@ body::before {
     transition: 0.3s;
 }
 
+.form-group select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 18px center;
+    background-size: 20px;
+}
+
 .form-group input:focus,
-.form-group textarea:focus {
+.form-group textarea:focus,
+.form-group select:focus {
     outline: none;
     border-color: #e6b17e;
     background: rgba(0, 0, 0, 0.7);
@@ -346,6 +323,66 @@ body::before {
 .form-group textarea {
     resize: vertical;
     min-height: 120px;
+}
+
+.contact-method {
+    margin: 20px 0;
+}
+
+.contact-method label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-weight: 500;
+    color: #e6b17e;
+}
+
+.method-options {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.method-option {
+    flex: 1;
+    min-width: 100px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.method-option input {
+    display: none;
+}
+
+.method-option .method-card {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(230, 177, 126, 0.3);
+    border-radius: 20px;
+    padding: 12px;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.method-option .method-card i {
+    font-size: 1.5rem;
+    color: #e6b17e;
+}
+
+.method-option .method-card span {
+    font-size: 0.8rem;
+    color: #ccc;
+}
+
+.method-option input:checked + .method-card {
+    background: rgba(230, 177, 126, 0.2);
+    border-color: #e6b17e;
+    box-shadow: 0 0 10px rgba(230, 177, 126, 0.3);
+    transform: scale(1.02);
 }
 
 .submit-btn {
@@ -432,93 +469,63 @@ body::before {
     margin-right: 8px;
 }
 
-/* Footer */
-.footer-locker {
+/* Footer - own container, no background bar */
+.footer-wrapper {
+    margin-top: 40px;
+    padding: 25px 0;
+}
+
+.footer-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
     text-align: center;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(8px);
-    padding: 20px 16px;
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 0.7rem;
-    border-top: 1px solid rgba(230, 177, 126, 0.2);
-    margin-top: 20px;
-    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.8rem;
+    line-height: 1.6;
+}
+.footer-container a {
+    color: #e6b17e;
+    text-decoration: none;
+}
+.footer-container a:hover {
+    text-decoration: underline;
+}
+.footer-container .footer-social {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.footer-container .footer-social a {
+    width: 36px;
+    height: 36px;
+    background: rgba(230, 177, 126, 0.2);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    color: #e6b17e;
+}
+.footer-container .footer-social a:hover {
+    background: #e6b17e;
+    color: #0a0c10;
+    transform: translateY(-3px);
 }
 
-@media (min-width: 768px) {
-    .page-header {
-        margin: 40px 20px 30px;
-    }
-    
-    .page-header h1 {
-        font-size: 2.5rem;
-    }
-    
-    .page-header p {
-        font-size: 1rem;
-    }
-    
-    .contact-container {
-        padding: 0 30px 60px;
-    }
-    
-    .footer-locker {
-        padding: 22px 20px;
-        font-size: 0.8rem;
-        margin-top: 30px;
+/* Responsive adjustments for footer */
+@media (max-width: 768px) {
+    .footer-container {
+        padding: 0 16px;
     }
 }
-
-@keyframes cardStretch {
-    0% {
-        opacity: 0;
-        transform: translateY(30px) scaleX(0.95);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0) scaleX(1);
-    }
-}
-
-/* Extra small devices */
 @media (max-width: 480px) {
-    .menu-bar {
-        gap: 6px;
-        padding: 12px 8px;
-    }
-    
-    .menu-bar a {
-        padding: 6px 12px;
+    .footer-container {
         font-size: 0.7rem;
-        gap: 4px;
     }
-    
-    .menu-bar a i {
-        font-size: 0.75rem;
-    }
-    
-    .page-header {
-        margin: 20px 12px 20px;
-    }
-    
-    .page-header h1 {
-        font-size: 1.6rem;
-    }
-    
-    .contact-container {
-        padding: 0 12px 40px;
-    }
-    
-    .info-card {
-        padding: 20px;
-    }
-    
-    .contact-form {
-        padding: 20px;
-    }
-    
-    .map-container iframe {
-        height: 250px;
+    .method-options {
+        flex-direction: column;
     }
 }
 </style>
@@ -588,7 +595,7 @@ body::before {
             </div>
         </div>
         
-        <!-- Contact Form -->
+        <!-- Contact Form with Modern Preferred Contact Method -->
         <div class="contact-form">
             <h3><i class="fas fa-paper-plane"></i> Send a Message</h3>
             <form id="contactForm" onsubmit="submitForm(event)">
@@ -604,6 +611,35 @@ body::before {
                 <div class="form-group">
                     <input type="text" placeholder="Subject">
                 </div>
+                
+                <!-- Modern Preferred Contact Method Selector -->
+                <div class="contact-method">
+                    <label><i class="fas fa-comment-dots"></i> Preferred Contact Method</label>
+                    <div class="method-options">
+                        <label class="method-option">
+                            <input type="radio" name="contactMethod" value="email" checked>
+                            <div class="method-card">
+                                <i class="fas fa-envelope"></i>
+                                <span>Email</span>
+                            </div>
+                        </label>
+                        <label class="method-option">
+                            <input type="radio" name="contactMethod" value="phone">
+                            <div class="method-card">
+                                <i class="fas fa-phone-alt"></i>
+                                <span>Phone</span>
+                            </div>
+                        </label>
+                        <label class="method-option">
+                            <input type="radio" name="contactMethod" value="whatsapp">
+                            <div class="method-card">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>WhatsApp</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                
                 <div class="form-group">
                     <textarea placeholder="Your Message..." required></textarea>
                 </div>
@@ -635,20 +671,33 @@ body::before {
     
 </div>
 
-<!-- Footer -->
-<footer class="footer-locker">
-    ⚽ THE LOCKER-ROOM - OFFICIAL UEFA MERCHANDISE PARTNER ⚽<br>
-    © 2026 The Locker-Room | Muthithi Road, Westlands, Nairobi, Kenya<br>
-    📞 24/7 Support: +254 700 123 456 | ✉️ info@thelocker-room.co.ke<br>
-    🇰🇪 Free East Africa Shipping | 30-Day Returns | 100% Authentic
-</footer>
+<!-- Footer in its own container, no background bar -->
+<div class="footer-wrapper">
+    <div class="footer-container">
+        ⚽ THE LOCKER-ROOM - OFFICIAL UEFA MERCHANDISE PARTNER ⚽<br>
+        © 2026 The Locker-Room | Muthithi Road, Westlands, Nairobi, Kenya<br>
+        📞 24/7 Support: <a href="tel:+254700123456">+254 700 123 456</a> | ✉️ <a href="mailto:info@thelocker-room.co.ke">info@thelocker-room.co.ke</a><br>
+        🇰🇪 Free East Africa Shipping | 30-Day Returns | 100% Authentic
+        <div class="footer-social">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+</div>
 
 <script>
 // Form submission handler
 function submitForm(event) {
     event.preventDefault();
-    alert("✅ Thank you for reaching out! Our team will get back to you within 24 hours.");
-    document.getElementById('contactForm').reset();
+    const form = document.getElementById('contactForm');
+    const contactMethod = form.querySelector('input[name="contactMethod"]:checked').value;
+    const methodMap = { email: 'email', phone: 'phone call', whatsapp: 'WhatsApp' };
+    alert(`✅ Thank you for reaching out! Our team will contact you via ${methodMap[contactMethod]} within 24 hours.`);
+    form.reset();
+    // Reset radio to default
+    form.querySelector('input[value="email"]').checked = true;
 }
 
 // Preload background images for smoother animation
