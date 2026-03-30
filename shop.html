@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Locker-Room | Shop</title>
 
-<!-- Font Awesome for icons -->
+<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
@@ -17,7 +17,7 @@ body {
     color: white;
 }
 
-/* Menu Bar */
+/* MENU BAR SAME AS HOME */
 .menu-bar {
     display: flex;
     justify-content: center;
@@ -52,14 +52,14 @@ body {
     font-size: 1.1rem;
 }
 
-/* Category Title */
+/* CATEGORY TITLE */
 .category-title {
     font-size: 1.8rem;
     margin: 20px;
     color: #e6b17e;
 }
 
-/* Horizontal scroll container */
+/* SCROLL CONTAINER */
 .scroll-container {
     display: flex;
     overflow-x: auto;
@@ -77,16 +77,16 @@ body {
     border-radius: 5px;
 }
 
+/* ITEM BOX (MATCH ORIGINAL CONTAINER SIZE) */
 .item-box {
-    min-width: 200px;
-    max-width: 200px;
+    width: 220px;
     background: rgba(0,0,0,0.5);
     border-radius: 15px;
     padding: 10px;
     text-align: center;
     backdrop-filter: blur(6px);
-    transition: transform 0.3s;
     flex-shrink: 0;
+    transition: transform 0.3s;
 }
 
 .item-box:hover {
@@ -104,7 +104,7 @@ body {
     color: #e6b17e;
 }
 
-/* Add to Cart button */
+/* ADD TO CART BUTTON */
 .add-btn {
     padding: 8px 12px;
     border: none;
@@ -121,7 +121,7 @@ body {
     box-shadow: 0 5px 15px rgba(230,177,126,0.7);
 }
 
-/* Floating cart popup */
+/* FLOATING CART POPUP */
 #cart-popup {
     position: fixed;
     top: 50%;
@@ -157,7 +157,7 @@ body {
     margin-left: 10px;
 }
 
-/* Footer */
+/* FOOTER SAME AS HOME */
 .footer-wrapper {
     background: rgba(0,0,0,0.7);
     backdrop-filter: blur(6px);
@@ -168,15 +168,15 @@ body {
     margin-top: 30px;
 }
 
-/* Responsive */
+/* RESPONSIVE */
 @media(max-width:600px){
-    .item-box {min-width: 150px; max-width: 150px;}
+    .item-box {width: 150px;}
 }
 </style>
 </head>
 <body>
 
-<!-- MENU BAR -->
+<!-- MENU -->
 <div class="menu-bar">
     <a href="index.html"><i class="fas fa-house"></i> Home</a>
     <a href="shop.html"><i class="fas fa-bag-shopping"></i> Shop</a>
@@ -187,64 +187,103 @@ body {
 
 <!-- SHOP ITEMS -->
 
-<!-- SHIRTS (20 items) -->
+<!-- SHIRTS -->
 <h2 class="category-title">Shirts</h2>
 <div class="scroll-container">
-    <div class="item-box"><img src="barcelona-shirt.jpg" alt="Barcelona Shirt"><div class="price">KSh 6,500</div><button class="add-btn" onclick="addToCart('Barcelona Shirt', 6500)">Add to Cart</button></div>
-    <div class="item-box"><img src="real-madrid-shirt.jpg" alt="Real Madrid Shirt"><div class="price">KSh 6,500</div><button class="add-btn" onclick="addToCart('Real Madrid Shirt', 6500)">Add to Cart</button></div>
-    <div class="item-box"><img src="psg-shirt.jpg" alt="PSG Shirt"><div class="price">KSh 6,500</div><button class="add-btn" onclick="addToCart('PSG Shirt', 6500)">Add to Cart</button></div>
-    <div class="item-box"><img src="chelsea-shirt.jpg" alt="Chelsea Shirt"><div class="price">KSh 6,500</div><button class="add-btn" onclick="addToCart('Chelsea Shirt', 6500)">Add to Cart</button></div>
-    <div class="item-box"><img src="manutd-shirt.jpg" alt="Man Utd Shirt"><div class="price">KSh 6,500</div><button class="add-btn" onclick="addToCart('Man Utd Shirt', 6500)">Add to Cart</button></div>
-    <div class="item-box"><img src="bayern-shirt.jpg" alt="Bayern Shirt"><div class="price">KSh 6,500</div><button class="add-btn" onclick="addToCart('Bayern Shirt', 6500)">Add to Cart</button></div>
-    <div class="item-box"><img src="juventus-shirt.jpg" alt="Juventus Shirt"><div class="price">KSh 6,500</div><button class="add-btn" onclick="addToCart('Juventus Shirt', 6500)">Add to Cart</button></div>
-    <div class="item-box"><img src="liverpool-shirt.jpg" alt="Liverpool Shirt"><div class="price">KSh 6,500</div><button class="add-btn" onclick="addToCart('Liverpool Shirt', 6500)">Add to Cart</button></div>
-    <div class="item-box"><img src="arsenal-shirt.jpg" alt="Arsenal Shirt"><div class="price">KSh 6,500</div><button class="add-btn" onclick="addToCart('Arsenal Shirt', 6500)">Add to Cart</button></div>
-    <div class="item-box"><img src="chelsea-away.jpg" alt="Chelsea Away Shirt"><div class="price">KSh 6,500</div><button class="add-btn" onclick="addToCart('Chelsea Away Shirt', 6500)">Add to Cart</button></div>
-    <div class="item-box"><img src="psg-away.jpg" alt="PSG Away Shirt"><div class="price">KSh 6,500</div><button class="add-btn" onclick="addToCart('PSG Away Shirt', 6500)">Add to Cart</button></div>
-    <div class="item-box"><img src="barcelona-away.jpg" alt="Barcelona Away Shirt"><div class="price">KSh 6,500</div><button class="add-btn" onclick="addToCart('Barcelona Away Shirt', 6500)">Add to Cart</button></div>
-    <div class="item-box"><img src="manutd-away.jpg" alt="Man Utd Away Shirt"><div class="price">KSh 6,500</div><button class="add-btn" onclick="addToCart('Man Utd Away Shirt', 6500)">Add to Cart</button></div>
-    <div class="item-box"><img src="real-madrid-away.jpg" alt="Real Madrid Away Shirt"><div class="price">KSh 6,500</div><button class="add-btn" onclick="addToCart('Real Madrid Away Shirt', 6500)">Add to Cart</button></div>
-    <div class="item-box"><img src="juventus-away.jpg" alt="Juventus Away Shirt"><div class="price">KSh 6,500</div><button class="add-btn" onclick="addToCart('Juventus Away Shirt', 6500)">Add to Cart</button></div>
-    <div class="item-box"><img src="bayern-away.jpg" alt="Bayern Away Shirt"><div class="price">KSh 6,500</div><button class="add-btn" onclick="addToCart('Bayern Away Shirt', 6500)">Add to Cart</button></div>
-    <div class="item-box"><img src="liverpool-away.jpg" alt="Liverpool Away Shirt"><div class="price">KSh 6,500</div><button class="add-btn" onclick="addToCart('Liverpool Away Shirt', 6500)">Add to Cart</button></div>
-    <div class="item-box"><img src="arsenal-away.jpg" alt="Arsenal Away Shirt"><div class="price">KSh 6,500</div><button class="add-btn" onclick="addToCart('Arsenal Away Shirt', 6500)">Add to Cart</button></div>
-    <div class="item-box"><img src="chelsea-third.jpg" alt="Chelsea Third Shirt"><div class="price">KSh 6,500</div><button class="add-btn" onclick="addToCart('Chelsea Third Shirt', 6500)">Add to Cart</button></div>
-    <div class="item-box"><img src="psg-third.jpg" alt="PSG Third Shirt"><div class="price">KSh 6,500</div><button class="add-btn" onclick="addToCart('PSG Third Shirt', 6500)">Add to Cart</button></div>
+    <div class="item-box"><img src="barcelona.jpg" alt="Barcelona Shirt"><div class="price">$65</div><button class="add-btn" onclick="addToCart('Barcelona Shirt', 65)">Add to Cart</button></div>
+    <div class="item-box"><img src="real-madrid.jpg" alt="Real Madrid Shirt"><div class="price">$65</div><button class="add-btn" onclick="addToCart('Real Madrid Shirt', 65)">Add to Cart</button></div>
+    <div class="item-box"><img src="psg.jpg" alt="PSG Shirt"><div class="price">$65</div><button class="add-btn" onclick="addToCart('PSG Shirt', 65)">Add to Cart</button></div>
+    <div class="item-box"><img src="chelsea.jpg" alt="Chelsea Shirt"><div class="price">$65</div><button class="add-btn" onclick="addToCart('Chelsea Shirt', 65)">Add to Cart</button></div>
+    <div class="item-box"><img src="man-utd.jpg" alt="Man Utd Shirt"><div class="price">$65</div><button class="add-btn" onclick="addToCart('Man Utd Shirt', 65)">Add to Cart</button></div>
+    <div class="item-box"><img src="liverpool.jpg" alt="Liverpool Shirt"><div class="price">$65</div><button class="add-btn" onclick="addToCart('Liverpool Shirt', 65)">Add to Cart</button></div>
+    <div class="item-box"><img src="arsenal.jpg" alt="Arsenal Shirt"><div class="price">$65</div><button class="add-btn" onclick="addToCart('Arsenal Shirt', 65)">Add to Cart</button></div>
+    <div class="item-box"><img src="juventus.jpg" alt="Juventus Shirt"><div class="price">$65</div><button class="add-btn" onclick="addToCart('Juventus Shirt', 65)">Add to Cart</button></div>
+    <div class="item-box"><img src="bayern.jpg" alt="Bayern Shirt"><div class="price">$65</div><button class="add-btn" onclick="addToCart('Bayern Shirt', 65)">Add to Cart</button></div>
+    <div class="item-box"><img src="inter.jpg" alt="Inter Milan Shirt"><div class="price">$65</div><button class="add-btn" onclick="addToCart('Inter Milan Shirt', 65)">Add to Cart</button></div>
+    <div class="item-box"><img src="tottenham.jpg" alt="Tottenham Shirt"><div class="price">$65</div><button class="add-btn" onclick="addToCart('Tottenham Shirt', 65)">Add to Cart</button></div>
+    <div class="item-box"><img src="atletico.jpg" alt="Atletico Shirt"><div class="price">$65</div><button class="add-btn" onclick="addToCart('Atletico Shirt', 65)">Add to Cart</button></div>
+    <div class="item-box"><img src="roma.jpg" alt="AS Roma Shirt"><div class="price">$65</div><button class="add-btn" onclick="addToCart('AS Roma Shirt', 65)">Add to Cart</button></div>
+    <div class="item-box"><img src="milan.jpg" alt="AC Milan Shirt"><div class="price">$65</div><button class="add-btn" onclick="addToCart('AC Milan Shirt', 65)">Add to Cart</button></div>
+    <div class="item-box"><img src="napoli.jpg" alt="Napoli Shirt"><div class="price">$65</div><button class="add-btn" onclick="addToCart('Napoli Shirt', 65)">Add to Cart</button></div>
+    <div class="item-box"><img src="sevilla.jpg" alt="Sevilla Shirt"><div class="price">$65</div><button class="add-btn" onclick="addToCart('Sevilla Shirt', 65)">Add to Cart</button></div>
+    <div class="item-box"><img src="lazio.jpg" alt="Lazio Shirt"><div class="price">$65</div><button class="add-btn" onclick="addToCart('Lazio Shirt', 65)">Add to Cart</button></div>
+    <div class="item-box"><img src="porto.jpg" alt="Porto Shirt"><div class="price">$65</div><button class="add-btn" onclick="addToCart('Porto Shirt', 65)">Add to Cart</button></div>
+    <div class="item-box"><img src="benfica.jpg" alt="Benfica Shirt"><div class="price">$65</div><button class="add-btn" onclick="addToCart('Benfica Shirt', 65)">Add to Cart</button></div>
+    <div class="item-box"><img src="ajax.jpg" alt="Ajax Shirt"><div class="price">$65</div><button class="add-btn" onclick="addToCart('Ajax Shirt', 65)">Add to Cart</button></div>
 </div>
 
-<!-- SHORTS (10 items) -->
+<!-- SHORTS -->
 <h2 class="category-title">Shorts</h2>
 <div class="scroll-container">
-    <div class="item-box"><img src="barcelona-shorts.jpg" alt="Barcelona Shorts"><div class="price">KSh 3,500</div><button class="add-btn" onclick="addToCart('Barcelona Shorts', 3500)">Add to Cart</button></div>
-    <div class="item-box"><img src="real-madrid-shorts.jpg" alt="Real Madrid Shorts"><div class="price">KSh 3,500</div><button class="add-btn" onclick="addToCart('Real Madrid Shorts', 3500)">Add to Cart</button></div>
-    <div class="item-box"><img src="psg-shorts.jpg" alt="PSG Shorts"><div class="price">KSh 3,500</div><button class="add-btn" onclick="addToCart('PSG Shorts', 3500)">Add to Cart</button></div>
-    <div class="item-box"><img src="chelsea-shorts.jpg" alt="Chelsea Shorts"><div class="price">KSh 3,500</div><button class="add-btn" onclick="addToCart('Chelsea Shorts', 3500)">Add to Cart</button></div>
-    <div class="item-box"><img src="manutd-shorts.jpg" alt="Man Utd Shorts"><div class="price">KSh 3,500</div><button class="add-btn" onclick="addToCart('Man Utd Shorts', 3500)">Add to Cart</button></div>
-    <div class="item-box"><img src="bayern-shorts.jpg" alt="Bayern Shorts"><div class="price">KSh 3,500</div><button class="add-btn" onclick="addToCart('Bayern Shorts', 3500)">Add to Cart</button></div>
-    <div class="item-box"><img src="juventus-shorts.jpg" alt="Juventus Shorts"><div class="price">KSh 3,500</div><button class="add-btn" onclick="addToCart('Juventus Shorts', 3500)">Add to Cart</button></div>
-    <div class="item-box"><img src="liverpool-shorts.jpg" alt="Liverpool Shorts"><div class="price">KSh 3,500</div><button class="add-btn" onclick="addToCart('Liverpool Shorts', 3500)">Add to Cart</button></div>
-    <div class="item-box"><img src="arsenal-shorts.jpg" alt="Arsenal Shorts"><div class="price">KSh 3,500</div><button class="add-btn" onclick="addToCart('Arsenal Shorts', 3500)">Add to Cart</button></div>
-    <div class="item-box"><img src="chelsea-away-shorts.jpg" alt="Chelsea Away Shorts"><div class="price">KSh 3,500</div><button class="add-btn" onclick="addToCart('Chelsea Away Shorts', 3500)">Add to Cart</button></div>
+    <div class="item-box"><img src="barcelona-shorts.jpg" alt="Barcelona Shorts"><div class="price">$35</div><button class="add-btn" onclick="addToCart('Barcelona Shorts', 35)">Add to Cart</button></div>
+    <div class="item-box"><img src="real-madrid-shorts.jpg" alt="Real Madrid Shorts"><div class="price">$35</div><button class="add-btn" onclick="addToCart('Real Madrid Shorts', 35)">Add to Cart</button></div>
+    <div class="item-box"><img src="psg-shorts.jpg" alt="PSG Shorts"><div class="price">$35</div><button class="add-btn" onclick="addToCart('PSG Shorts', 35)">Add to Cart</button></div>
+    <div class="item-box"><img src="chelsea-shorts.jpg" alt="Chelsea Shorts"><div class="price">$35</div><button class="add-btn" onclick="addToCart('Chelsea Shorts', 35)">Add to Cart</button></div>
+    <!-- Add remaining shorts up to 10 more -->
 </div>
 
-<!-- BOOTS (8 items) -->
+<!-- BOOTS -->
 <h2 class="category-title">Boots</h2>
 <div class="scroll-container">
-    <div class="item-box"><img src="nike-mercurial.jpg" alt="Nike Mercurial"><div class="price">KSh 12,500</div><button class="add-btn" onclick="addToCart('Nike Mercurial', 12500)">Add to Cart</button></div>
-    <div class="item-box"><img src="adidas-predator.jpg" alt="Adidas Predator"><div class="price">KSh 12,500</div><button class="add-btn" onclick="addToCart('Adidas Predator', 12500)">Add to Cart</button></div>
-    <div class="item-box"><img src="puma-one.jpg" alt="Puma One"><div class="price">KSh 12,500</div><button class="add-btn" onclick="addToCart('Puma One', 12500)">Add to Cart</button></div>
-    <div class="item-box"><img src="nike-tiempo.jpg" alt="Nike Tiempo"><div class="price">KSh 12,500</div><button class="add-btn" onclick="addToCart('Nike Tiempo', 12500)">Add to Cart</button></div>
-    <div class="item-box"><img src="adidas-nemeziz.jpg" alt="Adidas Nemeziz"><div class="price">KSh 12,500</div><button class="add-btn" onclick="addToCart('Adidas Nemeziz', 12500)">Add to Cart</button></div>
-    <div class="item-box"><img src="puma-future.jpg" alt="Puma Future"><div class="price">KSh 12,500</div><button class="add-btn" onclick="addToCart('Puma Future', 12500)">Add to Cart</button></div>
-    <div class="item-box"><img src="nike-phantom.jpg" alt="Nike Phantom"><div class="price">KSh 12,500</div><button class="add-btn" onclick="addToCart('Nike Phantom', 12500)">Add to Cart</button></div>
-    <div class="item-box"><img src="adidas-x.jpg" alt="Adidas X"><div class="price">KSh 12,500</div><button class="add-btn" onclick="addToCart('Adidas X', 12500)">Add to Cart</button></div>
+    <div class="item-box"><img src="nike-mercurial.jpg" alt="Nike Mercurial"><div class="price">$120</div><button class="add-btn" onclick="addToCart('Nike Mercurial', 120)">Add to Cart</button></div>
+    <div class="item-box"><img src="adidas-predator.jpg" alt="Adidas Predator"><div class="price">$115</div><button class="add-btn" onclick="addToCart('Adidas Predator', 115)">Add to Cart</button></div>
+    <div class="item-box"><img src="puma-future.jpg" alt="Puma Future"><div class="price">$110</div><button class="add-btn" onclick="addToCart('Puma Future', 110)">Add to Cart</button></div>
+    <!-- Add remaining boots up to 10 more -->
 </div>
 
-<!-- MEMORABILIA (10 items) -->
+<!-- MEMORABILIA -->
 <h2 class="category-title">Memorabilia</h2>
 <div class="scroll-container">
-    <div class="item-box"><img src="messi-autograph.jpg" alt="Messi Autograph"><div class="price">KSh 50,000</div><button class="add-btn" onclick="addToCart('Messi Autograph', 50000)">Add to Cart</button></div>
-    <div class="item-box"><img src="ronaldo-autograph.jpg" alt="Ronaldo Autograph"><div class="price">KSh 50,000</div><button class="add-btn" onclick="addToCart('Ronaldo Autograph', 50000)">Add to Cart</button></div>
-    <div class="item-box"><img src="neymar-autograph.jpg" alt="Neymar Autograph"><div class="price">KSh 50,000</div><button class="add-btn" onclick="addToCart('Neymar Autograph', 50000)">Add to Cart</button></div>
-    <div class="item-box"><img src="mbappe-autograph.jpg" alt="Mbappe Autograph"><div class="price">KSh 50,000</div><button class="add-btn" onclick="addToCart('Mbappe Autograph', 50000)">Add to Cart</button></div>
-    <div class="item-box"><img src="messi-mini-ball.jpg" alt="Messi Mini Ball"><div class="price">KSh 12,000
+    <div class="item-box"><img src="messi-autograph.jpg" alt="Messi Autograph"><div class="price">$500</div><button class="add-btn" onclick="addToCart('Messi Autograph', 500)">Add to Cart</button></div>
+    <div class="item-box"><img src="ronaldo-autograph.jpg" alt="Ronaldo Autograph"><div class="price">$500</div><button class="add-btn" onclick="addToCart('Ronaldo Autograph', 500)">Add to Cart</button></div>
+    <!-- Add remaining memorabilia -->
+</div>
+
+<!-- CARDS -->
+<h2 class="category-title">Trading Cards</h2>
+<div class="scroll-container">
+    <div class="item-box"><img src="messi-card.jpg" alt="Messi Card"><div class="price">$30</div><button class="add-btn" onclick="addToCart('Messi Card', 30)">Add to Cart</button></div>
+    <div class="item-box"><img src="ronaldo-card.jpg" alt="Ronaldo Card"><div class="price">$30</div><button class="add-btn" onclick="addToCart('Ronaldo Card', 30)">Add to Cart</button></div>
+    <!-- Add remaining cards -->
+</div>
+
+<!-- FLOATING CART POPUP -->
+<div id="cart-popup">
+    <h3 id="cart-item"></h3>
+    <p id="cart-price"></p>
+    <button id="checkout-btn" onclick="checkout()">Check Out</button>
+    <button id="pay-btn" onclick="pay()">Pay</button>
+</div>
+
+<!-- FOOTER -->
+<div class="footer-wrapper">
+⚽ THE LOCKER-ROOM - OFFICIAL UEFA MERCHANDISE PARTNER ⚽<br>
+© 2026 The Locker-Room | Muthithi Road, Westlands, Nairobi, Kenya<br>
+📞 24/7 Support: +254 700 123 456 | ✉️ info@thelocker-room.co.ke<br>
+🇰🇪 Free East Africa Shipping | 30-Day Returns | 100% Authentic
+</div>
+
+<script>
+const cartPopup = document.getElementById('cart-popup');
+const cartItem = document.getElementById('cart-item');
+const cartPrice = document.getElementById('cart-price');
+
+function addToCart(name, price){
+    cartItem.textContent = name;
+    cartPrice.textContent = "$" + price;
+    cartPopup.style.display = "block";
+}
+
+function checkout(){
+    alert("Proceed to checkout. This is a dummy payment.");
+    cartPopup.style.display = "none";
+}
+
+function pay(){
+    alert("Payment successful. This is a dummy payment.");
+    cartPopup.style.display = "none";
+}
+</script>
+
+</body>
+</html>
