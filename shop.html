@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>The Locker-Room | Premium Football Shop</title>
+<title>The Locker-Room | Shop – Premium Football Gear</title>
 <!-- Font Awesome 6 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <!-- Google Fonts: Inter -->
@@ -22,16 +22,21 @@
     overflow-x: hidden;
   }
 
-  /* custom elegant scrollbar for body only, not for containers */
-  ::-webkit-scrollbar {
-    width: 5px;
+  /* Hide scrollbars but keep functionality */
+  html {
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
-  ::-webkit-scrollbar-track {
-    background: #1a1c22;
+  html::-webkit-scrollbar {
+    display: none;
   }
-  ::-webkit-scrollbar-thumb {
-    background: #e6b17e;
-    border-radius: 10px;
+  body {
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+  body::-webkit-scrollbar {
+    display: none;
   }
 
   /* menu bar */
@@ -121,12 +126,11 @@
     gap: 22px;
     padding: 12px 8px 18px 8px;
     scroll-behavior: smooth;
-    /* HIDE SCROLLBAR - modern clean look */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
   .scroll-container::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
   }
   
   .scroll-item {
@@ -371,13 +375,13 @@
 </head>
 <body>
 
-<!-- MENU -->
+<!-- MENU BAR - Properly linked to all pages -->
 <div class="menu-bar">
-  <a href="#"><i class="fas fa-house"></i> HOME</a>
-  <a href="#"><i class="fas fa-bag-shopping"></i> SHOP</a>
-  <a href="#"><i class="fas fa-ruler"></i> SIZE GUIDE</a>
-  <a href="#"><i class="fas fa-video"></i> VIDEOS</a>
-  <a href="#"><i class="fas fa-phone"></i> CONTACT</a>
+    <a href="index.html"><i class="fas fa-house"></i> Home</a>
+    <a href="shop.html"><i class="fas fa-bag-shopping"></i> Shop</a>
+    <a href="size.html"><i class="fas fa-ruler"></i> Size Guide</a>
+    <a href="videos.html"><i class="fas fa-video"></i> Videos</a>
+    <a href="contact.html"><i class="fas fa-phone"></i> Contact</a>
 </div>
 
 <div class="hero">
@@ -433,10 +437,7 @@
 </div>
 
 <script>
-  // --------------------------------------------------------------
   // 54 PRODUCTS: 20 Shirts + 20 Shorts + 14 Boots/Memorabilia
-  // All images exactly as original filenames (preserved)
-  // --------------------------------------------------------------
   
   // 1) SHIRTS (20) - price 80€
   const shirtsData = [
@@ -486,7 +487,7 @@
     { name: "AC Milan Shorts", price: 45, img: "AcMilan shorts.avif" }
   ];
 
-  // 3) BOOTS & MEMORABILIA (14 items) - varied prices
+  // 3) BOOTS & MEMORABILIA (14 items)
   const bootsData = [
     { name: "adidas F50 Elite", price: 229, img: "f50 elite.jpg" },
     { name: "Copa Pure 3", price: 199, img: "copa pure 3.jpg" },
@@ -504,7 +505,6 @@
     { name: "Yamal Auto Card", price: 99, img: "yamal card 2.jpg" }
   ];
 
-  // Helper: render products into scroll container (no scrollbar visible)
   function renderProducts(containerId, productsArray) {
     const container = document.getElementById(containerId);
     if (!container) return;
@@ -512,7 +512,6 @@
     productsArray.forEach(product => {
       const itemDiv = document.createElement('div');
       itemDiv.className = 'scroll-item';
-      // fallback image if src fails
       const imgSrc = product.img;
       itemDiv.innerHTML = `
         <img src="${imgSrc}" alt="${product.name}" onerror="this.src='https://placehold.co/300x300/1e1e2a/e6b17e?text=Football+Item'">
@@ -522,7 +521,6 @@
       `;
       container.appendChild(itemDiv);
     });
-    // attach event listeners to all add buttons inside this container
     container.querySelectorAll('.add-to-cart-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -533,13 +531,11 @@
     });
   }
 
-  // ---------- CART STATE ----------
-  let cart = []; // each item { name, price }
+  let cart = [];
 
   function addToCart(name, price) {
     cart.push({ name, price });
     updateCartDisplay();
-    // open cart modal on add for better UX
     const modal = document.getElementById('cartModal');
     modal.classList.add('show');
   }
@@ -563,7 +559,6 @@
     });
     if (totalSpan) totalSpan.innerText = total.toFixed(2);
     if (badgeSpan) badgeSpan.innerText = cart.length;
-    // attach remove events
     document.querySelectorAll('.remove-cart-item').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const index = parseInt(btn.getAttribute('data-index'));
@@ -586,7 +581,6 @@
     document.getElementById('cartModal').classList.remove('show');
   }
 
-  // Scroll row function (smooth)
   function scrollRow(elementId, distance) {
     const el = document.getElementById(elementId);
     if (el) {
@@ -594,17 +588,14 @@
     }
   }
 
-  // close cart modal
   function closeCartModalFn() {
     document.getElementById('cartModal').classList.remove('show');
   }
 
-  // Render all 54 products (20 shirts + 20 shorts + 14 boots)
   renderProducts('shirtsContainer', shirtsData);
   renderProducts('shortsContainer', shortsData);
   renderProducts('bootsContainer', bootsData);
 
-  // Event listeners for cart modal and floating button
   const cartModalDiv = document.getElementById('cartModal');
   const closeModalBtn = document.getElementById('closeCartModal');
   const floatingCart = document.getElementById('cartFloatingBtn');
@@ -618,18 +609,13 @@
   }
   if (checkoutButton) checkoutButton.addEventListener('click', checkoutProcess);
 
-  // Click outside modal to close (optional but elegant)
   window.addEventListener('click', (e) => {
     if (cartModalDiv.classList.contains('show') && !cartModalDiv.contains(e.target) && e.target !== floatingCart && !floatingCart.contains(e.target)) {
       closeCartModalFn();
     }
   });
 
-  // Initial update
   updateCartDisplay();
-
-  // additional image fallback for any missing assets (global)
-  console.log("✅ The Locker-Room shop loaded | 54 products total | No scrollbars on rows — modern design");
 </script>
 </body>
 </html>
