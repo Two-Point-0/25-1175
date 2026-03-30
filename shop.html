@@ -206,7 +206,7 @@ body::before {
     transform: scale(0.9);
 }
 
-/* Dummy Item - Black Container (Coming Soon) */
+/* Dummy Item - Coming Soon */
 .dummy-item {
     min-width: 220px;
     max-width: 220px;
@@ -281,7 +281,7 @@ body::before {
 .item-name {
     font-weight: 600;
     font-size: 0.9rem;
-    margin: 10px 0 5px;
+    margin: 8px 0 4px;
     color: #fff;
     white-space: nowrap;
     overflow: hidden;
@@ -291,12 +291,56 @@ body::before {
 .item-price {
     font-weight: 800;
     color: #e6b17e;
-    margin-bottom: 12px;
-    font-size: 1.1rem;
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+/* Size Selector */
+.size-select {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(230, 177, 126, 0.3);
+    border-radius: 30px;
+    padding: 6px 10px;
+    width: 100%;
+    color: white;
+    font-size: 0.75rem;
+    text-align: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+    outline: none;
+}
+
+.size-select option {
+    background: #1a1d24;
+}
+
+/* Stock Badge */
+.stock-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    padding: 4px 8px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+.stock-in {
+    background: rgba(46, 204, 113, 0.2);
+    color: #2ecc71;
+    border: 1px solid #2ecc71;
+}
+.stock-low {
+    background: rgba(241, 196, 15, 0.2);
+    color: #f1c40f;
+    border: 1px solid #f1c40f;
+}
+.stock-out {
+    background: rgba(231, 76, 60, 0.2);
+    color: #e74c3c;
+    border: 1px solid #e74c3c;
 }
 
 .add-btn {
-    padding: 10px 12px;
+    padding: 8px 12px;
     border: none;
     border-radius: 40px;
     background: linear-gradient(135deg, #e6b17e, #d49c64);
@@ -304,15 +348,20 @@ body::before {
     font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 6px;
 }
 
-.add-btn:hover {
+.add-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #555;
+}
+.add-btn:not(.disabled):hover {
     transform: scale(0.98);
     box-shadow: 0 4px 15px rgba(230, 177, 126, 0.5);
 }
@@ -433,6 +482,16 @@ body::before {
     border-radius: 16px;
     margin-bottom: 10px;
     font-size: 0.8rem;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.cart-item-details {
+    flex: 1;
+    text-align: left;
+}
+.cart-item-details strong {
+    color: #e6b17e;
 }
 
 .cart-sidebar .cart-item button {
@@ -503,7 +562,7 @@ body::before {
     box-shadow: 0 0 15px rgba(230, 177, 126, 0.8);
 }
 
-/* Footer - own container, no background bar */
+/* Footer - own container */
 .footer-wrapper {
     margin-top: 40px;
     padding: 25px 0;
@@ -557,16 +616,12 @@ body::before {
     .cart-badge { width: 52px; height: 52px; font-size: 1.4rem; }
     .carousel-container { max-width: 500px; gap: 15px; }
     .cart-sidebar { width: 300px; right: 16px; bottom: 90px; }
-    .footer-container { padding: 0 16px; }
 }
 
 @media (max-width: 480px) {
     .scroll-item, .dummy-item { min-width: 160px; max-width: 160px; padding: 12px 10px; }
     .carousel-container { max-width: 420px; gap: 12px; }
     .carousel-btn { width: 36px; height: 36px; font-size: 1.2rem; }
-    .dummy-item i { font-size: 2rem; }
-    .dummy-item p { font-size: 0.8rem; }
-    .footer-container { font-size: 0.7rem; }
 }
 </style>
 </head>
@@ -621,10 +676,10 @@ body::before {
     <button class="carousel-btn" onclick="scrollCarousel('memorabiliaRow', 270)">›</button>
 </div>
 
-<!-- CART BUTTON - Bottom Right -->
+<!-- CART BUTTON -->
 <button class="cart-badge" id="cartBtn"><i class="fas fa-shopping-cart"></i><span id="cartCount">0</span></button>
 
-<!-- CART SIDEBAR - Bottom Right Corner -->
+<!-- CART SIDEBAR -->
 <div id="cartSidebar" class="cart-sidebar hidden">
     <span class="close-cart-sidebar" id="closeCartSidebar">&times;</span>
     <h3><i class="fas fa-basket-shopping"></i> Your Cart</h3>
@@ -633,7 +688,7 @@ body::before {
     <button class="checkout-btn" id="checkoutBtnSidebar">💳 CHECKOUT</button>
 </div>
 
-<!-- Footer in its own container, no background bar -->
+<!-- Footer -->
 <div class="footer-wrapper">
     <div class="footer-container">
         ⚽ THE LOCKER-ROOM - OFFICIAL UEFA MERCHANDISE PARTNER ⚽<br>
@@ -650,80 +705,83 @@ body::before {
 </div>
 
 <script>
-// PRODUCT DATA
+// ---------- PRODUCT DATA with Stock ----------
 const shirtsData = [
-    { name: "Barcelona Shirt", price: 80, img: "barca.png" },
-    { name: "Madrid Shirt", price: 80, img: "madrid.avif" },
-    { name: "Liverpool Shirt", price: 80, img: "liverpool.avif" },
-    { name: "City Shirt", price: 80, img: "city.avif" },
-    { name: "Arsenal Shirt", price: 80, img: "arsenal.avif" },
-    { name: "Chelsea Shirt", price: 80, img: "chelsea.avif" },
-    { name: "PSG Shirt", price: 80, img: "psg.avif" },
-    { name: "Juventus Shirt", price: 80, img: "juventus.avif" },
-    { name: "AC Milan Shirt", price: 80, img: "AC Milan.jpg" },
-    { name: "Inter Shirt", price: 80, img: "inter.avif" },
-    { name: "Napoli Shirt", price: 80, img: "napoli.webp" },
-    { name: "Bayern Shirt", price: 80, img: "bayern.avif" },
-    { name: "Borussia Shirt", price: 80, img: "borussia.avif" },
-    { name: "RB Shirt", price: 80, img: "RB.avif" },
-    { name: "Leverkusen Shirt", price: 80, img: "leverkusen.avif" },
-    { name: "Athletico Shirt", price: 80, img: "athletico.jpg" },
-    { name: "Sevilla Shirt", price: 80, img: "sevila.jpg" },
-    { name: "Olympique Shirt", price: 80, img: "olympique.avif" },
-    { name: "Lyon Shirt", price: 80, img: "lyon.avif" },
-    { name: "Monaco Shirt", price: 80, img: "monaco.avif" }
+    { name: "Barcelona Shirt", price: 80, img: "barca.png", stock: 12 },
+    { name: "Madrid Shirt", price: 80, img: "madrid.avif", stock: 8 },
+    { name: "Liverpool Shirt", price: 80, img: "liverpool.avif", stock: 15 },
+    { name: "City Shirt", price: 80, img: "city.avif", stock: 3 },
+    { name: "Arsenal Shirt", price: 80, img: "arsenal.avif", stock: 10 },
+    { name: "Chelsea Shirt", price: 80, img: "chelsea.avif", stock: 5 },
+    { name: "PSG Shirt", price: 80, img: "psg.avif", stock: 7 },
+    { name: "Juventus Shirt", price: 80, img: "juventus.avif", stock: 2 },
+    { name: "AC Milan Shirt", price: 80, img: "AC Milan.jpg", stock: 6 },
+    { name: "Inter Shirt", price: 80, img: "inter.avif", stock: 9 },
+    { name: "Napoli Shirt", price: 80, img: "napoli.webp", stock: 11 },
+    { name: "Bayern Shirt", price: 80, img: "bayern.avif", stock: 14 },
+    { name: "Borussia Shirt", price: 80, img: "borussia.avif", stock: 4 },
+    { name: "RB Shirt", price: 80, img: "RB.avif", stock: 1 },
+    { name: "Leverkusen Shirt", price: 80, img: "leverkusen.avif", stock: 8 },
+    { name: "Athletico Shirt", price: 80, img: "athletico.jpg", stock: 6 },
+    { name: "Sevilla Shirt", price: 80, img: "sevila.jpg", stock: 10 },
+    { name: "Olympique Shirt", price: 80, img: "olympique.avif", stock: 3 },
+    { name: "Lyon Shirt", price: 80, img: "lyon.avif", stock: 5 },
+    { name: "Monaco Shirt", price: 80, img: "monaco.avif", stock: 7 }
 ];
 
 const shortsData = [
-    { name: "Barcelona Shorts", price: 45, img: "barcelona shorts.avif" },
-    { name: "Madrid Shorts", price: 45, img: "madrid shorts.webp" },
-    { name: "Liverpool Shorts", price: 45, img: "liverpool shorts.avif" },
-    { name: "City Shorts", price: 45, img: "city shorts.avif" },
-    { name: "Arsenal Shorts", price: 45, img: "arsenal shorts.webp" },
-    { name: "Chelsea Shorts", price: 45, img: "chelsea shorts.avif" },
-    { name: "PSG Shorts", price: 45, img: "psg shorts.avif" },
-    { name: "Juventus Shorts", price: 45, img: "juventus shorts.avif" },
-    { name: "AC Milan Shorts", price: 45, img: "AcMilan shorts.avif" },
-    { name: "Inter Shorts", price: 45, img: "inter shorts.avif" },
-    { name: "Napoli Shorts", price: 45, img: "napoli shorts.webp" },
-    { name: "Bayern Shorts", price: 45, img: "bayern shorts.avif" },
-    { name: "Borussia Shorts", price: 45, img: "borussia shorts.avif" },
-    { name: "RB Shorts", price: 45, img: "RB shorts.avif" },
-    { name: "Leverkusen Shorts", price: 45, img: "leverkusen shorts.avif" },
-    { name: "Athletico Shorts", price: 45, img: "athletico shorts.webp" },
-    { name: "Sevilla Shorts", price: 45, img: "sevila short.avif" },
-    { name: "Olympique Shorts", price: 45, img: "olympique shorts.avif" },
-    { name: "Lyon Shorts", price: 45, img: "lyon shorts.avif" },
-    { name: "Monaco Shorts", price: 45, img: "monaco shorts.avif" }
+    { name: "Barcelona Shorts", price: 45, img: "barcelona shorts.avif", stock: 20 },
+    { name: "Madrid Shorts", price: 45, img: "madrid shorts.webp", stock: 15 },
+    { name: "Liverpool Shorts", price: 45, img: "liverpool shorts.avif", stock: 12 },
+    { name: "City Shorts", price: 45, img: "city shorts.avif", stock: 8 },
+    { name: "Arsenal Shorts", price: 45, img: "arsenal shorts.webp", stock: 9 },
+    { name: "Chelsea Shorts", price: 45, img: "chelsea shorts.avif", stock: 4 },
+    { name: "PSG Shorts", price: 45, img: "psg shorts.avif", stock: 6 },
+    { name: "Juventus Shorts", price: 45, img: "juventus shorts.avif", stock: 2 },
+    { name: "AC Milan Shorts", price: 45, img: "AcMilan shorts.avif", stock: 11 },
+    { name: "Inter Shorts", price: 45, img: "inter shorts.avif", stock: 7 },
+    { name: "Napoli Shorts", price: 45, img: "napoli shorts.webp", stock: 5 },
+    { name: "Bayern Shorts", price: 45, img: "bayern shorts.avif", stock: 13 },
+    { name: "Borussia Shorts", price: 45, img: "borussia shorts.avif", stock: 3 },
+    { name: "RB Shorts", price: 45, img: "RB shorts.avif", stock: 1 },
+    { name: "Leverkusen Shorts", price: 45, img: "leverkusen shorts.avif", stock: 8 },
+    { name: "Athletico Shorts", price: 45, img: "athletico shorts.webp", stock: 6 },
+    { name: "Sevilla Shorts", price: 45, img: "sevila short.avif", stock: 9 },
+    { name: "Olympique Shorts", price: 45, img: "olympique shorts.avif", stock: 4 },
+    { name: "Lyon Shorts", price: 45, img: "lyon shorts.avif", stock: 7 },
+    { name: "Monaco Shorts", price: 45, img: "monaco shorts.avif", stock: 5 }
 ];
 
 const bootsData = [
-    { name: "adidas F50 Elite", price: 229, img: "f50 elite.jpg" },
-    { name: "Pedri Predator", price: 209, img: "pedri predator.jpg" },
-    { name: "Yamal F50", price: 229, img: "yamal f50.jpg" },
-    { name: "Jude Bellingham X", price: 239, img: "jude.jpg" },
-    { name: "Copa Pure 3", price: 199, img: "copa pure 3.jpg" },
-    { name: "X Speedflow+", price: 215, img: "x speedflow.jpg" },
-    { name: "Mercurial Vapor", price: 249, img: "mecurial.jpg" },
-    { name: "Neymar Puma Future", price: 219, img: "neymar puma.jpg" }
+    { name: "adidas F50 Elite", price: 229, img: "f50 elite.jpg", stock: 4 },
+    { name: "Pedri Predator", price: 209, img: "pedri predator.jpg", stock: 2 },
+    { name: "Yamal F50", price: 229, img: "yamal f50.jpg", stock: 5 },
+    { name: "Jude Bellingham X", price: 239, img: "jude.jpg", stock: 3 },
+    { name: "Copa Pure 3", price: 199, img: "copa pure 3.jpg", stock: 6 },
+    { name: "X Speedflow+", price: 215, img: "x speedflow.jpg", stock: 1 },
+    { name: "Mercurial Vapor", price: 249, img: "mecurial.jpg", stock: 8 },
+    { name: "Neymar Puma Future", price: 219, img: "neymar puma.jpg", stock: 2 }
 ];
 
 const memorabiliaData = [
-    { name: "Pedri Signed Jersey", price: 349, img: "pedri signed.jpg" },
-    { name: "Pedri Match Photo", price: 89, img: "pedri 2.jpg" },
-    { name: "MSN Signed Print", price: 159, img: "ms1.webp" },
-    { name: "Legends Trio", price: 129, img: "ms2.jpg" },
-    { name: "Yamal RC Card", price: 79, img: "yamal card.jpg" },
-    { name: "Yamal Auto Card", price: 99, img: "yamal card 2.jpg" }
+    { name: "Pedri Signed Boots", price: 349, img: "pedri signed.jpg", stock: 1 },
+    { name: "Pedri Match Photo", price: 89, img: "pedri 2.jpg", stock: 15 },
+    { name: "MSN Signed Print", price: 159, img: "ms1.webp", stock: 3 },
+    { name: "Legends Trio", price: 129, img: "ms2.jpg", stock: 5 },
+    { name: "Yamal RC Card", price: 79, img: "yamal card.jpg", stock: 20 },
+    { name: "Yamal Auto Card", price: 99, img: "yamal card 2.jpg", stock: 12 }
 ];
 
-// Render products with dummy items on BOTH sides (2 at start, 2 at end)
+// Sizes
+const sizes = ["S", "M", "L", "XL"];
+
+// Render product card with size selector and stock badge
 function renderCarousel(containerId, productsArray) {
     const container = document.getElementById(containerId);
     if (!container) return;
     container.innerHTML = '';
     
-    // Add 2 dummy items at the BEGINNING
+    // Add 2 dummy items at the beginning
     for (let i = 0; i < 2; i++) {
         const dummyDiv = document.createElement('div');
         dummyDiv.className = 'dummy-item';
@@ -737,6 +795,17 @@ function renderCarousel(containerId, productsArray) {
     
     // Add actual products
     productsArray.forEach((product, idx) => {
+        const stock = product.stock;
+        let stockClass = 'stock-in';
+        let stockText = 'In Stock';
+        if (stock === 0) {
+            stockClass = 'stock-out';
+            stockText = 'Out of Stock';
+        } else if (stock < 5) {
+            stockClass = 'stock-low';
+            stockText = `Only ${stock} left`;
+        }
+        
         const itemDiv = document.createElement('div');
         itemDiv.className = 'scroll-item';
         itemDiv.setAttribute('data-index', idx);
@@ -744,12 +813,22 @@ function renderCarousel(containerId, productsArray) {
             <img src="${product.img}" alt="${product.name}" onerror="this.src='https://placehold.co/300x300/1e2a3a/e6b17e?text=Image+Not+Found'">
             <div class="item-name">${product.name}</div>
             <div class="item-price">€${product.price}</div>
-            <button class="add-btn" data-name="${product.name}" data-price="${product.price}"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+            <div class="stock-badge ${stockClass}">${stockText}</div>
+            <select class="size-select" data-name="${product.name}" data-price="${product.price}" data-stock="${stock}">
+                ${sizes.map(s => `<option value="${s}">Size ${s}</option>`).join('')}
+            </select>
+            <button class="add-btn" data-name="${product.name}" data-price="${product.price}" data-stock="${stock}" ${stock === 0 ? 'disabled' : ''}>
+                <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
         `;
         container.appendChild(itemDiv);
+        
+        if (stock === 0) {
+            itemDiv.querySelector('.add-btn').classList.add('disabled');
+        }
     });
     
-    // Add 2 dummy items at the END
+    // Add 2 dummy items at the end
     for (let i = 0; i < 2; i++) {
         const dummyDiv = document.createElement('div');
         dummyDiv.className = 'dummy-item';
@@ -761,58 +840,49 @@ function renderCarousel(containerId, productsArray) {
         container.appendChild(dummyDiv);
     }
     
-    container.querySelectorAll('.add-btn').forEach(btn => {
+    // Attach event listeners to Add buttons (only if not disabled)
+    container.querySelectorAll('.add-btn:not(.disabled)').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
             const name = btn.getAttribute('data-name');
             const price = parseFloat(btn.getAttribute('data-price'));
+            const sizeSelect = btn.parentElement.querySelector('.size-select');
+            const size = sizeSelect ? sizeSelect.value : 'M';
             const rect = btn.getBoundingClientRect();
-            addToCart(name, price, rect);
+            addToCart(name, price, size, rect);
         });
     });
     
     setupCarouselHighlight(containerId);
 }
 
-// Function to highlight centered item
+// Highlight centered item
 function setupCarouselHighlight(containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
-    
     const updateHighlight = () => {
         const items = container.querySelectorAll('.scroll-item');
         const containerRect = container.getBoundingClientRect();
         const centerX = containerRect.left + containerRect.width / 2;
-        
-        let closestItem = null;
-        let closestDistance = Infinity;
-        
+        let closestItem = null, closestDistance = Infinity;
         items.forEach(item => {
             const itemRect = item.getBoundingClientRect();
             const itemCenterX = itemRect.left + itemRect.width / 2;
             const distance = Math.abs(centerX - itemCenterX);
-            
             if (distance < closestDistance) {
                 closestDistance = distance;
                 closestItem = item;
             }
         });
-        
         items.forEach(item => item.classList.remove('active-center'));
-        if (closestItem) {
-            closestItem.classList.add('active-center');
-        }
+        if (closestItem) closestItem.classList.add('active-center');
     };
-    
-    container.addEventListener('scroll', () => {
-        requestAnimationFrame(updateHighlight);
-    });
-    
+    container.addEventListener('scroll', () => requestAnimationFrame(updateHighlight));
     setTimeout(updateHighlight, 100);
     window.addEventListener('resize', updateHighlight);
 }
 
-// CART FUNCTIONALITY
+// Cart functionality
 let cart = [];
 
 function createFloatAnimation(startX, startY) {
@@ -825,21 +895,16 @@ function createFloatAnimation(startX, startY) {
     setTimeout(() => floatDiv.remove(), 600);
 }
 
-function addToCart(name, price, buttonRect) {
-    cart.push({ name, price, id: Date.now() + Math.random() });
+function addToCart(name, price, size, buttonRect) {
+    cart.push({ name, price, size, id: Date.now() + Math.random() });
     updateCartDisplay();
-    
     if (buttonRect) {
-        createFloatAnimation(buttonRect.left + buttonRect.width / 2 - 20, buttonRect.top + buttonRect.height / 2 - 20);
+        createFloatAnimation(buttonRect.left + buttonRect.width/2 - 20, buttonRect.top + buttonRect.height/2 - 20);
     }
-    
     const badge = document.getElementById('cartCount');
     badge.style.transform = 'scale(1.3)';
-    setTimeout(() => { badge.style.transform = 'scale(1)'; }, 200);
-    
-    // Auto show cart sidebar when adding items
-    const cartSidebar = document.getElementById('cartSidebar');
-    cartSidebar.classList.remove('hidden');
+    setTimeout(() => badge.style.transform = 'scale(1)', 200);
+    document.getElementById('cartSidebar').classList.remove('hidden');
 }
 
 function updateCartDisplay() {
@@ -847,27 +912,25 @@ function updateCartDisplay() {
     const totalSpan = document.getElementById('cartTotalAmount');
     const badgeSpan = document.getElementById('cartCount');
     let total = 0;
-    
     if (!cartContainer) return;
     cartContainer.innerHTML = '';
-    
     cart.forEach((item, idx) => {
         total += item.price;
         const cartRow = document.createElement('div');
         cartRow.className = 'cart-item';
         cartRow.innerHTML = `
-            <span>${item.name} <strong>€${item.price}</strong></span>
+            <div class="cart-item-details">
+                ${item.name} (${item.size})<br>
+                <strong>€${item.price}</strong>
+            </div>
             <button class="remove-cart-item" data-idx="${idx}"><i class="fas fa-trash"></i> Remove</button>
         `;
         cartContainer.appendChild(cartRow);
     });
-    
-    if (totalSpan) totalSpan.innerText = total.toFixed(2);
-    if (badgeSpan) badgeSpan.innerText = cart.length;
-    
+    totalSpan.innerText = total.toFixed(2);
+    badgeSpan.innerText = cart.length;
     document.querySelectorAll('.remove-cart-item').forEach(btn => {
         btn.addEventListener('click', (e) => {
-            e.stopPropagation();
             const idx = parseInt(btn.getAttribute('data-idx'));
             if (!isNaN(idx) && idx >= 0 && idx < cart.length) {
                 cart.splice(idx, 1);
@@ -890,22 +953,18 @@ function checkout() {
 
 function scrollCarousel(elementId, distance) {
     const el = document.getElementById(elementId);
-    if (el) {
-        el.scrollBy({ left: distance, behavior: 'smooth' });
-    }
+    if (el) el.scrollBy({ left: distance, behavior: 'smooth' });
 }
 
 function toggleCartSidebar() {
-    const sidebar = document.getElementById('cartSidebar');
-    sidebar.classList.toggle('hidden');
+    document.getElementById('cartSidebar').classList.toggle('hidden');
 }
 
-// Scroll to center on load (show Barcelona items)
+// Scroll to show first product (skip dummy items)
 function scrollToCenter(containerId) {
     const container = document.getElementById(containerId);
     if (container && container.children.length > 0) {
         setTimeout(() => {
-            // Scroll to show first actual product (skip the 2 dummy items)
             const firstProduct = container.querySelector('.scroll-item');
             if (firstProduct) {
                 const containerRect = container.getBoundingClientRect();
@@ -923,7 +982,7 @@ renderCarousel('shortsRow', shortsData);
 renderCarousel('bootsRow', bootsData);
 renderCarousel('memorabiliaRow', memorabiliaData);
 
-// Scroll to show Barcelona items on load
+// Scroll to show first items
 setTimeout(() => {
     scrollToCenter('shirtsRow');
     scrollToCenter('shortsRow');
@@ -932,18 +991,21 @@ setTimeout(() => {
 }, 400);
 
 // Event listeners
-const cartBtn = document.getElementById('cartBtn');
-const closeSidebar = document.getElementById('closeCartSidebar');
-const checkoutSidebar = document.getElementById('checkoutBtnSidebar');
-
-if (cartBtn) cartBtn.addEventListener('click', toggleCartSidebar);
-if (closeSidebar) closeSidebar.addEventListener('click', () => {
+document.getElementById('cartBtn').addEventListener('click', toggleCartSidebar);
+document.getElementById('closeCartSidebar').addEventListener('click', () => {
     document.getElementById('cartSidebar').classList.add('hidden');
 });
-if (checkoutSidebar) checkoutSidebar.addEventListener('click', checkout);
+document.getElementById('checkoutBtnSidebar').addEventListener('click', checkout);
+window.addEventListener('click', (e) => {
+    const sidebar = document.getElementById('cartSidebar');
+    const cartBtn = document.getElementById('cartBtn');
+    if (!sidebar.classList.contains('hidden') && !sidebar.contains(e.target) && e.target !== cartBtn && !cartBtn.contains(e.target)) {
+        sidebar.classList.add('hidden');
+    }
+});
 
 // Preload background images
-const bgImages = ['locker1.jpg', 'locker2.jpg', 'locker3.jpg', 'locker4.jpg', 'locker5.jpg', 'locker6.jpg', 'locker7.jpg', 'locker8.jpg', 'stadium.jpg'];
+const bgImages = ['locker1.jpg','locker2.jpg','locker3.jpg','locker4.jpg','locker5.jpg','locker6.jpg','locker7.jpg','locker8.jpg','stadium.jpg'];
 bgImages.forEach(src => { const img = new Image(); img.src = src; });
 
 updateCartDisplay();
