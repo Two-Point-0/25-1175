@@ -157,121 +157,161 @@ body::before {
     font-size: 0.9rem;
 }
 
-/* Main layout: two columns that fit together */
-.video-layout {
+/* Carousel Wrapper - exactly like shop page */
+.carousel-wrapper {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
-    align-items: flex-start;
-    gap: 30px;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 20px 20px 40px;
+    gap: 15px;
+    padding: 0 20px;
+    margin-bottom: 50px;
+    position: relative;
 }
 
-/* Main video container - TikTok style */
-.main-video-container {
-    flex: 1;
-    min-width: 280px;
-    max-width: 360px;
+.carousel-container {
     display: flex;
-    justify-content: center;
-}
-
-.main-video-card {
-    background: rgba(18, 20, 26, 0.9);
-    backdrop-filter: blur(12px);
-    border-radius: 28px;
-    overflow: hidden;
-    border: 1px solid rgba(230, 177, 126, 0.4);
-    transition: all 0.3s ease;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 25px;
+    padding: 20px 0;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     width: 100%;
+    max-width: 750px;
+    margin: 0 auto;
 }
 
-.main-video-card:hover {
-    transform: translateY(-3px);
+.carousel-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Video Cards */
+.video-item {
+    min-width: 220px;
+    max-width: 220px;
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    background: rgba(18, 20, 26, 0.85);
+    backdrop-filter: blur(12px);
+    border-radius: 24px;
+    padding: 18px 16px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    border: 1px solid rgba(230, 177, 126, 0.3);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    opacity: 0.5;
+    transform: scale(0.9);
+}
+
+/* Highlight the centered/active item */
+.video-item.active-center {
+    opacity: 1;
+    transform: scale(1.05);
+    border: 2px solid #e6b17e;
+    box-shadow: 0 20px 40px rgba(230, 177, 126, 0.4);
+    background: rgba(25, 28, 35, 0.95);
+}
+
+.video-item:hover {
+    transform: scale(1.02);
     border-color: #e6b17e;
-    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.4);
 }
 
-.main-video-card video {
+.video-item video {
     width: 100%;
     aspect-ratio: 9 / 16;
     object-fit: cover;
+    border-radius: 18px;
+    background: #1e212a;
+    margin-bottom: 12px;
+    transition: transform 0.3s ease;
     display: block;
-    background: #000;
+}
+
+.video-item.active-center video {
+    transform: scale(1.02);
 }
 
 .video-title {
-    padding: 1rem;
-    text-align: center;
-    font-weight: 700;
-    font-size: 1rem;
-    color: #e6b17e;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-/* Thumbnail sidebar - compact, all fit without scrolling */
-.thumbnail-sidebar {
-    flex: 0.8;
-    min-width: 180px;
-    max-width: 220px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.thumbnail-card {
-    background: rgba(18, 20, 26, 0.85);
-    backdrop-filter: blur(12px);
-    border-radius: 18px;
-    overflow: hidden;
-    border: 1px solid rgba(230, 177, 126, 0.3);
-    transition: all 0.3s ease;
-    cursor: pointer;
-    animation: cardStretch 0.4s ease-out backwards;
-    display: flex;
-    flex-direction: column;
-}
-
-.thumbnail-card:hover {
-    transform: translateX(5px);
-    border-color: #e6b17e;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-}
-
-/* Smaller thumbnails (4:5 aspect ratio) so they fit */
-.thumbnail-card video {
-    width: 100%;
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
-    display: block;
-    background: #000;
-    pointer-events: none;
-}
-
-.thumbnail-info {
-    padding: 0.6rem;
-    text-align: center;
     font-weight: 600;
-    color: #e6b17e;
-    font-size: 0.7rem;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
+    font-size: 0.9rem;
+    margin: 10px 0 5px;
+    color: #fff;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-/* Footer - own container */
+/* Dummy Item - Coming Soon (like shop page) */
+.dummy-item {
+    min-width: 220px;
+    max-width: 220px;
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(12px);
+    border-radius: 24px;
+    padding: 18px 16px;
+    text-align: center;
+    border: 1px solid rgba(80, 80, 80, 0.5);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    opacity: 0.6;
+    transform: scale(0.92);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 320px;
+    cursor: default;
+    pointer-events: none;
+}
+
+.dummy-item i {
+    font-size: 3rem;
+    color: #6b6b6b;
+    margin-bottom: 15px;
+}
+
+.dummy-item p {
+    color: #8b8b8b;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.dummy-item .coming-soon-text {
+    font-size: 0.8rem;
+    color: #e6b17e;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+/* Navigation Buttons */
+.carousel-btn {
+    background: rgba(230, 177, 126, 0.9);
+    backdrop-filter: blur(5px);
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #111;
+    font-weight: bold;
+    transition: 0.3s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0;
+    z-index: 10;
+}
+
+.carousel-btn:hover {
+    background: #e6b17e;
+    transform: scale(1.08);
+    box-shadow: 0 6px 18px rgba(230, 177, 126, 0.4);
+}
+
+/* Footer */
 .footer-wrapper {
     margin-top: 40px;
     padding: 25px 0;
@@ -316,61 +356,18 @@ body::before {
     transform: translateY(-3px);
 }
 
-@keyframes cardStretch {
-    0% {
-        opacity: 0;
-        transform: translateX(-10px) scaleX(0.95);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0) scaleX(1);
-    }
-}
-
-/* Responsive: on smaller screens, stack vertically */
+/* Responsive */
 @media (max-width: 768px) {
-    .video-layout {
-        flex-direction: column;
-        align-items: center;
-        gap: 25px;
-    }
-    .thumbnail-sidebar {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        max-width: 100%;
-        gap: 12px;
-    }
-    .thumbnail-card {
-        width: 140px;
-    }
-    .thumbnail-card video {
-        aspect-ratio: 4 / 5;
-    }
-    .main-video-card {
-        max-width: 320px;
-    }
+    .video-item, .dummy-item { min-width: 180px; max-width: 180px; }
+    .carousel-btn { width: 40px; height: 40px; font-size: 1.4rem; }
+    .carousel-container { max-width: 500px; gap: 15px; }
+    .video-item video { aspect-ratio: 9 / 16; }
 }
 
 @media (max-width: 480px) {
-    .menu-bar {
-        gap: 6px;
-        padding: 12px 8px;
-    }
-    .menu-bar a {
-        padding: 6px 12px;
-        font-size: 0.7rem;
-        gap: 4px;
-    }
-    .page-header h1 {
-        font-size: 1.6rem;
-    }
-    .main-video-card {
-        max-width: 280px;
-    }
-    .thumbnail-card {
-        width: 120px;
-    }
+    .video-item, .dummy-item { min-width: 160px; max-width: 160px; padding: 12px 10px; }
+    .carousel-container { max-width: 420px; gap: 12px; }
+    .carousel-btn { width: 36px; height: 36px; font-size: 1.2rem; }
 }
 </style>
 </head>
@@ -394,25 +391,11 @@ body::before {
     <p>Exclusive first looks • Matchday moments • Training sessions</p>
 </div>
 
-<!-- Two-column layout -->
-<div class="video-layout">
-    <!-- Main TikTok-style video -->
-    <div class="main-video-container">
-        <div class="main-video-card">
-            <video id="mainVideo" controls autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1489944445-9b8e3d9b2b5a?w=600">
-                <source src="country jersey.mp4" type="video/mp4">
-                Your browser does not support video.
-            </video>
-            <div class="video-title" id="mainVideoTitle">
-                <i class="fas fa-flag-checkered"></i> 🇦🇷 COUNTRY JERSEY 2026
-            </div>
-        </div>
-    </div>
-
-    <!-- Thumbnail sidebar (compact) -->
-    <div class="thumbnail-sidebar" id="thumbnailSidebar">
-        <!-- Thumbnails injected here -->
-    </div>
+<!-- Video Carousel -->
+<div class="carousel-wrapper">
+    <button class="carousel-btn" onclick="scrollCarousel('videoCarousel', -270)">‹</button>
+    <div id="videoCarousel" class="carousel-container"></div>
+    <button class="carousel-btn" onclick="scrollCarousel('videoCarousel', 270)">›</button>
 </div>
 
 <!-- Footer -->
@@ -437,91 +420,138 @@ const videos = [
     {
         id: 1,
         title: "🇦🇷 COUNTRY JERSEY 2026",
-        icon: "fas fa-flag-checkered",
         src: "country jersey.mp4",
         poster: "https://images.unsplash.com/photo-1489944445-9b8e3d9b2b5a?w=600"
     },
     {
         id: 2,
         title: "🌍 WORLD CUP 2026",
-        icon: "fas fa-trophy",
         src: "country jersey 2.mp4",
         poster: "https://images.unsplash.com/photo-1518091043644-c1d4457512c6?w=600"
     },
     {
         id: 3,
         title: "⚽ CLUB COLLECTION",
-        icon: "fas fa-futbol",
         src: "club jersey.mp4",
         poster: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=600"
     },
     {
         id: 4,
         title: "Matchday Moments",
-        icon: "fas fa-football",
         src: "yamalvid2.mp4",
         poster: ""
     },
     {
         id: 5,
         title: "Behind the Scenes",
-        icon: "fas fa-star",
         src: "yamalvid3.mp4",
         poster: ""
     }
 ];
 
-const mainVideo = document.getElementById('mainVideo');
-const mainVideoTitle = document.getElementById('mainVideoTitle');
-const sidebar = document.getElementById('thumbnailSidebar');
+// Add dummy items at start and end (2 each)
+function addDummyItems(arr, count = 2) {
+    const dummy = [];
+    for (let i = 0; i < count; i++) {
+        dummy.push({ isDummy: true });
+    }
+    return [...dummy, ...arr, ...dummy];
+}
 
-function setMainVideo(video) {
-    mainVideo.pause();
-    mainVideo.src = video.src;
-    if (video.poster) mainVideo.poster = video.poster;
-    mainVideo.load();
-    mainVideo.play().catch(e => console.log("Autoplay prevented:", e));
-    mainVideoTitle.innerHTML = `<i class="${video.icon}"></i> ${video.title}`;
+function renderCarousel(containerId, items) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = '';
     
-    // Highlight active thumbnail
-    document.querySelectorAll('.thumbnail-card').forEach(card => {
-        card.style.borderColor = 'rgba(230, 177, 126, 0.3)';
+    const extended = addDummyItems(items, 2);
+    
+    extended.forEach((item) => {
+        if (item.isDummy) {
+            const dummyDiv = document.createElement('div');
+            dummyDiv.className = 'dummy-item';
+            dummyDiv.innerHTML = `
+                <i class="fas fa-video"></i>
+                <p>COMING SOON</p>
+                <div class="coming-soon-text">New Content</div>
+            `;
+            container.appendChild(dummyDiv);
+        } else {
+            const videoDiv = document.createElement('div');
+            videoDiv.className = 'video-item';
+            videoDiv.setAttribute('data-id', item.id);
+            videoDiv.innerHTML = `
+                <video muted loop playsinline poster="${item.poster}">
+                    <source src="${item.src}" type="video/mp4">
+                </video>
+                <div class="video-title">${item.title}</div>
+            `;
+            container.appendChild(videoDiv);
+        }
     });
-    const active = document.querySelector(`.thumbnail-card[data-id="${video.id}"]`);
-    if (active) active.style.borderColor = '#e6b17e';
+    
+    // Setup highlight & play for centered video
+    setupCarouselHighlight(containerId);
 }
 
-function buildThumbnails() {
-    sidebar.innerHTML = '';
-    videos.forEach(video => {
-        const card = document.createElement('div');
-        card.className = 'thumbnail-card';
-        card.setAttribute('data-id', video.id);
-        card.addEventListener('click', () => setMainVideo(video));
+function setupCarouselHighlight(containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    
+    let currentActiveVideo = null;
+    
+    const updateHighlight = () => {
+        const items = container.querySelectorAll('.video-item');
+        const containerRect = container.getBoundingClientRect();
+        const centerX = containerRect.left + containerRect.width / 2;
         
-        const videoElem = document.createElement('video');
-        videoElem.src = video.src;
-        videoElem.muted = true;
-        videoElem.loop = true;
-        videoElem.playsInline = true;
-        if (video.poster) videoElem.poster = video.poster;
-        videoElem.addEventListener('mouseenter', () => {
-            videoElem.play().catch(e => {});
+        let closestItem = null;
+        let closestDistance = Infinity;
+        
+        items.forEach(item => {
+            const itemRect = item.getBoundingClientRect();
+            const itemCenterX = itemRect.left + itemRect.width / 2;
+            const distance = Math.abs(centerX - itemCenterX);
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                closestItem = item;
+            }
         });
-        videoElem.addEventListener('mouseleave', () => {
-            videoElem.pause();
-            videoElem.currentTime = 0;
-        });
         
-        const info = document.createElement('div');
-        info.className = 'thumbnail-info';
-        info.innerHTML = `<i class="${video.icon}"></i> ${video.title}`;
-        
-        card.appendChild(videoElem);
-        card.appendChild(info);
-        sidebar.appendChild(card);
+        // Update active class
+        items.forEach(item => item.classList.remove('active-center'));
+        if (closestItem) {
+            closestItem.classList.add('active-center');
+            
+            // Play video only for the active center item
+            const video = closestItem.querySelector('video');
+            if (video && video !== currentActiveVideo) {
+                if (currentActiveVideo) {
+                    currentActiveVideo.pause();
+                    currentActiveVideo.currentTime = 0;
+                }
+                video.play().catch(e => console.log("Autoplay prevented:", e));
+                currentActiveVideo = video;
+            }
+        }
+    };
+    
+    container.addEventListener('scroll', () => {
+        requestAnimationFrame(updateHighlight);
     });
+    
+    setTimeout(updateHighlight, 100);
+    window.addEventListener('resize', updateHighlight);
 }
+
+function scrollCarousel(elementId, distance) {
+    const el = document.getElementById(elementId);
+    if (el) {
+        el.scrollBy({ left: distance, behavior: 'smooth' });
+    }
+}
+
+// Initialize
+renderCarousel('videoCarousel', videos);
 
 // Preload backgrounds
 const bgImages = ['locker1.jpg', 'locker2.jpg', 'locker3.jpg', 'locker4.jpg', 'locker5.jpg', 'locker6.jpg', 'locker7.jpg', 'locker8.jpg', 'stadium.jpg'];
@@ -529,9 +559,6 @@ bgImages.forEach(src => {
     const img = new Image();
     img.src = src;
 });
-
-buildThumbnails();
-setTimeout(() => setMainVideo(videos[0]), 100);
 </script>
 
 </body>
