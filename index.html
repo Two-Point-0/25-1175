@@ -280,36 +280,39 @@ html::-webkit-scrollbar {
     display: none;
 }
 
-/* Footer Container - Enhanced Styling */
-.footer-container {
+/* Footer Area - Full Width Background */
+.footer-area {
     background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(10px);
     border-top: 1px solid rgba(230, 177, 126, 0.3);
     margin-top: 40px;
+    padding: 30px 0;
 }
-.footer-locker {
-    max-width: 1200px;
+
+/* Footer Container - Smaller Centered Container */
+.footer-container {
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 30px 20px;
+    padding: 0 20px;
     text-align: center;
     color: rgba(255, 255, 255, 0.85);
     font-size: 0.8rem;
     line-height: 1.6;
 }
-.footer-locker a {
+.footer-container a {
     color: #e6b17e;
     text-decoration: none;
 }
-.footer-locker a:hover {
+.footer-container a:hover {
     text-decoration: underline;
 }
-.footer-locker .footer-social {
+.footer-container .footer-social {
     margin-top: 15px;
     display: flex;
     justify-content: center;
     gap: 20px;
 }
-.footer-locker .footer-social a {
+.footer-container .footer-social a {
     width: 36px;
     height: 36px;
     background: rgba(230, 177, 126, 0.2);
@@ -320,7 +323,7 @@ html::-webkit-scrollbar {
     transition: 0.3s;
     color: #e6b17e;
 }
-.footer-locker .footer-social a:hover {
+.footer-container .footer-social a:hover {
     background: #e6b17e;
     color: #0a0c10;
     transform: translateY(-3px);
@@ -354,8 +357,8 @@ html::-webkit-scrollbar {
     .newsletter-section h2 {
         font-size: 1.6rem;
     }
-    .newsletter-form input {
-        min-width: 200px;
+    .footer-container {
+        padding: 0 16px;
     }
 }
 
@@ -365,6 +368,9 @@ html::-webkit-scrollbar {
     }
     .hero-box p {
         font-size: 0.8rem;
+    }
+    .footer-container {
+        font-size: 0.7rem;
     }
 }
 </style>
@@ -429,9 +435,9 @@ html::-webkit-scrollbar {
     <div class="success-message" id="subscribeMessage">✓ Thanks for subscribing! Check your inbox for 10% off.</div>
 </div>
 
-<!-- Footer Container - Enhanced Styling -->
-<div class="footer-container">
-    <footer class="footer-locker">
+<!-- Footer Area with its own smaller container -->
+<div class="footer-area">
+    <div class="footer-container">
         ⚽ THE LOCKER-ROOM - OFFICIAL UEFA MERCHANDISE PARTNER ⚽<br>
         © 2026 The Locker-Room | Muthithi Road, Westlands, Nairobi, Kenya<br>
         📞 24/7 Support: <a href="tel:+254700123456">+254 700 123 456</a> | ✉️ <a href="mailto:info@thelocker-room.co.ke">info@thelocker-room.co.ke</a><br>
@@ -442,7 +448,7 @@ html::-webkit-scrollbar {
             <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
             <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
         </div>
-    </footer>
+    </div>
 </div>
 
 <script>
