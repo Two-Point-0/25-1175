@@ -216,17 +216,14 @@ body::before {
     gap: 10px;
 }
 
-/* Thumbnail sidebar - compact, fits next to main video */
+/* Thumbnail sidebar - compact, all fit without scrolling */
 .thumbnail-sidebar {
     flex: 0.8;
-    min-width: 200px;
-    max-width: 260px;
+    min-width: 180px;
+    max-width: 220px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    height: auto;
-    max-height: 100%;
-    justify-content: space-between;
+    gap: 12px;
 }
 
 .thumbnail-card {
@@ -248,9 +245,10 @@ body::before {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
 }
 
+/* Smaller thumbnails (4:5 aspect ratio) so they fit */
 .thumbnail-card video {
     width: 100%;
-    aspect-ratio: 9 / 16;
+    aspect-ratio: 4 / 5;
     object-fit: cover;
     display: block;
     background: #000;
@@ -258,16 +256,16 @@ body::before {
 }
 
 .thumbnail-info {
-    padding: 0.7rem;
+    padding: 0.6rem;
     text-align: center;
     font-weight: 600;
     color: #e6b17e;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     background: rgba(0, 0, 0, 0.5);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
+    gap: 5px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -341,13 +339,13 @@ body::before {
         flex-wrap: wrap;
         justify-content: center;
         max-width: 100%;
-        gap: 15px;
+        gap: 12px;
     }
     .thumbnail-card {
-        width: 160px;
+        width: 140px;
     }
     .thumbnail-card video {
-        aspect-ratio: 9 / 16;
+        aspect-ratio: 4 / 5;
     }
     .main-video-card {
         max-width: 320px;
@@ -371,7 +369,7 @@ body::before {
         max-width: 280px;
     }
     .thumbnail-card {
-        width: 140px;
+        width: 120px;
     }
 }
 </style>
