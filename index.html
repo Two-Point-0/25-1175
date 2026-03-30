@@ -167,7 +167,7 @@ html::-webkit-scrollbar {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 28px;
-    padding: 60px 40px 100px 40px;
+    padding: 60px 40px 40px 40px;
     max-width: 1300px;
     margin: 0 auto;
 }
@@ -203,16 +203,127 @@ html::-webkit-scrollbar {
     font-size: 0.95rem;
 }
 
-/* Footer */
-.footer-locker {
+/* Modern Newsletter Section - Added Feature */
+.newsletter-section {
+    max-width: 900px;
+    margin: 40px auto 60px;
+    padding: 40px 30px;
+    background: rgba(18, 20, 26, 0.8);
+    backdrop-filter: blur(12px);
+    border-radius: 40px;
     text-align: center;
+    border: 1px solid rgba(230, 177, 126, 0.3);
+    transition: all 0.3s ease;
+}
+.newsletter-section:hover {
+    border-color: #e6b17e;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+.newsletter-section h2 {
+    font-size: 2rem;
+    color: #e6b17e;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+.newsletter-section p {
+    color: #ccc;
+    margin-bottom: 25px;
+    font-size: 1rem;
+}
+.newsletter-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+.newsletter-form input {
+    flex: 1;
+    min-width: 250px;
+    padding: 14px 20px;
     background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(8px);
-    padding: 22px 20px;
+    border: 1px solid rgba(230, 177, 126, 0.3);
+    border-radius: 50px;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+}
+.newsletter-form input:focus {
+    border-color: #e6b17e;
+    background: rgba(0, 0, 0, 0.7);
+}
+.newsletter-form button {
+    padding: 14px 32px;
+    background: linear-gradient(135deg, #e6b17e, #d49c64);
+    border: none;
+    border-radius: 50px;
+    color: #0a0c10;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.newsletter-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(230, 177, 126, 0.4);
+}
+.success-message {
+    margin-top: 15px;
+    color: #e6b17e;
+    font-weight: 500;
+    display: none;
+}
+
+/* Footer Container - Enhanced Styling */
+.footer-container {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(230, 177, 126, 0.3);
+    margin-top: 40px;
+}
+.footer-locker {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    text-align: center;
     color: rgba(255, 255, 255, 0.85);
     font-size: 0.8rem;
-    border-top: 1px solid rgba(230, 177, 126, 0.2);
-    line-height: 1.5;
+    line-height: 1.6;
+}
+.footer-locker a {
+    color: #e6b17e;
+    text-decoration: none;
+}
+.footer-locker a:hover {
+    text-decoration: underline;
+}
+.footer-locker .footer-social {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.footer-locker .footer-social a {
+    width: 36px;
+    height: 36px;
+    background: rgba(230, 177, 126, 0.2);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    color: #e6b17e;
+}
+.footer-locker .footer-social a:hover {
+    background: #e6b17e;
+    color: #0a0c10;
+    transform: translateY(-3px);
 }
 
 @media (max-width: 768px) {
@@ -230,11 +341,21 @@ html::-webkit-scrollbar {
         font-size: 0.75rem;
     }
     .feature-grid {
-        padding: 40px 20px 80px 20px;
+        padding: 40px 20px 30px 20px;
         gap: 20px;
     }
     .feature-box h3 {
         font-size: 1.3rem;
+    }
+    .newsletter-section {
+        margin: 30px 20px 50px;
+        padding: 30px 20px;
+    }
+    .newsletter-section h2 {
+        font-size: 1.6rem;
+    }
+    .newsletter-form input {
+        min-width: 200px;
     }
 }
 
@@ -297,13 +418,32 @@ html::-webkit-scrollbar {
     </div>
 </div>
 
-<!-- Footer -->
-<footer class="footer-locker">
-    ⚽ THE LOCKER-ROOM - OFFICIAL UEFA MERCHANDISE PARTNER ⚽<br>
-    © 2026 The Locker-Room | Muthithi Road, Westlands, Nairobi, Kenya<br>
-    📞 24/7 Support: +254 700 123 456 | ✉️ info@thelocker-room.co.ke<br>
-    🇰🇪 Free East Africa Shipping | 30-Day Returns | 100% Authentic
-</footer>
+<!-- Modern Newsletter Section - Added Feature -->
+<div class="newsletter-section">
+    <h2><i class="fas fa-envelope-open-text"></i> Join The Inner Circle</h2>
+    <p>Be the first to know about exclusive drops, member-only discounts, and upcoming releases.</p>
+    <div class="newsletter-form">
+        <input type="email" placeholder="Enter your email address" id="newsletterEmail">
+        <button id="subscribeBtn"><i class="fas fa-paper-plane"></i> Subscribe</button>
+    </div>
+    <div class="success-message" id="subscribeMessage">✓ Thanks for subscribing! Check your inbox for 10% off.</div>
+</div>
+
+<!-- Footer Container - Enhanced Styling -->
+<div class="footer-container">
+    <footer class="footer-locker">
+        ⚽ THE LOCKER-ROOM - OFFICIAL UEFA MERCHANDISE PARTNER ⚽<br>
+        © 2026 The Locker-Room | Muthithi Road, Westlands, Nairobi, Kenya<br>
+        📞 24/7 Support: <a href="tel:+254700123456">+254 700 123 456</a> | ✉️ <a href="mailto:info@thelocker-room.co.ke">info@thelocker-room.co.ke</a><br>
+        🇰🇪 Free East Africa Shipping | 30-Day Returns | 100% Authentic
+        <div class="footer-social">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+    </footer>
+</div>
 
 <script>
 // Background slideshow with smooth transitions
@@ -317,7 +457,7 @@ function nextSlide() {
 }
 
 // Start slideshow with 4.5 second intervals
-setInterval(nextSlide, 4500);
+let slideshowInterval = setInterval(nextSlide, 4500);
 
 // Preload images for smoother transitions
 const images = ['locker1.jpg', 'locker2.jpg', 'locker3.jpg', 'locker4.jpg', 'locker5.jpg', 'locker6.jpg', 'locker7.jpg', 'locker8.jpg', 'stadium.jpg'];
@@ -326,10 +466,10 @@ images.forEach(src => {
     img.src = src;
 });
 
-// Optional: Pause slideshow when hovering over interactive elements
+// Pause slideshow when hovering over interactive elements
 const heroSection = document.querySelector('.hero');
 const featureGrid = document.querySelector('.feature-grid');
-let slideshowInterval;
+const newsletter = document.querySelector('.newsletter-section');
 
 function startSlideshow() {
     if (slideshowInterval) clearInterval(slideshowInterval);
@@ -351,6 +491,37 @@ if (featureGrid) {
     featureGrid.addEventListener('mouseenter', pauseSlideshow);
     featureGrid.addEventListener('mouseleave', startSlideshow);
 }
+if (newsletter) {
+    newsletter.addEventListener('mouseenter', pauseSlideshow);
+    newsletter.addEventListener('mouseleave', startSlideshow);
+}
+
+// Newsletter subscription functionality
+const subscribeBtn = document.getElementById('subscribeBtn');
+const emailInput = document.getElementById('newsletterEmail');
+const successMsg = document.getElementById('subscribeMessage');
+
+function validateEmail(email) {
+    return /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/.test(email);
+}
+
+subscribeBtn.addEventListener('click', () => {
+    const email = emailInput.value.trim();
+    if (!email) {
+        alert('Please enter your email address.');
+        return;
+    }
+    if (!validateEmail(email)) {
+        alert('Please enter a valid email address.');
+        return;
+    }
+    // Simulate successful subscription
+    successMsg.style.display = 'block';
+    emailInput.value = '';
+    setTimeout(() => {
+        successMsg.style.display = 'none';
+    }, 4000);
+});
 
 // Add animation delay to feature boxes for staggered appearance
 const featureBoxes = document.querySelectorAll('.feature-box');
