@@ -47,7 +47,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.55);
     z-index: -1;
 }
 
@@ -59,7 +59,7 @@ html::-webkit-scrollbar {
     display: none;
 }
 
-/* Modern Transparent Menu Bar - No Black Bar */
+/* Transparent Menu Bar */
 .menu-bar {
     display: flex;
     justify-content: center;
@@ -100,7 +100,7 @@ html::-webkit-scrollbar {
     border-color: #e6b17e;
 }
 
-/* Modern Animated Hero with Entrance Effect */
+/* Animated Hero */
 .hero {
     text-align: center;
     margin: 60px 0 40px;
@@ -127,7 +127,6 @@ html::-webkit-scrollbar {
     color: transparent;
     animation: shimmer 3s linear infinite, glowPulse 2s ease-in-out infinite;
     letter-spacing: -1px;
-    text-shadow: 0 0 30px rgba(230, 177, 126, 0.3);
 }
 @keyframes shimmer {
     0% { background-position: 0% center; }
@@ -142,8 +141,6 @@ html::-webkit-scrollbar {
     margin-top: 15px;
     font-size: 1.2rem;
     font-weight: 400;
-    letter-spacing: 0.5px;
-    animation: fadeInUp 0.8s ease-out 0.2s both;
 }
 
 /* Section Titles */
@@ -157,69 +154,80 @@ html::-webkit-scrollbar {
     align-items: center;
     justify-content: center;
     gap: 12px;
-    animation: fadeInUp 0.6s ease-out;
-}
-.section-title i {
-    font-size: 1.8rem;
-    opacity: 0.9;
 }
 
-/* Scroll Wrapper - No Scrollbar */
-.scroll-wrapper {
+/* Carousel Wrapper - Shows 3 items with centered highlight */
+.carousel-wrapper {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 0 25px;
+    justify-content: center;
+    gap: 15px;
+    padding: 0 20px;
     margin-bottom: 40px;
+    position: relative;
 }
-.scroll-container {
+.carousel-container {
     display: flex;
     overflow-x: auto;
-    gap: 22px;
-    padding: 12px 8px 18px 8px;
+    scroll-snap-type: x mandatory;
+    gap: 25px;
+    padding: 20px 0;
     scroll-behavior: smooth;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    width: 100%;
+    max-width: 750px;
+    margin: 0 auto;
 }
-.scroll-container::-webkit-scrollbar {
+.carousel-container::-webkit-scrollbar {
     display: none;
 }
 
-/* Product Cards */
+/* Product Cards - Centered Highlight Effect */
 .scroll-item {
-    min-width: 190px;
-    max-width: 190px;
-    background: rgba(0, 0, 0, 0.55);
+    min-width: 220px;
+    max-width: 220px;
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(12px);
-    border-radius: 24px;
-    padding: 14px 12px;
+    border-radius: 28px;
+    padding: 18px 16px;
     text-align: center;
     transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     border: 1px solid rgba(230, 177, 126, 0.3);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    opacity: 0.6;
+    transform: scale(0.92);
+}
+/* Highlight the centered/active item */
+.scroll-item.active-center {
+    opacity: 1;
+    transform: scale(1.05);
+    border: 2px solid #e6b17e;
+    box-shadow: 0 20px 40px rgba(230, 177, 126, 0.4);
+    background: rgba(0, 0, 0, 0.75);
 }
 .scroll-item:hover {
-    transform: translateY(-10px);
+    transform: scale(1.02);
     border-color: #e6b17e;
-    background: rgba(0, 0, 0, 0.7);
-    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5);
 }
 .scroll-item img {
     width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
-    border-radius: 18px;
+    border-radius: 20px;
     background: #1e212a;
     margin-bottom: 12px;
     transition: transform 0.3s ease;
 }
-.scroll-item:hover img {
+.scroll-item.active-center img {
     transform: scale(1.02);
 }
 .item-name {
     font-weight: 600;
-    font-size: 0.85rem;
-    margin: 8px 0 4px;
+    font-size: 0.9rem;
+    margin: 10px 0 5px;
     color: #fff;
     white-space: nowrap;
     overflow: hidden;
@@ -232,7 +240,7 @@ html::-webkit-scrollbar {
     font-size: 1.1rem;
 }
 
-/* Modern Add to Cart Button - Sleek & Stylish */
+/* Modern Add to Cart Button */
 .add-btn {
     padding: 10px 12px;
     border: none;
@@ -281,22 +289,24 @@ html::-webkit-scrollbar {
     transform: translateX(3px);
 }
 
-.scroll-btn {
+/* Navigation Buttons */
+.carousel-btn {
     background: rgba(230, 177, 126, 0.9);
     backdrop-filter: blur(5px);
     border: none;
     border-radius: 50%;
-    width: 44px;
-    height: 44px;
-    font-size: 1.7rem;
+    width: 48px;
+    height: 48px;
+    font-size: 1.8rem;
     cursor: pointer;
     color: #111;
     font-weight: bold;
     transition: 0.3s;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     flex-shrink: 0;
+    z-index: 10;
 }
-.scroll-btn:hover {
+.carousel-btn:hover {
     background: #e6b17e;
     transform: scale(1.08);
     box-shadow: 0 6px 18px rgba(230, 177, 126, 0.4);
@@ -386,17 +396,6 @@ html::-webkit-scrollbar {
     margin: 15px 0;
     padding-right: 8px;
 }
-.cart-items::-webkit-scrollbar {
-    width: 4px;
-}
-.cart-items::-webkit-scrollbar-track {
-    background: #1e212a;
-    border-radius: 10px;
-}
-.cart-items::-webkit-scrollbar-thumb {
-    background: #e6b17e;
-    border-radius: 10px;
-}
 .cart-item {
     display: flex;
     justify-content: space-between;
@@ -406,7 +405,6 @@ html::-webkit-scrollbar {
     border-radius: 20px;
     margin-bottom: 12px;
     font-size: 0.85rem;
-    transition: 0.2s;
 }
 .cart-item button {
     background: linear-gradient(135deg, #ff5e6e, #ff3b4a);
@@ -416,11 +414,9 @@ html::-webkit-scrollbar {
     padding: 5px 14px;
     cursor: pointer;
     font-weight: bold;
-    transition: 0.2s;
 }
 .cart-item button:hover {
     transform: scale(1.05);
-    background: linear-gradient(135deg, #ff3b4a, #ff1f30);
 }
 .total-row {
     font-size: 1.4rem;
@@ -476,7 +472,8 @@ html::-webkit-scrollbar {
 
 @media (max-width: 768px) {
     .scroll-item {
-        min-width: 160px;
+        min-width: 180px;
+        max-width: 180px;
     }
     .section-title {
         font-size: 1.6rem;
@@ -493,8 +490,8 @@ html::-webkit-scrollbar {
     .hero h1 {
         font-size: 2.5rem;
     }
-    .hero p {
-        font-size: 0.9rem;
+    .carousel-container {
+        max-width: 500px;
     }
 }
 </style>
@@ -515,7 +512,7 @@ html::-webkit-scrollbar {
 </div>
 <div class="bg-overlay"></div>
 
-<!-- Transparent Menu Bar -->
+<!-- Menu Bar -->
 <div class="menu-bar">
     <a href="index.html"><i class="fas fa-house"></i> Home</a>
     <a href="shop.html" class="active"><i class="fas fa-bag-shopping"></i> Shop</a>
@@ -532,34 +529,34 @@ html::-webkit-scrollbar {
 
 <!-- Shirts Section -->
 <h2 class="section-title"><i class="fas fa-tshirt"></i> Official Match Shirts <i class="fas fa-futbol"></i></h2>
-<div class="scroll-wrapper">
-    <button class="scroll-btn" onclick="scrollRow('shirtsRow', -340)">‹</button>
-    <div id="shirtsRow" class="scroll-container"></div>
-    <button class="scroll-btn" onclick="scrollRow('shirtsRow', 340)">›</button>
+<div class="carousel-wrapper">
+    <button class="carousel-btn" onclick="scrollCarousel('shirtsRow', -280)">‹</button>
+    <div id="shirtsRow" class="carousel-container"></div>
+    <button class="carousel-btn" onclick="scrollCarousel('shirtsRow', 280)">›</button>
 </div>
 
 <!-- Shorts Section -->
 <h2 class="section-title"><i class="fas fa-shorts"></i> Pro Training Shorts <i class="fas fa-running"></i></h2>
-<div class="scroll-wrapper">
-    <button class="scroll-btn" onclick="scrollRow('shortsRow', -340)">‹</button>
-    <div id="shortsRow" class="scroll-container"></div>
-    <button class="scroll-btn" onclick="scrollRow('shortsRow', 340)">›</button>
+<div class="carousel-wrapper">
+    <button class="carousel-btn" onclick="scrollCarousel('shortsRow', -280)">‹</button>
+    <div id="shortsRow" class="carousel-container"></div>
+    <button class="carousel-btn" onclick="scrollCarousel('shortsRow', 280)">›</button>
 </div>
 
 <!-- Boots Section -->
 <h2 class="section-title"><i class="fas fa-shoe-prints"></i> Elite Performance Boots <i class="fas fa-medal"></i></h2>
-<div class="scroll-wrapper">
-    <button class="scroll-btn" onclick="scrollRow('bootsRow', -340)">‹</button>
-    <div id="bootsRow" class="scroll-container"></div>
-    <button class="scroll-btn" onclick="scrollRow('bootsRow', 340)">›</button>
+<div class="carousel-wrapper">
+    <button class="carousel-btn" onclick="scrollCarousel('bootsRow', -280)">‹</button>
+    <div id="bootsRow" class="carousel-container"></div>
+    <button class="carousel-btn" onclick="scrollCarousel('bootsRow', 280)">›</button>
 </div>
 
 <!-- Memorabilia Section -->
 <h2 class="section-title"><i class="fas fa-star"></i> Signed Memorabilia <i class="fas fa-crown"></i></h2>
-<div class="scroll-wrapper">
-    <button class="scroll-btn" onclick="scrollRow('memorabiliaRow', -340)">‹</button>
-    <div id="memorabiliaRow" class="scroll-container"></div>
-    <button class="scroll-btn" onclick="scrollRow('memorabiliaRow', 340)">›</button>
+<div class="carousel-wrapper">
+    <button class="carousel-btn" onclick="scrollCarousel('memorabiliaRow', -280)">‹</button>
+    <div id="memorabiliaRow" class="carousel-container"></div>
+    <button class="carousel-btn" onclick="scrollCarousel('memorabiliaRow', 280)">›</button>
 </div>
 
 <!-- Cart Button -->
@@ -592,7 +589,7 @@ setInterval(() => {
     bgSlides[bgCurrent].classList.add('active');
 }, 4500);
 
-// Product Data
+// Product Data (same as before)
 const shirtsData = [
     { name: "Barcelona Shirt", price: 80, img: "barca.png" },
     { name: "Madrid Shirt", price: 80, img: "madrid.avif" },
@@ -659,7 +656,45 @@ const memorabiliaData = [
     { name: "Yamal Auto Card", price: 99, img: "yamal card 2.jpg" }
 ];
 
-function renderProducts(containerId, productsArray) {
+// Function to highlight centered item in carousel
+function setupCarouselHighlight(containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    
+    const updateHighlight = () => {
+        const items = container.querySelectorAll('.scroll-item');
+        const containerRect = container.getBoundingClientRect();
+        const centerX = containerRect.left + containerRect.width / 2;
+        
+        let closestItem = null;
+        let closestDistance = Infinity;
+        
+        items.forEach(item => {
+            const itemRect = item.getBoundingClientRect();
+            const itemCenterX = itemRect.left + itemRect.width / 2;
+            const distance = Math.abs(centerX - itemCenterX);
+            
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                closestItem = item;
+            }
+        });
+        
+        items.forEach(item => item.classList.remove('active-center'));
+        if (closestItem) {
+            closestItem.classList.add('active-center');
+        }
+    };
+    
+    container.addEventListener('scroll', () => {
+        requestAnimationFrame(updateHighlight);
+    });
+    
+    setTimeout(updateHighlight, 100);
+}
+
+// Render products in carousel
+function renderCarousel(containerId, productsArray) {
     const container = document.getElementById(containerId);
     if (!container) return;
     container.innerHTML = '';
@@ -674,6 +709,7 @@ function renderProducts(containerId, productsArray) {
         `;
         container.appendChild(itemDiv);
     });
+    
     container.querySelectorAll('.add-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -682,8 +718,11 @@ function renderProducts(containerId, productsArray) {
             addToCart(name, price);
         });
     });
+    
+    setupCarouselHighlight(containerId);
 }
 
+// Cart functionality
 let cart = [];
 
 function addToCart(name, price) {
@@ -691,7 +730,6 @@ function addToCart(name, price) {
     updateCartDisplay();
     const modal = document.getElementById('cartModal');
     modal.classList.add('show');
-    // Add a subtle animation feedback
     const badge = document.getElementById('cartCount');
     badge.style.transform = 'scale(1.2)';
     setTimeout(() => { badge.style.transform = 'scale(1)'; }, 200);
@@ -738,7 +776,7 @@ function checkoutProcess() {
     document.getElementById('cartModal').classList.remove('show');
 }
 
-function scrollRow(elementId, distance) {
+function scrollCarousel(elementId, distance) {
     const el = document.getElementById(elementId);
     if (el) {
         el.scrollBy({ left: distance, behavior: 'smooth' });
@@ -749,11 +787,13 @@ function closeCartModal() {
     document.getElementById('cartModal').classList.remove('show');
 }
 
-renderProducts('shirtsRow', shirtsData);
-renderProducts('shortsRow', shortsData);
-renderProducts('bootsRow', bootsData);
-renderProducts('memorabiliaRow', memorabiliaData);
+// Render all carousels
+renderCarousel('shirtsRow', shirtsData);
+renderCarousel('shortsRow', shortsData);
+renderCarousel('bootsRow', bootsData);
+renderCarousel('memorabiliaRow', memorabiliaData);
 
+// Event listeners
 const cartModal = document.getElementById('cartModal');
 const closeModalBtn = document.getElementById('closeCart');
 const floatingCart = document.getElementById('cartBtn');
