@@ -151,7 +151,7 @@ html::-webkit-scrollbar {
     margin: 0 auto;
 }
 
-/* IMAGE with Stretching Animation */
+/* IMAGE with Stretching Animation - Using size.jpg */
 .size-image-wrapper {
     display: inline-block;
     margin-bottom: 20px;
@@ -160,11 +160,14 @@ html::-webkit-scrollbar {
 
 @keyframes stretchReveal {
     0% {
-        transform: scaleX(0.3) scaleY(0.8);
+        transform: scaleX(0.2) scaleY(0.6);
         opacity: 0;
     }
-    50% {
-        transform: scaleX(1.05) scaleY(1.02);
+    30% {
+        transform: scaleX(1.1) scaleY(1.05);
+    }
+    60% {
+        transform: scaleX(0.98) scaleY(1.02);
     }
     100% {
         transform: scaleX(1) scaleY(1);
@@ -179,13 +182,15 @@ html::-webkit-scrollbar {
     border: 2px solid rgba(230, 177, 126, 0.4);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
 .size-container img:hover {
-    transform: scale(1.02);
+    transform: scale(1.03);
+    border-color: #e6b17e;
 }
 
-/* SIZE BUTTONS with Pulse Animation on Hover */
+/* SIZE BUTTONS with Stretch Animation on Hover */
 .size-buttons {
     margin: 20px 0;
 }
@@ -208,14 +213,14 @@ html::-webkit-scrollbar {
 .size-buttons button:hover {
     background: #e6b17e;
     color: black;
-    transform: scale(1.05);
+    transform: scale(1.08);
     box-shadow: 0 5px 15px rgba(230, 177, 126, 0.4);
 }
 
 .size-buttons button.active {
     background: #e6b17e;
     color: black;
-    transform: scale(1.05);
+    transform: scale(1.08);
     box-shadow: 0 5px 15px rgba(230, 177, 126, 0.4);
 }
 
@@ -231,18 +236,18 @@ html::-webkit-scrollbar {
     width: 100%;
     max-width: 450px;
     border: 1px solid rgba(230, 177, 126, 0.3);
-    animation: fadeInScale 0.5s ease-out;
+    animation: stretchScale 0.5s ease-out;
     line-height: 1.6;
 }
 
-@keyframes fadeInScale {
+@keyframes stretchScale {
     from {
         opacity: 0;
-        transform: scale(0.95);
+        transform: scaleX(0.8) scaleY(0.9);
     }
     to {
         opacity: 1;
-        transform: scale(1);
+        transform: scaleX(1) scaleY(1);
     }
 }
 
@@ -264,17 +269,17 @@ html::-webkit-scrollbar {
     overflow-x: auto;
     border: 1px solid rgba(230, 177, 126, 0.3);
     transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    animation: slideUp 0.6s ease-out;
+    animation: slideUpStretch 0.6s ease-out;
 }
 
-@keyframes slideUp {
+@keyframes slideUpStretch {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(30px) scaleX(0.95);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scaleX(1);
     }
 }
 
@@ -350,7 +355,7 @@ html::-webkit-scrollbar {
     text-align: center;
     border: 1px solid rgba(230, 177, 126, 0.25);
     transition: all 0.3s ease;
-    animation: stretchIn 0.5s ease-out backwards;
+    animation: stretchCard 0.5s ease-out backwards;
 }
 
 .tip-card:nth-child(1) { animation-delay: 0.1s; }
@@ -358,10 +363,10 @@ html::-webkit-scrollbar {
 .tip-card:nth-child(3) { animation-delay: 0.3s; }
 .tip-card:nth-child(4) { animation-delay: 0.4s; }
 
-@keyframes stretchIn {
+@keyframes stretchCard {
     from {
         opacity: 0;
-        transform: scaleX(0.8) scaleY(0.9);
+        transform: scaleX(0.7) scaleY(0.8);
     }
     to {
         opacity: 1;
@@ -384,7 +389,7 @@ html::-webkit-scrollbar {
 }
 
 .tip-card:hover i {
-    transform: scale(1.1);
+    transform: scale(1.15);
 }
 
 .tip-card h4 {
@@ -431,13 +436,16 @@ html::-webkit-scrollbar {
         padding: 8px 16px;
         font-size: 0.85rem;
     }
+    .size-container img {
+        max-width: 90%;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- Background Slideshow with your images -->
+<!-- Background Slideshow with your images - All 9 images -->
 <div class="bg-slideshow">
     <div class="bg-slide active" style="background-image: url('locker1.jpg');"></div>
     <div class="bg-slide" style="background-image: url('locker2.jpg');"></div>
@@ -471,8 +479,9 @@ html::-webkit-scrollbar {
 <!-- CONTENT -->
 <div class="size-container">
 
+    <!-- size.jpg image with stretch animation -->
     <div class="size-image-wrapper">
-        <img src="size-guide.jpg" alt="Size Guide" onerror="this.src='https://placehold.co/500x400/1e2a3a/e6b17e?text=Size+Guide'">
+        <img src="size.jpg" alt="Size Guide Measurement Chart" onerror="this.src='https://placehold.co/500x400/1e2a3a/e6b17e?text=Size+Guide+Chart'">
     </div>
 
     <!-- SIZE BUTTONS -->
@@ -654,15 +663,18 @@ html::-webkit-scrollbar {
 </div>
 
 <script>
-// Background slideshow
+// Background slideshow with all 9 images
 const bgSlides = document.querySelectorAll('.bg-slide');
 let bgCurrent = 0;
+
+// Start slideshow with 4.5 second intervals
 setInterval(() => {
     bgSlides[bgCurrent].classList.remove('active');
     bgCurrent = (bgCurrent + 1) % bgSlides.length;
     bgSlides[bgCurrent].classList.add('active');
 }, 4500);
 
+// Size data for the interactive selector
 const sizes = {
     S: "📏 SIZE S: Chest: 89-94 cm (35-37\")<br>Waist: 73-78 cm (29-31\")<br>Height: 165-170 cm<br>Boots: EU 39-40 | Gloves: Size 8",
     M: "📏 SIZE M: Chest: 95-102 cm (37.5-40\")<br>Waist: 79-84 cm (31-33\")<br>Height: 170-178 cm<br>Boots: EU 41-42 | Gloves: Size 9",
@@ -673,20 +685,34 @@ const sizes = {
 function selectSize(size) {
     const sizeInfo = document.getElementById("sizeInfo");
     sizeInfo.innerHTML = sizes[size];
+    
+    // Re-trigger animation for smooth effect
     sizeInfo.style.animation = 'none';
-    setTimeout(() => { sizeInfo.style.animation = 'fadeInScale 0.5s ease-out'; }, 10);
+    setTimeout(() => { 
+        sizeInfo.style.animation = 'stretchScale 0.5s ease-out'; 
+    }, 10);
 
+    // Update active button styling
     document.querySelectorAll(".size-buttons button").forEach(btn => {
         btn.classList.remove("active");
     });
     document.getElementById("btn-" + size).classList.add("active");
+    
+    // Save selected size for shop page
     localStorage.setItem("selectedSize", size);
 }
 
+// Load previously selected size if available
 window.addEventListener('DOMContentLoaded', () => {
     const savedSize = localStorage.getItem("selectedSize");
     if (savedSize && sizes[savedSize]) {
         selectSize(savedSize);
+    }
+    
+    // Add entrance animation for image
+    const imageWrapper = document.querySelector('.size-image-wrapper');
+    if (imageWrapper) {
+        imageWrapper.style.animation = 'stretchReveal 0.8s ease-out';
     }
 });
 </script>
