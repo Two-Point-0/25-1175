@@ -684,7 +684,7 @@ body::before {
     <span class="close-cart-sidebar" id="closeCartSidebar">&times;</span>
     <h3><i class="fas fa-basket-shopping"></i> Your Cart</h3>
     <div id="cartItemsList" class="cart-items-list"></div>
-    <div class="total-row">Total: €<span id="cartTotalAmount">0</span></div>
+    <div class="total-row">Total: KSh <span id="cartTotalAmount">0</span></div>
     <button class="checkout-btn" id="checkoutBtnSidebar">💳 CHECKOUT</button>
 </div>
 
@@ -705,7 +705,10 @@ body::before {
 </div>
 
 <script>
-// ---------- PRODUCT DATA with Stock ----------
+// ---------- EXCHANGE RATE: 1 EUR = 130 KES ----------
+const EXCHANGE_RATE = 130;
+
+// ---------- PRODUCT DATA (prices in EUR) ----------
 const shirtsData = [
     { name: "Barcelona Shirt", price: 80, img: "barca.png", stock: 12 },
     { name: "Madrid Shirt", price: 80, img: "madrid.avif", stock: 8 },
@@ -775,7 +778,12 @@ const memorabiliaData = [
 // Sizes
 const sizes = ["S", "M", "L", "XL"];
 
-// Render product card with size selector and stock badge
+// Helper to convert EUR to KES and format
+function toKes(euroPrice) {
+    return Math.round(euroPrice * EXCHANGE_RATE);
+}
+
+// Render product card with KES prices
 function renderCarousel(containerId, productsArray) {
     const container = document.getElementById(containerId);
     if (!container) return;
@@ -806,18 +814,20 @@ function renderCarousel(containerId, productsArray) {
             stockText = `Only ${stock} left`;
         }
         
+        const priceKes = toKes(product.price);
+        
         const itemDiv = document.createElement('div');
         itemDiv.className = 'scroll-item';
         itemDiv.setAttribute('data-index', idx);
         itemDiv.innerHTML = `
             <img src="${product.img}" alt="${product.name}" onerror="this.src='https://placehold.co/300x300/1e2a3a/e6b17e?text=Image+Not+Found'">
             <div class="item-name">${product.name}</div>
-            <div class="item-price">€${product.price}</div>
+            <div class="item-price">KSh ${priceKes.toLocaleString()}</div>
             <div class="stock-badge ${stockClass}">${stockText}</div>
-            <select class="size-select" data-name="${product.name}" data-price="${product.price}" data-stock="${stock}">
+            <select class="size-select" data-name="${product.name}" data-price-kes="${priceKes}" data-stock="${stock}">
                 ${sizes.map(s => `<option value="${s}">Size ${s}</option>`).join('')}
             </select>
-            <button class="add-btn" data-name="${product.name}" data-price="${product.price}" data-stock="${stock}" ${stock === 0 ? 'disabled' : ''}>
+            <button class="add-btn" data-name="${product.name}" data-price-kes="${priceKes}" data-stock="${stock}" ${stock === 0 ? 'disabled' : ''}>
                 <i class="fas fa-cart-plus"></i> Add to Cart
             </button>
         `;
@@ -845,11 +855,11 @@ function renderCarousel(containerId, productsArray) {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
             const name = btn.getAttribute('data-name');
-            const price = parseFloat(btn.getAttribute('data-price'));
+            const priceKes = parseFloat(btn.getAttribute('data-price-kes'));
             const sizeSelect = btn.parentElement.querySelector('.size-select');
             const size = sizeSelect ? sizeSelect.value : 'M';
             const rect = btn.getBoundingClientRect();
-            addToCart(name, price, size, rect);
+            addToCart(name, priceKes, size, rect);
         });
     });
     
@@ -895,8 +905,8 @@ function createFloatAnimation(startX, startY) {
     setTimeout(() => floatDiv.remove(), 600);
 }
 
-function addToCart(name, price, size, buttonRect) {
-    cart.push({ name, price, size, id: Date.now() + Math.random() });
+function addToCart(name, priceKes, size, buttonRect) {
+    cart.push({ name, price: priceKes, size, id: Date.now() + Math.random() });
     updateCartDisplay();
     if (buttonRect) {
         createFloatAnimation(buttonRect.left + buttonRect.width/2 - 20, buttonRect.top + buttonRect.height/2 - 20);
@@ -921,13 +931,13 @@ function updateCartDisplay() {
         cartRow.innerHTML = `
             <div class="cart-item-details">
                 ${item.name} (${item.size})<br>
-                <strong>€${item.price}</strong>
+                <strong>KSh ${item.price.toLocaleString()}</strong>
             </div>
             <button class="remove-cart-item" data-idx="${idx}"><i class="fas fa-trash"></i> Remove</button>
         `;
         cartContainer.appendChild(cartRow);
     });
-    totalSpan.innerText = total.toFixed(2);
+    totalSpan.innerText = total.toLocaleString();
     badgeSpan.innerText = cart.length;
     document.querySelectorAll('.remove-cart-item').forEach(btn => {
         btn.addEventListener('click', (e) => {
